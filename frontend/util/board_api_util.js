@@ -1,4 +1,4 @@
-export const fetchBords = () => {
+export const fetchBoards = () => {
     return $.ajax({
         method: "GET",
         url: `/api/boards`
