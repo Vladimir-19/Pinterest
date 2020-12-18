@@ -2,13 +2,18 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRpute } from '../util/route_util';
 
-import CreateBoard from "./boards/create_board_container";
+import Modal from './modal/modal';
+import NavBar from '../components/navbar/navbar';
+
+
+import UserProfileContainer from './profile/user_profile_container';
+
 
 const App  = () => (
     <div className="app-component">
 
         <header>
-            header
+            <NavBar />
         </header>
         <Switch>
             <h1>hello</h1>

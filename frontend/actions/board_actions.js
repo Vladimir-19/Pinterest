@@ -2,7 +2,7 @@ import * as BoardAPIUtil from '../util/board_api_util';
 
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
-export const REMOVE_BOAR = 'REMOVE_BOAR';
+export const REMOVE_BOARD = 'REMOVE_BOARD';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 const receiveBoards = boards => ({
