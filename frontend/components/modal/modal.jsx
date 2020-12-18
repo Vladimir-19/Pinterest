@@ -1,34 +1,38 @@
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-// import LoginFormContainer from '../session_form/login_form_container';
-// import SignupFormContainer from '../session_form/signup_form_container';
+import LoginFormContainer from '../session_form/login_form_container';
+import SignupFormContainer from '../session_form/signup_form_container';
 import PinBoardContainer from '../boards/pin_board_container';
 import CreateBoardContainer from '../boards/create_board_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
 // import EditProfileContainer from '../users/edit_profile_container';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, openModal }) {
     if (!modal) {
         return null;
     }
-    let component;
+    let component, clickBackground;
     switch (modal.modal) {
-        // case 'login':
-        //     component = <LoginFormContainer />;
-        //     break;
-        // case 'signup':
-        //     component = <SignupFormContainer />;
-        //     break;
+        case 'login':
+            component = <LoginFormContainer />;
+            clickBackground = null;
+            break;
+        case 'signup':
+            component = <SignupFormContainer />;
+            clickBackground = null;
+            break;
         case ('pinboard'):
             component =
                 <PinBoardContainer
                     pinId={modal.pinId}
                 />;
+            clickBackground = closeModal;
             break;
         case ('createboard'):
             component = <CreateBoardContainer
                 currentUser={modal.currentUser} />;
+            clickBackground = closeModal;
             break;
         // case ('successPin'):
         //     component = <RecentPinContainer boardId={modal.boardId}

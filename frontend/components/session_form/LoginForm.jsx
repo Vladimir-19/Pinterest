@@ -1,16 +1,14 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import Logo from '../../../app/assets/images/pngegg.png'
 
-class SignUpForm extends React.Component {
+class LogInForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            age: ''
+            password: ''
         };
-
+  
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
     }
@@ -34,9 +32,9 @@ class SignUpForm extends React.Component {
 
     renderErrors() {
         return (
-            <ul>
+            <ul className="session-errors">
                 {this.props.errors.map((error, i) => (
-                    <li className="session-errors"
+                    <li
                         key={`error-${i}`}>
                         {error}
                     </li>
@@ -58,6 +56,7 @@ class SignUpForm extends React.Component {
         }
 
         return (
+
             <div className="first-page">
                 <div className="login-inviting-container">
                     <h1 >Sign up to get your ideas</h1>
@@ -77,6 +76,7 @@ class SignUpForm extends React.Component {
 
                     <form onSubmit={this.handleSubmit} className="login-form-box">
 
+
                         {/* <div onClick={this.props.closeModal} className="close-x">
                             X
             </div> */}
@@ -89,23 +89,9 @@ class SignUpForm extends React.Component {
                                     onChange={this.update('email')}
                                     placeholder="Email"
                                     className="login-input"
+                                // className={`${styles.addLogin} ${styles.loginInput}`}
                                 />
                             </label>
-                            <div className="session-form-add-space"></div>
-
-                            <div className="login-form">
-                                <label>
-                                    <input
-                                        type="integer"
-                                        value={this.state.age}
-                                        onChange={this.update('age')}
-                                        placeholder="Age"
-                                        // className={`${styles.addLogin} ${styles.loginInput}`}
-                                        className="login-input"
-                                    />
-                                </label>
-                            </div>
-
                             <div className="session-form-add-space"></div>
 
                             <label>
@@ -115,6 +101,7 @@ class SignUpForm extends React.Component {
                                     onChange={this.update('password')}
                                     placeholder="Password"
                                     className="login-input"
+                                // className={`${styles.addLogin} ${styles.loginInput}`}
                                 />
                             </label>
 
@@ -128,6 +115,7 @@ class SignUpForm extends React.Component {
 
                             <div className="session-submit-demo">
                                 <button
+
                                     onClick={(e) => {
                                         this.demoUser(e);
                                     }}
@@ -140,7 +128,7 @@ class SignUpForm extends React.Component {
 
                             <p className="session-terms-message">
                                 By continuing, you agree to Pinterior's Terms of Service
-                            </p>
+                        </p>
 
                             <a
                                 className="switch-session-form"
@@ -157,5 +145,5 @@ class SignUpForm extends React.Component {
         );
     }
 }
-export default withRouter(SignUpForm);
 
+export default withRouter(LogInForm);
