@@ -5,16 +5,15 @@ import {
 // This file will be responsible for combining our multiple, domain - specific reducers 
 // It will export a single rootReducer
 
-import entities from '../reducers/entities_reducer';
-// import entities from './entities_reducer';
-// import session from './session_reducer';
-// import errors from './errors_reducer';
+import entities from './entities_reducer';
+import session from './session_reducer';
+import errors from './errors_reducer';
 // import ui from './ui_reducer';
 
 const rootReducer = combineReducers({
     entities,
-    // session,
-    // errors,
+    session,
+    errors,
     // ui,
 });
 
