@@ -8,17 +8,21 @@ import CreateBoardContainer from '../boards/create_board_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
 // import EditProfileContainer from '../users/edit_profile_container';
 
-function Modal({ modal, closeModal, openModal }) {
+function Modal({ modal, closeModal, openModal, altModal }) {
     if (!modal) {
         return null;
     }
-    let component, clickBackground;
+    let component, switchFormValue, altModal, clickBackground;
     switch (modal.modal) {
         case 'login':
+            switchFormValue = "Sign Up"
+            altModal = "signup"
             component = <LoginFormContainer />;
             clickBackground = null;
             break;
         case 'signup':
+            switchFormValue = "Lig in"
+            altModal = "login"
             component = <SignupFormContainer />;
             clickBackground = null;
             break;
@@ -44,24 +48,35 @@ function Modal({ modal, closeModal, openModal }) {
             return null;
     }
 
+    const switchFormButton = (switchFormButton) ? (
+        <button className="switch-form-button" onClick={() => openModal(altModal)}>
+            <div className="switch-form-value">
+                {switchFormValue}
+            </div>
+        </button>
+    ) : null;
+
     return (
-        <div className="modal-background">
-            {component}
+        <div className="modal-container" >
+            <div className="modal-background" id={modal} onClick={clickBackground}>
+                <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                    {component}
+                </div>
+                <div className="modal-child-two" onClick={e => e.stopPropagation()}>
+                    {switchFormButton}
+                </div>
+            </div>
         </div>
     );
 }
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         modal: state.ui.modal
-    };
-};
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
+const mapDispatchToProps = dispatch => ({
         closeModal: () => dispatch(closeModal()),
         openModal: (modal) => dispatch(openModal(modal))
-    };
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

@@ -12,7 +12,7 @@ class User < ApplicationRecord
     has_one_attached :photo
     has_many :board
 
-    has_many :pins
+    has_many :pins, 
         through: :boards,
         source: :pins
     

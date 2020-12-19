@@ -17,7 +17,6 @@ const App  = () => (
         </header>
         <Switch>
             {/* <ProtectedRpute /> */}
-            <h1>hello</h1>
             {/* <ProtectedRpute exact path="/" component={CreateBoard}/> */}
         </Switch>
         <footer>
