@@ -10,9 +10,8 @@ import CreateBoardContainer from '../boards/create_board_container';
 // import EditProfileContainer from '../users/edit_profile_container';
 
 function Modal({ modal, closeModal, openModal }) {
-    if (!modal) {
-        return null;
-    }
+    if (!modal) return null;
+
     let component, switchFormValue, altModal, clickBackground;
     switch (modal.modal) {
         case 'login':
@@ -47,37 +46,37 @@ function Modal({ modal, closeModal, openModal }) {
         //     break;
         default:
             return null;
-    }
+    };
 
-    const switchFormButton = (switchFormButton) ? (
-        <button className="switch-form-button" onClick={() => openModal(altModal)}>
-            <div className="switch-form-value">
-                {switchFormValue}
-            </div>
-        </button>
-    ) : null;
+    // const switchFormButton = (switchFormButton) ? (
+    //     <button className="switch-form-button" onClick={() => openModal(altModal)}>
+    //         <div className="switch-form-value">
+    //             {switchFormValue}
+    //         </div>
+    //     </button>
+    // ) : null;
 
     return (
         <div className="modal-container" >
             <div className="modal-background" id={modal} onClick={clickBackground}>
-                <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                {/* <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}> */}
                     {component}
-                </div>
-                <div className="modal-child-two" onClick={e => e.stopPropagation()}>
+                {/* </div> */}
+                {/* <div className="modal-child-two" onClick={e => e.stopPropagation()}>
                     {switchFormButton}
-                </div>
+                </div> */}
             </div>
         </div>
     );
 }
 
 const mapStateToProps = state => ({
-        modal: state.ui.modal
-});
+    modal: state.ui.modal
+})
 
 const mapDispatchToProps = dispatch => ({
-        closeModal: () => dispatch(closeModal()),
-        openModal: (modal) => dispatch(openModal(modal))
-});
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

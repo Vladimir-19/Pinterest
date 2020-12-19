@@ -11,9 +11,10 @@ import UserProfileContainer from './profile/user_profile_container';
 
 const App  = () => (
     <div className="app-component">
-        <Modal/>
+        <Modal />
         <header>
-            <NavBar />
+            {/* <NavBar /> */}
+            <Route path="/" component={NavBar} />
         </header>
         <Switch>
             {/* <ProtectedRpute /> */}
