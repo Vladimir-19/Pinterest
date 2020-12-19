@@ -136,7 +136,7 @@ class SignUpForm extends React.Component {
                             </button>
                             </div>
 
-                            {/* {this.renderErrors()} */}
+                            {this.renderErrors()}
 
                             <p className="session-terms-message">
                                 By continuing, you agree to Pinterior's Terms of Service

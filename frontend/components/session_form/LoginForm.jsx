@@ -79,7 +79,7 @@ class LogInForm extends React.Component {
 
                         {/* <div onClick={this.props.closeModal} className="close-x">
                             X
-            </div> */}
+                        </div> */}
 
                         <div className="login-form">
                             <label>
@@ -124,7 +124,7 @@ class LogInForm extends React.Component {
                             </button>
                             </div>
 
-                            {/* {this.renderErrors()} */}
+                            {this.renderErrors()}
 
                             <p className="session-terms-message">
                                 By continuing, you agree to Pinterior's Terms of Service

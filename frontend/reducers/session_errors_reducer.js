@@ -12,8 +12,8 @@ export default (state = [], action) => {
         case RECEIVE_CURRENT_USER:
             return [];
         case RECEIVE_SESSION_ERRORS:
-            return action.errors ? action.errors : null;
-            // return action.errors;
+            // return action.errors ? action.errors : null;
+            return action.errors;
         case CLOSE_MODAL:
             return [];
         case OPEN_MODAL:

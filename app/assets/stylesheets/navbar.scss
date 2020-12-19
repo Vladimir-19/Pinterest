@@ -1,0 +1,270 @@
+.nav-container {
+//   height: 90px;
+//   overflow: hidden;
+//   position: fixed;
+
+  z-index: 671;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  border-bottom: 1px solid #efefef;
+
+}
+
+.nav-ul {
+  height: 100%;
+//   overflow: hidden;
+//  display: flex;
+  flex-direction: row;
+}
+
+.nav-lis {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 12pt;
+  margin: 8px;
+ 
+}
+
+.nav-lis > a {
+  padding: 15px 10px 15px 10px;
+  border-radius: 40px;
+  margin-left: 4px;
+  margin-right: 4px;
+  color: black;
+  text-decoration: none;
+  &:focus{
+    background-color: black;
+    color: white;
+  }
+  &:hover{
+    background-color: lightgrey;
+
+  }
+  &:focus:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+// .icon-wrapper {
+//   border-radius: 50px;
+//   height: 25px;
+//   width: 25px;
+// }
+
+.nav-profile-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  padding: 10px;
+  &:hover{
+    background-color: lightgrey;
+  }
+  &:focus{
+    border: 1px solid black;
+  }
+}
+
+.nav-link-home.i {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  padding: 10px;
+
+
+  &:hover {
+    background-color: lightgrey;
+  }
+
+  &:focus {
+    border: 1px solid black;
+  }
+}
+
+            .icon-container-shadow {
+            background-color: transparent;
+            height: 48px;
+            width: 48px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                background-color: #E2E2E2
+            }
+            }
+            .icon-container-shadow {
+            background-color: transparent;
+            height: 48px;
+            width: 48px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                background-color: #E2E2E2
+            }
+            }
+            .icon-container {
+            height: 48px;
+            width: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 4px
+            }
+            .nav-bar-button {
+            box-sizing: border-box;
+            display: block;
+            position: relative;
+            }
+            .nav-bar-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            }
+
+    .nav-bar-search-container {
+    /* min-width: 407px; */
+    flex: 1 1 auto;
+    min-height: 0;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    width: 100%;
+    }
+
+    .search-container {
+    height: 40px;
+    min-width: 0px;
+    background-color: #efefef;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 0px 16px;
+    }
+
+    .search-icon-container {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    margin-right: 12px;
+    }
+
+    #search-icon {
+    color: #8e8e8e;
+    fill: currentColor;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    overflow: hidden;
+    }
+
+    .search-input-container {
+    height: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    }
+
+    .search-input {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    line-height: normal;
+    vertical-align: middle;
+    }
+
+.nav-lis > button {
+  padding: 15px 10px 15px 10px;
+  border-radius: 40px;
+  transition: background 0.5s;
+  &:focus{
+    background-color: black;
+    color: white;
+  }
+  &:hover{
+    background-color: lightgrey;
+  }
+  &:focus:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+a.nav-link-home-logo {
+
+  padding: 7px;
+  background-image: image_url('logo.png');
+  background-repeat: no-repeat;
+//   border-radius: 100px;
+  background-size: cover;
+  color: transparent;
+//   width: 25px;
+//   height: 25px;
+ height: 48px;
+  width: 48px;
+    box-sizing: border-box;
+  border-radius: 50%;
+
+  &:focus:hover {
+    background-color: lightgrey;
+    color: transparent;
+    transition: background 0.9s;
+  }
+}
+
+
+
+.searchbar-container {
+  width: 70%;
+  height: 45px;
+  background-color: whitesmoke;
+  border-radius: 30px;
+  overflow: hidden;
+  &:hover{
+    background-color: lightgray;
+    transition: background 0.8s;
+  }
+}
+
+.searchbar-form {
+  height: 100%;
+}
+
+.searchbar-input {
+  width: 98%;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-indent: 30px;
+  background-image: image_url('search.png');
+  background-repeat: no-repeat;
+  background-size: 2%;
+  background-position: left;
+  font-weight: normal;
+  color: black;
+}

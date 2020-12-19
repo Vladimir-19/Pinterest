@@ -3,18 +3,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 // import SearchbarContainer from '../Searchbar/searchbar_container';
-import { Link } from 'react-router-dom';
-// import { logoutUser } from '../../actions/session_actions';
+import { Link, NavLink } from 'react-router-dom';
+import { logoutUser } from '../../actions/session_actions';
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    // handleClick() {
-    //     this.props.logout().then(this.props.openModal({ modal: 'login' }));
-    // }
+    handleClick() {
+        this.props.logout().then(this.props.openModal({ modal: 'login' }));
+    }
 
     render() {
         const { currentUser, openModal, closeModal } = this.props;
@@ -49,9 +49,9 @@ class NavBar extends React.Component {
                                 </Link>
                             </div>
                             <button
-                                // onClick={
-                                    // this.handleClick
-                                // }
+                                onClick={
+                                    this.handleClick
+                                }
                             >
                                 Log out
               </button>

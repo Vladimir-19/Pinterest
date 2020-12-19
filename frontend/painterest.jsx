@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
         preloadedState = {
-            // ui: { modal: { modal: 'signup' } },
+            // ui: { modal: { modal: 'signup' } }, DO NOT USE IT!!
             ui: { modal: 'signup' },
         };
         store = configureStore(preloadedState);

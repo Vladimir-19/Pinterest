@@ -13,6 +13,11 @@ const receiveUserErrors = errors => ({
     errors
 });
 
+const receiveSingleUser = user => ({
+    type: RECEIVE_SINGLE_USER,
+    user
+});
+
 export const fetchUser = userId => dispatch (
     APIUtil.fetchUser(userId).then(
         user => dispatch(receiveUser(user)))
@@ -23,4 +28,15 @@ export const updateUser = (user, id) => dispatch => (
         user => (dispatch(receiveUser(user))),
         dispatch(receiveUserErrors(err.responseJSON))
     )
+);
+
+// EXTRA 
+export const fetchAllUsers = () => dispatch => (
+    UserAPIUtil.fetchAllUsers()
+        .then(users => dispatch(receiveAllUsers(users)))
+);
+
+export const fetchSingleUser = id => dispatch => (
+    UserAPIUtil.fetchSingleUser(id)
+        .then(payload => dispatch(receiveSingleUser(payload)))
 );
