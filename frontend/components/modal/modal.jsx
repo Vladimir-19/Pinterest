@@ -13,7 +13,7 @@ function Modal({ modal, closeModal, openModal }) {
     if (!modal) return null;
 
     let component, switchFormValue, altModal, clickBackground;
-    switch (modal.modal) {
+    switch (modal) {
         case 'login':
             switchFormValue = "Sign Up"
             altModal = "signup"

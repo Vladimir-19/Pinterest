@@ -25,32 +25,32 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if (params[:user][:photoFile])
-      file = open(params[:user][:photoFile])
-    end
+    # if (params[:user][:photoFile])
+    #   file = open(params[:user][:photoFile])
+    # end
     
-    if (params[:user][:photoFile]) && @user.photo.attached?
-      @user.photo.destroy 
-      @user.photo.attach(io: file, filename: 'hello')
+    # if (params[:user][:photoFile]) && @user.photo.attached?
+    #   @user.photo.destroy 
+    #   @user.photo.attach(io: file, filename: 'hello')
+    #   if @user.update(profile_params)
+    #     render "api/users/show"
+    #   else 
+    #     render json: @user.errors.full_messages, status: 422
+    #   end
+    # elsif (params[:user][:photoFile]) && !@user.photo.attached?
+    #   @user.photo.attach(io: file, filename: 'hello')
+    #    if @user.update(profile_params)
+    #     render "api/users/show"
+    #   else 
+    #     render json: @user.errors.full_messages, status: 422
+    #   end
+    # else 
       if @user.update(profile_params)
         render "api/users/show"
       else 
         render json: @user.errors.full_messages, status: 422
       end
-    elsif (params[:user][:photoFile]) && !@user.photo.attached?
-      @user.photo.attach(io: file, filename: 'hello')
-       if @user.update(profile_params)
-        render "api/users/show"
-      else 
-        render json: @user.errors.full_messages, status: 422
-      end
-    else 
-      if @user.update(profile_params)
-        render "api/users/show"
-      else 
-        render json: @user.errors.full_messages, status: 422
-      end
-    end
+    # end
   end
 
   private

@@ -23,6 +23,7 @@ export const logoutUser = () => (
     })
 );
 
+
 export const demoUser = () => {
     return $.ajax({
         method: 'POST',

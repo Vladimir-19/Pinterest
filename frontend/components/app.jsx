@@ -7,6 +7,7 @@ import NavBar from '../components/navbar/navbar';
 
 
 import UserProfileContainer from './profile/user_profile_container';
+import SplashContainer from '../components/splash_page/splash_container';
 
 
 const App  = () => (
@@ -19,6 +20,7 @@ const App  = () => (
         <Switch>
             {/* <ProtectedRpute /> */}
             {/* <ProtectedRpute exact path="/" component={CreateBoard}/> */}
+            <Route exact path="/" component={SplashContainer} />
         </Switch>
         {/* <footer>
             footer

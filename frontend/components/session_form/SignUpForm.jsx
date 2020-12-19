@@ -142,22 +142,15 @@ class SignUpForm extends React.Component {
                                 By continuing, you agree to Pinterior's Terms of Service
                             </p>
 
-                            {/* <a
-                                className="switch-session-form"
-                                onClick={() => {
-                                    this.props.switchForm();
-                                }}
-                            >
-                                {renderMessage}
-                            </a> */}
                             <a
                                 className="switch-session-form"
                                 onClick={() => {
                                     this.props.switchForm();
                                 }}
                             >
-                                go to login
+                                {renderMessage}
                             </a>
+                        
                         </div>
                     </form>
                 </div>
