@@ -80,7 +80,9 @@ class NavBar extends React.Component {
                                     to="/" 
                                     className="fas fa-sign-out-alt fa-2x"
                                     onClick={logout}
-                                    replace>
+                                    replace
+                                    //wow
+                                    >
                                 </Link>
                             </div>
                         </li>

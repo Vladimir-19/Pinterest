@@ -1,6 +1,5 @@
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 
 class BoardItem extends React.Component {
     constructor(props) {

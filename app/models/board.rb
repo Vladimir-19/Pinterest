@@ -8,12 +8,12 @@ class Board < ApplicationRecord
 
     has_many :associated_pins,
         class_name: :JoinBoardPin,
-        foreigm_key: :board_id,
+        foreign_key: :board_id,
         dependent: :destroy
 
     has_many :pins,
         through: :associated_pins,
         source: :pin
-        dependent: :destroy
+        # dependent: :destroy
 
 end
