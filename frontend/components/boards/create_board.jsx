@@ -40,7 +40,7 @@ export default class CreateBoard extends React.Component {
     return() {
         return (
             <div>
-                <div>
+                <div onClick={this.props.closeModal} className="x">
                     <i className="fas fa-times"></i>  
                 </div>
                 <div>
@@ -56,7 +56,7 @@ export default class CreateBoard extends React.Component {
                         placehilder='Like "Place to Go" or "Reciipes to Make"'
                         />
                     </h1>
-                    <span>Details</span>
+                    <span>Description</span>
                     <p>
                         <input type="text"
                         value={this.state.description}

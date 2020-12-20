@@ -25,10 +25,7 @@ export default class PinBoard extends React.Component {
 
     render() {
         const { currentUser, boards } = this.props;
-
-
         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
-
         const success =
             this.state.message === true ? (
                 <h3 className="pin-board-success">
@@ -53,10 +50,9 @@ export default class PinBoard extends React.Component {
                                     {board.title}
                                     <button
                                         className="pinboard-button"
-                                        onClick={this.handleClick}
-                                    >
+                                        onClick={this.handleClick}>
                                         Save
-                  </button>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
