@@ -1,28 +1,36 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 // import SearchbarContainer from '../Searchbar/searchbar_container';
 import { Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../actions/session_actions';
+import { fetchAllUsers, fetchSingleUser } from "../../actions/user_actions"
+
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this);
     }
 
-    handleClick() {
-        this.props.logout().then(this.props.openModal({ modal: 'login' }));
+    // handleClick() {
+    //     this.props.logout().then(this.props.openModal({ modal: 'login' }));
+    // }
+    handleLogOut() {
+        this.props.logout().then(this.props.openModal({modal: 'login'}));
     }
 
     render() {
         const { currentUser, openModal, closeModal } = this.props;
 
-        const profilePic = ((currentUser) && (currentUser.photoUrl)) ? (
+        const profilePhoto = ((currentUser) && (currentUser.photoUrl)) ? (
             <img className="nav-profile-image" src={currentUser.photoUrl} />
         ) : (
-                <div className='nav-profile-image'><i className="fas fa-user-circle"></i></div>
+                <div className='nav-profile-image'>
+                    <i className="fas fa-user-circle" 
+                    style={{ "fontSize": "23px", "color": "#8e8e8e" }}></i>
+                </div>
             );
 
         if (currentUser) {
@@ -33,28 +41,67 @@ class NavBar extends React.Component {
                             <a key="1" className="nav-link-home-logo" href="#"></a>
                             <a key="2" className="nav-link-home" href="#">
                                 Home
-              </a>
-                            <a key="3" className="nav-link-home" target="_blank" href="https://catherinevidos.github.io/">
+                            </a>
+                            {/* <a key="3" 
+                                className="nav-link-home"  
+                                target="_blank" href="https://catherinevidos.github.io/">
                                 Portfolio Site
-              </a>
+                             </a> */}
                             {/* <SearchbarContainer /> */}
+                            <NavLink to="/following" className="nav-bar-link">
+                                <div className="nav-link-home">
+                                    Following
+                                </div>
+                            </NavLink>
+                            <div>
+                            {/* className="nav-bar-search-container" id="search"> */}
+                                {/* SearchContainer */}
+                                <h6>i'm a search bar insode inside navbar.jsx</h6>
+                            </div>
                             <div className='icon-wrapper'>
                                 <Link
                                     to={`/users/${currentUser.id}`}
-                                    key="4"
+                                    // key="3" // THIS IS id: 3 == vladimir@solovey.com
                                     className="nav-link-home"
                                     href="#"
                                 >
-                                    {profilePic}
+                                    {/* profilePic */}
+                                    {profilePhoto}
                                 </Link>
                             </div>
-                            <button
+                            <div className="nav-bar-button" id="github">
+                                <a href="https://github.com/Vladimir-19/Painterist" target="_blank" className="nav-bar-link">
+                                    <div className="icon-container-shadow">
+                                        <div className="icon-container">
+                                            <i className="fab fa-github-square" id="networking-icon"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div className="nav-bar-button" id="linkedin">
+                                <a href="https://github.com/Vladimir-19" target="_blank" className="nav-bar-link">
+                                    <div className="icon-container-shadow">
+                                        <div className="icon-container">
+                                            <i className="fab fa-linkedin" id="networking-icon"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div className='icon-wrapper'>
+                                <Link 
+                                    to="/" 
+                                    className="fas fa-sign-out-alt fa-2x"
+                                    onClick={() => { this.handleLogout() }}>
+                                </Link>
+                            </div>
+                            {/* <button
                                 onClick={
-                                    this.handleClick
-                                }
-                            >
+                                    // this.handleClick
+                                    this.handleLogOut
+                                        }>
                                 Log out
-              </button>
+                            </button> */}
                         </li>
                     </ul>
                 </div>
@@ -66,16 +113,14 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id]
 });
 
-const mapDispatchToProps = dispatch => {
-    return {
-        openModal: (modal) => dispatch(openModal({ modal: 'login' })),
-        closeModal: () => dispatch(closeModal()),
-        // logout: () => dispatch(logoutUser()),
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    fetchSingleUser: (id) => dispatch(fetchSingleUser(id)),
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    logout: () => dispatch(logoutUser()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 

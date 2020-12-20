@@ -3,7 +3,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRpute } from '../util/route_util';
 
 import Modal from './modal/modal';
-import NavBar from '../components/navbar/navbar_container';
+import NavBar from '../components/navbar/navbar';
 
 
 import UserProfileContainer from './profile/user_profile_container';
