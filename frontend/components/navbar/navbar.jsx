@@ -10,19 +10,10 @@ import { fetchAllUsers, fetchSingleUser } from "../../actions/user_actions"
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleClick = this.handleClick.bind(this);
-        this.handleLogOut = this.handleLogOut.bind(this);
-    }
-
-    // handleClick() {
-    //     this.props.logout().then(this.props.openModal({ modal: 'login' }));
-    // }
-    handleLogOut() {
-        this.props.logout().then(this.props.openModal({modal: 'login'}));
     }
 
     render() {
-        const { currentUser, openModal, closeModal } = this.props;
+        const { currentUser, logout, openModal, closeModal } = this.props;
 
         const profilePhoto = ((currentUser) && (currentUser.photoUrl)) ? (
             <img className="nav-profile-image" src={currentUser.photoUrl} />
@@ -42,18 +33,14 @@ class NavBar extends React.Component {
                             <a key="2" className="nav-link-home" href="#">
                                 Home
                             </a>
-                            {/* <a key="3" 
-                                className="nav-link-home"  
-                                target="_blank" href="https://catherinevidos.github.io/">
-                                Portfolio Site
-                             </a> */}
-                            {/* <SearchbarContainer /> */}
                             <NavLink to="/following" className="nav-bar-link">
                                 <div className="nav-link-home">
                                     Following
                                 </div>
                             </NavLink>
                             <div>
+                                {/* <SearchbarContainer /> */} 
+                                    {/* or */}
                             {/* className="nav-bar-search-container" id="search"> */}
                                 {/* SearchContainer */}
                                 <h6>i'm a search bar insode inside navbar.jsx</h6>
@@ -88,11 +75,12 @@ class NavBar extends React.Component {
                                     </div>
                                 </a>
                             </div>
-                            <div className='icon-wrapper'>
+                            <div >
                                 <Link 
                                     to="/" 
                                     className="fas fa-sign-out-alt fa-2x"
-                                    onClick={() => { this.handleLogout() }}>
+                                    onClick={logout}
+                                    replace>
                                 </Link>
                             </div>
                             {/* <button

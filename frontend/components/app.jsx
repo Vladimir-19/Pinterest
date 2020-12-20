@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
-import { AuthRoute, ProtectedRpute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import Modal from './modal/modal';
 import NavBar from '../components/navbar/navbar';
@@ -17,7 +17,7 @@ const App  = () => (
             <NavBar />
         </header>
         <Switch>
-            {/* <ProtectedRpute /> */}
+            <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
             {/* <ProtectedRpute exact path="/" component={CreateBoard}/> */}
             <Route exact path="/" component={SplashContainer} />
         </Switch>
