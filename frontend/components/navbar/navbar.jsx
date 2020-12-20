@@ -83,13 +83,6 @@ class NavBar extends React.Component {
                                     replace>
                                 </Link>
                             </div>
-                            {/* <button
-                                onClick={
-                                    // this.handleClick
-                                    this.handleLogOut
-                                        }>
-                                Log out
-                            </button> */}
                         </li>
                     </ul>
                 </div>
