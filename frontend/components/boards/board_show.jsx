@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
 
@@ -31,10 +30,6 @@ export default class BoardShow extends React.Component {
 
     render() {
         const { board, currentUser, pins } = this.props;
-
-        if (this.state.loading) {
-            return <LoadingIcon />;
-        }
 
         if (board.pinIds.length == 0) {
             return (

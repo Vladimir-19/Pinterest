@@ -5,9 +5,10 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import NavBar from '../components/navbar/navbar';
 
-
 import UserProfileContainer from './profile/user_profile_container';
 import SplashContainer from '../components/splash_page/splash_container';
+import BoardShowContainer from '../components/boards/board_show_container';
+ 
 
 
 const App  = () => (
@@ -19,6 +20,7 @@ const App  = () => (
         <Switch>
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
             {/* <ProtectedRpute exact path="/" component={CreateBoard}/> */}
+            <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
             <Route exact path="/" component={SplashContainer} />
         </Switch>
         {/* <footer>

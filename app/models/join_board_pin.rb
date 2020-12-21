@@ -1,5 +1,5 @@
 class JoinBoardPin < ApplicationRecord
-    validate :board_id, :pin_id, presence: true
+    validates :board_id, :pin_id, presence: true
 
     belongs_to :pin 
     belongs_to :board 
