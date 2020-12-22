@@ -9,7 +9,7 @@ export default class CreateBoard extends React.Component {
             description: ''
         }
         this.handleUpdate = this.handleUpdate.bind(this);
-        this.handleErrors = this.handleErrors.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -25,12 +25,12 @@ export default class CreateBoard extends React.Component {
                 {this.props.errors.map((error, i) => (
                     <li className="session-errors"
                         key={`error-${i}`}>
-                            {error}
+                        {error}
                     </li>
                 ))}
             </ul>
-        )
-    }
+        );
+    } 
 
     handleSubmit(e) {
         const board = Object.assign({}, this.state)

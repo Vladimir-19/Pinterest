@@ -17,7 +17,7 @@ export default class UserProfile extends React.Component {
         this.handleEdit = this.handleEdit.bind(this);
         //
         this.handleScroll = this.handleScroll.bind(this);
-        this.newBoard = this.newBoard.bind(this);
+        // this.newBoard = this.newBoard.bind(this);
     }
 
     componentDidMount() {
@@ -43,7 +43,7 @@ export default class UserProfile extends React.Component {
             }
 
             newBoard() {
-                this.props.openModal("new-board");
+                this.props.openModal("createboard");
             }
 
     handleButton(e) {
@@ -55,7 +55,8 @@ export default class UserProfile extends React.Component {
     }
 
     handleClick() {
-        this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
+        // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
+        this.props.openModal("createboard");
     }
 
     handleEdit() {
@@ -166,8 +167,8 @@ export default class UserProfile extends React.Component {
                     <div className='edit-create-button-wrapper'>
                         <button
                             className="plus-board"
-                            // onClick={this.handleClick}
-                            onClick={this.newBoard}
+                            onClick={this.handleClick}
+                            // onClick={this.newBoard}
                         >
                             <i className="fas fa-plus"></i>
                         </button>
