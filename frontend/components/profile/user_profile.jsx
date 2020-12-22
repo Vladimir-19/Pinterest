@@ -13,14 +13,38 @@ export default class UserProfile extends React.Component {
             openBoardId: null
         }
         this.handleClick = this.handleClick.bind(this);
-        this.handleButton = this.handleButton.bind(this)
-        this.handleEdit = this.handleEdit.bind(this)
+        this.handleButton = this.handleButton.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        //
+        this.handleScroll = this.handleScroll.bind(this);
+        this.newBoard = this.newBoard.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchBoards()
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
+        //
+        window.addEventListener("scroll", this.handleScroll);
     }
+
+            //extra
+            componentWillUnmount() {
+                window.removeEventListener("scroll", this.handleScroll);
+            }
+
+            handleScroll() {
+                const { prevScrollPos } = this.state;
+                const currentScrollPos = window.pageYOffset;
+                const fadeInName = (prevScrollPos < currentScrollPos - 50);
+
+                this.setState({
+                    fadeInName
+                });
+            }
+
+            newBoard() {
+                this.props.openModal("new-board");
+            }
 
     handleButton(e) {
         let board = (e.currentTarget);
@@ -142,14 +166,15 @@ export default class UserProfile extends React.Component {
                     <div className='edit-create-button-wrapper'>
                         <button
                             className="plus-board"
-                            onClick={this.handleClick}
+                            // onClick={this.handleClick}
+                            onClick={this.newBoard}
                         >
                             <i className="fas fa-plus"></i>
                         </button>
-                        <button className="plus-board"
+                        {/* <button className="plus-board"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
-                        </button>
+                        </button> */}
                     </div>
                 </>
             );

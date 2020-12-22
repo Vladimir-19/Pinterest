@@ -7,7 +7,7 @@ class Board < ApplicationRecord
     belongs_to :user 
 
     has_many :associated_pins,
-        class_name: :JoinBoardPin,
+        class_name: :JoinBoardsPin,
         foreign_key: :board_id,
         dependent: :destroy
 

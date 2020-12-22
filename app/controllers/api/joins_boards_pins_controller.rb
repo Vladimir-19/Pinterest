@@ -1,7 +1,7 @@
 class Api::JoinsBoardsPinsController < ApplicationController
 
     def create 
-        @boardPin = JoinBoardPin.new(boardPin_params)
+        @boardPin = JoinBoardsPin.new(boardPin_params)
         if @boardPin.save 
             @board = Board.find(@boardPin.board_id)
             render "api/boards/show"
@@ -11,7 +11,7 @@ class Api::JoinsBoardsPinsController < ApplicationController
     end
 
     def destroy
-        @boardPin = JoinBoardPin.find_by_credentials(params[:pin_id], params[:board_id])
+        @boardPin = JoinBoardsPin.find_by_credentials(params[:pin_id], params[:board_id])
 
         if @boardPin
             @boardPin.destroy
