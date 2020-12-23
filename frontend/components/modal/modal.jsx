@@ -34,10 +34,13 @@ function Modal({ modal, closeModal, openModal }) {
             clickBackground = closeModal;
             break;
         case ('createboard'):
-            component = <CreateBoardContainer
-                currentUser={modal.currentUser} 
-                />;
-            clickBackground = closeModal;
+            // component = <CreateBoardContainer
+            //     currentUser={modal.currentUser} 
+            //     />;
+            // clickBackground = closeModal;
+            // break;
+            component = <CreateBoardContainer />;
+            // clickBackground = closeModal;
             break;
         // case ('successPin'):
         //     component = <RecentPinContainer boardId={modal.boardId}

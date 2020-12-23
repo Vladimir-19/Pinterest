@@ -13,26 +13,25 @@ class CreateBoardForm extends React.Component {
         this.handleCheck = this.handleCheck.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(e) {
         this.setState({ "title": e.currentTarget.value });
-        // this.setState({[field]: e.currentTarget.value})
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li className="session-errors"
-                        key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
+    // renderErrors() {
+    //     return (
+    //         <ul className="session-errors">
+    //             {this.props.errors.map((error, i) => (
+    //                 <li
+    //                     key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
 
     handleCheck() {
         this.setState({ "secret": !this.state.secret });
@@ -58,7 +57,7 @@ class CreateBoardForm extends React.Component {
     }
 
     render() {
-        // const { errors, formType } = this.props;
+        const { errors, formType } = this.props;
         const checked = (this.state.secret) ? 'checked' : null;
 
         return (
@@ -107,11 +106,11 @@ class CreateBoardForm extends React.Component {
                                                         placeholder='Like "Places to Go" or "Recipes to Make"'
                                                         onChange={this.update}
                                                     />
-                                                    <div className="create-board error-container">
+                                                    {/* <div className="create-board error-container">
                                                         <div className="create-board error">
                                                             <span className="create-board error-content"></span>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </span>
                                             </div>
                                         </div>

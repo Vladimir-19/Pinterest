@@ -7,7 +7,7 @@ class Api::BoardsController < ApplicationController
         if @board.save
             render "api/boards/show"
         else
-            render json: @baord.errors.full_messages, status: 422
+            render json: @board.errors.full_messages, status: 422
         end
     end
 

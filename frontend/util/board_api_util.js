@@ -17,7 +17,7 @@ export const createBoard = board => {
         method: "POST",
         url: `/api/boards`,
         data: { board }
-    })
+        })
 };
 
 export const updateBoard = board => {
