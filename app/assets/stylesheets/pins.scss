@@ -1,0 +1,1532 @@
+#create-pin-background {
+  position: fixed;
+  top: 65px;
+  background-color: #efefef;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-pin-container {
+  height: 100%;
+  padding-top: 44px;
+}
+
+.create-pin#sizing {
+  width: 880px;
+  padding-top: 20px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-direction: column;
+  display: flex;
+  height: 630px;
+}
+
+.create-pin#header {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-pin#buttons {
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 236px;
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.create-pin#select-board-dropdown {
+  align-items: center;
+  background-color: rgb(239, 239, 239);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-grow: 1;
+  height: 40px;
+  justify-content: space-between;
+  min-width: 0px;
+  outline: 0px;
+  padding: 0px 14px;
+  position: relative;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.create-pin#select-board-label {
+  overflow: hidden;
+  margin-right: 8px;
+  text-align: left;
+  color: #8e8e8e;
+  font-size: 16px;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.create-pin#dropdown-icon-container {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  margin-right: -4px;
+}
+
+.create-pin#dropdown-icon {
+  color: #333;
+  height: 12px;
+  width: 12px;
+}
+
+.create-pin#save-button {
+  background-color: rgb(230, 0, 35);
+  border: none;
+  border-radius: 0px 8px 8px 0px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  height: 40px;
+  outline: 0px;
+  padding: 0px 14px;
+  display: flex;
+  align-items: center;
+}
+
+.create-pin#save-button-label {
+  text-align: left;
+  color: #fff;
+  font-size: 16px;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 700;
+  letter-spacing: -.4px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hide {
+  // opacity: 0;
+  visibility: hidden;
+}
+
+.show {
+  // opacity: 1;
+  visibility: visible;
+  &.ish {
+    visibility: inherit;
+  }
+}
+
+.create-pin.board-list.container {
+  position: absolute;
+  z-index: 2;
+  top: 52px;
+  left: -42px;
+  stroke: rgb(239, 239, 239);
+  width: 320px;
+  min-height: 40px;
+  max-height: 90vh;
+  border: 1px solid;
+  box-shadow: 0 3px 6px rgba(0,0,0,.18);
+  outline: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  & > .triangle {
+    position: absolute;
+    top: -24px;
+    left: 148px;
+    height: 24px;
+    pointer-events: none;
+    fill: currentColor;
+    color: #fff;
+  }
+}
+
+.create-pin.board-list.header {
+  padding: 12px;
+  & > .title {
+    text-align: left;
+    color: #333;
+    font-size: 14px;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+ul.create-pin.board-list {
+  min-height: 322px;
+  max-height: 322px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.create-pin.board-list-item {
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  & > .board-li.content {
+    border-radius: 12px;
+    margin: 4px 12px;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+  }
+  &:hover > .content {
+    background-color: #efefef;
+  }
+}
+
+.board-li.pin-photo-frame {
+  position: relative;
+  margin: 4px 8px 4px 12px; 
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  & > .pin-photo {
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+  }
+  & > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.03);
+  }
+}
+
+.board-li.title {
+  margin-left: 4px;
+  padding: 4px 0;
+  text-align: left;
+  color: #333;
+  font-size: 16px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 700;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.board-li.secret-icon-container {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  & > .secret-icon {
+    color: #333;
+    fill: currentColor;
+    vertical-align: middle;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.create-pin#content {
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  flex-direction: row;
+  display: flex;
+}
+
+.create-pin#image-container {
+  box-sizing: border-box;
+  padding: 0px 20px;
+}
+
+.create-pin#image-upload-container {
+  width: 340px;
+  height: 510px;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  background-color: rgb(239, 239, 239);
+  border-radius: 8px;
+}
+
+.create-pin#image-uploaded-container {
+  width: 340px;
+  height: auto;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+}
+
+.create-pin#photo {
+  width: 340px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  position: relative;
+}
+
+.create-pin#delete-image-button-container {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  height: 48px;
+  width: 48px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-pin#delete-image-button {
+  cursor: pointer;  
+  border: 0px;
+  height: 48px;
+  width: 48px;
+  padding: 4px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover > #trash-icon-container {
+    background-color: #e2e2e2;
+  }
+}
+
+.create-pin#trash-icon-container {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.create-pin#trash-icon {
+  color: #333;
+  height: 20px;
+  width: 20px;
+}
+
+.create-pin#image-upload-area {
+  width: 340px;
+  height: 510px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgb(239, 239, 239);
+  padding: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+.create-pin#image-upload-area-border {
+  height: 100%;
+  border: 2px dashed rgb(218, 218, 218);
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create-pin#upload-icon-container {
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+#upload-icon {
+  color: #8e8e8e;
+  height: 32px;
+  width: 32px;
+}
+
+.create-pin#instruction {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 48px;
+  margin-top: 16px;
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+}
+
+.create-pin#upload-recommendation {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  margin: 32px;
+  color: #8e8e8e;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+}
+
+.create-pin#image-upload-input {
+  display: none;
+}
+
+.create-pin#details-container {
+  min-height: 510px;
+  width: 100%;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-pin#title-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 32px
+}
+
+.create-pin#title {
+  height: 50px;
+  cursor: text;
+  white-space: pre-wrap;
+  font-size: 36px;
+  font-weight: 700;
+  vertical-align: top;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px lightgray solid;
+  box-sizing: border-box;
+  caret-color: #333;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+  overflow: auto;
+  word-wrap: break-word;
+  resize: none;
+  outline: none;
+  width: 100%;
+  &:focus {
+    color: #333;
+    border-bottom: 2px #5E9ED6 solid;
+  }
+}
+
+.create-pin#user-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 35px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.create-pin#user-image-frame {
+  padding-right: 4px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.create-pin#user-image {
+  color: transparent;
+  width: 100%;
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.create-pin#username {
+  padding-left: 4px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-style: normal;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+}
+
+.create-pin#description-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
+}
+
+.create-pin#description {
+  height: 220px;
+  cursor: text;
+  white-space: pre-wrap;
+  font-size: 18px;
+  vertical-align: top;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px lightgray solid;
+  box-sizing: border-box;
+  caret-color: #333;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+  overflow: auto;
+  word-wrap: break-word;
+  resize: none;
+  outline: none;
+  width: 100%;
+  &:focus {
+    color: #333;
+    border-bottom: 2px #5E9ED6 solid;
+  }
+}
+
+.create-pin#url-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 60px;
+}
+
+.create-pin#url {
+  height: 30px;
+  cursor: text;
+  white-space: pre-wrap;
+  font-size: 18px;
+  vertical-align: top;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px lightgray solid;
+  box-sizing: border-box;
+  caret-color: #333;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.4px;
+  overflow: auto;
+  word-wrap: break-word;
+  resize: none;
+  outline: none;
+  width: 100%;
+  &:focus {
+    color: #333;
+    border-bottom: 2px #5E9ED6 solid;
+  }
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+//////////////////////////// PIN INDEX /////////////////////////////
+////////////////////////////////////////////////////////////////////
+.pin-index.container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pin-index#grid-container {
+  position: absolute;
+  @media (max-width: 755px) and (min-width: 0px) {
+    width: 504px;
+  }
+  @media (max-width: 1007px) and (min-width: 756px) {
+    width: 756px;
+  }
+  @media (max-width: 1259px) and (min-width: 1008px) {
+    width: 1008px;
+  }
+  @media (max-width: 1511px) and (min-width: 1260px) {
+    width: 1260px;
+  }
+  @media (max-width: 1763px) and (min-width: 1512px) {
+    width: 1512px;
+  }
+  @media (max-width: 2015px) and (min-width: 1764px) {
+    width: 1764px;
+  }
+  @media (max-width: 2267px) and (min-width: 2016px) {
+    width: 2016px;
+  }
+  @media (max-width: 2519px) and (min-width: 2268px) {
+    width: 2268px;
+  }
+  @media (max-width: 2771px) and (min-width: 2520px) {
+    width: 2520px;
+  }
+  @media (max-width: 3023px) and (min-width: 2772px) {
+    width: 2772px;
+  }
+  @media (max-width: 3275px) and (min-width: 3024px) {
+    width: 3024px;
+  }
+  @media (max-width: 3527px) and (min-width: 3276px) {
+    width: 3276px;
+  } 
+}
+
+.pin-index#grid {
+  width: 100%;
+  min-width: 550px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(252px,1fr));
+  grid-row-gap: 10px;
+  grid-auto-rows: 2px;
+  justify-items: center;
+  justify-content: center;
+}
+
+.pin-index-item.container {
+  width: 252px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 4px 8px;
+}
+
+.pin-index-item.masonry-item {
+  box-sizing: border-box;
+  border-radius: 16px;
+  width: 236px;
+  height: 100%;
+//   -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+// ?????
+    mask-image: radial-gradient(center, white, black);
+  overflow: hidden;
+  position: relative;
+  &:hover .overlay {
+    background-color: rgba(0,0,0,0.06);
+  }
+}
+
+.pin-index-item.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.03);
+  pointer-events: none;
+}
+
+.pin-index-item.pin-show-link {
+  cursor: zoom-in;
+  box-sizing: border-box;
+  &:hover + .links {
+    visibility: visible;
+  }
+}
+
+.pin-index-item.masonry-image {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.pin-index-item.title-container {
+  padding: 8px 6px 16px;
+  pointer-events: auto;
+  & > .title {
+    text-align: left;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.pin-index-item.links {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  visibility: hidden;
+  &:hover {
+    visibility: visible;
+  }
+  & > .edit-pin-link-container {
+    pointer-events: auto;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  & > .save-board-pin-link-container {
+    pointer-events: auto;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+  & > .pin-link-container {
+    pointer-events: auto;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+  }
+}
+
+.pin-index-item.edit-pin-link {
+  height: 32px;
+  width: 32px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  background-color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(255, 255, 255);
+  }
+  & > .edit-pin-icon {
+    color: #333;
+    height: 12px;
+    width: 12px;
+    overflow: hidden;
+  }
+}
+
+.pin-index-item.save-board-pin-link {
+  outline: 0;
+  min-height: 40px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 22px;
+  cursor: pointer;
+  background-color: rgba(230,0,35,0.9);
+  &:hover {
+    background-color: rgb(230,0,35);
+  }
+  & > .save-board-pin-text {
+    text-align: left;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 600;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: #fff;
+  }
+}
+
+.pin-index-item.pin-link {
+  height: 32px;
+  max-width: 132px;
+  box-sizing: border-box;
+  border-radius: 18px;
+  color: rgb(51,51,51);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: rgba(255,255,255,0.9);
+  &:hover {
+    background-color: rgb(255, 255, 255);
+  }
+  & > .pin-link-icon {
+    margin: 12px 0 12px 12px;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    color: #333;
+    height: 9px;
+    width: 9px;
+  }
+  & > .pin-link-text {
+    height: 18px;
+    margin: 0 12px 0 8px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: left;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+///////////////////////////// PIN SHOW /////////////////////////////
+////////////////////////////////////////////////////////////////////
+.pin-show.main-container {
+  padding-top: 65px;
+  cursor: zoom-out;
+  box-sizing: border-box;
+  // display: flex;
+  // justify-content: center;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+
+.pin-show.back-button {
+  cursor: pointer;
+  background: transparent;
+  position: fixed;
+  top: 65px;
+  box-sizing: border-box;
+  margin-left: 24px;
+  margin-top: 24px;
+  padding: 4px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 1136px) and (min-width: 1056px) {
+    visibility: hidden;
+  }
+  @media (max-width: 630px) {
+    visibility: hidden;
+  }
+  &:hover {
+    background-color: rgb(226,226,226);
+  }
+  & > .back-icon {
+    color: #333;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.pin-show.wrapper {
+  cursor: zoom-out;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 32px;
+}
+
+.pin-show.container {
+  cursor: auto;
+  background-color: #fff;
+  box-shadow: rgba(0,0,0,0.1) 0 1px 20px 0;
+  box-sizing: border-box;
+  border-radius: 32px;
+  position: relative;
+  height: 100%;
+  width: 1016px;
+  display: flex;
+  @media (max-width: 1056px) {
+    width: 508px;
+    display: initial;
+  }
+}
+
+.pin-show.first-half {
+  width: 508px;
+  max-height: 770px;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px 0 0 32px;
+  @media (max-width: 1056px) {
+    border-radius: 32px 32px 0 0;
+  }
+}
+
+.pin-show.link-area {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.pin-show.pin-link {
+  // position: relative;
+  // overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  &.url {
+    &:hover + .overlay {
+      background: rgba(0,0,0,.4);
+    }
+  }
+  & > .pin-photo {
+    color: transparent;
+    width: 100%;
+  }
+}
+
+.pin-show.overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.03);
+}
+
+.pin-show.second-half {
+  width: 508px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pin-show.nav-bar {
+  min-height: 72px;
+  padding: 20px 20px 16px 28px;
+  border-radius: 0 32px 32px 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pin-show.edit-pin-link {
+  margin-right: 4px;
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: rgb(226,226,226);
+  }
+  & > .edit-pin-icon {
+    color: #333;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.pin-show.save-board-pin-link {
+  cursor: pointer;
+  margin-left: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  padding: 0 16px;
+  -webkit-box-align: center;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  background-color: #e60023;
+  &:hover {
+    background-color: #cf001f;
+  }
+  & > .save-board-pin-text {
+    text-align: left;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: #fff;
+  }
+}
+
+.pin-show.info {
+  height: calc(100% - 80px);
+  padding: 0 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.source-link {
+  text-align: left;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 21px;
+  color: #333;
+  & a {
+    color: #333;
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.pin-show.title {
+  margin-top: 16px;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: left;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+}
+
+.pin-show.description {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+}
+
+.pin-show.credit {
+  box-sizing: border-box;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 0 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pin-show.profile-link-frame {
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  & > .profile-link-photo {
+    color: transparent;
+    width: 100%;
+  }
+  &:hover > .overlay {
+    background: rgba(0,0,0,.06);
+  }
+}
+
+.pin-show.credit-summary {
+  max-width: 100%;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-align: left;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  color: #333;
+  & > .credit-link {
+    color: #333;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+///////////////////////////// EDIT PIN /////////////////////////////
+////////////////////////////////////////////////////////////////////
+.edit-pin.container {
+  position: relative;
+  max-height: calc(100vh - 32px);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  width: 768px;
+  @media (max-width: 768px) {
+    width: 400px;
+  }
+}
+
+.edit-pin.header {
+  box-sizing: border-box;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 1px solid #efefef;
+}
+
+.edit-pin.form-title {
+  box-sizing: border-box;
+  padding: 20px 50px;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.edit-pin.cancel-link-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 8px;
+  & > .cancel-link {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    &:hover {
+      background-color: rgba(0,0,0,.06);
+    }
+    & > .cancel-icon {
+      color: #8e8e8e;
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.edit-pin.body {
+  min-width: 0;
+  flex: 1 1 auto;
+  position: relative;
+  overflow: auto;
+  min-height: 300px; // originally 350px
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  & > .first-half {
+    box-sizing: border-box;
+    width: 100%;
+    border-right: 1px solid #efefef;
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+  & > .second-half {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width: 768px) {
+      align-items: flex-start;
+    }
+  }
+}
+
+.edit-pin.field {
+  box-sizing: border-box;
+  padding: 12px 16px;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.edit-pin.label-container {
+  box-sizing: border-box;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 25%;
+  }
+  & > .label {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 400;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.edit-pin.input-container {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 66.66667%;
+  }
+  & > .input {
+    cursor: text;
+    width: 100%;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    cursor: text;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    border: 1px solid #8e8e8e;
+    &.title,
+    &.url {
+      min-height: 40px;
+      padding: 8px 14px;
+    }
+    &.description {
+      line-height: 1.5;
+      resize: none;
+      padding: 10px 14px;
+    }
+  }
+}
+
+.edit-pin.photo-container {
+  width: 236px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  & > img {
+    color: transparent;
+    width: 100%;
+  }
+  & > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.03);
+    pointer-events: none;
+  }
+}
+
+.edit-pin.footer {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.edit-pin.links {
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 40px;
+  & > .left-links {
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  & > .right-links {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.edit-pin.link {
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 20px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  &.open-delete,
+  &.cancel {
+    background-color: #efefef;
+    &:hover {
+      background-color: #e2e2e2;
+    }
+  }
+  &.save {
+    margin-left: 16px;
+    background-color: #e60023;
+    &:hover {
+      background-color: #ad081b;
+    }
+  }
+}
+
+.edit-pin.link-text {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  &.open-delete,
+  &.cancel {
+    color: #333;
+  }
+  &.save {
+    color: #fff;
+  }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////
+//////////////////////////// DELETE PIN ////////////////////////////
+////////////////////////////////////////////////////////////////////
+.delete-pin.container {
+  width: 414px;
+  max-height: calc(100vh - 32px);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.delete-pin.form {
+  width: 100%;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-pin.header {
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.delete-pin.form-title {
+  padding: 20px 50px;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  font-size: 24px;
+}
+
+.delete-pin.cancel-link-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 8px;
+  & > .cancel-link {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: rgba(0,0,0,0.06);
+    }
+    & > .cancel-icon {
+      color: #8e8e8e;
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.delete-pin.body {
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+}
+
+.delete-pin.confirmation-message {
+  box-sizing: border-box;
+  padding: 16px;
+  text-align: left;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  color: #333;
+}
+
+.delete-pin.footer {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.delete-pin.buttons {
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.delete-pin.link {
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 0 4px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  &.cancel {
+    background-color: #efefef;
+    &:hover {
+      background-color: #e2e2e2;
+    }
+  }
+  &.delete {
+    background-color: #e60023;
+    &:hover {
+      background-color: #ad081b;
+    }
+  }
+  & > .link-text {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    &.cancel {
+      color: #333;
+    }
+    &.delete {
+      color: #fff;
+    }
+  }
+}
