@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
+import ProfileNavBar from './profile_nav_bar';
+//exutra
 
 export default class UserProfile extends React.Component {
     constructor(props) {
@@ -71,7 +73,7 @@ export default class UserProfile extends React.Component {
 
 
     render() {
-        const { currentUser, boards, pins } = this.props;
+        const { currentUser, boards, pins, openModal, closeModal } = this.props;
 
         // if (this.state.loading) {
         //     return <LoadingIcon />;
@@ -163,6 +165,10 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
+                    <ProfileNavBar
+                        openModal={openModal}
+                        closeModal={closeModal}
+                        />
                     <p>You don't have any boards yet!</p>
                     <div className='edit-create-button-wrapper'>
                         <button
