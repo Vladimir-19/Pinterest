@@ -15,7 +15,7 @@ export const fetchPin = pinId => {
 export const creatrPin = pin => {
     return $.ajax({
         method: "POST",
-        url: `/api/pin`,
+        url: `/api/pins`,
         data: pin,
         contentType: false,
         processData: false

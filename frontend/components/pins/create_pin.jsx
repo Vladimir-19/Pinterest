@@ -19,10 +19,10 @@ class CreatePinForm extends React.Component {
     }
 
 
-
-    componentDidMount() {
-        this.props.fetchBoards();
-    }
+//wtf
+    // componentDidMount() {
+    //     this.props.fetchBoards();
+    // }
 
     hideBoardList(e) {
         this.setState({ boardList: false });
@@ -50,11 +50,11 @@ class CreatePinForm extends React.Component {
             formData.append(`pin[${key}]`, details[key])
         };
 
-        const createBoardPin = (boardPin) => this.props.createBoardPin(boardPin);
+        const pinToBoard = (boardPin) => this.props.pinToBoard(boardPin);
         const boardId = this.state.boardId;
 
         return this.props.processForm(formData)
-            .then(res => (createBoardPin({
+            .then(res => (pinToBoard({
                 "board_id": boardId,
                 "pin_id": parseInt(Object.keys(res.pin)[0])
             })))

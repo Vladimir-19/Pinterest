@@ -8,7 +8,7 @@ import NavBar from '../components/navbar/navbar';
 import UserProfileContainer from './profile/user_profile_container';
 import SplashContainer from '../components/splash_page/splash_container';
 import BoardShowContainer from '../components/boards/board_show_container';
- 
+import CreatePinForm from "../components/pins/create_pin_form_container";
 
 
 const App  = () => (
@@ -19,7 +19,7 @@ const App  = () => (
         </header>
         <Switch>
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
-            {/* <ProtectedRpute exact path="/" component={CreateBoard}/> */}
+            <ProtectedRoute exact path="/pin-builder" component={CreatePinForm}/>
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
             <Route exact path="/" component={SplashContainer} />
         </Switch>

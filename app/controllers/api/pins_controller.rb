@@ -11,7 +11,7 @@ class Api::PinsController < ApplicationController
     end
 
     def show 
-        @pin = Pin.find_by(params[:id])
+        @pin = Pin.find(params[:id])
         render "api/pins/show"
     end
 
@@ -42,6 +42,6 @@ class Api::PinsController < ApplicationController
     private
 
     def pin_params
-        params.require(:pin).permit(:title, :description, :url, :photo, :user_id)
+        params.require(:pin).permit(:title, :description, :url, :photo)
     end
 end

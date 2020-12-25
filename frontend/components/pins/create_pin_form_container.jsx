@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 
 import { fetchBoards } from "../../actions/board_actions";
 import { createPin } from "../../actions/pin_actions";
-import { createBoardPin } from "../../actions/board_pin_actions";
-import CreatePinForm from "./create_pin_form";
+import { pinToBoard } from "../../actions/join_boards_pins_actions";
+import CreatePinForm from "./create_pin";
 // import modal from "../../modal/modal";
 // import { openModal } from "../../../actions/modal_actions";
 
@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     // fetchBoards: () => dispatch(fetchBoards()),
     processForm: pin => dispatch(createPin(pin)),
-    createBoardPin: boardPin => dispatch(createBoardPin(boardPin)),
+    pinToBoard: boardPin => dispatch(pinToBoard(boardPin)),
     openModal: modal => dispatch(openModal(modal))
 });
 
