@@ -1,0 +1,100 @@
+// Catherine 
+
+.pin-show-wrapper {
+  height: 900px;
+  width: 1000px;
+  background: white;
+  border-radius: 50px;
+  margin: auto;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 29px 16px rgba(244, 244, 244, 1);
+  margin-top: 30px;
+}
+
+.pin-show-container {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: lightgray;
+}
+
+.pin-show-image {
+  height: 900px;
+  width: 480px;
+}
+
+.pin-show-item {
+  height: 700px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 50px;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+// .pin-show-text {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start; 
+//   margin-bottom: 30px;
+//   height: 900px;
+//   width: 480px;
+//   padding-left: 40px;
+//   font-family: Arial, Helvetica, sans-serif;
+//   letter-spacing: -1.4px;
+// }
+
+#pin-show-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  height: 900px;
+  width: 480px;
+  padding-left: 40px;
+  font-family: Arial,
+  Helvetica,
+  sans-serif;
+  letter-spacing: -1.4px;
+  margin-top: 20px;
+}
+
+#pin-show-details > h1 {
+  font-size: 48pt;
+  font-weight: bold;
+  padding: 10px;
+  letter-spacing: -2.5px;
+}
+
+#pin-show-details > a {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14pt;
+  padding: 10px;
+}
+
+#pin-show-details > p {
+  font-size: 18pt;
+  font-weight: normal;
+  padding: 10px;
+}
+
+.pin-show-button-wrapper {
+  position: fixed;
+  top: 110px;
+  left: 8px;
+}
+
+.are-you-sure {
+  margin-top: 5px;
+  font-style: italic;
+  color: #E52B21;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+}
+
+
+

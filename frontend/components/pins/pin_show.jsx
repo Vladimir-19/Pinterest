@@ -10,12 +10,12 @@ class PinShow extends React.Component {
 
     // to make API calls (the component has been mounted and is available to the DOM)
     componentDidMount() {
-        // this.props.fetchPin(this.props.match.params.pinId);
+        this.props.fetchBoards();
+        this.props.fetchPins();
         this.props.fetchPin(this.props.match.params.pinId);
+        this.props.clearPinErrors();
     }
-    componentDidMount() {
-        this.props.fetchPin(this.props.match.params.pinId);
-    };
+
 
     goBack(e) {
         e.preventDefault();
