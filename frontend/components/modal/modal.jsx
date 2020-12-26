@@ -43,8 +43,8 @@ function Modal({ modal, closeModal, openModal }) {
             // clickBackground = closeModal;
             break;
         // case ('successPin'):
-        //     component = <RecentPinContainer boardId={modal.boardId}
-        //         pinId={modal.pinId} />
+            // component = <RecentPinContainer boardId={modal.boardId}
+            //     pinId={modal.pinId} />
         // case ('editprofile'):
         //     component = <EditProfileContainer currentUser={modal.currentUser} />
         //     break;
@@ -52,20 +52,20 @@ function Modal({ modal, closeModal, openModal }) {
             return null;
     };
 
-    // const switchFormButton = (switchFormButton) ? (
-    //     <button className="switch-form-button" onClick={() => openModal(altModal)}>
-    //         <div className="switch-form-value">
-    //             {switchFormValue}
-    //         </div>
-    //     </button>
-    // ) : null;
+    const switchFormButton = (switchFormButton) ? (
+        <button className="switch-form-button" onClick={() => openModal(altModal)}>
+            <div className="switch-form-value">
+                {switchFormValue}
+            </div>
+        </button>
+    ) : null;
 
     return (
         <div className="modal-container" >
             <div className="modal-background" id={modal} onClick={clickBackground}>
-                {/* <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}> */}
+                <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
                     {component}
-                {/* </div> */}
+                </div>
                 {/* <div className="modal-child-two" onClick={e => e.stopPropagation()}>
                     {switchFormButton}
                 </div> */}
