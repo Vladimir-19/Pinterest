@@ -2,7 +2,7 @@ class Api::PinsController < ApplicationController
 
     def create
         @pin = Pin.new(pin_params)
-        @pin.user_id = curret_user.id 
+        @pin.user_id = current_user.id 
         if @pin.save 
             render "api/pins/show"
         else
@@ -30,7 +30,7 @@ class Api::PinsController < ApplicationController
     end
 
     def destroy
-        @pin = curret_user.pins.find_by(id: params[:id])
+        @pin = current_user.pins.find_by(id: params[:id])
         if @pin 
             @pin.destroy
             render "api/pins/show"
