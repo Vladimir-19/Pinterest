@@ -10,6 +10,7 @@ import SplashContainer from '../components/splash_page/splash_container';
 import BoardShowContainer from '../components/boards/board_show_container';
 import CreatePinForm from "../components/pins/create_pin_form_container";
 import PinShowContainer from "./pins/pin_show_container";
+import HomeContainer from "./home/home_container";
 
 
 const App  = () => (
@@ -24,6 +25,7 @@ const App  = () => (
             <ProtectedRoute exact path="/pins/:pinId" component={PinShowContainer}/>
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
             <Route exact path="/" component={SplashContainer} />
+            <Route exact path="/" component={HomeContainer} /> 
         </Switch>
         {/* <footer>
             footer
