@@ -36,7 +36,7 @@ export const fetchAllUsers = () => dispatch => (
         .then(users => dispatch(receiveAllUsers(users)))
 );
 
-export const fetchSingleUser = id => dispatch => (
-    UserAPIUtil.fetchSingleUser(id)
-        .then(payload => dispatch(receiveSingleUser(payload)))
-);
+// export const fetchSingleUser = id => dispatch => (
+//     UserAPIUtil.fetchSingleUser(id)
+//         .then(payload => dispatch(receiveSingleUser(payload)))
+// );
