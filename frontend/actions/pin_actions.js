@@ -29,6 +29,11 @@ const receivePinErrors = errors => ({
 // const clearPinErrors = () => ({
 //     type: CLEAR_PIN_ERRORS
 // });
+export const clearPinErrors = () => {
+    return {
+        type: CLEAR_PIN_ERRORS
+    }
+}
 
 export const fetchPins = () => dispatch => {
     return PinAPIUtil.fetchPin()

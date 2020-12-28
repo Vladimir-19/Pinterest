@@ -2,8 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
-class PinIndexItem extends React.Component {
+class PinIndexSearchItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -18,7 +17,7 @@ handleClick(e) {
     const { pin, openModal } = this.props;
 
     return (
-      <Link className='pin-links' to={`pins/${pin.id}`}>
+      <Link to={`pins/${pin.id}`}>
         <img className="masonry-pin-item" src={pin.photoUrl} />
         <p className='pin-index-title'>{pin.title}</p>
       </Link>
@@ -26,4 +25,4 @@ handleClick(e) {
   }
 }
 
-export default withRouter(PinIndexItem);
+export default withRouter(PinIndexSearchItem);

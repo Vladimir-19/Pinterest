@@ -4,7 +4,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 // import SearchbarContainer from '../Searchbar/searchbar_container';
 import { Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../actions/session_actions';
-import { fetchAllUsers, fetchSingleUser } from "../../actions/user_actions"
+import { fetchAllUsers, fetchUser } from "../../actions/user_actions"
 
 
 class NavBar extends React.Component {
@@ -100,7 +100,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchSingleUser: (id) => dispatch(fetchSingleUser(id)),
+    fetchUser: (id) => dispatch(fetchUser(id)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     logout: () => dispatch(logoutUser()),
 });
