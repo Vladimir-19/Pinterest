@@ -12,7 +12,7 @@ import {
     openModal
 } from '../../actions/modal_actions';
 
-import UserProfile from './user_profile';
+import ProfileShow from './user_profile';
 
 
 const mapStateToProps = (state) => ({
@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
     fetchPins: () => dispatch(fetchPins())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileShow);

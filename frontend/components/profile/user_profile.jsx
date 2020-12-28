@@ -106,6 +106,7 @@ export default class UserProfile extends React.Component {
                         </div>
                     </div>
                     <ul id='board-list'>
+                        {/* THIS IS LOOK OF A BOARD AKA board index container  */}
                         {currentUserBoards.map((board, idx) => {
                             let pinArr;
                             let allPins;
