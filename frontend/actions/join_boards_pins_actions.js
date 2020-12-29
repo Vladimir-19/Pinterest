@@ -1,5 +1,4 @@
 import * as BoardPinAPIUtil from '../util/join_boards_pins_api_util';
-import { receiveBoard } from './board_actions';
 
 export const RECEIVE_BOARD_PIN = 'RECEIVE_BOARD_PIN';
 export const REMOVE_BOARD_PIN = 'REMOVE_BOARD_PIN';

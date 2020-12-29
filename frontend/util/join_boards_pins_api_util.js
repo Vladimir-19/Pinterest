@@ -24,6 +24,6 @@ export const deletePinOnBoard = (boardPin) => {
 export const fetchAllBoardsPins = () => (
     $.ajax({
         method: "GET",
-        url: `/api/`
+        url: `/api/joinsboardspins`
     })
 )

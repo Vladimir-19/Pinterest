@@ -1,4 +1,4 @@
-class Api::JoinBoardsPinsController < ApplicationController
+class Api::JoinsBoardsPinsController < ApplicationController
 
     def create 
         @boardPin = JoinBoardsPin.new(boardPin_params)

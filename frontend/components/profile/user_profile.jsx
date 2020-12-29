@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
-import BoardIndexItem from './user_content';
 
 export default class UserProfile extends React.Component {
     constructor(props) {
@@ -132,8 +131,6 @@ export default class UserProfile extends React.Component {
                                             {allPins}
                                         </div>
                                 }
-                                // <ListItem key={id.toString()}
-                                    // />
                             }
                             return (
                                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}> 
@@ -171,11 +168,11 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
-                    <ProfileNavBar
-                        // key={currentUserBoards.id}
+                    {/* <ProfileNavBar
+                        user={user}  //USER IS NOT DEFINED
                         openModal={openModal}
                         closeModal={closeModal}
-                        />
+                        /> */}
                     <p>You don't have any boards yet!</p>
                     <div className='edit-create-button-wrapper'>
                         <button
