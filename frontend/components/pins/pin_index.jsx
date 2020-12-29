@@ -9,10 +9,10 @@ class PinIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // pinSets: [],
-            // pinSetIdx: 0,
-            // loadedPins: []
-            loading: true,
+            pinSets: [],
+            pinSetIdx: 0,
+            loadedPins: [],
+            // loading: true,
             update: true
         };
 

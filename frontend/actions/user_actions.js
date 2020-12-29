@@ -13,10 +13,10 @@ const receiveUserErrors = errors => ({
     errors
 });
 
-const receiveSingleUser = user => ({
-    type: RECEIVE_SINGLE_USER,
-    user
-});
+// const receiveSingleUser = user => ({
+//     type: RECEIVE_SINGLE_USER,
+//     user
+// });
 
 export const fetchUser = userId => dispatch (
     APIUtil.fetchUser(userId).then(

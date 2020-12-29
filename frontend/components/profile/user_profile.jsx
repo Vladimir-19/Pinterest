@@ -92,6 +92,7 @@ export default class UserProfile extends React.Component {
             );
 
         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
+        // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
 
 
         if (boards.length > 0 && this.state.pins === 'fetched') {

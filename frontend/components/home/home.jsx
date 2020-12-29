@@ -28,18 +28,18 @@ class Home extends React.Component {
             klass = "";
             spacer = <div id="spacer"></div>;
         };
-        const loader = (loading) ? (
-            <div className="loading-background">
-                <div className="loading"></div>
-            </div>
-        ) : null;
+        // const loader = (loading) ? (
+        //     <div className="loading-background">
+        //         <div className="loading"></div>
+        //     </div>
+        // ) : null;
 
         const otherPins = shuffle(pins.slice(0, 60));
 
         return (
             <div className={`home-container ${klass}`}>
                 {spacer}
-                {loader}
+                {/* {loader} */}
                 <PinIndexContainer
                     pins={otherPins}
                     page="home"

@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchPin: pinId => dispatch(fetchPin(pinId)),
-    openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
+    // openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
     openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId)),
 });
 

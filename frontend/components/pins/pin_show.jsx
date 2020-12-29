@@ -44,7 +44,8 @@ class PinShow extends React.Component {
             );
         const editPinLink = (pin.userId === currentUserId) ? (
             <a className="pin-show edit-pin-link"
-                onClick={() => openEditPin(pin.id)}>
+                // onClick={() => openEditPin(pin.id)}
+                >
                 <i className="fas fa-pencil-alt edit-pin-icon"></i>
             </a>
         ) : (

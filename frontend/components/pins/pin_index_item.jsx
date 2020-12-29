@@ -24,7 +24,12 @@
 //         let rowSpan = Math.ceil((itemImg.getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
 //         item.style.gridRowEnd = "span " + rowSpan;
 //     }
-// 
+
+//     componentDidMount() {
+//         setTimeout(() => this.resizeGridItem(), 1500);
+//         masonryEvents.forEach((e) => window.addEventListener(e, this.resizeGridItem));
+//     }
+
 //     handleClick(e) {
 //         e.preventDefault();
 //         this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
@@ -140,14 +145,14 @@ class PinIndexItem extends React.Component {
             <div id={`${this.state.id}`} className="pin-index-item container">
                 <div className="pin-index-item masonry-item">
                     <Link
-                        // to={`/pin/${pin.id}`}
-                        to={`/pins/${pin.id}`}
+                        to={`/pin/${pin.id}`}
+                        // to={`/pins/${pin.id}`}
                         className="pin-index-item pin-show-link"
                     >
                         <div className="pin-index-item overlay"></div>
                         <img
-                            // src={pin.photo} 
-                            src={pin.photoUrl}
+                            src={pin.photo} 
+                            // src={pin.photoUrl}
                             className="pin-index-item masonry-image" />
                     </Link>
                     <div className="pin-index-item links">
