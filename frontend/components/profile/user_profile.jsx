@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
+import BoardIndexItem from './user_content';
 
 export default class UserProfile extends React.Component {
     constructor(props) {
@@ -108,17 +109,18 @@ export default class UserProfile extends React.Component {
                     </div>
                     <ul id='board-list'>
                         {/* THIS IS LOOK OF A BOARD AKA board index container  */}
-                        {currentUserBoards.map((board, idx) => {
+                        {currentUserBoards.map((board, id) => {
                             let pinArr;
                             let allPins;
                             let imageTag =
                                 <div id='pin-image-wrapper1'>
-                                    <div className='pin-noimg'></div>
+                                    {/* <div className='pin-noimg'></div> I DON'T NEED THIS */}
                                 </div>
                             if (board.pinIds.length > 0) {
                                 pinArr = board.pinIds.map(pinId => {
                                     return pins[pinId]
-                                })
+                                }
+                                )
                                 if (pinArr.length > 0) {
                                     allPins = pinArr.map((pin, idx) => {
                                         if (idx < 3 && pin != 'undefined') {
@@ -130,12 +132,14 @@ export default class UserProfile extends React.Component {
                                             {allPins}
                                         </div>
                                 }
+                                // <ListItem key={id.toString()}
+                                    // />
                             }
                             return (
-                                <div value={board.id} id='board-show-list' onClick={this.handleButton}>
+                                <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}> 
                                     {imageTag}
                                     <div id='board-text'>
-                                        <li>{board.title}</li>
+                                        <li>{board.title}</li>  
                                         <p>{board.pinIds.length} Pins</p>
                                     </div>
                                 </div>
@@ -168,6 +172,7 @@ export default class UserProfile extends React.Component {
                         </div>
                     </div>
                     <ProfileNavBar
+                        // key={currentUserBoards.id}
                         openModal={openModal}
                         closeModal={closeModal}
                         />
