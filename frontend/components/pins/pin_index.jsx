@@ -58,13 +58,13 @@ import PinIndexItem from './pin_index_item';
 import Masonry from 'react-masonry-css';
 import StackGrid, { transitions } from "react-stack-grid";
 import { Link, withRouter } from 'react-router-dom';
-import LoadingIcon from '../loading/loading';
+// import LoadingIcon from '../loading/loading';
 
 export default class PinIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
+            // loading: true,
             update: true
         }
     }
@@ -81,9 +81,9 @@ export default class PinIndex extends React.Component {
     render() {
         const { scaleDown } = transitions;
 
-        if (this.state.loading) {
-            return <LoadingIcon />;
-        }
+        // if (this.state.loading) {
+        //     return <LoadingIcon />;
+        // }
         if (this.props.pins.length > 0) {
             return (
                 <>
