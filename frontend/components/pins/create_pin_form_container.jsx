@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    // fetchBoards: () => dispatch(fetchBoards()),
+    fetchBoards: () => dispatch(fetchBoards()),
     processForm: pin => dispatch(createPin(pin)),
     pinToBoard: boardPin => dispatch(pinToBoard(boardPin)),
     openModal: modal => dispatch(openModal(modal))

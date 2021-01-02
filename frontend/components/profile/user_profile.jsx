@@ -73,7 +73,7 @@ export default class UserProfile extends React.Component {
 
 
     render() {
-        const { currentUser, boards, pins, openModal, closeModal } = this.props;
+        const { currentUser, boards, pins, openModal, closeModal, user } = this.props;
 
         // if (this.state.loading) {
         //     return <LoadingIcon />;
@@ -106,6 +106,11 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
+                    <ProfileNavBar
+                        currentUser={currentUser}  //USER IS NOT DEFINED
+                        openModal={openModal}
+                        closeModal={closeModal}
+                    />
                     <ul id='board-list'>
                         {/* THIS IS LOOK OF A BOARD AKA board index container  */}
                         {currentUserBoards.map((board, id) => {
