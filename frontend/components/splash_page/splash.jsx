@@ -69,7 +69,7 @@ class Splash extends React.Component {
             return (
 
                 <div className="splash-page-wrapper">
-                    <PinIndexContainer />
+                    {/* <PinIndexContainer /> */}
                     <div>
                         <button
                             className="plus"

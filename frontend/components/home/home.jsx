@@ -12,7 +12,7 @@ class Home extends React.Component {
         if (this.props.currentUserId === null) {
             this.props.fetchPins();
         } else {
-            this.props.startLoading();
+            // this.props.startLoading();
             this.props.fetchPins();
             setTimeout(() => this.props.stopLoading(), 2800);
         }
