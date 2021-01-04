@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
-import PinBoardContainer from '../boards/pin_board_container';
+import CreateBoardsPinsContainer from '../boards/create_boards_pins_container';
 import CreateBoardContainer from '../boards/create_board_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
 // import EditProfileContainer from '../users/edit_profile_container';
@@ -28,13 +28,13 @@ function Modal({ modal, closeModal, openModal }) {
             break;
         case ('pinboard'):
             component =
-                <PinBoardContainer
+                <CreateBoardsPinsContainer
                     pinId={modal.pinId}
                 />;
             clickBackground = closeModal;
             break;
         case 'new-board-pin':
-            component = <PinBoardContainer />;
+            component = <CreateBoardsPinsContainer />;
             clickBackground = closeModal;
             break;
         case ('createboard'):
