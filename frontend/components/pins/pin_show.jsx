@@ -175,9 +175,6 @@ class PinShow extends React.Component {
         // this.props.fetchPin(this.props.match.params.pinId);
         this.props.fetchPin(this.props.match.params.pinId);
     }
-    componentDidMount() {
-        this.props.fetchPin(this.props.match.params.pinId);
-    };
 
     goBack(e) {
         e.preventDefault();
@@ -221,10 +218,10 @@ class PinShow extends React.Component {
             >
                 <div>{pin.url}</div>
             </a>
-        ) : (
+            ) : (
                 <div className="pin-show source-link">
                     <div> Uploaded by&nbsp;
-            <Link to={`/${pinOwner.email}`}>
+                        <Link to={`/${pinOwner.email}`}>
                             <strong>{pinOwnerFullName}</strong>
                         </Link>
                     </div>

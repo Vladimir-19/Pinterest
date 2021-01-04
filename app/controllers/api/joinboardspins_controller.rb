@@ -8,8 +8,8 @@ class Api::JoinboardspinsController < ApplicationController
             @board = Board.find(@boardPin.board_id)
             render "api/boards/show"
         else
-            # render json: @board.errors.full_messages, status: 422
-            render json: @boardPin.errors.full_messages, status: 422
+            render json: @board.errors.full_messages, status: 422
+            # render json: @boardPin.errors.full_messages, status: 422
         end
     end
 

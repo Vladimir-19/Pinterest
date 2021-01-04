@@ -4,7 +4,7 @@ export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const REMOVE_PIN = 'REMOVE_PIN';
 export const RECEIVE_PIN_ERRORS = 'RECEIVE_PIN_ERRORS';
-export const CLEAR_PIN_ERRORS = 'CLEAR_PIN_ERRORS';
+// export const CLEAR_PIN_ERRORS = 'CLEAR_PIN_ERRORS';
 
 const receivePins = pins => ({
     type: RECEIVE_PINS,
@@ -29,15 +29,15 @@ const receivePinErrors = errors => ({
 // const clearPinErrors = () => ({
 //     type: CLEAR_PIN_ERRORS
 // });
-export const clearPinErrors = () => {
-    return {
-        type: CLEAR_PIN_ERRORS
-    }
-}
+// export const clearPinErrors = () => {
+//     return {
+//         type: CLEAR_PIN_ERRORS
+//     }
+// }
 
 export const fetchPins = () => dispatch => {
-    return PinAPIUtil.fetchPin()
-    .then(pins => dispatch(receivePins(pins)))
+    return PinAPIUtil.fetchPin().then(
+        pins => dispatch(receivePins(pins)))
 };
 
 export const fetchPin = pinId => dispatch => {
@@ -45,7 +45,7 @@ export const fetchPin = pinId => dispatch => {
 };
 
 export const createPin = pin => dispatch => {
-    return PinAPIUtil.creatrPin(pin).then(
+    return PinAPIUtil.createPin(pin).then(
         pin =>(dispatch(receivePin(pin))),
         err => (dispatch(receivePinErrors(err.responseJSON))
         ))
