@@ -1,12 +1,15 @@
-class Api::JoinBoardsPinsController < ApplicationController
+class Api::JoinboardspinsController < ApplicationController
            
+    #   before_action :require_login
+
     def create 
         @boardPin = JoinBoardsPin.new(boardPin_params)
         if @boardPin.save 
             @board = Board.find(@boardPin.board_id)
             render "api/boards/show"
         else
-            render json: @board.errors.full_messages, status: 422
+            # render json: @board.errors.full_messages, status: 422
+            render json: @boardPin.errors.full_messages, status: 422
         end
     end
 
