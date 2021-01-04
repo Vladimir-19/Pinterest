@@ -3,10 +3,10 @@
 export const pinToBoard = (boardPin) => {
     return $.ajax({
         method: "POST",
-        url: "/api/joinsboardspins",
-        data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} }
+        url: "/api/joinboardspins",
+        // data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} }
         // try this 
-        // data: { boardPin }
+        data: { boardPin }
     })
 };
 
@@ -15,7 +15,7 @@ export const deletePinOnBoard = (boardPin) => {
         method: "DELETE",
         // user id: 3
         // url: '/api/joinboardspins/3',
-        url: `/api/joinsboardspins/${boardPinId}`,
+        url: `/api/joinboardspins/${boardPinId}`,
         data: { boardPin }
     })
 };
@@ -24,6 +24,6 @@ export const deletePinOnBoard = (boardPin) => {
 export const fetchAllBoardsPins = () => (
     $.ajax({
         method: "GET",
-        url: `/api/joinsboardspins`
+        url: `/api/joinboardspins`
     })
 )

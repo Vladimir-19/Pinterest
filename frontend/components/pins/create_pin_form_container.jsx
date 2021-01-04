@@ -3,7 +3,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import { fetchBoards } from "../../actions/board_actions";
-import { createPin } from "../../actions/pin_actions";
+import { createPin, fetchPins } from "../../actions/pin_actions";
 import { pinToBoard } from "../../actions/join_boards_pins_actions";
 import CreatePinForm from "./create_pin";
 // import modal from "../../modal/modal";
@@ -15,13 +15,17 @@ const mapStateToProps = state => ({
     boards: Object.values(state.entities.boards).filter(board => (
         board.userId === state.session.id
     )),
+    // boards: Object.values(state.entities.boards),
+    // pins: Object.values(state.entities.pins),
     errors: state.errors.pin,
     formType: "Create Pin",
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchBoards: () => dispatch(fetchBoards()),
+    fetchPins: () => dispatch(fetchPins()),
     processForm: pin => dispatch(createPin(pin)),
+    // createPin: (pin) => dispatch(createPin(pin)),
     pinToBoard: boardPin => dispatch(pinToBoard(boardPin)),
     openModal: modal => dispatch(openModal(modal))
 });

@@ -1,5 +1,5 @@
-class Api::JoinsBoardsPinsController < ApplicationController
-
+class Api::JoinBoardsPinsController < ApplicationController
+           
     def create 
         @boardPin = JoinBoardsPin.new(boardPin_params)
         if @boardPin.save 
