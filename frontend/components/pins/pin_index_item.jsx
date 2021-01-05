@@ -48,7 +48,7 @@ class PinIndexItem extends React.Component {
         let item = document.getElementById(this.state.id);
         let grid = document.getElementById('grid');
         let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-        let rowGap = parseInt(window.getComputedStyle(document.getElementById('grid')).getPropertyValue('grid-row-gap'));
+        let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
         let itemImg = item.querySelector(".masonry-image");
         let rowSpan = Math.ceil((itemImg.getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
         // if (this.state.title !== '') rowSpan += 2;

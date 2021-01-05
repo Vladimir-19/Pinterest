@@ -1,4 +1,3 @@
-//from old file
 import React from "react";
 
 class CreatePinForm extends React.Component {
@@ -19,7 +18,7 @@ class CreatePinForm extends React.Component {
     }
 
 
-//wtf
+    //wtf
     componentDidMount() {
         this.props.fetchBoards();
     }
