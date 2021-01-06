@@ -128,21 +128,25 @@ export default class UserProfile extends React.Component {
                                 if (pinArr.length > 0) {
                                     allPins = pinArr.map((pin, idx) => {
                                         if (idx < 3 && pin != 'undefined') {
-                                            return <img id='pin-image1' src={this.state.photoPreview} />
+                                            return <img key={idx} id='pin-image1' src={this.state.photo} />
                                         }
                                     })
                                     imageTag =
-                                        <div key={allPins.toString()} id='pin-image-wrapper'>
+                                        <div id='pin-image-wrapper'>
+                                        {/* key={board.id} */}
                                             {allPins}
                                         </div>
                                 }
                             }
                             return (
                                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}> 
+                                    {/* key={board.id} */}
                                     {imageTag}
                                     <div  id='board-text'>
-                                        <li key={board.id}>{board.title}</li>  
+                                        <li>{board.title}</li>  
+                                        {/* key={board.id} */}
                                         <p>{board.pinIds.length} Pins</p>
+                                        {/* key={board.id} */}
                                     </div>
                                 </div>
                             )
