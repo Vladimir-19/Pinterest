@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_233930) do
+ActiveRecord::Schema.define(version: 2021_01_06_171322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_233930) do
     t.integer "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["board_id", "pin_id"], name: "index_join_boards_pins_on_board_id_and_pin_id", unique: true
     t.index ["board_id"], name: "index_join_boards_pins_on_board_id"
     t.index ["pin_id"], name: "index_join_boards_pins_on_pin_id"
   end

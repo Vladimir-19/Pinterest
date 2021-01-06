@@ -21,6 +21,8 @@ class CreatePinForm extends React.Component {
     //wtf
     componentDidMount() {
         this.props.fetchBoards();
+        this.props.fetchPins();
+
     }
 
     hideBoardList(e) {
