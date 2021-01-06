@@ -15,8 +15,8 @@ class NavBar extends React.Component {
     render() {
         const { currentUser, logout, openModal, closeModal } = this.props;
 
-        const profilePhoto = ((currentUser) && (currentUser.photoUrl)) ? (
-            <img className="nav-profile-image" src={currentUser.photoUrl} />
+        const profilePhoto = ((currentUser) && (currentUser.photo)) ? ( // photoUrl
+            <img className="nav-profile-image" src={currentUser.photo} /> //// photoUrl
         ) : (
                 <div className='nav-profile-image'>
                     <i className="fas fa-user-circle" 

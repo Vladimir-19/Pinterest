@@ -151,7 +151,7 @@ export default class UserProfile extends React.Component {
                                 </div>
                             )
                         })}
-                        <div className='edit-create-button-wrapper'>
+                        {/* <div className='edit-create-button-wrapper'>
                             <button
                                 className="plus-board"
                                 onClick={this.handleClick}
@@ -162,7 +162,7 @@ export default class UserProfile extends React.Component {
                                 onClick={this.handleEdit}>
                                 <i className="fas fa-pencil-alt"></i>
                             </button>
-                        </div>
+                        </div> */}
                     </ul>
                 </>
             )

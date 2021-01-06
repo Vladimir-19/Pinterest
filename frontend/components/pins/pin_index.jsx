@@ -77,8 +77,8 @@ class PinIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // pinSets: [],
-            // pinSetIdx: 0,
+            pinSets: [], // don't need
+            pinSetIdx: 0, // don't need
             // loadedPins: []
             loading: true,
             update: true
@@ -101,6 +101,7 @@ class PinIndex extends React.Component {
                 key={pin.id}
                 page={page}
                 pin={pin}
+                photo={pin.photo}
                 userId={currentUserId}
                 user={user}
                 openEditPin={openEditPin}

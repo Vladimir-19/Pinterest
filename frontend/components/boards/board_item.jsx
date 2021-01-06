@@ -11,7 +11,7 @@ class BoardItem extends React.Component {
 
         return (
             <Link to={`/pins/${pin.id}`}>
-                <img className="pin-item" src={pin.photoUrl} />
+                <img className="pin-item" src={pin.photo} />
                 <p id='pin-title-board'>{pin.title}</p>
             </Link>
         );
