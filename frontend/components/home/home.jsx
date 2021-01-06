@@ -5,7 +5,10 @@ const shuffle = require('shuffle-array');
 
 class Home extends React.Component {
     constructor(props) {
-        super(props);
+        super(props) 
+        this.state = {
+            loading: true
+        };
     }
 
     componentDidMount() {
@@ -14,7 +17,9 @@ class Home extends React.Component {
         } else {
             // this.props.startLoading();
             this.props.fetchPins();
-            setTimeout(() => this.props.stopLoading(), 2800);
+            // setTimeout(() => this.props.stopLoading(), 2800);
+            setTimeout(this.setState({ loading: false }), 3000);
+
         }
     }
 
@@ -41,6 +46,7 @@ class Home extends React.Component {
                 {spacer}
                 {/* {loader} */}
                 <PinIndexContainer
+                    // key={pinId}
                     pins={otherPins}
                     page="home"
                 />

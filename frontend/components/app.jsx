@@ -21,13 +21,14 @@ const App  = () => (
             <NavBar />
         </header>
         <Switch>
-            <Route exact path="/" component={SplashContainer}/>
+            <Route exact path="/" component={HomeContainer} /> 
+            {/* <Route exact path="/" component={SplashContainer}/> */}
             {/* <Route exact path="/search" component={PinIndexSearchContainer}/> */}
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
             <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer}/>
             <ProtectedRoute exact path="/pins/:pinId" component={PinShowContainer}/>
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
-            <Route exact path="/" component={HomeContainer} /> 
+            {/* <Route exact path="/" component={HomeContainer} />  */}
         </Switch>
         <footer>
         </footer>

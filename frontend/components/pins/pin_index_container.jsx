@@ -68,11 +68,15 @@ const mapStateToProps = (state, ownProps) => {
     // const searchPins = Object.values(ownProps);
     // const pins = Object.values(state.entities.pins)
     return {
-        // searchPins: searchPins,
-        pins: pins,
-        modal: modal,
-        // currentUser: currentUser
-        currentUser: state.session.id,
+        // // searchPins: searchPins,
+        // pins: pins,
+        // modal: modal,
+        // // currentUser: currentUser
+        // currentUser: state.session.id,
+        // user: state.entities.users[state.session.id]
+        page: ownProps.page,
+        pins: ownProps.pins,
+        currentUserId: state.session.id,
         user: state.entities.users[state.session.id]
     }
 };

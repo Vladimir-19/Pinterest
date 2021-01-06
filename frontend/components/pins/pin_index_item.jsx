@@ -106,7 +106,7 @@ class PinIndexItem extends React.Component {
                     <Link
                         to={`/pin/${pin.id}`}
                         // to={`/pins/${pin.id}`}
-                        className="pin-index-item pin-show-link"
+                        className="pin-index-item pin-show-link"p
                     >
                         <div className="pin-index-item overlay"></div>
                         <img
