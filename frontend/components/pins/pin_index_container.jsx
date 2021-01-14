@@ -63,15 +63,15 @@ import PinIndex from './pin_index';
 
 
 const mapStateToProps = (state, ownProps) => {
-    // const currentUser = state.entities.users[state.session.id];
-    // const modal = state.ui.modal;
+    const currentUser = state.entities.users[state.session.id];
+    const modal = state.ui.modal;
     // const searchPins = Object.values(ownProps);
-    // const pins = Object.values(state.entities.pins)
+    const pins = Object.values(state.entities.pins)
     return {
         // // searchPins: searchPins,
-        // pins: pins,
-        // modal: modal,
-        // // currentUser: currentUser
+        pins: pins,
+        modal: modal,
+        currentUser: currentUser,
         // currentUser: state.session.id,
         // user: state.entities.users[state.session.id]
         page: ownProps.page,

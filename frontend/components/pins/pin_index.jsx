@@ -2,6 +2,7 @@ import React from "react";
 import PinIndexItem from "./pin_index_item";
 
 import StackGrid, { transitions } from "react-stack-grid";
+import { Link, withRouter } from 'react-router-dom';
 
 const shuffle = require("shuffle-array");
 const masonryEvents = ["load", "resize"];
@@ -11,9 +12,9 @@ class PinIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pinSets: [], // don't need
-            pinSetIdx: 0, // don't need
-            // loadedPins: []
+            // pinSets: [], // don't need
+            // pinSetIdx: 0, // don't need
+            // // loadedPins: []
             loading: true,
             update: true
         };
@@ -29,10 +30,12 @@ class PinIndex extends React.Component {
         return arr;
     }
     render() {
+        const { scaleDown } = transitions;
+
         const { page, pins, currentUserId, user, openEditPin, openNewBoardPin } = this.props;
         const pinIndexItems = pins.map(pin => (
             <PinIndexItem
-                key={pin.id}
+                key={pin.toString()}
                 page={page}
                 pin={pin}
                 // photo={pin.photo}
@@ -45,11 +48,37 @@ class PinIndex extends React.Component {
 
         return (
             <div className="pin-index container">
-                <div className="pin-index" id="grid-container">
-                    <div className="pin-index masonry" id="grid">
+                {/* <div className="pin-index" id="grid-container"> */}
+                    {/* <div className="pin-index masonry" id="grid"> */}
+                        
                         {pinIndexItems}
-                    </div>
-                </div>
+                       
+                    {/* </div> */}
+                {/* </div> */}
+                {/* <StackGrid
+                    className="masonry-pins"
+                    columnWidth={250}
+                    appear={scaleDown.appear}
+                    appeared={scaleDown.appeared}
+                    enter={scaleDown.enter}
+                    entered={scaleDown.entered}
+                    leaved={scaleDown.leaved}
+                    monitorImagesLoaded={true}
+                > */}
+                    {/* {this.props.pins.map((pin) => (
+                        // key={pin.id},
+                        <PinIndexItem
+                            pin={pin}
+                            key={pin.id}
+                            photo={pin.photoUrl}
+                            fetchPins={this.props.fetchPins}
+                            currentUser={this.props.currentUser}
+                            openModal={this.props.openModal}
+                        />
+                    ))} */}
+                    
+                {/* </StackGrid> */}
+                
             </div>
         );
     };
@@ -72,8 +101,6 @@ export default PinIndex;
 //             this.setState({ loading: false })
 //         }, 4000);
 //     }
-
-
 
 //     render() {
 //         const { scaleDown } = transitions;

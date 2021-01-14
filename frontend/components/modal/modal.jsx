@@ -6,6 +6,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import CreateBoardsPinsContainer from '../boards/create_boards_pins_container';
 import CreateBoardContainer from '../boards/create_board_container';
+import DeletePinFormContainer from '../pins/delete_pin_form_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
 // import EditProfileContainer from '../users/edit_profile_container';
 
@@ -52,6 +53,10 @@ function Modal({ modal, closeModal, openModal }) {
         // case ('editprofile'):
         //     component = <EditProfileContainer currentUser={modal.currentUser} />
         //     break;
+        case "delete-pin":
+            component = <DeletePinFormContainer />;
+            clickBackground = () => openModal('edit-pin');
+            break;
         default:
             return null;
     };
