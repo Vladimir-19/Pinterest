@@ -13,6 +13,12 @@ class Api::JoinboardspinsController < ApplicationController
         end
     end
 
+    # ??? 
+    def index 
+        @boardsPins = JoinBoardsPin.all
+        render 'api/boards/index'
+    end
+
     def destroy
         # @boardPin = JoinBoardsPin.find_by_credentials(params[:pin_id], params[:board_id])
         @boardPin = current_user.boards_pins.find(params[:id])
@@ -27,9 +33,9 @@ class Api::JoinboardspinsController < ApplicationController
     end
 
 
-        private
+    private
 
-        def boardPin_params
-            params.require(:boardPin).permit(:board_id, :pin_id)
-        end
+    def boardPin_params
+        params.require(:boardPin).permit(:board_id, :pin_id)
+    end
 end
