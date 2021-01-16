@@ -4,6 +4,13 @@ export const RECEIVE_BOARD_PIN = 'RECEIVE_BOARD_PIN';
 export const REMOVE_BOARD_PIN = 'REMOVE_BOARD_PIN';
 export const RECEIVE_BOARD_PIN_ERRORS = "RECEIVE_BOARD_PIN_ERRORS";
 
+export const RECEIVE_ALL_BOARDS_PINS = "RECEIVE_ALL_BOARDS_PINS";
+
+const receiveAllBoardsPins = boardsPins => ({
+    type: RECEIVE_ALL_BOARDS_PINS,
+    boardsPins
+});
+
 const receiveBoardPin = board =>  ({
     type: RECEIVE_BOARD_PIN,
     board
@@ -19,6 +26,11 @@ const receiveBoardPinErrors = errors => ({
     errors
 })
 
+export const fetchAllBoardsPins = () => dispatch => {
+    BoardPinAPIUtil.fetchAllBoardsPins().then(
+        boardsPins => dispatch(receiveAllBoardsPins(boardsPins))
+    )
+}
 export const pinToBoard = boardPin => dispatch => {
     return BoardPinAPIUtil.pinToBoard(boardPin)
     .then(board => dispatch(receiveBoardPin(board))),
@@ -27,7 +39,7 @@ export const pinToBoard = boardPin => dispatch => {
 
 // not working
 export const deletePinOnBoard = (boardPinId) => {
-    return BoardPinAPIUtil.deletePinOnBoard(boardPinId)
-        .then(boardPin => dispatch(receiveBoardPin(boardPin.id)))
-    // .then(board => dispatch(removeBoardPin(board)))
+    return BoardPinAPIUtil.deletePinOnBoard(boardPinId).then(
+        boardPin => dispatch(removeBoardPin(boardPin.id)))
+        // .then(boardPin => dispatch(receiveBoardPin(boardPin.id)))
 };
