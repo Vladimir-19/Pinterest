@@ -27,7 +27,7 @@ const receiveBoardPinErrors = errors => ({
 })
 
 export const fetchAllBoardsPins = () => dispatch => {
-    BoardPinAPIUtil.fetchAllBoardsPins().then(
+    return BoardPinAPIUtil.fetchAllBoardsPins().then(
         boardsPins => dispatch(receiveAllBoardsPins(boardsPins))
     )
 }

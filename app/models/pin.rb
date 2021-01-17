@@ -2,7 +2,6 @@ class Pin < ApplicationRecord
 
     validates :title, presence: { message: "Please enter a valid title"}
     
-    has_one_attached :photo
     belongs_to :user
 
     has_many :associated_boards,
@@ -13,4 +12,7 @@ class Pin < ApplicationRecord
     has_many :boards,
         through: :associated_boards,
         source: :board
+
+    has_one_attached :photo
+
 end

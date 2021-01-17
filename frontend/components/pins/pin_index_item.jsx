@@ -8,7 +8,8 @@ const masonryEvents = ["load", "resize"];
 class PinIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.pin; // was c
+        // this.state = { ...props}; // was c
+        this.state = this.props.pin;
 
         this.resizeGridItem = this.resizeGridItem.bind(this); //was c
         // this.handleClick = this.handleClick.bind(this);
@@ -17,8 +18,8 @@ class PinIndexItem extends React.Component {
     resizeGridItem() { //was c
         let item = document.getElementById(this.state.id);
         let grid = document.getElementById('grid');
-        let rowHeight = parseInt(window.getComputedStyle(document.getElementById('grid')).getPropertyValue('grid-auto-rows'));
-        let rowGap = parseInt(window.getComputedStyle('grid').getPropertyValue('grid-row-gap'));
+        let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
         let itemImg = item.querySelector(".masonry-image");
         let rowSpan = Math.ceil((itemImg.getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
         // if (this.state.title !== '') rowSpan += 2;
@@ -26,7 +27,7 @@ class PinIndexItem extends React.Component {
     }
 
     componentDidMount(e) { //was c
-        setTimeout(() => this.resizeGridItem(), 2000);
+        setTimeout(() => this.resizeGridItem(), 1500);
         masonryEvents.forEach((e) => window.addEventListener(e, this.resizeGridItem));
         // e.preventDefault();
         // this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
@@ -71,19 +72,19 @@ class PinIndexItem extends React.Component {
         ) : null;
 
         return (
-            // <div id={`${this.state.id}`} className="pin-index-item container">
-            <div className="pin-index-item container">
+            <div id={`${this.state.id}`} className="pin-index-item container">
+            {/* <div className="pin-index-item container"> */}
                 <div className="pin-index-item masonry-item">
                     <Link
                     key={pin.id}
-                        // to={`/pin/${pin.id}`}
-                        to={`/pins/${pin.id}`}
+                        to={`/pin/${pin.id}`}
+                        // to={`/pins/${pin.id}`}
                         className="pin-index-item pin-show-link"
                     >
                         <div className="pin-index-item overlay"></div>
                         <img
-                            src={pin.photo} 
-                            // src={pin.photoUrl}
+                            // src={pin.photo} 
+                            src={pin.photoUrl}
                             className="pin-index-item masonry-image" />
                     </Link>
                     <div className="pin-index-item links">

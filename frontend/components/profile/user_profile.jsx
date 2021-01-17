@@ -75,9 +75,9 @@ export default class UserProfile extends React.Component {
     render() {
         const { currentUser, boards, pins, openModal, closeModal, user } = this.props;
 
-        // if (this.state.loading) {
-        //     return <LoadingIcon />;
-        // }
+        if (this.state.loading) {
+            return <LoadingIcon />;
+        }
 
         if (this.state.openBoard == true && this.state.openBoardId) {
             return <Redirect to={`/boards/${this.state.openBoardId}`} />

@@ -1,4 +1,4 @@
-import { RECEIVE_SINGLE_USER } from "../actions/user_actions";
+import { RECEIVE_USER } from "../actions/user_actions";
 import { 
     RECEIVE_ALL_BOARDS_PINS,
     RECEIVE_BOARD_PIN,
@@ -10,7 +10,7 @@ const JoinBoardsPinsReducer = (state = {}, action) => {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case RECEIVE_SINGLE_USER:
+        case RECEIVE_USER:
             return Object.assign(newState, action.payload.boardsPins);
         case RECEIVE_ALL_BOARDS_PINS:
             return action.boardsPins

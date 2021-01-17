@@ -24,7 +24,7 @@ const App  = () => (
         </header>
         <Switch>
             <Route exact path="/" component={HomeContainer} /> 
-            {/* <ProtectedRoute exact path="/" component={pin_index_item}/> */}
+            <ProtectedRoute exact path="/" component={HomeContainer}/>
             {/* <Route exact path="/" component={SplashContainer}/> */}
             {/* <Route exact path="/search" component={PinIndexSearchContainer}/> */}
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />

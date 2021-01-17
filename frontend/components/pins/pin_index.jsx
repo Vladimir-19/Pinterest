@@ -30,12 +30,13 @@ class PinIndex extends React.Component {
         return arr;
     }
     render() {
-        const { scaleDown } = transitions;
+        // const { scaleDown } = transitions;
 
         const { page, pins, currentUserId, user, openEditPin, openNewBoardPin } = this.props;
         const pinIndexItems = pins.map(pin => (
             <PinIndexItem
-                key={pin.toString()}
+                // key={pin.toString()}
+                key={pin.id}
                 page={page}
                 pin={pin}
                 // photo={pin.photo}
@@ -48,13 +49,13 @@ class PinIndex extends React.Component {
 
         return (
             <div className="pin-index container">
-                {/* <div className="pin-index" id="grid-container"> */}
-                    {/* <div className="pin-index masonry" id="grid"> */}
+                <div className="pin-index" id="grid-container">
+                    <div className="pin-index masonry" id="grid">
                         
                         {pinIndexItems}
                        
-                    {/* </div> */}
-                {/* </div> */}
+                    </div>
+                </div>
                 {/* <StackGrid
                     className="masonry-pins"
                     columnWidth={250}
