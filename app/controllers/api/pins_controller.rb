@@ -43,6 +43,6 @@ class Api::PinsController < ApplicationController
     private
 
     def pin_params
-        params.require(:pin).permit(:title, :description, :url, :photo, :user_id)
+        params.require(:pin).permit(:id, :title, :description, :url, :photo, :user_id)
     end
 end

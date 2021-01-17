@@ -12,11 +12,11 @@ class PinIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // pinSets: [], // don't need
-            // pinSetIdx: 0, // don't need
-            // // loadedPins: []
-            loading: true,
-            update: true
+            pinSets: [], // don't need
+            pinSetIdx: 0, // don't need
+            loadedPins: []
+            // loading: true,
+            // update: true
         };
 
         this.splitPins = this.splitPins.bind(this);

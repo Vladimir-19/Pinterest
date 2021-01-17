@@ -6,22 +6,22 @@ const shuffle = require('shuffle-array');
 class Home extends React.Component {
     constructor(props) {
         super(props) 
-        this.state = {
-            loading: true
-        };
+        // this.state = {
+        //     loading: true
+        // };
     }
 
-    // componentDidMount() {
-    //     if (this.props.currentUserId === null) {
-    //         this.props.fetchPins();
-    //     } else {
-    //         this.props.startLoading();
-    //         this.props.fetchPins();
-    //         // setTimeout(() => this.props.stopLoading(), 2800);
-    //         setTimeout(this.setState({ loading: false }), 2800);
+    componentDidMount() {
+        if (this.props.currentUserId === null) {
+            this.props.fetchPins();
+        } else {
+            this.props.startLoading();
+            this.props.fetchPins();
+            setTimeout(() => this.props.stopLoading(), 2800);
+            // setTimeout(this.setState({ loading: false }), 2800);
 
-    //     }
-    // }
+        }
+    }
 
     render() {
         const { currentUserId, loading, pins } = this.props;

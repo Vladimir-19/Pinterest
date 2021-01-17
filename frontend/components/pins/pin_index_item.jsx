@@ -83,8 +83,8 @@ class PinIndexItem extends React.Component {
                     >
                         <div className="pin-index-item overlay"></div>
                         <img
-                            // src={pin.photo} 
-                            src={pin.photoUrl}
+                            src={pin.photo} 
+                            // src={pin.photoUrl}
                             className="pin-index-item masonry-image" />
                     </Link>
                     <div className="pin-index-item links">
