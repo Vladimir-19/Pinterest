@@ -25,12 +25,12 @@ class PinIndexItem extends React.Component {
         item.style.gridRowEnd = "span " + rowSpan;
     }
 
-    componentDidMount(e) { //was c
-        setTimeout(() => this.resizeGridItem(), 1500);
-        masonryEvents.forEach((e) => window.addEventListener(e, this.resizeGridItem));
-        // e.preventDefault();
-        // this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
-    }
+    // componentDidMount(e) { //was c
+    //     setTimeout(() => this.resizeGridItem(), 1500);
+    //     masonryEvents.forEach((e) => window.addEventListener(e, this.resizeGridItem));
+    //     // e.preventDefault();
+    //     // this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
+    // }
 
     render() {
         const { userId, user, page, pin, openEditPin, openNewBoardPin } = this.props;
