@@ -1,13 +1,6 @@
-import {
-    connect
-} from 'react-redux';
-
-import {
-    openModal
-} from '../../actions/modal_actions';
-
+import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions';
 import { fetchPins } from '../../actions/pin_actions';
-
 import PinIndex from './pin_index';
 
 

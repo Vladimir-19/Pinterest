@@ -50,6 +50,7 @@ class PinIndex extends React.Component {
         return (
             <div className="pin-index container">
                 <div className="pin-index" id="grid-container">
+                    
                     <div className="pin-index masonry" id="grid">
                         
                         {pinIndexItems}
