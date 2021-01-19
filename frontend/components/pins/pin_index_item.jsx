@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
@@ -8,8 +7,8 @@ const masonryEvents = ["load", "resize"];
 class PinIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = { ...props}; // was c
-        this.state = this.props.pin;
+        this.state = { ...props}; // was c
+        // this.state = this.props.pin;
 
         this.resizeGridItem = this.resizeGridItem.bind(this); //was c
         // this.handleClick = this.handleClick.bind(this);
@@ -93,6 +92,11 @@ class PinIndexItem extends React.Component {
                         <div className="pin-index-item pin-link-container">{pinLink}</div>
                     </div>
                 </div>
+                <img
+                    src={pin.photo}
+                    // src={pin.photoUrl}
+                    className="pin-index-item masonry-image" />
+
                 {pinTitle}
             </div>
         );
@@ -101,3 +105,32 @@ class PinIndexItem extends React.Component {
 
 export default PinIndexItem;
 
+// import React from 'react';
+// import { withRouter } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+
+
+// class PinIndexItem extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+
+//     handleClick(e) {
+//         e.preventDefault();
+//         this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
+//     }
+
+//     render() {
+//         const { pin, openModal } = this.props;
+
+//         return (
+//             <Link className='pin-links' to={`pins/${pin.id}`}>
+//                 <img className="masonry-pin-item" src={pin.photoUrl} />
+//                 <p className='pin-index-title'>{pin.title}</p>
+//             </Link>
+//         );
+//     }
+// }
+
+// export default withRouter(PinIndexItem);

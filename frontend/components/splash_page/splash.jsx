@@ -27,17 +27,19 @@
 //         )
 //     }
 // }
+
 import React from 'react';
 import PinIndexContainer from '../pins/pin_index_container';
 import { Link, withRouter } from 'react-router-dom';
+// import CreatePinContainer from '../pins/create_pin_container';
 // import LoadingIcon from '../loading/loading';
 
 class Splash extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            loading: true
-        }
+        // this.state = {
+        //     loading: true
+        // }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -55,7 +57,7 @@ class Splash extends React.Component {
     }
 
     render() {
-        const { currentUser, pin, logout, openModal, pins, startLoading } = this.props;
+        const { currentUser, logout, openModal, pins, startLoading } = this.props;
 
         // if (this.state.loading) {
         //     return <LoadingIcon />;
@@ -69,7 +71,7 @@ class Splash extends React.Component {
             return (
 
                 <div className="splash-page-wrapper">
-                    {/* <PinIndexContainer /> */}
+                    <PinIndexContainer />
                     <div>
                         <button
                             className="plus"

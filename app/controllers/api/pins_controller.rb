@@ -17,7 +17,7 @@ class Api::PinsController < ApplicationController
     end
 
     def index 
-        @pin = Pin.all 
+        @pins = Pin.all 
         render "api/pins/index"
     end
 

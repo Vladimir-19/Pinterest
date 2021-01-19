@@ -39,14 +39,15 @@ class Home extends React.Component {
             </div>
         ) : null;
 
-        const otherPins = shuffle(pins.slice(0, 60));
+        // const otherPins = shuffle(pins.slice(0, 60));
+        const otherPins = shuffle(pins);
 
         return (
             <div className={`home-container ${klass}`}>
                 {spacer}
                 {loader}
                 <PinIndexContainer
-                    // key={pinId}
+                    key={otherPins.id}
                     pins={otherPins}
                     page="home"
                 />

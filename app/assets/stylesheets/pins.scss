@@ -632,9 +632,9 @@ ul.create-pin.board-list {
   border-radius: 16px;
   width: 236px;
   height: 100%;
-//   -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+  -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 // ?????
-    mask-image: radial-gradient(center, white, black);
+    // mask-image: radial-gradient(center, white, black);
   overflow: hidden;
   position: relative;
   &:hover .overlay {
