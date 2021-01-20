@@ -34,11 +34,16 @@ const receivePinErrors = errors => ({
 //         type: CLEAR_PIN_ERRORS
 //     }
 // }
-
-export const fetchPins = () => dispatch => {
-    return PinAPIUtil.fetchPin().then(
-        pins => dispatch(receivePins(pins)))
-};
+                                            //  DO NOT USE IT
+                                            // export const fetchPins = () => dispatch => {
+                                            //     return PinAPIUtil.fetchPin().then(
+                                            //         pins => dispatch(receivePins(pins)))
+                                            // };
+export const fetchPins = () => dispatch => (
+    PinAPIUtil.fetchPins().then(
+        pins => dispatch(receivePins(pins))
+    )
+);
 
 export const fetchPin = pinId => dispatch => {
     return PinAPIUtil.fetchPin(pinId).then(
