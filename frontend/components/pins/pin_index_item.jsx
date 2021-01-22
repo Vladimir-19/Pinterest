@@ -7,14 +7,14 @@ const masonryEvents = ["load", "resize"];
 class PinIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { ...props}; // was c
-        // this.state = this.props.pin;
+        // this.state = { ...props}; // DO NOT USE
+        this.state = this.props.pin;
 
         this.resizeGridItem = this.resizeGridItem.bind(this); //was c
         // this.handleClick = this.handleClick.bind(this);
     }
 
-    resizeGridItem() { //was c
+    resizeGridItem() { 
         let item = document.getElementById(this.state.id);
         let grid = document.getElementById('grid');
         let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
@@ -60,7 +60,7 @@ class PinIndexItem extends React.Component {
         );
 
         const pinUrl = pin.url;
-        const shortPinUrl = pinUrl //.slice(12, 22) + "...";
+        const shortPinUrl = pinUrl //.slice(12, 20) + "...";
         const pinLink = (pinUrl !== '') ? (
             <a href={`${pinUrl}`} target="_blank" className="pin-index-item pin-link">
                 <i className="fas fa-external-link-alt pin-link-icon"></i>
@@ -72,31 +72,25 @@ class PinIndexItem extends React.Component {
 
         return (
             <div id={`${this.state.id}`} className="pin-index-item container">
-            {/* <div className="pin-index-item container"> */}
                 <div className="pin-index-item masonry-item">
                     <Link
-                    key={pin.id}
+                        // key={pin.id}
                         to={`/pin/${pin.id}`}
                         // to={`/pins/${pin.id}`}
                         className="pin-index-item pin-show-link"
                     >
-                        <div className="pin-index-item overlay"> overlay from pin index item </div>
-                        {/* <img
+                        {/* <div className="pin-index-item overlay"></div> */}
+                        <img
                             src={pin.photo} 
                             // src={pin.photoUrl}
-                            className="pin-index-item masonry-image" /> */}
+                            className="pin-index-item masonry-image" />
                     </Link>
-                    {/* <div className="pin-index-item links">
+                    <div className="pin-index-item links">
                         <div className="pin-index-item edit-pin-link-container">{editPinLink}</div>
                         <div className="save-board-pin-link-container">{openBoardPinLink}</div>
                         <div className="pin-index-item pin-link-container">{pinLink}</div>
-                    </div> */}
+                    </div>
                 </div>
-                <img
-                    src={pin.photo}
-                    // src={pin.photoUrl} // DO NOT USE 
-                    className="pin-index-item masonry-image" />
-
                 {pinTitle}
             </div>
         );
