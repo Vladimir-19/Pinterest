@@ -80,21 +80,21 @@ class PinIndexItem extends React.Component {
                         // to={`/pins/${pin.id}`}
                         className="pin-index-item pin-show-link"
                     >
-                        <div className="pin-index-item overlay"></div>
-                        <img
+                        <div className="pin-index-item overlay"> overlay from pin index item </div>
+                        {/* <img
                             src={pin.photo} 
                             // src={pin.photoUrl}
-                            className="pin-index-item masonry-image" />
+                            className="pin-index-item masonry-image" /> */}
                     </Link>
-                    <div className="pin-index-item links">
+                    {/* <div className="pin-index-item links">
                         <div className="pin-index-item edit-pin-link-container">{editPinLink}</div>
                         <div className="save-board-pin-link-container">{openBoardPinLink}</div>
                         <div className="pin-index-item pin-link-container">{pinLink}</div>
-                    </div>
+                    </div> */}
                 </div>
                 <img
                     src={pin.photo}
-                    // src={pin.photoUrl}
+                    // src={pin.photoUrl} // DO NOT USE 
                     className="pin-index-item masonry-image" />
 
                 {pinTitle}
