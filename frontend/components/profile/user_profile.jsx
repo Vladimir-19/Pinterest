@@ -111,6 +111,7 @@ export default class UserProfile extends React.Component {
                         openModal={openModal}
                         closeModal={closeModal}
                     />
+                    <p>You have  boards!</p>
                     <ul id='board-list'>
                         {/* THIS IS LOOK OF A BOARD AKA board index container  */}
                         {currentUserBoards.map((board, id) => {
@@ -177,11 +178,11 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
-                    {/* <ProfileNavBar
+                    <ProfileNavBar
                         user={user}  //USER IS NOT DEFINED
                         openModal={openModal}
                         closeModal={closeModal}
-                        /> */}
+                        />
                     <p>You don't have any boards yet!</p>
                     <div className='edit-create-button-wrapper'>
                         <button

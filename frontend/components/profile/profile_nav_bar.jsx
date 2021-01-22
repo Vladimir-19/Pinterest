@@ -82,6 +82,7 @@ class ProfileNavBar extends React.Component {
                                         "hidden"
                                 }}>
                                     <div id="create-options">
+                                        {/* <div id="create-board-button" tabIndex="0" onClick={this.newBoard}> */}
                                         <div id="create-board-button" tabIndex="0" onClick={this.newBoard}>
                                             <div className="option-container-shadow">
                                                 <div className="option-container">
@@ -106,7 +107,7 @@ class ProfileNavBar extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="profile-header-button" id="edit-profile">
+                            {/* <div className="profile-header-button" id="edit-profile">
                                 <Link to="/settings#profile" className="profile-header-link">
                                     <div className="profile-icon-container-shadow">
                                         <div className="profile-icon-container">
@@ -114,7 +115,7 @@ class ProfileNavBar extends React.Component {
                                         </div>
                                     </div>
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     {/* <div id="nav-bar-name-container">
