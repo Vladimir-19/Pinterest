@@ -49,7 +49,7 @@ function Modal({ modal, closeModal, openModal }) {
             component = <CreateBoardContainer />;
             clickBackground = closeModal;
             break;
-            break;
+            // break;
         // case ('successPin'):
             // component = <RecentPinContainer boardId={modal.boardId}
             //     pinId={modal.pinId} />

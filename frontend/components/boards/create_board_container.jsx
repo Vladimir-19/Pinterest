@@ -37,8 +37,8 @@ import { fetchBoard } from "../../util/board_api_util";
 
 const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id],
-    // board: { "title": "", "description": "", "secret": false },
-    boards: Object.values(state.entities.boards),
+    board: { "title": "", "description": "", "secret": false },
+    // boards: Object.values(state.entities.boards),
     // pins: Object.values(state.entities.pins),
     errors: state.errors.board,
     formType: "Create board",

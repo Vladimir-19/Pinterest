@@ -50,8 +50,7 @@ class CreateBoardForm extends React.Component {
 
     handleCreate(e) {
         e.preventDefault();
-        this.props.processForm(this.state)
-            .then(this.props.closeModal);
+        this.props.processForm(this.state).then(this.props.closeModal && window.location.reload());
         // const board = Object.assign({}, this.state)
         // this.props.createBoardForm(board).then((this.props.closeModal) && window.location.reload());
     }
