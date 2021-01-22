@@ -37,17 +37,20 @@ import { fetchBoard } from "../../util/board_api_util";
 
 const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id],
-    board: { "title": "", "description": "", "secret": false },
-    pins: Object.values(state.entities.pins),
+    // board: { "title": "", "description": "", "secret": false },
+    boards: Object.values(state.entities.boards),
+    // pins: Object.values(state.entities.pins),
     errors: state.errors.board,
     formType: "Create board",
 });
 
 const mapDispatchToProps = dispatch => ({
+    openModal: modal => dispatch(openModal(modal)),
     processForm: board => dispatch(createBoard(board)), //error???
     closeModal: () => dispatch(closeModal()),
     fetchPins: () => dispatch(fetchPins()),
-    fetchBoard: () => dispatch(fetchBoard())
+    fetchBoard: () => dispatch(fetchBoard()),
+    // createBoard: (board) => dispatch(createBoard(board))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateBoardForm);

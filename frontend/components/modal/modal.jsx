@@ -46,7 +46,7 @@ function Modal({ modal, closeModal, openModal }) {
             // break;
             // component = <CreateBoardContainer />;
             // clickBackground = closeModal;
-            component = <CreateBoardsPinsContainer />;
+            component = <CreateBoardContainer />;
             clickBackground = closeModal;
             break;
             break;

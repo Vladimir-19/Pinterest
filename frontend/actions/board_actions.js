@@ -32,7 +32,7 @@ export const fetchBoards = () => dispatch => {
 
 export const fetchBoard = boardId => dispatch => {
     return BoardAPIUtil.fetchBoard(boardId)
-    .then(board => dispatch(receiveBoard(board)))
+        .then(payload => dispatch(receiveBoard(payload)))
 };
 
 export const createBoard = board => dispatch => {

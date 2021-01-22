@@ -3,11 +3,11 @@ import React from "react";
 class CreateBoardForm extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = this.props.board;
-        this.state = {
-            title: '',
-            description: ''
-        }
+        this.state = this.props.board;
+        // this.state = {
+        //     title: '',
+        //     description: ''
+        // }
 
         this.update = this.update.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
@@ -58,7 +58,7 @@ class CreateBoardForm extends React.Component {
 
     render() {
         const { errors, formType } = this.props;
-        const checked = (this.state.secret) ? 'checked' : null;
+        // const checked = (this.state.secret) ? 'checked' : null;
 
         return (
             <div id="create-board-container">
@@ -138,9 +138,9 @@ class CreateBoardForm extends React.Component {
                                                     id="visibility-checkbox"
                                                     onClick={this.handleCheck}
                                                 >
-                                                    <i className={`fas fa-check-square create-board checkbox ${checked}`}
+                                                    {/* <i className={`fas fa-check-square create-board checkbox ${checked}`}
                                                         id="visibility-checked">
-                                                    </i>
+                                                    </i> */}
                                                     {/* <i className={`fas fa-toggle-off ${checked}`}></i> */}
                                                 </div>
 

@@ -49,7 +49,7 @@ class ProfileNavBar extends React.Component {
     }
 
     newBoard() {
-        this.props.openModal("new-board");
+        this.props.openModal("createboard");
     }
 
     render() {
