@@ -27,29 +27,21 @@ function Modal({ modal, closeModal, openModal }) {
             component = <SignupFormContainer />;
             clickBackground = null;
             break;
-        case ('pinboard'):
-            component =
-                <CreateBoardsPinsContainer
-                    pinId={modal.pinId}
-                />;
-            clickBackground = closeModal;
-            break;
+        // case ('pinboard'): //same as new-board-pin
+        //     component =
+        //         <CreateBoardsPinsContainer
+        //             pinId={modal.pinId}
+        //         />;
+        //     clickBackground = closeModal;
+        //     break;
         case 'new-board-pin':
             component = <CreateBoardsPinsContainer />;
             clickBackground = closeModal;
             break;
         case ('createboard'):
-            // component = <CreateBoardContainer
-            //     currentUser={modal.currentUser} 
-            //     />;
-            // clickBackground = closeModal;
-            // break;
-            // component = <CreateBoardContainer />;
-            // clickBackground = closeModal;
             component = <CreateBoardContainer />;
             clickBackground = closeModal;
             break;
-            // break;
         // case ('successPin'):
             // component = <RecentPinContainer boardId={modal.boardId}
             //     pinId={modal.pinId} />

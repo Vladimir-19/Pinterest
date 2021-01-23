@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchBoards } from '../../actions/board_actions';
 
@@ -27,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
     pinToBoard: (boardPin) => dispatch(pinToBoard(boardPin))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBoardsPinsForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateBoardsPinsForm));

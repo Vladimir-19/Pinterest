@@ -89,8 +89,7 @@ class CreateBoardsPinsForm extends React.Component {
         e.preventDefault();
         this.setState({ board_id: e.currentTarget.value },
             // () => this.props.pinToBoard(biardPin)
-            () => this.props.pinToBoard(this.state)
-                .then(this.props.closeModal));
+            () => this.props.pinToBoard(this.state).then(this.props.closeModal));
     }
 
     render() {
