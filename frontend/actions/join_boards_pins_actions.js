@@ -27,19 +27,20 @@ const receiveBoardPinErrors = errors => ({
 })
 
 export const fetchAllBoardsPins = () => dispatch => {
-    return BoardPinAPIUtil.fetchAllBoardsPins().then(
+     BoardPinAPIUtil.fetchAllBoardsPins().then(
         boardsPins => dispatch(receiveAllBoardsPins(boardsPins))
     )
 }
 export const pinToBoard = boardPin => dispatch => {
-    return BoardPinAPIUtil.pinToBoard(boardPin)
-    .then(board => dispatch(receiveBoardPin(board))),
-    err => dispatch(receiveBoardPinErrors(err.responseJSON))
+     BoardPinAPIUtil.pinToBoard(boardPin).then(
+         board => dispatch(receiveBoardPin(board)))
+    //      ,
+    // err => dispatch(receiveBoardPinErrors(err.responseJSON))
 };
 
 // not working
 export const deletePinOnBoard = (boardPinId) => {
-    return BoardPinAPIUtil.deletePinOnBoard(boardPinId).then(
+     BoardPinAPIUtil.deletePinOnBoard(boardPinId).then(
         boardPin => dispatch(removeBoardPin(boardPin.id)))
         // .then(boardPin => dispatch(receiveBoardPin(boardPin.id)))
 };

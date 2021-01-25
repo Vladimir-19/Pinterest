@@ -4,9 +4,10 @@ export const pinToBoard = (boardPin) => {
     return $.ajax({
         method: "POST",
         url: "/api/joinboardspins",
-        // data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} }
+        // url: `/api/boards_pins`,
+        data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} }
         // try this 
-        data: { boardPin }
+        // data: { boardPin }
     })
 };
 
@@ -25,5 +26,6 @@ export const fetchAllBoardsPins = () => (
     $.ajax({
         method: "GET",
         url: `/api/joinboardspins`
+        // url: `/api/boards_pins`
     })
 )
