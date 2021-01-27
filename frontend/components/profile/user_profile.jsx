@@ -93,7 +93,11 @@ export default class UserProfile extends React.Component {
 
         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
-
+        const personalInfo = (currentUser.location && currentUser.description) ? (
+            <div id="profile-personal">
+                <h4>{currentUser.location} · {currentUser.description}</h4>
+            </div>
+        ) : null;
 
         if (boards.length > 0 && this.state.pins === 'fetched') {
             return (
@@ -104,6 +108,27 @@ export default class UserProfile extends React.Component {
                         </div>
                         <div id='user-text'>
                             {name}
+                        </div>
+                        
+                        <div id="profile-follows-spacer-container" >
+                            <div id="profile-follows">
+                                <div id="profile-followers-container">
+                                    {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
+                                        <h4>1,000,000 followers </h4>
+                                    {/* </Link> */}
+                                </div>
+                                <div> • </div>
+                                <div id="profile-following-container">
+                                    {/* <Link to={`/${user.username}/following`} className="profile-follows-link"> */}
+                                        <h4> 1 following</h4>
+                                    {/* </Link> */}
+                                </div>
+                            </div>
+
+                            <div id="profile-personal-container">
+                                {personalInfo}
+                                <h4>personal info</h4>
+                            </div>
                         </div>
                     </div>
                     <ProfileNavBar

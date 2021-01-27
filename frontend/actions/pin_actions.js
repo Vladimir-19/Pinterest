@@ -59,11 +59,14 @@ export const createPin = pin => dispatch => {
 
 export const updatePin = pin => dispatch => {
     return PinAPIUtil.updatePin(pin).then(
-         pin => dispatch(receivePin(pin)))
+         pin => dispatch(receivePin(pin)),
+         err => dispatch(receivePinErrors(err.responseJSON))
+         )
 };
 
 export const deletePin = pinId => dispatch => {
     return PinAPIUtil.deletePin(pinId).then(
         pin => dispatch(removePin(pin.id)),
-        err => dispatch(receivePinErrors(err.responseJSON)))
+        err => dispatch(receivePinErrors(err.responseJSON))
+        )
 };

@@ -290,7 +290,20 @@ class PinShow extends React.Component {
                         </div>
                         <div className="pin-show second-half">
                             <div className="pin-show nav-bar">
-                                {editPinLink}
+                                
+                                {/* <div className="create-pin" id="select-board-dropdown">
+                                    <div className="create-pin" id="select-board-label">
+                                        <div className="create-pin" id="selected-board">
+                                            {dropdownLabel}
+                                        </div>
+                                    </div>
+                                    <div className="create-pin" id="dropdown-icon-container">
+                                        <i className="fas fa-angle-down" id="dropdown-icon"></i>
+                                    </div>
+                                </div> */}
+
+                                {editPinLink} 
+                                <div></div>
                                 <a
                                     className="pin-show save-board-pin-link"
                                     onClick={() => openNewBoardPin(pin.id)}>
