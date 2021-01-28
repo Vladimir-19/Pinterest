@@ -8,18 +8,19 @@ import CreateBoardsPinsForm from './create_boards_pins';
 
 
 const mapStateToProps = (state) => {
-    // const currentUserId = state.session.id;
+    const currentUserId = state.session.id;
     const pin = state.entities.pins[state.ui.objectId];
     const allBoards = Object.values(state.entities.boards);
 
     return {
-        currentUser: state.entities.users[state.session.id],
+        // currentUser: state.entities.users[state.session.id],
         boards: Object.values(state.entities.boards),
-        // currentUserId,
+        currentUserId,
         pin,
         allBoards,
     }
 };
+
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
