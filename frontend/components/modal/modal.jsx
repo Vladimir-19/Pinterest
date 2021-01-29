@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
-import CreateBoardsPinsContainer from '../boards/create_boards_pins_container';
+import CreateBoardsPinsForm from '../boards/create_boards_pins_container';
 import CreateBoardContainer from '../boards/create_board_container';
 import DeletePinFormContainer from '../pins/delete_pin_form_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
@@ -38,8 +38,8 @@ function Modal({ modal, closeModal, openModal }) {
         case 'new-board-pin':
             // component = <CreateBoardsPinsContainer />;
             component =
-                <CreateBoardsPinsContainer
-                    pinId={modal.pinId}
+                <CreateBoardsPinsForm
+                    // CreateBoardsPinsContainer
                 />;
             clickBackground = closeModal;
             break;
@@ -79,9 +79,9 @@ function Modal({ modal, closeModal, openModal }) {
                 <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
                     {component}
                 </div>
-                {/* <div className="modal-child-two" onClick={e => e.stopPropagation()}>
+                <div className="modal-child-two" onClick={e => e.stopPropagation()}>
                     {switchFormButton}
-                </div> */}
+                </div>
             </div>
         </div>
     );

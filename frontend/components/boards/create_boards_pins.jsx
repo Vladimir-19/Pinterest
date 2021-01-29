@@ -77,7 +77,7 @@ class CreateBoardPinForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pin_id: this.props.pinId,
+            pin_id: this.props.pin_id,
             board_id: null,
             // message: false
         };
@@ -129,7 +129,8 @@ class CreateBoardPinForm extends React.Component {
                     </div>
                     <div className="board-list-item save-button">
                         <i className="fas fa-thumbtack save-icon"></i>
-                        <div className="save-text">&nbsp;Save</div>
+                        {/* <div className="save-text">&nbsp;Save</div> */}
+                        <div className="save-text">Save</div>
                     </div>
                 </li>
             )
