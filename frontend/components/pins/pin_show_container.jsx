@@ -19,6 +19,3 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(PinShow);
 
-// I NEED TO USE EDIT BOARD, THIS IS HOW CAN I CHANGE/SAVE JOIN BOARD
-// I STAETED DROPDOW MENUE, PROBOLY SHOULD CANSEL THAT AND ADD SCSS FILE FOR MODAL PART?
-//  i added edit pin in containers -> in modals
