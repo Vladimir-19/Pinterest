@@ -36,7 +36,11 @@ function Modal({ modal, closeModal, openModal }) {
         //     clickBackground = closeModal;
         //     break;
         case 'new-board-pin':
-            component = <CreateBoardsPinsContainer />;
+            // component = <CreateBoardsPinsContainer />;
+            component =
+                <CreateBoardsPinsContainer
+                    pinId={modal.pinId}
+                />;
             clickBackground = closeModal;
             break;
         case ('createboard'):

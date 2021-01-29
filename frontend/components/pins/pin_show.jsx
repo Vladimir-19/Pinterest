@@ -260,7 +260,8 @@ class PinShow extends React.Component {
                 >
                     <strong>{pinOwnerFullName}</strong>
                 </Link>
-                <span>&nbsp;saved to&nbsp;</span>
+                {/* <span>&nbsp;saved to&nbsp;</span> */} 
+    
                 <Link
                     to={`/${pinOwner.email}/${pin.boardTitle}`}
                     className="pin-show credit-link">
