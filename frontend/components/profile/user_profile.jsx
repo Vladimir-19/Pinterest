@@ -30,9 +30,9 @@ export default class UserProfile extends React.Component {
     }
 
             //extra
-            componentWillUnmount() {
-                window.removeEventListener("scroll", this.handleScroll);
-            }
+            // componentWillUnmount() {
+            //     window.removeEventListener("scroll", this.handleScroll);
+            // }
 
             handleScroll() {
                 const { prevScrollPos } = this.state;

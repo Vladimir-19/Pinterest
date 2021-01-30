@@ -164,16 +164,55 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 
+// import ShowDropdown from "./show_sropdown_container";
+import DropdownContainer from "./show_sropdown_container";
+
 class PinShow extends React.Component {
     constructor(props) {
         super(props);
         this.goBack = this.goBack.bind(this);
+        // //this 
+        // this.hideBoardList = this.hideBoardList.bind(this);
+        // this.selectBoard = this.selectBoard.bind(this);
+        // this.handleSave = this.handleSave.bind(this);
+
     }
+    // // this 
+    // hideBoardList(e) {
+    //     this.setState({ boardList: false });
+    // }
+
+    // handleSave(e) {
+    //     e.stopPropagation();
+    //     const details = Object.assign({}, this.state);
+    //     delete details["photoPreview"];
+    //     delete details["board"];
+    //     delete details["boardList"];
+
+    //     const formData = new FormData();
+    //     for (let key in details) {
+    //         formData.append(`pin[${key}]`, details[key])
+    //     };
+
+    //     const pinToBoard = (boardPin) => this.props.pinToBoard(boardPin);
+    //     const boardId = this.state.boardId;
+
+    //     return this.props.processForm(formData)
+    //         .then(res => (pinToBoard({
+    //             "board_id": boardId,
+    //             "pin_id": parseInt(Object.keys(res.pin)[0])
+    //         })))
+    //         .then(() => window.history.go(-1));
+    // }
 
     // to make API calls (the component has been mounted and is available to the DOM)
     componentDidMount() {
         // this.props.fetchPin(this.props.match.params.pinId);
         this.props.fetchPin(this.props.match.params.pinId);
+        // //this         
+        // this.props.fetchBoards();
+        // this.props.fetchPins();
+
     }
 
     goBack(e) {
@@ -186,6 +225,9 @@ class PinShow extends React.Component {
         const { pin, users, currentUserId, openEditPin, openNewBoardPin } = this.props;
         if (!pin)
             return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
+
+        //     //this
+        // const  clickSave = (this.state.boardIdi == null) ? (null) : (this.handleSave);
 
         const pinOwner = pin.user || { email: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
@@ -281,8 +323,55 @@ class PinShow extends React.Component {
                 </a>
                 <div className="pin-show wrapper"
                     onClick={this.goBack}>
+                        {/* this */}
+                    {/* <div onClick={this.hideBoardList}> */}
+
                     <div className="pin-show container"
                         onClick={(e) => e.stopPropagation()}>
+
+                        <div id='dropdown-pin-show'><DropdownContainer pinId={pin.id} /></div>
+                        {/* <div id='dropdown-pin-show'><ShowDropdown pinId={pin.id} /></div> */}
+
+                            {/* this */}
+                            {/* <div
+                                className="create-pin"
+                                id="buttons"
+                                onClick={this.toggleBoardList}
+                                onBlur={this.hideBoardList}
+                            >
+                                <div className="create-pin" id="select-board-dropdown">
+                                    <div className="create-pin" id="select-board-label">
+                                        <div className="create-pin" id="selected-board">
+                                            {dropdownLabel}
+                                        </div>
+                                    </div>
+                                    <div className="create-pin" id="dropdown-icon-container">
+                                        <i className="fas fa-angle-down" id="dropdown-icon"></i>
+                                    </div>
+                                </div>
+                                <div className="create-pin" id="save-button" onClick={clickSave}>
+                                    <div className="create-pin" id="save-button-label">
+                                        Save
+                                    </div>
+                                </div>
+                                <div className={`create-pin board-list container ${klass}`}>
+                                    <div className="create-pin board-list triangle">
+                                        <svg width="24" height="24">
+                                            <path d="M0 24 L12 12 L24 24"></path>
+                                        </svg>
+                                    </div>
+                                    <div className="create-pin board-list header">
+                                        <div className="create-pin board-list title">
+                                            All boards
+                                        </div>
+                                    </div>
+                                    <ul className="create-pin board-list">
+                                        {boardListItems}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> */}
+                        {/* stop */}
                         <div className="pin-show first-half">
                             <div className="pin-show link-area">
                                 {imgLink}
@@ -326,6 +415,7 @@ class PinShow extends React.Component {
                     </div>
                 </div>
             </div>
+            // </div> //this
         )
     }
 }
