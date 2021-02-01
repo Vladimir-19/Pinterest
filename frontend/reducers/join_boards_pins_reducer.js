@@ -15,7 +15,8 @@ const JoinBoardsPinsReducer = (state = {}, action) => {
         case RECEIVE_ALL_BOARDS_PINS:
             return action.boardsPins
         case RECEIVE_BOARD_PIN:
-            return Object.assign({}, newState, {[actions.boardPin.id]: action.boardPin })
+            // return Object.assign({}, newState, {[actions.boardPin.id]: action.boardPin })
+            return Object.assign({}, state, action.board)
         case REMOVE_BOARD_PIN:
             delete newState[actions.boardPinId];
             return newState;

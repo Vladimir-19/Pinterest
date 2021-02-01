@@ -144,7 +144,7 @@ export default class UserProfile extends React.Component {
                             let allPins;
                             let imageTag =
                                 <div id='pin-image-wrapper1'>
-                                    {/* <div className='pin-noimg'></div> I DON'T NEED THIS */}
+                                    <div className='pin-noimg'>do I need this?</div> 
                                 </div>
                             if (board.pinIds.length > 0) {
                                 pinArr = board.pinIds.map(pinId => {
@@ -154,7 +154,7 @@ export default class UserProfile extends React.Component {
                                 if (pinArr.length > 0) {
                                     allPins = pinArr.map((pin, idx) => {
                                         if (idx < 3 && pin != 'undefined') {
-                                            return <img key={idx} id='pin-image1' src={this.state.photo} />
+                                            return <img key={idx} id='pin-image1' src={pin.photo} />
                                         }
                                     })
                                     imageTag =
