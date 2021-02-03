@@ -81,7 +81,7 @@ export default class UserProfile extends React.Component {
         }
 
         if (this.state.openBoard == true && this.state.openBoardId) {
-            return <Redirect to={`/boards/${boards.board.openBoardId}`} />
+            return <Redirect to={`/boards/${this.state.openBoardId}`} />
         }
 
         const name = currentUser.firstName && currentUser.lastName ? <div><span>{currentUser.firstName}</span><span>{currentUser.lastName}</span></div> : <span>Add Your Name</span>;
