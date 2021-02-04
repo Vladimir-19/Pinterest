@@ -81,6 +81,7 @@ import { Link } from 'react-router-dom';
 // import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
+import PinIndexContainer from '../pins/pin_index_container';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
@@ -108,7 +109,12 @@ export default class BoardShow extends React.Component {
     }
 
     render() {
-        const { board, currentUser, pins } = this.props;
+        const { board, currentUser, pins, boardsPins } = this.props;
+
+        // let boardPins = boardsPins 
+        // .filter(boardPin => board.id === boardPin.boardId)
+        // .map(boardPin => pins[boardPin.pinId])
+        // .filter(boardPin => boardPin !== undefined);
 
         // if (this.state.loading) {
         //     return <LoadingIcon />;
@@ -124,7 +130,12 @@ export default class BoardShow extends React.Component {
                 </div>
             )
         }
-
+        // <div className="board-show pin-feed">
+        //     <PinIndexContainer
+        //         pins={boardPins}
+        //         page="profile"
+        //     />
+        //     </div>
         let pinArr = [];
         if (this.state.fetched == true && board.pinIds.length > 0) {
             board.pinIds.map(pinId => {
@@ -146,6 +157,10 @@ export default class BoardShow extends React.Component {
                                 pin={pin}
                                 key={pin.id}
                             />
+                            // <PinIndexContainer
+                            //     pin={pin}
+                            //     key={pin.id}
+                            //     page="profile"/>
                         ))}
                     </ul>
                     <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
