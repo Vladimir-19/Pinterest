@@ -47,6 +47,10 @@ function Modal({ modal, closeModal, openModal }) {
             component = <CreateBoardContainer />;
             clickBackground = closeModal;
             break;
+        case "delete-board":
+            component = <DeleteBoardFomrContainer />;
+            clickBackground = null;
+            break;
         // case ('successPin'):
             // component = <RecentPinContainer boardId={modal.boardId}
             //     pinId={modal.pinId} />
