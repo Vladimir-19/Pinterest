@@ -4,7 +4,7 @@ class EditBoardForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.board.id,
+            // id: this.props.board.id,
             title: this.props.board.title,
             description: this.props.board.description,
             secret: this.props.board.secret

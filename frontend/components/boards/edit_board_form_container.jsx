@@ -5,9 +5,11 @@ import EditBoardForm from "./edit_board_form";
 import { updateBoard } from "../../actions/board_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     currentUser: state.entities.users[state.session.id],
-    board: state.entities.boards[state.ui.objectId],
+    // board: state.entities.boards[state.ui.objectId],
+    board: state.entities.boards[state.objectId],
+    // board: state.entities.boards[ownProps.match.params.boardId],
     errors: state.errors.board,
     formTitle: "Edit your board"
 });
