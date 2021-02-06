@@ -109,7 +109,7 @@ export default class BoardShow extends React.Component {
     }
 
     render() {
-        const { board, currentUser, pins, boardsPins } = this.props;
+        const { board, currentUser, pins, boardsPins, openEditBoard } = this.props;
 
         // let boardPins = boardsPins 
         // .filter(boardPin => board.id === boardPin.boardId)
@@ -151,6 +151,14 @@ export default class BoardShow extends React.Component {
                     <div id='board-show-header'>
                         <h1>{board.title}</h1>
                     </div>
+                    {/* here  */}
+                    <button
+                        className="board-show button"
+                        onClick={(e, boardId) => openEditBoard(e, board.id)}
+                    >
+                        <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
+                    </button>
+
                     <ul id='board-list-wrap'>
                         {pinArr.map((pin) => (
                             <BoardItem
