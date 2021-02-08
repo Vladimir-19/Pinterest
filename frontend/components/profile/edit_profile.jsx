@@ -118,7 +118,8 @@ export default class EditProfile extends React.Component {
         return (
             <>
                 <div className="create-board-container">
-                    <div onClick={this.props.closeModal} className="close-x-board">
+                    {/* onClick={this.props.closeModal} */}
+                    <div  className="close-x-board">
                         <i className="fas fa-times"></i>
                     </div>
                     <div className="modal-pinboard-text">

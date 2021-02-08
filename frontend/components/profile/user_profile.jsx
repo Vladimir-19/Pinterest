@@ -63,7 +63,8 @@ export default class UserProfile extends React.Component {
     }
 
     handleEdit() {
-        this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
+        // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
+        this.props.openModal("editprofile")
     }
 
     componentDidUpdate(prevProps) {
@@ -178,7 +179,7 @@ export default class UserProfile extends React.Component {
                                 </div>
                             )
                         })}
-                        {/* <div className='edit-create-button-wrapper'>
+                        <div className='edit-create-button-wrapper'>
                             <button
                                 className="plus-board"
                                 onClick={this.handleClick}
@@ -186,10 +187,11 @@ export default class UserProfile extends React.Component {
                                 <i className="fas fa-plus"></i>
                             </button>
                             <button className="plus-board"
-                                onClick={this.handleEdit}>
-                                <i className="fas fa-pencil-alt"></i>
-                            </button>
-                        </div> */}
+                            onClick={this.handleEdit}>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
+                        </div>
+                        
                     </ul>
                 </>
             )
@@ -218,10 +220,10 @@ export default class UserProfile extends React.Component {
                         >
                             <i className="fas fa-plus"></i>
                         </button>
-                        {/* <button className="plus-board"
+                        <button className="plus-board"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
-                        </button> */}
+                        </button>
                     </div>
                 </>
             );
