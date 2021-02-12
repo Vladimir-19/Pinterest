@@ -3,38 +3,40 @@ import React from "react";
 class EditBoardForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // id: this.props.board.id,
-            title: this.props.board.title,
-            description: this.props.board.description,
-            secret: this.props.board.secret
-        };
+        this.state = this.props.board;
+        // this.state = {
+        //     // id: this.props.board.id,
+        //     title: this.props.board.title,
+        //     description: this.props.board.description,
+        //     secret: this.props.board.secret
+        // };
 
         this.update = this.update.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
+        // this.handleCheck = this.handleCheck.bind(this);
         this.openDeleteBoard = this.openDeleteBoard.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleSave = this.handleSave.bind(this);
     }
 
-    update(field) {
-        return (e =>
-            this.setState({ [field]: e.currentTarget.value })
-        )
+    update(e) { //update(field)
+        // return (e =>
+        //     this.setState({ [field]: e.currentTarget.value })
+        // )
+        this.setState({"title": e.currentTarget.value})
     }
 
-    handleCheck(e) {
-        e.preventDefault();
+    // handleCheck(e) {
+    //     e.preventDefault();
 
-        this.setState({ "secret": !this.state.secret }, () => {
-            const checkbox = document.getElementById('visibility-checkbox');
-            if (this.state.secret) {
-                checkbox.firstChild.classList.add('checked');
-            } else {
-                checkbox.firstChild.classList.remove('checked');
-            }
-        });
-    }
+    //     this.setState({ "secret": !this.state.secret }, () => {
+    //         const checkbox = document.getElementById('visibility-checkbox');
+    //         if (this.state.secret) {
+    //             checkbox.firstChild.classList.add('checked');
+    //         } else {
+    //             checkbox.firstChild.classList.remove('checked');
+    //         }
+    //     });
+    // }
 
     openDeleteBoard(e, boardId) {
         e.preventDefault();
@@ -51,12 +53,12 @@ class EditBoardForm extends React.Component {
         const username = this.props.currentUser.username;
         this.props.processForm(this.state)
             .then(this.props.closeModal)
-            .then(() => location.href = `/#/${username}`)
+            // .then(() => location.href = `/#/${username}`)
     }
-
+    
     render() {
         const { board, errors, formTitle } = this.props;
-        const checked = (this.state.secret) ? 'checked' : null;
+        // const checked = (this.state.secret) ? 'checked' : null;
 
         return (
             <div className="edit-board container">
@@ -80,7 +82,7 @@ class EditBoardForm extends React.Component {
                                     className="edit-board label"
                                     id="name-label">
                                     Name
-                </label>
+                                </label>
                             </div>
                             <div className="edit-board input-container">
                                 <span>
@@ -89,8 +91,8 @@ class EditBoardForm extends React.Component {
                                         className="edit-board input name"
                                         id="name-input"
                                         placeholder='Like "Places to Go" or "Recipes to Make"'
-                                        value={`${this.state.title}`}
-                                        onChange={this.update('title')}
+                                        // value={`${this.state.title}`}
+                                        onChange={this.update } //this.update('title')
                                     />
                                     <div className="edit-board error-container">
                                         <div className="edit-board error">
@@ -101,13 +103,13 @@ class EditBoardForm extends React.Component {
                             </div>
                         </div>
                         <div className="edit-board field description">
-                            <div className="edit-board label-container">
+                            {/* <div className="edit-board label-container">
                                 <label
                                     htmlFor="description-input"
                                     className="edit-board label"
                                     id="description-label">
                                     Description
-                </label>
+                                </label>
                             </div>
                             <div className="edit-board input-container">
                                 <span>
@@ -125,9 +127,9 @@ class EditBoardForm extends React.Component {
                                         </div>
                                     </div>
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
-                        <div className="edit-board field visibility">
+                        {/* <div className="edit-board field visibility">
                             <div className="edit-board label-container">
                                 <label
                                     htmlFor="visibility-input"
@@ -136,7 +138,7 @@ class EditBoardForm extends React.Component {
                                     onClick={this.handleCheck}
                                 >
                                     Visibility
-                </label>
+                                </label>
                             </div>
                             <div className="edit-board input-container secret">
                                 <button
@@ -151,9 +153,9 @@ class EditBoardForm extends React.Component {
                                 </button>
                                 <div className="edit-board visibility-note">
                                     Keep this board secret.
-                </div>
+                                </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="edit-board footer">
                         <div className="edit-board footer-part left">

@@ -22,7 +22,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-        @board = current_user.boards.find(params[:id])
+        @board = current_user.board #.find_by(params[:id])
 
         if @board.update(board_params)
             render "api/boards/show"

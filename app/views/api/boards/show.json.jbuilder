@@ -1,5 +1,5 @@
-json.set! @board.id do 
-    json.extract! @board, :id, :title, :description
+json.set! @board.ids do 
+    json.extract! @board, :ids, :title, :description
     json.userId @board.user_id
     json.pinIds @board.pins.pluck(:id)
     json.pins @board.pins

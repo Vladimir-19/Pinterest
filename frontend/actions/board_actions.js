@@ -49,7 +49,7 @@ export const deleteBoard = boardId => dispatch => {
 
 export const updateBoard = board => dispatch => {
     // return 
-    BoardAPIUtil.updateBoard(board).then(
+    return BoardAPIUtil.updateBoard(board).then(
         board => dispatch(receiveBoard(board)),
         err => dispatch(receiveBoardErrors(err.responseJSON))
     )
