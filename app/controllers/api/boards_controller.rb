@@ -22,12 +22,19 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-        @board = current_user.board #.find_by(params[:id])
+        # @board = current_user.boards.find(params[:id])
+        # # @board = Board.find(params[:id])
 
+        # if @board.update(board_params)
+        #     render "api/boards/show"
+        # else
+        #     render json: ["Can't edit this board!"], status: 401
+        # end
+        @board = current_user.boards.find(params[:id])
         if @board.update(board_params)
-            render "api/boards/show"
+        render "api/boards/show"
         else
-            render json: ["Can't edit this board!"], status: 401
+        rend
         end
     end
 
