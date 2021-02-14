@@ -13,7 +13,7 @@ class Board < ApplicationRecord
 
     has_many :pins,
         through: :associated_pins,
-        source: :pin
-        # dependent: :destroy
+        source: :pin,
+        dependent: :destroy
 
 end

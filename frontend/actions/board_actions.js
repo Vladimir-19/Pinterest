@@ -54,17 +54,17 @@ export const deleteBoard = boardId => dispatch => {
         .then(board => dispatch(removeBoar(board.id)))
 };
 
-export const updateBoard = board => dispatch => {
-    return BoardAPIUtil.updateBoard(board).then(
-        board => dispatch(receiveBoard(board)),
-        err => dispatch(receiveBoardErrors(err.responseJSON))
-        // // err => (dispatch(receiveSessionErrors(err.responseJSON)))
-    )
-};
-
-// export const updateBoard = board => dispatch => (
-//     BoardAPIUtil.updateBoard(board).then(
+// export const updateBoard = board => dispatch => {
+//     return BoardAPIUtil.updateBoard(board).then(
 //         board => dispatch(receiveBoard(board)),
 //         err => dispatch(receiveBoardErrors(err.responseJSON))
+//         // // err => (dispatch(receiveSessionErrors(err.responseJSON)))
 //     )
-// );
+// };
+
+export const updateBoard = board => dispatch => (
+    BoardAPIUtil.updateBoard(board).then(
+        board => dispatch(receiveBoard(board)),
+        err => dispatch(receiveBoardErrors(err.responseJSON))
+    )
+);
