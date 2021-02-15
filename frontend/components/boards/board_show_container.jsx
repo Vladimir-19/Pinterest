@@ -12,27 +12,27 @@ import { fetchBoards } from '../../actions/board_actions';
 import BoardShow from './board_show';
 
 
-// const mapStateToProps = (state, ownProps) => ({
-//     currentUser: state.entities.users[state.session.id],
-//     pins: state.entities.pins,
-//     modal: state.ui.modal,
-//     board: state.entities.boards[ownProps.match.params.boardId]
-//     // board: state.entities.boards[board.id]
-// });
-const mapStateToProps = (state, ownProps) => {
-    const board = Object.values(state.entities.boards).find(board =>
-        board.title === ownProps.match.params.boardTitle
-    ) || { board: { id: 0 } };
+const mapStateToProps = (state, ownProps) => ({
+    currentUser: state.entities.users[state.session.id],
+    pins: state.entities.pins,
+    modal: state.ui.modal,
+    board: state.entities.boards[ownProps.match.params.boardId]
+    // board: state.entities.boards[board.id]
+});
+// const mapStateToProps = (state, ownProps) => {
+//     const board = Object.values(state.entities.boards).find(board =>
+//         board.title === ownProps.match.params.boardTitle
+//     ) || { board: { id: 0 } };
 
-    return {
-        currentUser: state.entities.users[state.session.id],
-        board: state.entities.boards[board.id],
-        pins: state.entities.pins,
-        modal: state.ui.modal,
-        // boardsPins: Object.values(state.entities.boardsPins),
-        // errors: state.errors.board,
-    }
-};
+//     return {
+//         currentUser: state.entities.users[state.session.id],
+//         board: state.entities.boards[board.id],
+//         pins: state.entities.pins,
+//         modal: state.ui.modal,
+//         // boardsPins: Object.values(state.entities.boardsPins),
+//         // errors: state.errors.board,
+//     }
+// };
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
