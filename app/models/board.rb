@@ -6,13 +6,13 @@ class Board < ApplicationRecord
 
     belongs_to :user 
 
-    has_many :associated_pins,
+    has_many :boards_pins,
         class_name: :JoinBoardsPin,
         foreign_key: :board_id,
         dependent: :destroy
 
     has_many :pins,
-        through: :associated_pins,
+        through: :boards_pins,
         source: :pin,
         dependent: :destroy
 

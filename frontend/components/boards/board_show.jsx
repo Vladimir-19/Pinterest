@@ -162,7 +162,7 @@ export default class BoardShow extends React.Component {
                     {/* here  */}
                     <button
                         className="board-show button"
-                        onClick={(e, boardId) => openEditBoard(e, board.id)}
+                        onClick={(e, boardId) => openEditBoard(e, boardId)}
                     >
                         <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
                     </button>
@@ -196,6 +196,7 @@ export default class BoardShow extends React.Component {
                 
             )
         } else {
+            
             <p>this board has no pins yet!</p>
         }
     }

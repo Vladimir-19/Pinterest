@@ -239,10 +239,10 @@ class EditBoardForm extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
-        const username = this.props.currentUser.username;
+        // const username = this.props.currentUser.username;
         this.props.processForm(this.state)
-            .then(this.props.closeModal)
-            .then(() => location.href = `/#/${username}`)
+            // .then(this.props.closeModal)
+            // .then(() => location.href = `/#/${username}`)
     }
 
     render() {
