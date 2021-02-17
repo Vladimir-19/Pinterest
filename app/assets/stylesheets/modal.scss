@@ -46,6 +46,25 @@
   }
 }
 
+.create-board-container {
+  margin: 26px;
+  max-width: 500px;
+  width: 100%;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  padding: 16px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  font-family: Arial,
+    Helvetica,
+    sans-serif;
+  box-shadow: 0 0 10px 5px #555;
+  z-index: 10;
+}
+
 .modal-child {
   cursor: auto; // check other containers
   position: absolute;
