@@ -50,7 +50,7 @@ function Modal({ modal, closeModal, openModal }) {
             clickBackground = closeModal;
             break;
         case "edit-board":
-            component = <EditBoardForm/>;
+            component = <EditBoardForm />;
             clickBackground = closeModal;
             break;
         case "delete-board":

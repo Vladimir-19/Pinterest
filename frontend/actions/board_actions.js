@@ -18,8 +18,8 @@ const receiveBoards = boards => ({
 
 const receiveBoard = payload => ({
     type: RECEIVE_BOARD,
-    // board 
     payload
+    // booard
 });
 
 const removeBoar = boardId => ({

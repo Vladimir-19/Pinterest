@@ -1,87 +1,10 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-// import BoardItem from './board_item';
-
-// export default class BoardShow extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             loading: true,
-//             fetched: false,
-//             openPin: false,
-//             openPinId: null
-//         }
-
-//     }
-
-//     // handleClick(e) {
-//     //   let pin = (e.currentTarget);
-//     //   const pinId = (pin.getAttribute('value'))
-//     //   if (pinId) {
-//     //   this.setState({openPin: true, openPinId: pinId})
-//     // }
-//     // }
-
-//     componentDidMount() {
-//         this.props.fetchBoards();
-//         this.props.fetchPins().then(() => this.setState({ fetched: true, loading: false }))
-//     }
-
-//     render() {
-//         const { board, currentUser, pins } = this.props;
-
-//         if (board.pinIds.length == 0) {
-//             return (
-//                 <div>
-//                     <p id='no-pins-yet'>this board has no pins yet!</p>
-//                     <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-//                         <i className="fas fa-arrow-left"></i>
-//                     </Link>
-//                 </div>
-//             )
-//         }
-
-//         let pinArr = [];
-//         if (this.state.fetched == true && board.pinIds.length > 0) {
-//             board.pinIds.map(pinId => {
-//                 if (pinId != 'undefined') {
-//                     pinArr.push(pins[pinId])
-//                 }
-//             })
-//         }
-
-//         if (pinArr.length > 0) {
-//             return (
-//                 <div id='board-show-wrapper'>
-//                     <div id='board-show-header'>
-//                         <h1>{board.title}</h1>
-//                     </div>
-//                     <ul id='board-list-wrap'>
-//                         {pinArr.map((pin) => (
-//                             <BoardItem
-//                                 pin={pin}
-//                                 key={pin.id}
-//                             />
-//                         ))}
-//                     </ul>
-//                     <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-//                         <i className="fas fa-arrow-left"></i>
-//                     </Link>
-//                 </div>
-//             )
-//         } else {
-//             <p>this board has no pins yet!</p>
-//         }
-//     }
-// }
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
-import PinIndexContainer from '../pins/pin_index_container';
+// import PinIndexContainer from '../pins/pin_index_container';
 import BoardShowNavBar from './board_show_nav_bar'
 
 export default class BoardShow extends React.Component {
@@ -112,7 +35,7 @@ export default class BoardShow extends React.Component {
 
     openEditBoard() {
         e.preventDefault();
-        this.props.openEditBoard(this.props.currentUser.id)
+        this.props.openEditBoard(this.props.board.id)
     }
 
     render() {
@@ -126,17 +49,17 @@ export default class BoardShow extends React.Component {
         // if (this.state.loading) {
         //     return <LoadingIcon />;
         // }
-
-        if (board.pinIds.length == 0) {
-            return (
-                <div>
-                    <p id='no-pins-yet'>this board has no pins yet!</p>
-                    <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-                        <i className="fas fa-arrow-left"></i>
-                    </Link>
-                </div>
-            )
-        }
+                // I NEED THIS I NEED THIS I NEED THIS I NEED THIS
+            // if (board.pinIds.length == 0) {
+            //     return (
+            //         <div>
+            //             <p id='no-pins-yet'>this board has no pins yet!</p>
+            //             <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
+            //                 <i className="fas fa-arrow-left"></i>
+            //             </Link>
+            //         </div>
+            //     )
+            // }
         // <div className="board-show pin-feed">
         //     <PinIndexContainer
         //         pins={boardPins}
@@ -162,8 +85,12 @@ export default class BoardShow extends React.Component {
                     {/* here  */}
                     <button
                         className="board-show button"
-                        onClick={(e, boardId) => openEditBoard(e, boardId)}
+                        onClick={(e, board) => openEditBoard(e, board)} // was boardId
                     >
+                    {/* <button
+                        className="board-show button"
+                        onClick={(e, boardId) => openEditBoard(e, board.id)}
+                    > */}
                         <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
                     </button>
 
@@ -201,32 +128,21 @@ export default class BoardShow extends React.Component {
         }
     }
 }
+
 // import React, { Component } from 'react'
 
 // import BoardShowNavBar from './board_show_nav_bar';
-// import PinIndexContainer from "../pins/pin_index_container";
-
-// import { Link } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-// import BoardItem from './board_item';
+// // import PinIndexContainer from "../pin/pin_index_container";
 
 // export default class BoardShow extends Component {
 //     constructor(props) {
 //         super(props);
-//         this.state = {
-//             loading: true,
-//             fetched: false,
-//             openPin: false,
-//             openPinId: null
-//         }
 
 //         this.openEditBoard = this.openEditBoard.bind(this);
 //     }
 
 //     componentDidMount() {
-//         // this.props.fetchSingleUser(this.props.currentUser.id);
-//         this.props.fetchBoards();
-//         this.props.fetchPins().then(() => this.setState({ fetched: true, loading: false }))
+//         this.props.fetchSingleUser(this.props.currentUser.id);
 //     }
 
 //     openEditBoard(e) {
@@ -244,10 +160,10 @@ export default class BoardShow extends React.Component {
 //         ) : (
 //                 null
 //             );
-//         // let boardPins = boardsPins
-//         //     // .filter(boardPin => board.id === boardPin.boardId)
-//         //     // .map(boardPin => pins[boardPin.pinId])
-//         //     // .filter(boardPin => boardPin !== undefined);
+//         let boardPins = boardsPins
+//             .filter(boardPin => board.id === boardPin.boardId)
+//             .map(boardPin => pins[boardPin.pinId])
+//             .filter(boardPin => boardPin !== undefined);
 
 //         return (
 //             <div className="board-show container">
@@ -279,12 +195,12 @@ export default class BoardShow extends React.Component {
 //                         </div>
 //                     </div>
 //                 </div>
-//                 <div className="board-show pin-feed">
-//                     {/* <PinIndexContainer
-//                         // pins={boardPins}
+//                 {/* <div className="board-show pin-feed">
+//                     <PinIndexContainer
+//                         pins={boardPins}
 //                         page="profile"
-//                     /> */}
-//                 </div>
+//                     />
+//                 </div> */}
 //             </div>
 //         )
 //     }
