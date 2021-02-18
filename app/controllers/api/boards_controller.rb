@@ -32,6 +32,7 @@ class Api::BoardsController < ApplicationController
         # end
 
         @board = Board.find(params[:id])
+        # @board = Board.find(params[:board][:id])
         # @board = current_user.boards.find(params[:id])
 
         if @board.update(board_params)

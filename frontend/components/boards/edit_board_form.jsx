@@ -5,10 +5,19 @@ class EditBoardForm extends React.Component {
         super(props);
         this.state = {
             id: this.props.boardId,
-            // id: this.props.board.id,
+            // id: this.props.board,
             title: this.props.title,
             description: this.props.description,
         };
+        // this.state = this.props.board
+        // this.state = { ...this.props.board }
+        // debugger
+        // this.setState({ ...this.state, [field]: e.currentTarget.value })
+        // this.state = {
+        //     id: this.props.board.id,
+        //     title: this.props.board.title,
+        //     description: this.props.board.description,
+        // };
 
         this.update = this.update.bind(this);
         this.openDeleteBoard = this.openDeleteBoard.bind(this);
@@ -34,6 +43,7 @@ class EditBoardForm extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
+        // debugger
         this.props.processForm(this.state)
     }
 
@@ -61,6 +71,7 @@ class EditBoardForm extends React.Component {
                                     placeholder='Like "Places to Go" or "Recipes to Make"'
                                     value={`${this.state.title}`}
                                     onChange={this.update('title')}
+                                    // onChange={() => this.update('title')}
                                 />
                             </span>
                         </div>
@@ -72,7 +83,7 @@ class EditBoardForm extends React.Component {
                             Description
                                 </label>
                         <div>
-                            <span>
+                            {/* <span>
                                 <textarea
                                     id="description-input"
                                     placeholder="What's your board about?"
@@ -83,7 +94,7 @@ class EditBoardForm extends React.Component {
                                 <div>
                                     <span className="edit-board error-content"></span>
                                 </div>
-                            </span>
+                            </span> */}
                         </div>
                     </div>
 

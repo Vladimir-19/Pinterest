@@ -17,7 +17,7 @@ export default class BoardShow extends React.Component {
             openPinId: null
         }
 
-        this.openEditBoard = this.openEditBoard.bind(this)
+        // this.openEditBoard = this.openEditBoard.bind(this)
     }
 
     // handleClick(e) {
@@ -33,10 +33,10 @@ export default class BoardShow extends React.Component {
         this.props.fetchPins().then(() => this.setState({ fetched: true, loading: false }))
     }
 
-    openEditBoard() {
-        e.preventDefault();
-        this.props.openEditBoard(this.props.board.id)
-    }
+    // openEditBoard() {
+    //     e.preventDefault();
+    //     this.props.openEditBoard(this.props.board.id)
+    // }
 
     render() {
         const { board, currentUser, pins, boardsPins, openEditBoard } = this.props;

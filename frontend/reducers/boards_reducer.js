@@ -22,8 +22,8 @@ const BoardReducer = (state = {}, action) => {
         case REMOVE_BOARD:
             delete nextState[action.boardId];
             return nextState
-        case RECEIVE_BOARD_PIN:
-            return Object.assign({}, state, action.board)
+        // case RECEIVE_BOARD_PIN:
+        //     return Object.assign(nextState, action.board)
         default:
             return state;
     }
