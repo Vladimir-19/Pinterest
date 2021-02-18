@@ -1,3 +1,122 @@
+import React from "react";
+
+class EditBoardForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.boardId,
+            // id: this.props.board.id,
+            title: this.props.title,
+            description: this.props.description,
+        };
+
+        this.update = this.update.bind(this);
+        this.openDeleteBoard = this.openDeleteBoard.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+    }
+
+    update(field) {
+        return (e =>
+            this.setState({ [field]: e.currentTarget.value })
+        )
+    }
+
+    openDeleteBoard(e, boardId) {
+        e.preventDefault();
+        this.props.openDeleteBoard(boardId);
+    }
+
+    handleClose(e) {
+        e.preventDefault();
+        this.props.closeModal();
+    }
+
+    handleSave(e) {
+        e.preventDefault();
+        this.props.processForm(this.state)
+    }
+
+    render() {
+        const { board, errors, formTitle } = this.props;
+
+        return (
+            <div >
+                <form >
+                    <div >
+                        {formTitle}
+                    </div>
+
+                    <div>
+                        <label
+                            htmlFor="name-input"
+                            id="name-label">
+                            Name
+                                </label>
+                        <div>
+                            <span>
+                                <input
+                                    type="text"
+                                    id="name-input"
+                                    placeholder='Like "Places to Go" or "Recipes to Make"'
+                                    value={`${this.state.title}`}
+                                    onChange={this.update('title')}
+                                />
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            htmlFor="description-input"
+                            id="description-label">
+                            Description
+                                </label>
+                        <div>
+                            <span>
+                                <textarea
+                                    id="description-input"
+                                    placeholder="What's your board about?"
+                                    value={`${this.state.description}`}
+                                    onChange={this.update('description')}
+                                    rows="3"
+                                />
+                                <div>
+                                    <span className="edit-board error-content"></span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <button
+                                onClick={(e, boardId) => this.openDeleteBoard(e, boardId)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                        <div >
+                            <button
+                                onClick={this.handleClose}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={this.handleSave}
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}
+
+export default EditBoardForm;
+
+
 // // import React from "react";
 
 // // class EditBoardForm extends React.Component {
@@ -379,120 +498,3 @@
 // export default EditBoardForm;
 
 
-import React from "react";
-
-class EditBoardForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: this.props.boardId, 
-            // id: this.props.board.id,
-            title: this.props.title,
-            description: this.props.description,
-        };
-
-        this.update = this.update.bind(this);
-        this.openDeleteBoard = this.openDeleteBoard.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleSave = this.handleSave.bind(this);
-    }
-
-    update(field) {
-        return (e =>
-            this.setState({ [field]: e.currentTarget.value })
-        )
-    }
-
-    openDeleteBoard(e, boardId) {
-        e.preventDefault();
-        this.props.openDeleteBoard(boardId);
-    }
-
-    handleClose(e) {
-        e.preventDefault();
-        this.props.closeModal();
-    }
-
-    handleSave(e) {
-        e.preventDefault();
-        this.props.processForm(this.state)
-    }
-
-    render() {
-        const { board, errors, formTitle } = this.props;
-
-        return (
-            <div >
-                <form >
-                        <div >
-                            {formTitle}
-                        </div>
-                        
-                        <div>
-                                <label
-                                    htmlFor="name-input"
-                                    id="name-label">
-                                    Name
-                                </label>
-                            <div>
-                                <span>
-                                    <input
-                                        type="text"
-                                        id="name-input"
-                                        placeholder='Like "Places to Go" or "Recipes to Make"'
-                                        value={`${this.state.title}`}
-                                        onChange={this.update('title')}
-                                    />
-                                </span>
-                            </div>
-                        </div>
-                        <div>
-                                <label
-                                    htmlFor="description-input"
-                                    id="description-label">
-                                    Description
-                                </label>
-                            <div>
-                                <span>
-                                    <textarea
-                                        id="description-input"
-                                        placeholder="What's your board about?"
-                                        value={`${this.state.description}`}
-                                        onChange={this.update('description')}
-                                        rows="3"
-                                    />
-                                        <div>
-                                            <span className="edit-board error-content"></span>
-                                        </div>
-                                </span>
-                            </div>
-                        </div>
-                        
-                    <div>
-                        <div>
-                            <button
-                                onClick={(e, boardId) => this.openDeleteBoard(e, boardId)}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                        <div >
-                            <button
-                                onClick={this.handleClose}
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={this.handleSave}
-                            >
-                                Save
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        );
-    }
-}
-
-export default EditBoardForm;
