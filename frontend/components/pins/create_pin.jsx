@@ -21,7 +21,7 @@ class CreatePinForm extends React.Component {
     //wtf
     componentDidMount() {
         this.props.fetchBoards();
-            this.props.fetchPins();
+            // this.props.fetchPins();
 
     }
 
@@ -226,7 +226,7 @@ class CreatePinForm extends React.Component {
                             <div className="create-pin" id="details-container">
                                 <div className="create-pin" id="title-container">
                                     <input
-                                        // type="text"
+                                        type="text"
                                         className="create-pin"
                                         id="title"
                                         placeholder="Add your title"

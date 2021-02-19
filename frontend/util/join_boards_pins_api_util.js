@@ -5,7 +5,8 @@ export const pinToBoard = (boardPin) => {
         method: "POST",
         url: "/api/joinboardspins",
         // url: `/api/boards_pins`,
-        data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} }
+        // data: { boardPin: {pin_id: boardPin.pinId, board_id: boardPin.boardId} } //was this
+        data: { boardPin }
         // try this 
         // data: { boardPin }
     })

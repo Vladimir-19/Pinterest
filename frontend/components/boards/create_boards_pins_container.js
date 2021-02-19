@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
     fetchBoards: () => dispatch(fetchBoards()),
-    pinToBoard: (boardPin) => dispatch(pinToBoard(boardPin))
+    pinToBoard: boardPin => dispatch(pinToBoard(boardPin))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateBoardsPinsForm);

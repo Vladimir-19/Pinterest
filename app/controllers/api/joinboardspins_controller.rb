@@ -5,11 +5,11 @@ class Api::JoinboardspinsController < ApplicationController
     def create 
         @boardPin = JoinBoardsPin.new(boardPin_params)
         if @boardPin.save 
-            @board = Board.find(@boardPin.board_id)
+            # @board = Board.find(@boardPin.board_id) //was this
             render "api/boards/show"
         else
-            render json: @board.errors.full_messages, status: 422
-            #  render json: @boardPin.errors.full_messages, status: 422
+            # render json: @board.errors.full_messages, status: 422
+             render json: @boardPin.errors.full_messages, status: 422
         end
     end
 
