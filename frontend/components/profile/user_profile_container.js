@@ -15,11 +15,13 @@ import {
 import ProfileShow from './user_profile';
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+    // debugger;
+    return {
     currentUser: state.entities.users[state.session.id],
     boards: Object.values(state.entities.boards),
     pins: (state.entities.pins)
-});
+}};
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),

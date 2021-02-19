@@ -7,6 +7,9 @@ import BoardItem from './board_item';
 // import PinIndexContainer from '../pins/pin_index_container';
 import BoardShowNavBar from './board_show_nav_bar'
 
+//delte
+import edit from './edit';
+
 export default class BoardShow extends React.Component {
     constructor(props) {
         super(props)
@@ -18,8 +21,14 @@ export default class BoardShow extends React.Component {
         }
 
         // this.openEditBoard = this.openEditBoard.bind(this)
-    }
+        this.handleSave = this.handleSave.bind(this);
 
+    }
+    handleSave(e) {
+        e.preventDefault();
+        // debugger
+        this.props.processForm(this.state)
+    }
     // handleClick(e) {
     //   let pin = (e.currentTarget);
     //   const pinId = (pin.getAttribute('value'))
@@ -74,6 +83,8 @@ export default class BoardShow extends React.Component {
                 }
             })
         }
+        let hoho = board.id
+
 
         if (pinArr.length >= 0) {
             return (
@@ -83,6 +94,7 @@ export default class BoardShow extends React.Component {
                      
                     </div>
                     {/* here  */}
+                    
                     <button
                         className="board-show button"
                         onClick={(e, board) => openEditBoard(e, board)} // was boardId
