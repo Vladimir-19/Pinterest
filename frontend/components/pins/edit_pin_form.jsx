@@ -3,13 +3,14 @@ import React from "react";
 class EditPinForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            id: this.props.pin.id,
-            title: this.props.pin.title,
-            description: this.props.pin.description,
-            url: this.props.pin.url,
-            user_id: this.props.pin.userId
-        };
+        // this.state = {
+        //     id: this.props.pin.id,
+        //     title: this.props.pin.title,
+        //     description: this.props.pin.description,
+        //     url: this.props.pin.url,
+        //     user_id: this.props.pin.userId
+        // };
+        this.state = this.props.pin
 
         this.update = this.update.bind(this);
         this.openDeletePin = this.openDeletePin.bind(this);

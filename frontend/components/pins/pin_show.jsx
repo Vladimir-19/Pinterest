@@ -380,7 +380,7 @@ class PinShow extends React.Component {
                         </div>
                         <div className="pin-show second-half">
                             <div className="pin-show nav-bar">
-                                
+                                here 
                                 {/* <div className="create-pin" id="select-board-dropdown">
                                     <div className="create-pin" id="select-board-label">
                                         <div className="create-pin" id="selected-board">
@@ -401,6 +401,8 @@ class PinShow extends React.Component {
                                 </a>
                             </div>
                             <div className="pin-show info">
+                                {editPinLink} 
+
                                 {pinSource}
                                 {pinTitle}
                                 <div className="pin-show description">
