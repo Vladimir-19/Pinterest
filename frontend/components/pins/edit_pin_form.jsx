@@ -10,7 +10,8 @@ class EditPinForm extends React.Component {
         //     url: this.props.pin.url,
         //     user_id: this.props.pin.userId
         // };
-        this.state = this.props.pin
+        // this.state = this.props.pin
+        // this.setState({ ...this.state, [field]: e.currentTarget.value })
 
         this.update = this.update.bind(this);
         this.openDeletePin = this.openDeletePin.bind(this);

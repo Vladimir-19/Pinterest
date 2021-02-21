@@ -170,7 +170,8 @@ import DropdownContainer from "./show_sropdown_container";
 class PinShow extends React.Component {
     constructor(props) {
         super(props);
-        this.goBack = this.goBack.bind(this);
+
+        // this.goBack = this.goBack.bind(this);
         // //this 
         // this.hideBoardList = this.hideBoardList.bind(this);
         // this.selectBoard = this.selectBoard.bind(this);
@@ -221,6 +222,7 @@ class PinShow extends React.Component {
         this.props.history.goBack();
     }
 
+    // onChange()
     render() {
         const { pin, users, currentUserId, openEditPin, openNewBoardPin } = this.props;
         if (!pin)
@@ -393,16 +395,15 @@ class PinShow extends React.Component {
                                 </div> */}
 
                                 {editPinLink} 
-                                <div></div>
+                                <div> openNewBoardPin</div>
                                 <a
+                                    
                                     className="pin-show save-board-pin-link"
                                     onClick={() => openNewBoardPin(pin.id)}>
                                     <div className="pin-show save-board-pin-text">Save</div>
                                 </a>
                             </div>
                             <div className="pin-show info">
-                                {editPinLink} 
-
                                 {pinSource}
                                 {pinTitle}
                                 <div className="pin-show description">
