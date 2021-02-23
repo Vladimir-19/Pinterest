@@ -11,8 +11,8 @@ class Api::PinsController < ApplicationController
     end
 
     def show 
-        @pin = Pin.find_by(params[:pin_id])
-        # @pin = Pin.find(params[:id])
+        # @pin = Pin.find_by(params[:pin_id])
+        @pin = Pin.find(params[:id])
         render "api/pins/show"
     end
 
@@ -23,7 +23,8 @@ class Api::PinsController < ApplicationController
 
     def update 
         # @pin = Pin.find_by(params[:id])
-        @pin = current_user.pins.find(params[:id])
+        # @pin = current_user.pins.find(params[:id])
+        @pin = Pin.find_by(params[:pin_id])
         
         if @pin.update(pin_params)
             render "api/pins/show"

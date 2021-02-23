@@ -21,11 +21,18 @@ import EditPinForm from "./edit_pin_form";
 
 // export default connect(mapStateToProps, mapDispatchToProps)(EditPinForm);
 
-const mapStateToProps = state => ({
-    pin: state.entities.pins[state.ui.objectId],
+const mapStateToProps = state => {
+    // debugger
+    return {
+        // pin: Object.values(state.entities.pinss).filter(pin => (
+        //     pin.pinId === state.pinId
+        // )),
+    // pin: state.entities.pins[state.ui.objectId],
+    // pin: state.entities.pins[state.ui.pinId],
+    // pin: state.entities.pins[state.pinId],
     errors: state.errors.pin,
     formTitle: "Edit this Pin"
-});
+}};
 
 const mapDispatchToProps = dispatch => ({
     processForm: pin => dispatch(updatePin(pin)),

@@ -277,6 +277,7 @@ import { Link } from 'react-router-dom';
 class PinShow extends React.Component {
     constructor(props) {
         super(props);
+        // this.state = this.props.board  
         this.goBack = this.goBack.bind(this);
     }
 
@@ -314,7 +315,7 @@ class PinShow extends React.Component {
         const editPinLink = (pin.userId === currentUserId) ? (
             <a
                 className="pin-show edit-pin-link"
-                onClick={() => openEditPin(pin.id)}
+                onClick={(pin) => openEditPin(pin.id)}
             >
                 <i className="fas fa-pencil-alt edit-pin-icon"></i>
             </a>
@@ -405,7 +406,6 @@ class PinShow extends React.Component {
                         <div className="pin-show second-half">
                             <div className="pin-show nav-bar">
                                 {editPinLink}
-                                <div></div>
                                 <a
                                     className="pin-show save-board-pin-link"
                                     onClick={() => openNewBoardPin(pin.id)}
@@ -418,6 +418,7 @@ class PinShow extends React.Component {
                                 {pinTitle}
                                 <div className="pin-show description">
                                     {pin.description}
+                                    <div>                <h1> Id: {pin.id}</h1></div>
                                 </div>
                             </div>
                             <div className="pin-show credit">
