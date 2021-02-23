@@ -24,9 +24,9 @@ import EditPinForm from "./edit_pin_form";
 const mapStateToProps = state => {
     // debugger
     return {
-        // pin: Object.values(state.entities.pinss).filter(pin => (
-        //     pin.pinId === state.pinId
-        // )),
+        pin: Object.values(state.entities.pins).filter(pin => (
+            pin.pinId === state.pinId
+        )),
     // pin: state.entities.pins[state.ui.objectId],
     // pin: state.entities.pins[state.ui.pinId],
     // pin: state.entities.pins[state.pinId],

@@ -11,6 +11,3 @@ Rails.application.routes.draw do
   root to: "static_pages#root"
 end
 
-# HOMEWORK 
-# DO CHECK IF IN PAANTER EDIT BOARD IN USER PANALE IS THE SAME AS ESDIT IN THE 
-# BOARD SHOW

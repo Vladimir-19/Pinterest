@@ -13,7 +13,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = selected_user
     render "api/users/show"
   end
 
@@ -62,4 +63,9 @@ class Api::UsersController < ApplicationController
   def profile_params
     params.require(:user).permit( :email, :first_name, :last_name, :age, :photo)
   end
+
+    def selected_user
+    User.includes(:boards, :pins, :boards_pins).find(params[:id])
+  end
+
 end

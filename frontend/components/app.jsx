@@ -23,13 +23,17 @@ const App  = () => (
             <NavBar />
         </header>
         <Switch>
-            <Route exact path="/" component={HomeContainer} /> 
             {/* <Route exact path="/" component={SplashContainer}/> */}
             {/* <Route exact path="/search" component={PinIndexSearchContainer}/> */}
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
             <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer}/>
             <ProtectedRoute exact path="/pin/:pinId" component={PinShowContainer}/>
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
+            <ProtectedRoute exact path="/following" component={HomeContainer} />
+            {/* <ProtectedRoute exact path="/:user/pins" component={UserProfileContainer} />
+            <ProtectedRoute exact path="/:user/boards" component={UserProfileContainer} />
+            <ProtectedRoute exact path="/:user" component={UserProfileContainer} /> */}
+            <Route exact path="/" component={HomeContainer} /> 
         </Switch>
         <footer>
         </footer>

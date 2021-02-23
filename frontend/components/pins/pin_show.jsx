@@ -292,8 +292,8 @@ class PinShow extends React.Component {
     }
 
     render() {
-        const { pin, users, currentUserId, openEditPin, openNewBoardPin } = this.props;
-        if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
+        const { pin, pinId, currentUserId, openEditPin, openNewBoardPin } = this.props;
+        if (!pin) return <div style={{ "paddingTop": "65px" }}> <h3>Loading...</h3></div>;
 
         const pinOwner = pin.user || { username: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
@@ -315,7 +315,7 @@ class PinShow extends React.Component {
         const editPinLink = (pin.userId === currentUserId) ? (
             <a
                 className="pin-show edit-pin-link"
-                onClick={(pin) => openEditPin(pin.id)}
+                onClick={() => openEditPin(pinId)}
             >
                 <i className="fas fa-pencil-alt edit-pin-icon"></i>
             </a>
