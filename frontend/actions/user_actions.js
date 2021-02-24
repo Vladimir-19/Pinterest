@@ -22,9 +22,13 @@ const receiveSingleUser = payload => ({
     payload
 });
 
-export const fetchUser = userId => dispatch (
-    APIUtil.fetchUser(userId).then(
-        user => dispatch(receiveUser(user)))
+// export const fetchUser = userId => dispatch (
+//     APIUtil.fetchUser(userId).then(
+//         user => dispatch(receiveUser(user)))
+// )
+export const fetchUser = id => dispatch(
+    APIUtil.fetchUser(id).then(
+        payload => dispatch(receiveUser(payload)))
 )
 
 export const updateUser = (user, id) => dispatch => (
@@ -40,7 +44,7 @@ export const fetchAllUsers = () => dispatch => (
         .then(users => dispatch(receiveAllUsers(users)))
 );
 
-export const fetchSingleUser = id => dispatch => (
-    UserAPIUtil.fetchSingleUser(id)
-        .then(payload => dispatch(receiveSingleUser(payload)))
-);
+// export const fetchSingleUser = id => dispatch => (
+//     UserAPIUtil.fetchSingleUser(id)
+//         .then(payload => dispatch(receiveSingleUser(payload)))
+// );

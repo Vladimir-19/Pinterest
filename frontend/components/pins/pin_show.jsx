@@ -334,6 +334,7 @@ class PinShow extends React.Component {
         ) : (
                 <div className="pin-show source-link">
                     <div>Uploaded by&nbsp;
+                        <h2>{pin.user_id}: creator id</h2> 
             <Link to={`/${pinOwner.username}`}>
                             <strong>{pinOwnerFullName}</strong>
                         </Link>

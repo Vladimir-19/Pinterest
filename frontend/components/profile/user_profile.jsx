@@ -27,6 +27,15 @@ export default class UserProfile extends React.Component {
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
         //
         window.addEventListener("scroll", this.handleScroll);
+
+        const username = this.props.match.params.username;
+        const fetchUser = (userId) => this.props.fetchSingleUser(userId);
+        // this.props.fetchAllUsers()
+        //     .then(res => {
+        //         const user = Object.values(res.users).find(user => user.username === username);
+        //         return fetchUser(user.id);
+        //     });
+
     }
 
             // extra
@@ -206,11 +215,11 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
-                    <ProfileNavBar
+                    {/* <ProfileNavBar
                         user={user}  //USER IS NOT DEFINED
                         openModal={openModal}
                         closeModal={closeModal}
-                        />
+                        /> */}
                     <p>You don't have any boards yet!</p>
                     <div className='edit-create-button-wrapper'>
                         <button

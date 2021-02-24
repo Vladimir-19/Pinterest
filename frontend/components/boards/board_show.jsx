@@ -40,6 +40,7 @@ export default class BoardShow extends React.Component {
     componentDidMount() {
         this.props.fetchBoards();
         this.props.fetchPins().then(() => this.setState({ fetched: true, loading: false }))
+        // this.props.fetchUser(this.props.currentUser.id);
     }
 
     // openEditBoard() {

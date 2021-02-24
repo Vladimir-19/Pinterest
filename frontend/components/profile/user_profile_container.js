@@ -1,18 +1,11 @@
-import {
-    connect
-} from 'react-redux';
-
-import {
-    fetchPins
-} from '../../actions/pin_actions';
-
+import { connect } from 'react-redux';
+import { fetchPins } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
 
-import {
-    openModal
-} from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions';
 
 import ProfileShow from './user_profile';
+import { fetchUser } from '../../util/user_api_util';
 
 
 const mapStateToProps = (state) => {
@@ -24,6 +17,8 @@ const mapStateToProps = (state) => {
 }};
 
 const mapDispatchToProps = dispatch => ({
+    // fetchAllUsers: () => dispatch(fetchAllUsers()),
+    // fetchUser: id => dispatch(fetchUser(id)),
     openModal: modal => dispatch(openModal(modal)),
     fetchBoards: () => dispatch(fetchBoards()),
     fetchPins: () => dispatch(fetchPins())

@@ -10,8 +10,8 @@ import { fetchPins } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
 
 import { withRouter } from "react-router-dom";
-import { fetchSingleUser } from "../../actions/user_actions";
-
+// import { fetchSingleUser } from "../../actions/user_actions";
+import { fetchUser } from "../../actions/user_actions";
 
 import BoardShow from './board_show';
 
@@ -48,6 +48,8 @@ const mapStateToProps = (state, ownProps) => {
 // };
 
 const mapDispatchToProps = dispatch => ({
+    fetchUser:  userId => dispatch(fetchUser(userId)), // to be continued
+
     openModal: modal => dispatch(openModal(modal)),
     fetchPins: () => dispatch(fetchPins()),
     fetchBoards: () => dispatch(fetchBoards()),
