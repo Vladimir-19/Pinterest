@@ -10,7 +10,7 @@ const nullUser = Object.freeze({
 
 const sessionReducer = (state = nullUser, action) => {
     Object.freeze(state);
-    console.log(action, state)
+    // console.log(action, state)
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return { id: action.currentUser.id };

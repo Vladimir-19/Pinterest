@@ -6,6 +6,6 @@ import objectId from './modal_object_reducer';
 
 export default combineReducers({
     modal,
-    loading,
-    objectId
+    objectId,
+    loading
 });

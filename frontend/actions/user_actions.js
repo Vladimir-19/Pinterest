@@ -3,13 +3,13 @@ import * as APIUtil from '../util/user_api_util';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
-export const RECEIVE_SINGLE_USER = "RECEIVE_SINGLE_USER";
+// export const RECEIVE_SINGLE_USER = "RECEIVE_SINGLE_USER";
 
 
 
-const receiveUser = user => ({
+const receiveUser = payload => ({ //user
     type: RECEIVE_USER,
-    user
+    payload //user
 });
 
 const receiveUserErrors = errors => ({
@@ -17,10 +17,15 @@ const receiveUserErrors = errors => ({
     errors
 });
 
-const receiveSingleUser = payload => ({
-    type: RECEIVE_SINGLE_USER,
-    payload
+const receiveAllUsers = users => ({
+    type: RECEIVE_ALL_USERS,
+    users
 });
+
+// const receiveSingleUser = payload => ({
+//     type: RECEIVE_SINGLE_USER,
+//     payload
+// });
 
 // export const fetchUser = userId => dispatch (
 //     APIUtil.fetchUser(userId).then(
@@ -40,7 +45,7 @@ export const updateUser = (user, id) => dispatch => (
 
 // EXTRA 
 export const fetchAllUsers = () => dispatch => (
-    UserAPIUtil.fetchAllUsers()
+    APIUtil.fetchAllUsers()
         .then(users => dispatch(receiveAllUsers(users)))
 );
 
