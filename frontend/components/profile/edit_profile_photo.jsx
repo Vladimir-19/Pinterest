@@ -5,7 +5,7 @@ class EditProfileImage extends React.Component {
     render() {
         return (
             <AvatarEditor
-                image="http://example.com/initialimage.jpg"
+                // image="http://example.com/initialimage.jpg"
                 width={250}
                 height={250}
                 border={50}

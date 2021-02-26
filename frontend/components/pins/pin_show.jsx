@@ -295,6 +295,7 @@ class PinShow extends React.Component {
         const { pin, pinId, currentUserId, openEditPin, openNewBoardPin } = this.props;
         if (!pin) return <div style={{ "paddingTop": "65px" }}> <h3>Loading...</h3></div>;
 
+        const pinOwnerId = pin.user_id
         const pinOwner = pin.user || { username: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
         const imgLink = (pin.url === "") ? (
@@ -334,7 +335,7 @@ class PinShow extends React.Component {
         ) : (
                 <div className="pin-show source-link">
                     <div>Uploaded by&nbsp;
-                        <h2>{pin.user_id}: creator id</h2> 
+                        {/* <h2>{pin.id}: creator id</h2>  */}
             <Link to={`/${pinOwner.username}`}>
                             <strong>{pinOwnerFullName}</strong>
                         </Link>

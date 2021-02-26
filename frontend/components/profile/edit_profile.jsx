@@ -1,173 +1,474 @@
-import React from 'react';
+// import React from 'react';
 
-export default class EditProfile extends React.Component {
+// export default class EditProfile extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = this.currentState();
+
+//         this.handleUpdate = this.handleUpdate.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.renderErrors = this.renderErrors.bind(this);
+//         this.currentState = this.currentState.bind(this);
+//         this.handleFile = this.handleFile.bind(this);
+//     }
+
+//     handleUpdate(field) {
+//         return e => {
+//             this.setState({ [field]: e.currentTarget.value })
+//         }
+//     }
+
+//     currentState() {
+//         const initialState = Object.assign({}, {
+//             photo: null, //photoUrl
+//             photoFile: null,
+//             first_name: this.props.currentUser.firstName || '',
+//             last_name: this.props.currentUser.lastName || '',
+//             username: this.props.currentUser.username || '',
+//             id: this.props.currentUser.id,
+//             loading: false
+//         });
+
+//         return initialState
+//     }
+
+//     renderErrors() {
+//         return (
+//             <ul>
+//                 {this.props.errors.map((error, i) => (
+//                     <li className="session-errors"
+//                         key={`error-${i}`}>
+//                         {error}
+//                     </li>
+//                 ))}
+//             </ul>
+//         );
+//     }
+
+
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         const details = Object.assign({}, this.state);
+//         delete details["id"];
+//         delete details["photo"]; //photoUrl
+//         delete details["loading"];
+//         this.setState({ loading: true })
+//         if (this.state.photoFile === null) {
+//             delete details["photoFile"];
+//         }
+
+//         const formData = new FormData();
+//         for (let key in details) {
+//             formData.append(`user[${key}]`, details[key])
+//         }
+//         this.props.updateUser(formData, this.props.currentUser.id).then(
+//             () => location.reload(false) && this.setState({ loading: false })
+//         )
+//     }
+
+
+//     handleButton(e) {
+//         e.preventDefault();
+
+//         this.handleSubmit(e);
+//     }
+
+//     handleDragOver(e) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//     }
+
+//     handleDragEnter(e) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//     }
+
+//     handleDrop(e) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         let file = e.dataTransfer.files[0];
+//         const fileReader = new FileReader();
+//         fileReader.onloadend = () => {
+//             this.setState({ photoFile: file, photo: fileReader.result }); //photoUrl
+//         };
+//         if (file) {
+//             fileReader.readAsDataURL(file)
+//         }
+//     };
+
+
+//     handleFile(e) {
+//         const file = e.target.files[0];
+//         const fileReader = new FileReader();
+//         fileReader.onloadend = () => {
+//             this.setState({ photoFile: file, photo: fileReader.result });  //photoUrl
+//         };
+//         if (file) {
+//             fileReader.readAsDataURL(file);
+//         }
+//     }
+
+//     render() {
+//         const { currentUser } = this.props;
+
+//         let preview = (this.state.photo) ? <img className="edit-user-profile-image" src={this.state.photo}></img> : <label><i className="fas fa-arrow-circle-up"></i><span>Drag and drop or click to upload</span><input id="pinFile" onChange={this.handleFile} type="file" /></label> //photoUrl
+
+//         let current = (currentUser.photo) ? <img className="edit-user-profile-image" src={currentUser.photo}></img> : null; //photoUrl
+
+//         return (
+//             <>
+//                 <div className="create-board-container">
+                    
+//                     <div className="modal-pinboard-text">
+//                         <h1>Edit Profile</h1>
+//                     </div>
+//                     <div className='create-board-inputs'>
+//                         <div id='upload-space-wrapper'>
+//                             <div id="upload-space-edit"
+//                                 onDrop={this.handleDrop}
+//                                 onDragEnter={this.handleDragEnter}
+//                                 onDragOver={this.handleDragOver}>
+//                                 {preview}
+//                             </div>
+//                             {current}
+//                         </div>
+//                         <span>First name</span>
+//                         <h1 id='board-name'>
+//                             <input
+//                                 className="create-board-title"
+//                                 type="text"
+//                                 onChange={this.handleUpdate('first_name')}
+//                                 placeholder='Like "Places to Go" or "Recipes to Make"'
+//                                 value={this.state.first_name}
+//                                 placeholder='Enter your first name'
+//                             />
+//                         </h1>
+//                         <span>Last name</span>
+//                         <h1 id='board-name'>
+//                             <input
+//                                 className="create-board-title"
+//                                 type="text"
+//                                 onChange={this.handleUpdate('last_name')}
+//                                 value={this.state.last_name}
+//                                 placeholder='Enter your last name'
+//                             />
+//                         </h1>
+//                         <span>Username</span>
+//                         <p id='board-details'>
+//                             <input
+//                                 className="create-board-link"
+//                                 type="text"
+//                                 onChange={this.handleUpdate('username')}
+//                                 value={this.state.username}
+//                                 placeholder='Choose a username'
+//                             />
+//                         </p>
+//                         <button className='submit-board' onClick={this.handleSubmit}>Create</button>
+//                         {this.renderErrors()}
+//                     </div>
+//                 </div>
+//             </>
+//         )
+//     }
+// }
+
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+
+
+class EditProfileForm extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = this.currentState();
+        super(props);
+        this.state = this._getInitialState();
 
-        this.handleUpdate = this.handleUpdate.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
-        this.currentState = this.currentState.bind(this);
+        this._getInitialState = this._getInitialState.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
+        this.handleDone = this.handleDone.bind(this);
         this.handleFile = this.handleFile.bind(this);
     }
 
-    handleUpdate(field) {
-        return e => {
-            this.setState({ [field]: e.currentTarget.value })
-        }
-    }
-
-    currentState() {
+    _getInitialState() {
+        const user = this.props.currentUser;
         const initialState = Object.assign({}, {
-            photoUrl: null,
-            photoFile: null,
-            first_name: this.props.currentUser.firstName || '',
-            last_name: this.props.currentUser.lastName || '',
-            username: this.props.currentUser.username || '',
-            id: this.props.currentUser.id,
-            loading: false
+            id: user.id,
+            first_name: user.firstName || "",
+            last_name: user.lastName || "",
+            username: user.username,
+            email: user.email,
+            description: user.description || "",
+            location: user.location || "",
+            photo: user.photo,
+            photoPreview: null
         });
 
         return initialState
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li className="session-errors"
-                        key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
+    handleCancel(e) {
+        e.preventDefault();
+
+        this.setState(this._getInitialState);
     }
 
-
-    handleSubmit(e) {
+    handleDone(e) {
         e.preventDefault();
         const details = Object.assign({}, this.state);
         delete details["id"];
-        delete details["photoUrl"];
-        delete details["loading"];
-        this.setState({ loading: true })
-        if (this.state.photoFile === null) {
-            delete details["photoFile"];
+        delete details["photoPreview"];
+        if (!this.state.photoPreview) {
+            delete details["photo"];
         }
 
         const formData = new FormData();
         for (let key in details) {
             formData.append(`user[${key}]`, details[key])
         }
-        this.props.updateUser(formData, this.props.currentUser.id).then(
-            () => location.reload(false) && this.setState({ loading: false })
-        )
+        // debugger;
+        this.props.updateUser(formData, this.state.id)
+            .then(() => location.reload(false))
     }
-
-
-    handleButton(e) {
-        e.preventDefault();
-
-        this.handleSubmit(e);
-    }
-
-    handleDragOver(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    handleDragEnter(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    handleDrop(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        let file = e.dataTransfer.files[0];
-        const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            this.setState({ photoFile: file, photoUrl: fileReader.result });
-        };
-        if (file) {
-            fileReader.readAsDataURL(file)
-        }
-    };
-
 
     handleFile(e) {
-        const file = e.target.files[0];
+        const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            this.setState({ photoFile: file, photoUrl: fileReader.result });
+            this.setState({ photo: file, photoPreview: fileReader.result });
         };
+
         if (file) {
             fileReader.readAsDataURL(file);
         }
     }
 
+    changeInput(field) {
+        return (
+            e => this.setState({ [field]: e.currentTarget.value })
+        );
+    }
+
     render() {
         const { currentUser } = this.props;
+        const profilePhoto = (this.state.photo) ? (
+            <img src={this.state.photo} alt="profile_photo" className="edit-profile" id="photo" />
+        ) : (
+                <i className="fas fa-user-circle" id="photo"></i>
+            );
+        const displayPhoto = (this.state.photoPreview) ? (
+            <img src={this.state.photoPreview} className="edit-profile" id="photo" />
+        ) : (
+                profilePhoto
+            );
 
-        let preview = (this.state.photoUrl) ? <img className="edit-user-profile-image" src={this.state.photoUrl}></img> : <label><i className="fas fa-arrow-circle-up"></i><span>Drag and drop or click to upload</span><input id="pinFile" onChange={this.handleFile} type="file" /></label>
-
-        let current = (currentUser.photoUrl) ? <img className="edit-user-profile-image" src={currentUser.photoUrl}></img> : null;
+        let currentState = Object.assign({}, this.state);
+        const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
 
         return (
-            <>
-                <div className="create-board-container">
-                    
-                    <div className="modal-pinboard-text">
-                        <h1>Edit Profile</h1>
-                    </div>
-                    <div className='create-board-inputs'>
-                        <div id='upload-space-wrapper'>
-                            <div id="upload-space-edit"
-                                onDrop={this.handleDrop}
-                                onDragEnter={this.handleDragEnter}
-                                onDragOver={this.handleDragOver}>
-                                {preview}
+            <div id="settings-container-padding">
+                <div id="settings-container">
+                    <div id="back-button-width">
+                        <div id="back-button-padding">
+                            <div id="back-button-position">
+                                <div id="back-button-container">
+                                    <NavLink to={`/${currentUser.username}`} id="user-profile-link">
+                                        <div id="back-icon-container-shadow">
+                                            <div id="back-icon-container">
+                                                <i className="fas fa-arrow-left" id="back-icon"></i>
+                                            </div>
+                                        </div>
+                                    </NavLink>
+                                </div>
                             </div>
-                            {current}
                         </div>
-                        <span>First name</span>
-                        <h1 id='board-name'>
-                            <input
-                                className="create-board-title"
-                                type="text"
-                                onChange={this.handleUpdate('first_name')}
-                                placeholder='Like "Places to Go" or "Recipes to Make"'
-                                value={this.state.first_name}
-                                placeholder='Enter your first name'
-                            />
-                        </h1>
-                        <span>Last name</span>
-                        <h1 id='board-name'>
-                            <input
-                                className="create-board-title"
-                                type="text"
-                                onChange={this.handleUpdate('last_name')}
-                                value={this.state.last_name}
-                                placeholder='Enter your last name'
-                            />
-                        </h1>
-                        <span>Username</span>
-                        <p id='board-details'>
-                            <input
-                                className="create-board-link"
-                                type="text"
-                                onChange={this.handleUpdate('username')}
-                                value={this.state.username}
-                                placeholder='Choose a username'
-                            />
-                        </p>
-                        <button className='submit-board' onClick={this.handleSubmit}>Create</button>
-                        {this.renderErrors()}
+                    </div>
+                    <div id="edit-profile-form-width">
+                        <div id="edit-profile-form-outer-container">
+                            <div id="edit-profile-form-inner-container">
+                                <form id="edit-profile-form">
+                                    <div className="edit-profile" id="header-border">
+                                        <div className="edit-profile" id="header-flex">
+                                            <div className="edit-profile" id="title-container">
+                                                <div className="edit-profile" id="title">
+                                                    <h4 className="edit-profile" id="title-label">Edit Profile</h4>
+                                                    <div className="edit-profile" id="title-spacing"></div>
+                                                    <div className="edit-profile" id="subtitle">
+                                                        People on Pinterest will get to know you with the info below
+                          </div>
+                                                </div>
+                                            </div>
+                                            <div className="edit-profile" id="buttons-container">
+                                                <div className="edit-profile" id="buttons">
+                                                    <div className="edit-profile button-container">
+                                                        <button
+                                                            className={`edit-profile cancel button ${disabled}`}
+                                                            id="cancel-button"
+                                                            onClick={this.handleCancel}
+                                                        >
+                                                            <div className={`edit-profile cancel button-label ${disabled}`}>Cancel</div>
+                                                        </button>
+                                                    </div>
+                                                    <div className="edit-profile button-container">
+                                                        <button
+                                                            className={`edit-profile done button ${disabled}`}
+                                                            id="done-button"
+                                                            onClick={this.handleDone}
+                                                        >
+                                                            <div className={`edit-profile done button-label ${disabled}`}>Done</div>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="spacer-container">
+                                        <div className="edit-profile" id="spacer">Photo</div>
+                                    </div>
+                                    <div className="edit-profile" id="photo-change-container">
+                                        <div className="edit-profile" id="photo-container-size">
+                                            <div className="edit-profile" id="photo-container-border">
+                                                <div className="edit-profile" id="photo-frame-container">
+                                                    <div className="edit-profile" id="photo-frame">
+                                                        {displayPhoto}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="edit-profile" id="change-photo-button">
+                                            <input
+                                                type="file"
+                                                onChange={this.handleFile}
+                                                className="edit-profile button"
+                                                id="change-button"
+                                            />
+                                            <button
+                                                className="edit-profile button"
+                                                id="change-photo"
+                                                onClick={() => document.getElementById("change-button").click()}
+                                            ><div className="edit-profile button-label" id="change-photo">Change</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="name-container">
+                                        <div className="edit-profile" id="full-name">
+                                            <div className="edit-profile" id="first-name-wrapper">
+                                                <div className="edit-profile" id="first-name-container">
+                                                    <div className="edit-profile field-container" id="first-name">
+                                                        <div className="edit-profile label-container">
+                                                            <label className="edit-profile label">First name</label>
+                                                        </div>
+                                                        <div className="edit-profile input-container">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Ex. Jo"
+                                                                value={this.state.first_name}
+                                                                onChange={this.changeInput("first_name")}
+                                                                className="edit-profile input"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="edit-profile" id="last-name-wrapper">
+                                                <div className="edit-profile" id="last-name-container">
+                                                    <div className="edit-profile field-container" id="last-name">
+                                                        <div className="edit-profile label-container">
+                                                            <label className="edit-profile label">Last name</label>
+                                                        </div>
+                                                        <div className="edit-profile input-container">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Ex. Jo"
+                                                                value={this.state.last_name}
+                                                                onChange={this.changeInput("last_name")}
+                                                                className="edit-profile input"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="username-wrapper">
+                                        <div className="edit-profile" id="username-container">
+                                            <div className="edit-profile field-container" id="username">
+                                                <div className="edit-profile label-container">
+                                                    <label className="edit-profile label">Username</label>
+                                                </div>
+                                                <div className="edit-profile" id="website-username">
+                                                    <div className="edit-profile" id="website">
+                                                        www.pinterest.com/
+                          </div>
+                                                    <div className="edit-profile" id="username">
+                                                        <input
+                                                            type="text"
+                                                            value={this.state.username}
+                                                            onChange={this.changeInput("username")}
+                                                            className="edit-profile input"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="email-wrapper">
+                                        <div className="edit-profile" id="email-container">
+                                            <div className="edit-profile field-container" id="email">
+                                                <div className="edit-profile label-container">
+                                                    <label className="edit-profile label">Email</label>
+                                                </div>
+                                                <div className="edit-profile input-container">
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.email}
+                                                        onChange={this.changeInput("email")}
+                                                        className="edit-profile input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="description-wrapper">
+                                        <div className="edit-profile" id="description-container">
+                                            <div className="edit-profile field-container" id="description">
+                                                <div className="edit-profile label-container">
+                                                    <label className="edit-profile label">Description</label>
+                                                </div>
+                                                <div className="edit-profile input-container">
+                                                    <textarea
+                                                        placeholder="Write a little bit about yourself here"
+                                                        value={this.state.description}
+                                                        onChange={this.changeInput("description")}
+                                                        className="edit-profile input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="edit-profile" id="location-wrapper">
+                                        <div className="edit-profile" id="location-container">
+                                            <div className="edit-profile field-container" id="location">
+                                                <div className="edit-profile label-container">
+                                                    <label className="edit-profile label">Location</label>
+                                                </div>
+                                                <div className="edit-profile input-container">
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.location}
+                                                        onChange={this.changeInput("location")}
+                                                        className="edit-profile input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </>
+
+            </div>
         )
     }
-}
+};
+
+export default EditProfileForm;

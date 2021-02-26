@@ -15,7 +15,17 @@ class Api::UsersController < ApplicationController
   def show
     # @user = User.find(params[:id])
     @user = selected_user
-    render "api/users/show"
+    # render "api/users/show"
+    if @user
+      render json: {
+        user: @user
+      }
+    else 
+      render json: {
+        status: 500,
+        errors: ['user not found']
+      }
+    end
   end
 
   def edit
