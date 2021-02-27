@@ -167,6 +167,12 @@ export default class UserProfile extends React.Component {
                             openModal={openModal}
                             closeModal={closeModal}
                         />
+                        <button
+                            className="profile-header-link"
+                            onClick={this.handleEdit}>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
+
                     </div>
                     <ul id='board-list'>
                         {currentUserBoards.map((board, id) => {
@@ -207,18 +213,18 @@ export default class UserProfile extends React.Component {
                                 </div>
                             )
                         })}
-                        {/* <div className='edit-create-button-wrapper'>
-                            <button
+                        <div className='edit-create-button-wrapper'>
+                            {/* <button
                                 className="plus-board"
                                 onClick={this.handleClick}
                             >
                                 <i className="fas fa-plus"></i>
-                            </button>
-                            <button className="plus-board"
+                            </button> */}
+                            {/* <button className="plus-board"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
-                        </button>
-                        </div> */}
+                        </button> */}
+                        </div>
                         
                     </ul>
                 </>

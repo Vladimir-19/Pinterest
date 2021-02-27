@@ -106,6 +106,8 @@ class ProfileNavBar extends React.Component {
                                         </svg>
                                     </div>
                                 </div>
+                            <div >
+                            </div>
                             </div>
                             <div className="profile-header-button" id="edit-profile">
                                 <Link to="/settings#profile" className="profile-header-link">
@@ -124,7 +126,6 @@ class ProfileNavBar extends React.Component {
                                 
                             </div>
                         </div>
-                        <h3>{name}</h3>
                     </div>
                 </div>
             </div>
