@@ -58,12 +58,13 @@ class ProfileNavBar extends React.Component {
         const name = "Vladimir"
 
         return (
-            <div id="profile-nav-bar-wrapper">
-                <div id="profile-nav-bar">
-                    <div id="buttons-container">
-                        <div id="buttons">
-                            <div id="profile-header-expander">
-                                <div className="profile-header-button" id="create-dropdown">
+            // 
+            <div  >
+                <div >
+                    {/* <div >  */}
+                        <div>
+                            <div >
+                                <div > 
                                     <button
                                         className="profile-header-link"
                                         onClick={this.toggleShow}
@@ -71,7 +72,7 @@ class ProfileNavBar extends React.Component {
                                     >
                                         <div className="profile-icon-container-shadow">
                                             <div className="profile-icon-container">
-                                                <i className="fas fa-plus" id="create-dropdown-icon"></i>
+                                                <i id="create-dropdown-icon">+</i>
                                             </div>
                                         </div>
                                     </button>
@@ -82,7 +83,6 @@ class ProfileNavBar extends React.Component {
                                         "hidden"
                                 }}>
                                     <div id="create-options">
-                                        {/* <div id="create-board-button" tabIndex="0" onClick={this.newBoard}> */}
                                         <div id="create-board-button" tabIndex="0" onClick={this.newBoard}>
                                             <div className="option-container-shadow">
                                                 <div className="option-container">
@@ -107,7 +107,7 @@ class ProfileNavBar extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="profile-header-button" id="edit-profile">
+                            <div className="profile-header-button" id="edit-profile">
                                 <Link to="/settings#profile" className="profile-header-link">
                                     <div className="profile-icon-container-shadow">
                                         <div className="profile-icon-container">
@@ -115,17 +115,17 @@ class ProfileNavBar extends React.Component {
                                         </div>
                                     </div>
                                 </Link>
-                            </div> */}
+                            </div>
                         </div>
-                    </div>
-                    {/* <div id="nav-bar-name-container">
+                    {/* </div>  */}
+                    <div id="nav-bar-name-container">
                         <div id="nav-bar-name-fixed">
                             <div id="nav-bar-name" className={this.state.fadeInName ? "transitionIn" : "transitionOut"}>
                                 
                             </div>
                         </div>
                         <h3>{name}</h3>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         )

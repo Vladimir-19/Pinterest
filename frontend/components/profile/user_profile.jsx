@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
 
+
 export default class UserProfile extends React.Component {
     constructor(props) {
         super(props);
@@ -95,64 +96,78 @@ export default class UserProfile extends React.Component {
             return <Redirect to={`/boards/${this.state.openBoardId}`} />
         }
 
-        const name = currentUser.firstName && currentUser.lastName ? <div><span>{currentUser.firstName}</span><span>{currentUser.lastName}</span></div> : <span>Add Your Name</span>;
-        // const user = users.find(user => user.id === userId);
+        const name = currentUser.firstName && currentUser.lastName ? 
+            <div>
+                <span>{currentUser.firstName}</span><span>{currentUser.lastName}</span>
+            </div> : <span>Add Your Name</span>;
 
         const profilePic = user.photo ? (
-            <img className="create-pin-profile-image" src={user.photo} />
+            <img className="user-profile-image" src={user.photo} />
         ) : (
-                <div className="create-pin-profile-image"><i className="fas fa-user-circle"></i></div>
+                <div className="user-profile-image">
+                    <i className="fas fa-user-circle"></i>
+                </div>
             );
+
+        // var searchText = 'food'
+        // let win1 = window.open("//" + "google.com/search?q=" + searchText, '_blank');
+        // style = {{ "color": "#8e8e8e" }}
+        const userLocation = (currentUser.locarion) ? (
+            window.open("//" + "google.com/search?q=" + user.location, '_blank')
+        ) : (<i style={{ "color": "#8e8e8e" }}>Add your location</i> );
+        const userDescription = (currentUser.description) ? (
+            <div >
+                {currentUser.description}
+            </div>
+        ) : (<i style={{ "color": "#8e8e8e" }}>Describe your account</i>);
+
 
         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id)) // ????
         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
-        const personalInfo = (currentUser.location && currentUser.description) ? (
-            <div id="profile-personal">
-                <h4>{currentUser.location} · {currentUser.description}</h4>
-            </div>
-        ) : null;
 
         if (boards.length > 0 && this.state.pins === 'fetched') {
             // debugger;
             return (
                 <>
-                    <div id='user-header'>
-                        <div id='user-photo'>
+                    {/* id='user-header' */}
+                    <div id="profile-image-container"> 
+                        {/* id="profile-image-frame" */}
+                        <div id="profile-image-frame" >
                             {profilePic}
                         </div>
-                        
-                        <div id='user-text'>
-                            {name}
-                            {user.photo}
-                        </div>
-                        
-                        <div id="profile-follows-spacer-container" >
-                            <div id="profile-follows">
-                                <div id="profile-followers-container">
-                                    {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
-                                        <h4>1,000,000 followers </h4>
-                                    {/* </Link> */}
-                                </div>
-                                <div> • </div>
-                                <div id="profile-following-container">
-                                    {/* <Link to={`/${user.username}/following`} className="profile-follows-link"> */}
-                                        <h4> 1 following</h4>
-                                    {/* </Link> */}
-                                </div>
-                            </div>
-
-                            <div id="profile-personal-container">
-                                {personalInfo}
-                                <h4>personal info</h4>
-                            </div>
-                        </div>
                     </div>
-                    <ProfileNavBar
-                        currentUser={currentUser}  //USER IS NOT DEFINED
-                        openModal={openModal}
-                        closeModal={closeModal}
-                    />
-                    <p>You have  boards!</p>
+                    <div id="user-text">
+                        {name}
+                    </div>
+
+                    {/* <div id="profile-follows-spacer-container" > */}
+                    {/* <div id="profile-follows"> */}
+                    <div id="profile-personal-followers">
+                        {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
+                        <h4>1 000  followers • 1 following</h4>
+                        {/* </Link> */}
+                    </div>
+                    {/* <div id="profile-following-container">
+                                    <Link to={`/${user.username}/following`} className="profile-follows-link">
+                                        <h4> 1 following</h4>
+                                    </Link>
+                                </div> */}
+                    {/* </div> */}
+
+                    {/* <div id="profile-personal-container"> */}
+                        <div id="profile-personal">
+                            <h4>{userLocation} | {userDescription}</h4>
+                        </div>
+                        {/* <h4>personal info</h4> */}
+                        {/* <Link to="https://www.google.com/maps"> */}
+                    {/* </div> */}
+                    <div id="profile-nav-bar" >
+                        <ProfileNavBar
+                            currentUser={currentUser}  //USER IS NOT DEFINED
+                            openModal={openModal}
+                            closeModal={closeModal}
+                        />
+                    </div>
                     <ul id='board-list'>
                         {currentUserBoards.map((board, id) => {
                             let pinArr;
@@ -192,18 +207,18 @@ export default class UserProfile extends React.Component {
                                 </div>
                             )
                         })}
-                        <div className='edit-create-button-wrapper'>
-                            {/* <button
+                        {/* <div className='edit-create-button-wrapper'>
+                            <button
                                 className="plus-board"
                                 onClick={this.handleClick}
                             >
                                 <i className="fas fa-plus"></i>
-                            </button> */}
+                            </button>
                             <button className="plus-board"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
                         </button>
-                        </div>
+                        </div> */}
                         
                     </ul>
                 </>
@@ -219,11 +234,11 @@ export default class UserProfile extends React.Component {
                             {name}
                         </div>
                     </div>
-                    {/* <ProfileNavBar
+                    <ProfileNavBar
                         user={user}  //USER IS NOT DEFINED
                         openModal={openModal}
                         closeModal={closeModal}
-                        /> */}
+                        />
                     <p>You don't have any boards yet!</p>
                     <div className='edit-create-button-wrapper'>
                         <button
