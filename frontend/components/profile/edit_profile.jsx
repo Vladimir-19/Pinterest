@@ -185,6 +185,7 @@ class EditProfileForm extends React.Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleDone = this.handleDone.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        // this.renderErrors = this.handleErrors.bind(this);
     }
 
     _getInitialState() {
@@ -193,10 +194,10 @@ class EditProfileForm extends React.Component {
             id: user.id,
             first_name: user.firstName || "",
             last_name: user.lastName || "",
-            username: user.username,
+            // username: user.username,
             email: user.email,
-            description: user.description || "",
-            location: user.location || "",
+            description: user.description,
+            location: user.location,
             photo: user.photo,
             photoPreview: null
         });
@@ -244,9 +245,13 @@ class EditProfileForm extends React.Component {
         return (
             e => this.setState({ [field]: e.currentTarget.value })
         );
+        // return e => {
+        //     this.setState({ [field]: e.currentTarget.value })
+        // }
     }
 
     render() {
+            
         const { currentUser } = this.props;
         const profilePhoto = (this.state.photo) ? (
             <img src={this.state.photo} alt="profile_photo" className="edit-profile" id="photo" />
@@ -265,11 +270,11 @@ class EditProfileForm extends React.Component {
         return (
             <div id="settings-container-padding">
                 <div id="settings-container">
-                    <div id="back-button-width">
+                    {/* <div id="back-button-width">
                         <div id="back-button-padding">
                             <div id="back-button-position">
                                 <div id="back-button-container">
-                                    <NavLink to={`/${currentUser.username}`} id="user-profile-link">
+                                    <NavLink to={`/${currentUser.id}`} id="user-profile-link">
                                         <div id="back-icon-container-shadow">
                                             <div id="back-icon-container">
                                                 <i className="fas fa-arrow-left" id="back-icon"></i>
@@ -279,7 +284,7 @@ class EditProfileForm extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div id="edit-profile-form-width">
                         <div id="edit-profile-form-outer-container">
                             <div id="edit-profile-form-inner-container">
@@ -292,7 +297,7 @@ class EditProfileForm extends React.Component {
                                                     <div className="edit-profile" id="title-spacing"></div>
                                                     <div className="edit-profile" id="subtitle">
                                                         People on Pinterest will get to know you with the info below
-                          </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="edit-profile" id="buttons-container">
@@ -387,28 +392,16 @@ class EditProfileForm extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="edit-profile" id="username-wrapper">
+                                    {/* <div className="edit-profile" id="username-wrapper">
                                         <div className="edit-profile" id="username-container">
                                             <div className="edit-profile field-container" id="username">
                                                 <div className="edit-profile label-container">
                                                     <label className="edit-profile label">Username</label>
                                                 </div>
-                                                <div className="edit-profile" id="website-username">
-                                                    <div className="edit-profile" id="website">
-                                                        www.pinterest.com/
-                          </div>
-                                                    <div className="edit-profile" id="username">
-                                                        <input
-                                                            type="text"
-                                                            value={this.state.username}
-                                                            onChange={this.changeInput("username")}
-                                                            className="edit-profile input"
-                                                        />
-                                                    </div>
-                                                </div>
+                                               
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="edit-profile" id="email-wrapper">
                                         <div className="edit-profile" id="email-container">
                                             <div className="edit-profile field-container" id="email">

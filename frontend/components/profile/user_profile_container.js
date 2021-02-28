@@ -3,9 +3,9 @@ import { fetchPins } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
 
 import { openModal } from '../../actions/modal_actions';
+import { fetchAllUsers, fetchUser } from "../../actions/user_actions";
 
 import ProfileShow from './user_profile';
-import { fetchUser } from '../../util/user_api_util';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     pins: (state.entities.pins),
     // 
     users: Object.values(state.entities.users),
-    email: ownProps.match.params.email
+        id: ownProps.match.params.id,
 }};
 
 const mapDispatchToProps = dispatch => ({

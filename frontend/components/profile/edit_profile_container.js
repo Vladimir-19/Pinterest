@@ -39,7 +39,10 @@ import { updateUser } from "../../actions/user_actions";
 
 const mapStateToProps = state => ({
     errors: state.errors.user,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+
+    users: Object.values(state.entities.users),
+    // id: ownProps.match.params.id,
 });
 
 const mapDispatchToProps = dispatch => ({

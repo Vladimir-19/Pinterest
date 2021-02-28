@@ -4,7 +4,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 250px);
-  margin-top: 30px;
+  margin-top: 10px;
   row-gap: 1em;
   column-gap: 1em;
 }
@@ -122,16 +122,20 @@
 //    nav bar
 
 #profile-nav-bar {
-  width: 100%;
+  // width: 97%;
+  height: 10px;
   justify-content: flex-start;
   // align-items: center;
   // display: flex;
   flex-direction: row;
   // box-sizing: border-box;
-  padding: 8px 0px;
-  margin: 4px 0px;
-  height: 30px;
+  padding: 12px 2px;
+  margin: 20px 25px;
+  // row-gap: 1em;
+  // margin-left: 15px;
+  // margin-right: 10px;
   text-align: right;
+  border: 1px ;
 }
 
 // #profile-nav-bar-wrapper{
@@ -169,20 +173,22 @@
 //   border-radius: 50%;
 // }
 
-.profile-header-link {
-  cursor: pointer;
-  border: 0; 
-  padding: 1px;
-  background: transparent;
-  line-height: normal;
-  box-sizing: border-box;
-  border-radius: 50%;
-  outline: none;
-  margin: 20px;
-  // &:focus {
-  //   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.5);
-  // }
-}
+// .profile-header-link {
+//   cursor: pointer;
+//   border: 0; 
+//   // padding: 1px;
+//   // background: transparent;
+//   // line-height: normal;
+//   // box-sizing: border-box;
+//   // border-radius: 50%;
+//   // outline: none;
+//   margin: 20px;
+//   // &:focus {
+//   //   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.5);
+//   // }
+//   background-color:green;
+//   // width: 45px;
+// }
 
 .profile-icon-container-shadow {
   height: 40px;
@@ -193,9 +199,28 @@
   display: flex;
   border-radius: 50%;
   // line-height: normal;
+  float: left;
+  border: aliceblue;
   &:hover {
     background-color: #E2E2E2;
   }
+}
+
+.profile-icon-container-shadow-two {
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  // line-height: normal;
+  float: right;
+  border: aliceblue;
+  &:hover {
+    background-color: #E2E2E2;
+  }
+
 }
 
 .profile-icon-container {
@@ -208,7 +233,7 @@
 #create-options-container {
   right: 20px;
   stroke: rgb(239, 239, 239);
-  top: 352px;
+  top: 382px;
   position: absolute;
   background-color: #fff;
   color: #fff;
@@ -221,7 +246,7 @@
   outline: none;
   border-radius: 8px;
   z-index: 50; 
-  top: auto;
+  // top: auto;
 }
 
 #create-options {

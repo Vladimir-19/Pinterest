@@ -28,15 +28,12 @@ export default class UserProfile extends React.Component {
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
         //
         window.addEventListener("scroll", this.handleScroll);
-
-        const username = this.props.match.params.username;
-        const fetchUser = (userId) => this.props.fetchSingleUser(userId);
-        // this.props.fetchAllUsers()
-        //     .then(res => {
-        //         const user = Object.values(res.users).find(user => user.username === username);
+        // const _userId = this.props.match.params.userId;
+        // const fetchUser = (userId) => this.props.fetchSingleUser(userId);
+        // this.props.fetchAllUsers().then(res => {
+        //         const user = Object.values(res.users).find(user => user.id === _userId);
         //         return fetchUser(user.id);
         //     });
-
     }
 
             // extra
@@ -112,7 +109,7 @@ export default class UserProfile extends React.Component {
         // var searchText = 'food'
         // let win1 = window.open("//" + "google.com/search?q=" + searchText, '_blank');
         // style = {{ "color": "#8e8e8e" }}
-        const userLocation = (currentUser.locarion) ? (
+        const userLocation = (user.location) ? (
             window.open("//" + "google.com/search?q=" + user.location, '_blank')
         ) : (<i style={{ "color": "#8e8e8e" }}>Add your location</i> );
         const userDescription = (currentUser.description) ? (
@@ -138,6 +135,7 @@ export default class UserProfile extends React.Component {
                     </div>
                     <div id="user-text">
                         {name}
+                        {/* {user} */}
                     </div>
 
                     {/* <div id="profile-follows-spacer-container" > */}
@@ -161,14 +159,16 @@ export default class UserProfile extends React.Component {
                         {/* <h4>personal info</h4> */}
                         {/* <Link to="https://www.google.com/maps"> */}
                     {/* </div> */}
-                    <div id="profile-nav-bar" >
+                    <div  > 
+                        {/* id="profile-nav-bar" */}
                         <ProfileNavBar
                             currentUser={currentUser}  //USER IS NOT DEFINED
                             openModal={openModal}
                             closeModal={closeModal}
+                            handleEdit={this.handleEdit}
                         />
                         <button
-                            className="profile-header-link"
+                            // className="profile-header-link"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
                         </button>
