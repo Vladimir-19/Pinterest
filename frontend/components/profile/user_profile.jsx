@@ -163,15 +163,23 @@ export default class UserProfile extends React.Component {
                         {/* id="profile-nav-bar" */}
                         <ProfileNavBar
                             currentUser={currentUser}  //USER IS NOT DEFINED
+                            user={user}
                             openModal={openModal}
                             closeModal={closeModal}
-                            handleEdit={this.handleEdit}
+                            // handleEdit={this.handleEdit}
                         />
                         <button
                             // className="profile-header-link"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
                         </button>
+                        {/* <Link to="/settings#profile" className="profile-header-link">
+                            <div className="profile-icon-container-shadow">
+                                <div className="profile-icon-container">
+                                    <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
+                                </div>
+                            </div>
+                        </Link> */}
 
                     </div>
                     <ul id='board-list'>

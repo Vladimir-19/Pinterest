@@ -1,4 +1,4 @@
- #json.extract! user, :id, :email, :age
+json.extract! user, :id, :first_name, :last_name, :email, :location, :description
   json.id  user.id
   json.email user.email
   json.location user.location

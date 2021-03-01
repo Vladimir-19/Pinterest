@@ -71,6 +71,13 @@ class ProfileNavBar extends React.Component {
                         onClick={this.handleEdit}>
                         <i className="fas fa-pencil-alt" ></i>
                     </button>
+                    <Link to="/settings#profile" className="profile-header-link">
+                        <div className="profile-icon-container-shadow">
+                            <div className="profile-icon-container">
+                                <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
+                            </div>
+                        </div>
+                    </Link>
                     <button
                         // className="profile-header-link"
                         className="profile-icon-container-shadow-two"

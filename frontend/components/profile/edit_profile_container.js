@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
     errors: state.errors.user,
     currentUser: state.entities.users[state.session.id],
 
-    users: Object.values(state.entities.users),
+    // users: Object.values(state.entities.users),
     // id: ownProps.match.params.id,
 });
 
