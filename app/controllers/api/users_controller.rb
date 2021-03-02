@@ -71,7 +71,7 @@ class Api::UsersController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit( :email, :first_name, :last_name, :age, :photo)
+    params.require(:user).permit( :email, :first_name, :last_name, :age, :photo, :location, :description)
   end
 
     def selected_user

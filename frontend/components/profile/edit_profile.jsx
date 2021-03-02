@@ -261,7 +261,7 @@ class EditProfileForm extends React.Component {
 
         let currentState = Object.assign({}, this.state);
         const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
-
+            // debugger
         return (
             <div id="settings-container-padding">
                 <div id="settings-container">
@@ -434,7 +434,7 @@ class EditProfileForm extends React.Component {
                                                 </div>
                                                 <div className="edit-profile input-container">
                                                     <textarea
-                                                        placeholder="Write a little bit about yourself here"
+                                                        placeholder="Tell us a little bit about your page"
                                                         value={this.state.description}
                                                         onChange={this.changeInput("description")}
                                                         className="edit-profile input"
@@ -443,23 +443,36 @@ class EditProfileForm extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="edit-profile" id="location-wrapper">
-                                        <div className="edit-profile" id="location-container">
-                                            <div className="edit-profile field-container" id="location">
-                                                <div className="edit-profile label-container">
+                                    {/* <div className="edit-profile" id="location-wrapper"> */}
+                                        {/* <div className="edit-profile" id="location-container"> */}
+                                            {/* <div className="edit-profile field-container" id="location"> */}
+                                                {/* <div className="edit-profile label-container">
                                                     <label className="edit-profile label">Location</label>
                                                 </div>
                                                 <div className="edit-profile input-container">
                                                     <input
                                                         type="text"
+                                                        placeholder="Ex. New York City"
+                                                        value={this.state.location}
+                                                        onChange={this.changeInput("location")}
+                                                        className="edit-profile input"
+                                                    />
+                                                </div> */}
+                                                <div className="edit-profile label-container">
+                                                    <label className="edit-profile label">location</label>
+                                                </div>
+                                                <div className="edit-profile input-container">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Ex. New York City"
                                                         value={this.state.location}
                                                         onChange={this.changeInput("location")}
                                                         className="edit-profile input"
                                                     />
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            {/* </div> */}
+                                        {/* </div> */}
+                                    {/* </div> */}
                                 </form>
                             </div>
                         </div>

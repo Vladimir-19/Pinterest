@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     pins: (state.entities.pins),
     // 
     users: Object.values(state.entities.users),
-        id: ownProps.match.params.id,
+    id: ownProps.match.params.id,
 }};
 
 const mapDispatchToProps = dispatch => ({

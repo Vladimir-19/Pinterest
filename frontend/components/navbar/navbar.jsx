@@ -46,7 +46,7 @@ class NavBar extends React.Component {
                                 <h6>i'm a search bar insode inside navbar.jsx</h6>
                             </div>
                             <div className='icon-wrapper'>
-                                <Link
+                                <NavLink
                                     to={`/users/${currentUser.id}`}
                                     // key="3" // THIS IS id: 3 == vladimir@solovey.com
                                     className="nav-link-home"
@@ -54,7 +54,7 @@ class NavBar extends React.Component {
                                 >
                                     {/* profilePic */}
                                     {profilePhoto}
-                                </Link>
+                                </NavLink>
                             </div>
                             <div className="nav-bar-button" id="github">
                                 <a href="https://github.com/Vladimir-19/Painterist" target="_blank" className="nav-bar-link">

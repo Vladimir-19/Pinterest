@@ -119,6 +119,15 @@
   Helvetica,
   sans-serif;
 }
+
+.eaxta-button {
+  border: 1px;
+  background-color: inherit;
+  cursor: pointer; 
+  &:hover {
+    background-color: #E2E2E2;
+  }
+}
 //    nav bar
 
 #profile-nav-bar {

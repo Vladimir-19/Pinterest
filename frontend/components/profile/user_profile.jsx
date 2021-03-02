@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
+import UserDetails from './user_details';
 
 
 export default class UserProfile extends React.Component {
@@ -37,23 +38,23 @@ export default class UserProfile extends React.Component {
     }
 
             // extra
-            componentWillUnmount() {
-                window.removeEventListener("scroll", this.handleScroll);
-            }
+        componentWillUnmount() {
+            window.removeEventListener("scroll", this.handleScroll);
+        }
 
-            handleScroll() {
-                const { prevScrollPos } = this.state;
-                const currentScrollPos = window.pageYOffset;
-                const fadeInName = (prevScrollPos < currentScrollPos - 50);
+        handleScroll() {
+            const { prevScrollPos } = this.state;
+            const currentScrollPos = window.pageYOffset;
+            const fadeInName = (prevScrollPos < currentScrollPos - 50);
 
-                this.setState({
-                    fadeInName
-                });
-            }
+            this.setState({
+                fadeInName
+            });
+        }
 
-            newBoard() {
-                this.props.openModal("createboard");
-            }
+        newBoard() {
+            this.props.openModal("createboard");
+        }
 
     handleButton(e) {
         let board = (e.currentTarget);
@@ -82,7 +83,7 @@ export default class UserProfile extends React.Component {
 
 
     render() {
-        const { currentUser, boards, pins, openModal, closeModal, users, email } = this.props;
+        const { currentUser, boards, pins, openModal, closeModal, users, id } = this.props;
         const user = users.find(user => user.id === currentUser.id);
 
         if (this.state.loading) {
@@ -93,9 +94,9 @@ export default class UserProfile extends React.Component {
             return <Redirect to={`/boards/${this.state.openBoardId}`} />
         }
 
-        const name = currentUser.firstName && currentUser.lastName ? 
+        const name = user.firstName && user.lastName ? 
             <div>
-                <span>{currentUser.firstName}</span><span>{currentUser.lastName}</span>
+                <span>{user.firstName}</span><span>{user.lastName}</span>
             </div> : <span>Add Your Name</span>;
 
         const profilePic = user.photo ? (
@@ -106,20 +107,7 @@ export default class UserProfile extends React.Component {
                 </div>
             );
 
-        // var searchText = 'food'
-        // let win1 = window.open("//" + "google.com/search?q=" + searchText, '_blank');
-        // style = {{ "color": "#8e8e8e" }}
-        const userLocation = (user.location) ? (
-            window.open("//" + "google.com/search?q=" + user.location, '_blank')
-        ) : (<i style={{ "color": "#8e8e8e" }}>Add your location</i> );
-        const userDescription = (currentUser.description) ? (
-            <div >
-                {currentUser.description}
-            </div>
-        ) : (<i style={{ "color": "#8e8e8e" }}>Describe your account</i>);
-
-
-        const currentUserBoards = boards.filter(board => (board.userId === currentUser.id)) // ????
+        const currentUserBoards = boards.filter(board => (board.userId === user.id)) // ????
         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
 
         if (boards.length > 0 && this.state.pins === 'fetched') {
@@ -135,6 +123,7 @@ export default class UserProfile extends React.Component {
                     </div>
                     <div id="user-text">
                         {name}
+                        {id}
                         {/* {user} */}
                     </div>
 
@@ -154,7 +143,18 @@ export default class UserProfile extends React.Component {
 
                     {/* <div id="profile-personal-container"> */}
                         <div id="profile-personal">
-                            <h4>{userLocation} | {userDescription}</h4>
+                        {/* <h4> 
+                            <button 
+                            id="profile-nav-bar"
+                            style={{  }}
+                            onClick={window.open("//" + "google.com/search?q=" + user.location, '_blank')}
+                                >
+                            <div >
+                                <i>{userLocation}</i> 
+                            </div>
+                            </button> 
+                            {userLocation} | {userDescription}</h4> */}
+                            <UserDetails user={user}/>
                         </div>
                         {/* <h4>personal info</h4> */}
                         {/* <Link to="https://www.google.com/maps"> */}
@@ -168,11 +168,11 @@ export default class UserProfile extends React.Component {
                             closeModal={closeModal}
                             // handleEdit={this.handleEdit}
                         />
-                        <button
+                        {/* <button
                             // className="profile-header-link"
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
-                        </button>
+                        </button> */}
                         {/* <Link to="/settings#profile" className="profile-header-link">
                             <div className="profile-icon-container-shadow">
                                 <div className="profile-icon-container">
