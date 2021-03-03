@@ -27,11 +27,14 @@ const mapStateToProps = state => {
         pin: Object.values(state.entities.pins).filter(pin => (
             pin.pinId === state.pinId
         )),
+        // currentUser: state.entities.users[state.session.id],
     // pin: state.entities.pins[state.ui.objectId],
     // pin: state.entities.pins[state.ui.pinId],
     // pin: state.entities.pins[state.pinId],
-    errors: state.errors.pin,
-    formTitle: "Edit this Pin"
+        // pin: state.entities.pins[state.ui.objectId],
+        // pin: state.entities.pins[ownProps.match.params.pinId],
+        errors: state.errors.pin,
+        formTitle: "Edit this Pin"
 }};
 
 const mapDispatchToProps = dispatch => ({

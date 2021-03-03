@@ -38,7 +38,8 @@ class EditPinForm extends React.Component {
 
     handleSave(e) {
         this.props.processForm(this.state)
-            .then(this.props.closeModal);
+        //     .then(this.props.closeModal);
+        
         // e.preventDefault();
         // this.updatePin({
         //     pin: {
@@ -75,15 +76,15 @@ class EditPinForm extends React.Component {
                                 </label>
                             </div>
                             <div className="edit-pin input-container title">
-                                <h4> her {pin.id} {this.state.title} </h4>
+                                {/* <h4> her {pin.id} {this.state.title} </h4> */}
                                 <input
                                     type="text"
                                     id="title"
                                     className="edit-pin input title"
                                     placeholder="Add your title "
                                     value={this.state.title}
-                                    onChange={this.update("title")} 
-                                    />
+                                    onChange={this.update("title")}
+                                />
                             </div>
                         </div>
                         <div className="edit-pin field description">

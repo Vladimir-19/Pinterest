@@ -64,7 +64,7 @@ function Modal({ modal, closeModal, openModal }) {
             component = <EditProfileContainer currentUser={modal.currentUser} />
             clickBackground = closeModal;
             break;
-        case "edit-pin":
+        case 'edit-pin':
             component = <EditPinFormContainer />;
             clickBackground = closeModal;
             break;
