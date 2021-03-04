@@ -65,13 +65,14 @@ class PinShow extends React.Component {
 
     // onChange()
     render() {
-        const { pin, users, currentUserId, openEditPin, openNewBoardPin } = this.props;
+        const { pin, _pinState, currentUserId, openEditPin, openNewBoardPin } = this.props;
         if (!pin)
             return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
         //     //this
         // const  clickSave = (this.state.boardIdi == null) ? (null) : (this.handleSave);
 
+        const _pinId = _pinState.id;
         const pinOwner = pin.user || { email: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
         const imgLink = (pin.url === "") ? (
@@ -86,17 +87,17 @@ class PinShow extends React.Component {
                     <img src={pin.photo} className="pin-show pin-photo" />
                 </a>
             );
-        debugger;
+        // debugger;
         const editPinLink = (pin.userId === currentUserId) ? (
-            <a className="pin-show edit-pin-link"
-                onClick={() => openEditPin(users)}>
-                <i className="fas fa-pencil-alt edit-pin-icon"></i>
-            </a>
-            // <EditPinForm
-            //     key={pin.id + pin.title}
-            //     pin={pin}
-            //     updatePin={this.props.updatePin}
-            // />
+            // <a className="pin-show edit-pin-link"
+            //     onClick={() => openEditPin(_pinId)}>
+            //     <i className="fas fa-pencil-alt edit-pin-icon"></i>
+            // </a>
+            <EditPinForm
+                key={pin.id + pin.title}
+                pin={pin}
+                updatePin={this.props.updatePin}
+            />
         ) : (
                 null
             );
