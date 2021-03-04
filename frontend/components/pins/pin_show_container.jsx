@@ -25,6 +25,8 @@ import PinShow from "./pin_show";
 
 import { fetchPin } from "../../actions/pin_actions";
 import { openModal } from "../../actions/modal_actions";
+import updatePin from '../../actions/pin_actions'
+
 
 // debugger;
 const mapStateToProps = (state, ownProps) => ({

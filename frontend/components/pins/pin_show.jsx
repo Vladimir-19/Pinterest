@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 
+import updatePin from '../../actions/pin_actions'
+
 // import ShowDropdown from "./show_sropdown_container";
 import DropdownContainer from "./show_sropdown_container";
 
@@ -96,7 +98,7 @@ class PinShow extends React.Component {
             <EditPinForm
                 key={pin.id + pin.title}
                 pin={pin}
-                updatePin={this.props.updatePin}
+                // updatePin={this.props.updatePin}
             />
         ) : (
                 null

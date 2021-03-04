@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class EditPinForm extends React.Component {
     constructor(props) {
         super(props);
@@ -39,10 +40,12 @@ class EditPinForm extends React.Component {
     
     handleSave(e) {
         // debugger;
-        this.props.processForm(this.state)
-        //     .then(this.props.closeModal);
-                
-        // e.preventDefault();
+        // this.props.processForm(this.state)
+            // .then(this.props.closeModal);
+
+        e.preventDefault();
+        updatePin(this.state)
+
         // this.updatePin({
         //     pin: {
         //         id: this.props.pin.id,

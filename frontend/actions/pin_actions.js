@@ -57,12 +57,18 @@ export const createPin = pin => dispatch => {
         ))
 };
 
-export const updatePin = pin => dispatch => {
-    return PinAPIUtil.updatePin(pin).then(
-         pin => dispatch(receivePin(pin)),
-         err => dispatch(receivePinErrors(err.responseJSON))
-         )
-};
+// export const updatePin = pin => dispatch => {
+//     return PinAPIUtil.updatePin(pin).then(
+//          pin => dispatch(receivePin(pin)),
+//          err => dispatch(receivePinErrors(err.responseJSON))
+//          )
+// };
+export const updatePin = pin => dispatch => (
+    PinAPIUtil.updatePin(pin).then(
+        pin => dispatch(receivePin(pin)),
+        err => dispatch(receivePinErrors(err.responseJSON))
+    )
+);
 
 export const deletePin = pinId => dispatch => {
     return PinAPIUtil.deletePin(pinId).then(
