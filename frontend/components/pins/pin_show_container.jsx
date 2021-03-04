@@ -26,7 +26,7 @@ import PinShow from "./pin_show";
 import { fetchPin } from "../../actions/pin_actions";
 import { openModal } from "../../actions/modal_actions";
 
-// debugger
+// debugger;
 const mapStateToProps = (state, ownProps) => ({
     pin: state.entities.pins[ownProps.match.params.pinId],
     users: state.entities.users,

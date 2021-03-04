@@ -16,6 +16,7 @@ class PinShow extends React.Component {
         // this.hideBoardList = this.hideBoardList.bind(this);
         // this.selectBoard = this.selectBoard.bind(this);
         // this.handleSave = this.handleSave.bind(this);
+        // console.log(this.props)
 
     }
     // // this 
@@ -85,16 +86,17 @@ class PinShow extends React.Component {
                     <img src={pin.photo} className="pin-show pin-photo" />
                 </a>
             );
+        debugger;
         const editPinLink = (pin.userId === currentUserId) ? (
-            // <a className="pin-show edit-pin-link"
-            //     onClick={() => openEditPin(pin.id)}>
-            //     <i className="fas fa-pencil-alt edit-pin-icon"></i>
-            // </a>
-            <EditPinForm
-                key={pin.id + pin.title}
-                pin={pin}
-                updatePin={this.props.updatePin}
-            />
+            <a className="pin-show edit-pin-link"
+                onClick={() => openEditPin(users)}>
+                <i className="fas fa-pencil-alt edit-pin-icon"></i>
+            </a>
+            // <EditPinForm
+            //     key={pin.id + pin.title}
+            //     pin={pin}
+            //     updatePin={this.props.updatePin}
+            // />
         ) : (
                 null
             );

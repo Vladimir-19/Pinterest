@@ -14,6 +14,7 @@ class EditPinForm extends React.Component {
         // this.setState({ ...this.state, [field]: e.currentTarget.value })
 
         // this.updatePin = this.props.updatePin.bind(this);
+        // console.log(this.props)
 
 
         this.update = this.update.bind(this);
@@ -35,17 +36,18 @@ class EditPinForm extends React.Component {
     handleCancel() {
         this.props.closeModal();
     }
-
+    
     handleSave(e) {
+        // debugger;
         this.props.processForm(this.state)
         //     .then(this.props.closeModal);
-        
+                
         // e.preventDefault();
         // this.updatePin({
         //     pin: {
         //         id: this.props.pin.id,
-        //         title: this.state.title,
-        //         description: this.state.description
+        //         title: this.props.title,
+        //         // description: this.state.description
         //     }
         // });
         // this.closePinModal();
