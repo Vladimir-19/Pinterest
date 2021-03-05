@@ -9,15 +9,16 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 
 class EditPinForm extends React.Component {
     constructor(props) {
+        // debugger;
         super(props);
-        // this.state = {
-        //     id: this.props.pin.id,
-        //     title: this.props.pin.title,
-        //     description: this.props.pin.description,
-        //     url: this.props.pin.url,
-        //     user_id: this.props.pin.userId
-        // };
-        this.state = this.props.pin
+        this.state = {
+            id: this.props.pin.id,
+            title: this.props.pin.title,
+            description: this.props.pin.description,
+            url: this.props.pin.url,
+            user_id: this.props.pin.userId
+        };
+        // this.state = this.props.pin
         // this.setState({ ...this.state, [field]: e.currentTarget.value })
 
         // this.updatePin = this.props.updatePin.bind(this);
@@ -182,18 +183,18 @@ class EditPinForm extends React.Component {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(EditPinForm);
 const mapStateToProps = state => {
-    debugger
+    // debugger
     return {
         // pin: Object.values(state.entities.pins).filter(pin => (
-        //     pin.pinId === state.pinId
+        //     pin.id === pinId
         // )),
         // currentUser: state.entities.users[state.session.id],
-        // pin: state.entities.pins[state.ui.objectId],
+        pin: state.entities.pin[state.ui.objectId],
         // pin: state.entities.pins[state.ui.pinId],
         // pin: state.entities.pins[state.pinId],
         // pin: state.entities.pins[state.ui.objectId],
         // pin: state.entities.pins[ownProps.match.params.pinId],
-        pin: state.entities.pins[ownProps.match.params.pinId],
+        // pin: state.entitiees.pin[state.pin.pinId],
         errors: state.errors.pin,
         formTitle: "Edit this Pin"
 }};

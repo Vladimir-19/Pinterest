@@ -23,9 +23,8 @@ import { connect } from "react-redux";
 import React from "react";
 import PinShow from "./pin_show";
 
-import { fetchPin } from "../../actions/pin_actions";
+import { fetchPin, fetchPins, deletePin, updatePin } from "../../actions/pin_actions";
 import { openModal } from "../../actions/modal_actions";
-import updatePin from '../../actions/pin_actions'
 
 
 // debugger;
@@ -34,12 +33,19 @@ const mapStateToProps = (state, ownProps) => ({
     // users: state.entities.users,
     _pinState: state.entities.users,
     currentUserId: state.session.id,
+    pins: Object.values(state.entities.pins)
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchPin: pinId => dispatch(fetchPin(pinId)),
-    openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
-    openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId)),
+    // fetchPin: pinId => dispatch(fetchPin(pinId)),
+    // openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
+    // openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId)),
+    openModal: modal => dispatch(openModal(modal)),
+    fetchPin: (pinId) => dispatch(fetchPin(pinId)),
+    fetchBoards: () => dispatch(fetchBoards()),
+    fetchPins: () => dispatch(fetchPins()),
+    deletePin: (pinId) => dispatch(deletePin(pinId)),
+    updatePin: pin => dispatch(updatePin(pin))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PinShow);
