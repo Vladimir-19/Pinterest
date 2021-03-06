@@ -45,7 +45,8 @@ const mapDispatchToProps = dispatch => ({
     fetchBoards: () => dispatch(fetchBoards()),
     fetchPins: () => dispatch(fetchPins()),
     deletePin: (pinId) => dispatch(deletePin(pinId)),
-    updatePin: pin => dispatch(updatePin(pin))
+    updatePin: pin => dispatch(updatePin(pin)),
+    openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PinShow);

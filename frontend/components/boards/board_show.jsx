@@ -84,7 +84,7 @@ export default class BoardShow extends React.Component {
                 }
             })
         }
-        let hoho = board.id
+        // let hoho = board.id
 
 
         if (pinArr.length >= 0) {

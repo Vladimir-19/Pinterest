@@ -9,9 +9,10 @@ import CreateBoardContainer from '../boards/create_board_container';
 import DeletePinFormContainer from '../pins/delete_pin_form_container';
 // import RecentPinContainer from '../pins/recent_pin_container';
 import EditProfileContainer from '../profile/edit_profile_container';
-import EditPinFormContainer from '../pins/edit_pin_form_container';
+// import EditPinFormContainer from '../pins/edit_pin_form_container';
 import EditBoardForm from "../boards/edit_board_form_container";
 import DeleteBoardFomrContainer from "../boards/delete_board_form_container";
+import EditPinForm from '../pins/edit_pin_form';
 
 function Modal({ modal, closeModal, openModal }) {
     if (!modal) return null;
@@ -41,6 +42,7 @@ function Modal({ modal, closeModal, openModal }) {
             // component = <CreateBoardsPinsContainer />;
             component =
                 <CreateBoardsPinsForm
+                    pinId={modal.pinId}
                     // CreateBoardsPinsContainer
                 />;
             clickBackground = closeModal;
@@ -65,7 +67,8 @@ function Modal({ modal, closeModal, openModal }) {
             clickBackground = closeModal;
             break;
         case 'edit-pin':
-            component = <EditPinFormContainer />;
+            // component = <EditPinFormContainer />;
+            component = <EditPinForm/>;
             clickBackground = closeModal;
             break;
         case "delete-pin":
