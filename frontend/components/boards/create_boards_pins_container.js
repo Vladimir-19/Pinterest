@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
         allBoards,
     }
 };
-
+changes changes changes 
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
