@@ -221,7 +221,7 @@ const mapStateToProps = state => ({
     pin: state.entities.pins[state.ui.objectId],
     errors: state.errors.pin,
     formTitle: "Edit this Pin",
-    pin = state.entities.pins[state.ui.objectId] //try
+    pin: state.entities.pins[state.ui.objectId] //try
 });
 
 const mapDispatchToProps = dispatch => ({

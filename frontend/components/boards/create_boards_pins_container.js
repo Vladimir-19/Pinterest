@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     const currentUserId = state.session.id;
     const pin = state.entities.pins[state.ui.objectId];
     const allBoards = Object.values(state.entities.boards);
-
+    debugger;
     return {
         // currentUser: state.entities.users[state.session.id],
         boards: Object.values(state.entities.boards),
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
         allBoards,
     }
 };
-changes changes changes 
+
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
     pinToBoard: boardPin => dispatch(pinToBoard(boardPin))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBoardsPinsForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateBoardsPinsForm));

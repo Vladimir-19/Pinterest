@@ -181,6 +181,7 @@
 //             </div>
 //         );
 
+//         // debugger
 //         return (
 //             <div
 //                 className="pin-show main-container"
@@ -197,8 +198,8 @@
 
 //                     <div className="pin-show container"
 //                         onClick={(e) => e.stopPropagation()}>
-
-//                         <div id='dropdown-pin-show'><DropdownContainer pinId={pin.id} /></div>
+                            
+//                         <div id='dropdown-pin-show'><DropdownContainer pinId={_pinState} /></div>
 //                         {/* <div id='dropdown-pin-show'><ShowDropdown pinId={pin.id} /></div> */}
 
 //                         {/* this */}
@@ -263,7 +264,6 @@
 //                                 {editPinLink}
 //                                 <div> openNewBoardPin</div>
 //                                 <a
-
 //                                     className="pin-show save-board-pin-link"
 //                                     onClick={() => openNewBoardPin(pin.id)}>
 //                                     <div className="pin-show save-board-pin-text">Save</div>
@@ -292,6 +292,8 @@
 // // export default PinShow;
 // export default withRouter(PinShow)
 
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -301,7 +303,7 @@ class PinShow extends React.Component {
         this.state = this.props.pin;
 
         this.goBack = this.goBack.bind(this);
-        this.openNewBoardPin = this.openNewBoardPin.bind(this);
+        // this.openNewBoardPin = this.openNewBoardPin.bind(this);
     }
 
     componentDidMount() {
@@ -314,10 +316,12 @@ class PinShow extends React.Component {
         this.props.history.goBack();
     }
 
-    openNewBoardPin() {
-        // debugger;
-        this.props.openModal("new-board-pin", this.props.pin.id);
-    }
+    // openNewBoardPin() {
+    //     // debugger;
+    //     // e.preventDefault();
+    //     this.props.openModal("new-board-pin", this.props.params.pinId);
+    // }
+    
     render() {
         const { pin, currentUserId, openEditPin, openNewBoardPin } = this.props;
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
@@ -393,17 +397,20 @@ class PinShow extends React.Component {
         ) : (
             { pinOwnerFullName }
         )
+         
+        // debugger
         const pinCreditText = (
             <div className="pin-show credit-summary">
                 <Link
-                    to={`/${pinOwner.username}`}
+                    to={`/${pinOwner.id}`}
                     className="pin-show credit-link"
                 >
                     <strong>{pinOwnerFullName}</strong>
                 </Link>
                 <span>&nbsp;saved to&nbsp;</span>
                 <Link
-                    to={`/${pinOwner.username}/${pin.boardTitle}`}
+                    // to={`/${pinOwner.id}/${pin.boardTitle}`}
+                    to={`/boards/${pin.boardId}`} //to be conti
                     className="pin-show credit-link"
                 >
                     <strong>{pin.boardTitle}</strong>
@@ -437,8 +444,8 @@ class PinShow extends React.Component {
                                 <div></div>
                                 <a
                                     className="pin-show save-board-pin-link"
-                                    // onClick={() => openNewBoardPin(currentUserId)}
-                                    onClick={this.openNewBoardPin}
+                                    onClick={() => openNewBoardPin(this.props.pin)}
+                                    // onClick={this.openNewBoardPin()}
                                 >
                                     <div className="pin-show save-board-pin-text">Save</div>
                                 </a>

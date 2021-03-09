@@ -76,11 +76,11 @@ import { Link } from 'react-router-dom';
 class CreateBoardPinForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            pin_id: this.props.pin_id,
-            board_id: null,
-            // message: false
-        };
+        // this.state = {
+        //     pin_id: this.props.pin_id,
+        //     board_id: null,
+        //     // message: false
+        // };
         this.handleSave = this.handleSave.bind(this);
     }
 
