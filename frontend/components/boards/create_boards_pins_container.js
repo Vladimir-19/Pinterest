@@ -11,11 +11,16 @@ const mapStateToProps = (state) => {
     const currentUserId = state.session.id;
     const pin = state.entities.pins[state.ui.objectId];
     const allBoards = Object.values(state.entities.boards);
-    debugger;
+    const boards = Object.values(state.entities.boards).filter(board => (
+        board.userId === state.session.id
+    ));
+
+    // debugger;
     return {
         // currentUser: state.entities.users[state.session.id],
-        boards: Object.values(state.entities.boards),
+        // boards: Object.values(state.entities.boards),
         currentUserId,
+        boards,
         pin,
         allBoards,
     }

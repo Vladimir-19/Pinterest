@@ -300,7 +300,7 @@ import { Link } from 'react-router-dom';
 class PinShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.pin;
+        // this.state = this.props.pin;
 
         this.goBack = this.goBack.bind(this);
         // this.openNewBoardPin = this.openNewBoardPin.bind(this);

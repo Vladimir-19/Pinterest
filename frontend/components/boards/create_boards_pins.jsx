@@ -76,11 +76,11 @@ import { Link } from 'react-router-dom';
 class CreateBoardPinForm extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     pin_id: this.props.pin_id,
-        //     board_id: null,
-        //     // message: false
-        // };
+        this.state = {
+            pin_id: this.props.pin_id,
+            board_id: null,
+            // message: false
+        };
         this.handleSave = this.handleSave.bind(this);
     }
 
@@ -92,7 +92,7 @@ class CreateBoardPinForm extends React.Component {
         e.preventDefault();
         this.setState({ board_id: e.currentTarget.value },
             () => this.props.pinToBoard(this.state)
-                //.then(this.props.closeModal)
+                .then(this.props.closeModal)
                 );
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
@@ -111,14 +111,15 @@ class CreateBoardPinForm extends React.Component {
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
             const firstPinPhoto = (board.firstPin !== undefined) ? (
-                <img src={board.firstPin.photo} className="board-list-item photo" />
+                <img src={board.pin.photo} className="board-list-item photo" />
             ) : null;
-
+                // debugger;
             return (
                 <li
                     key={board.id}
                     className="create-board-pin board-list-item"
-                    value={board.id}
+                    value={board.id} //changes
+                    // value={boards.id}
                     onClick={this.handleSave}
                 >
                     <div className="board-list-item photo-container">
@@ -129,8 +130,8 @@ class CreateBoardPinForm extends React.Component {
                     </div>
                     <div className="board-list-item save-button">
                         <i className="fas fa-thumbtack save-icon"></i>
-                        {/* <div className="save-text">&nbsp;Save</div> */}
-                        <div className="save-text">Save</div>
+                        <div className="save-text">&nbsp;Save</div>
+                        {/* <div className="save-text">Save</div> */}
                     </div>
                 </li>
             )
