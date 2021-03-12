@@ -296,6 +296,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CreateBoardsPinsForm from '../boards/create_boards_pins_container';
 
 class PinShow extends React.Component {
     constructor(props) {
@@ -303,7 +304,7 @@ class PinShow extends React.Component {
         // this.state = this.props.pin;
 
         this.goBack = this.goBack.bind(this);
-        // this.openNewBoardPin = this.openNewBoardPin.bind(this);
+        this.openNewBoardPin = this.openNewBoardPin.bind(this);
     }
 
     componentDidMount() {
@@ -316,14 +317,15 @@ class PinShow extends React.Component {
         this.props.history.goBack();
     }
 
-    // openNewBoardPin() {
-    //     // debugger;
-    //     // e.preventDefault();
-    //     this.props.openModal("new-board-pin", this.props.params.pinId);
-    // }
+    openNewBoardPin() {
+        // debugger;
+        // e.preventDefault();
+        this.props.openModal("new-board-pin", this.props.params.pinId);
+    }
     
     render() {
-        const { pin, currentUserId, openEditPin, openNewBoardPin } = this.props;
+        // debugger
+        const { pin, currentUserId, openEditPin } = this.props; //openNewBoardPin
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
         const pinOwner = pin.user || { username: "" };
@@ -442,13 +444,19 @@ class PinShow extends React.Component {
                             <div className="pin-show nav-bar">
                                 {editPinLink}
                                 <div></div>
-                                <a
+                                {/* <a
                                     className="pin-show save-board-pin-link"
-                                    onClick={() => openNewBoardPin(this.props.pin)}
-                                    // onClick={this.openNewBoardPin()}
+                                    // onClick={() => openNewBoardPin(this.props.pin)}1
+                                    // onClick={() => openNewBoardPin(pin.id)}2
+                                    // onClick={this.openNewBoardPin()}3
+                                    // onClickk={}
                                 >
+                                    <CreateBoardsPinsForm pin={pin.id} />
                                     <div className="pin-show save-board-pin-text">Save</div>
-                                </a>
+                                </a> */}
+                                <CreateBoardsPinsForm pinId={pin} />
+                                <div className="pin-show save-board-pin-text">Save</div>
+
                             </div>
                             <div className="pin-show info">
                                 {pinSource}

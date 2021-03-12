@@ -76,12 +76,14 @@ import { Link } from 'react-router-dom';
 class CreateBoardPinForm extends React.Component {
     constructor(props) {
         super(props);
+        // debugger;
         this.state = {
-            pin_id: this.props.pin_id,
+            pin_id: this.props.pinId,
             board_id: null,
             // message: false
         };
         this.handleSave = this.handleSave.bind(this);
+
     }
 
     componentDidMount() {
@@ -89,11 +91,14 @@ class CreateBoardPinForm extends React.Component {
     }
 
     handleSave(e) {
+        debugger
         e.preventDefault();
+        // console.log(e.currentTarget)
         this.setState({ board_id: e.currentTarget.value },
             () => this.props.pinToBoard(this.state)
-                .then(this.props.closeModal)
+                // .then(this.props.closeModal)
                 );
+        // console.log(event.currentTarget)
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
         //         message: true;
@@ -118,7 +123,7 @@ class CreateBoardPinForm extends React.Component {
                 <li
                     key={board.id}
                     className="create-board-pin board-list-item"
-                    value={board.id} //changes
+                    value={board.id} 
                     // value={boards.id}
                     onClick={this.handleSave}
                 >
@@ -126,7 +131,7 @@ class CreateBoardPinForm extends React.Component {
                         {firstPinPhoto}
                     </div>
                     <div className="board-list-item title">
-                        {board.title}
+                        {board.id}
                     </div>
                     <div className="board-list-item save-button">
                         <i className="fas fa-thumbtack save-icon"></i>

@@ -9,9 +9,9 @@ import CreateBoardsPinsForm from './create_boards_pins';
 
 const mapStateToProps = (state) => {
     const currentUserId = state.session.id;
-    const pin = state.entities.pins[state.ui.objectId];
-    const allBoards = Object.values(state.entities.boards);
-    const boards = Object.values(state.entities.boards).filter(board => (
+    // const pin = state.entities.pins[state.ui.objectId]; //uncomment
+    // const allBoards = Object.values(state.entities.boards);
+    const allBoards = Object.values(state.entities.boards).filter(board => (
         board.userId === state.session.id
     ));
 
@@ -20,8 +20,9 @@ const mapStateToProps = (state) => {
         // currentUser: state.entities.users[state.session.id],
         // boards: Object.values(state.entities.boards),
         currentUserId,
-        boards,
-        pin,
+        // boards,
+        // pin, //uncomment
+        pins: Object.values(state.entities.pins),
         allBoards,
     }
 };
