@@ -42,6 +42,7 @@ function Modal({ modal, closeModal, openModal }) {
             // component = <CreateBoardsPinsContainer />;
             component =
                 <CreateBoardsPinsForm
+                    // pinId={pin.id}
                     // CreateBoardsPinsContainer
                 />;
             clickBackground = closeModal;

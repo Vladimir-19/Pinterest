@@ -302,14 +302,33 @@ class PinShow extends React.Component {
     constructor(props) {
         super(props);
         // this.state = this.props.pin;
+        this.state = {
+            fadeInName: false,
+            showCreateOptions: false
+        };
 
         this.goBack = this.goBack.bind(this);
-        this.openNewBoardPin = this.openNewBoardPin.bind(this);
+        // this.openNewBoardPin = this.openNewBoardPin.bind(this);
+        this.toggleShow = this.toggleShow.bind(this);
+        this.hide = this.hide.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchPin(this.props.match.params.pinId);
     }
+//extra
+    toggleShow() {
+        // debugger;
+        this.setState({ showCreateOptions: !this.state.showCreateOptions })
+    }
+    hide(e) {
+        if (e && e.relatedTarget) {
+            e.relatedTarget.click();
+        }
+        this.setState({ showCreateOptions: false });
+    }
+
 
     goBack(e) {
         e.preventDefault();
@@ -317,15 +336,15 @@ class PinShow extends React.Component {
         this.props.history.goBack();
     }
 
-    openNewBoardPin() {
-        // debugger;
-        // e.preventDefault();
-        this.props.openModal("new-board-pin", this.props.params.pinId);
-    }
+    // openNewBoardPin() {
+    //     // debugger;
+    //     // e.preventDefault();
+    //     this.props.openModal("new-board-pin", this.props.params.pinId);
+    // }
     
     render() {
         // debugger
-        const { pin, currentUserId, openEditPin } = this.props; //openNewBoardPin
+        const { pin, currentUserId, openEditPin, openNewBoardPin } = this.props; //openNewBoardPin
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
         const pinOwner = pin.user || { username: "" };
@@ -420,6 +439,7 @@ class PinShow extends React.Component {
             </div>
         );
 
+
         // debugger;
         return (
             <div className="pin-show main-container"
@@ -441,21 +461,65 @@ class PinShow extends React.Component {
                             </div>
                         </div>
                         <div className="pin-show second-half">
-                            <div className="pin-show nav-bar">
+                            <div >
+                                {/* className="pin-show nav-bar" */}
                                 {editPinLink}
                                 <div></div>
                                 {/* <a
                                     className="pin-show save-board-pin-link"
-                                    // onClick={() => openNewBoardPin(this.props.pin)}1
-                                    // onClick={() => openNewBoardPin(pin.id)}2
+                                    // onClick={() => openNewBoardPin(this.props.pin)}
+                                    onClick={() => openNewBoardPin(pinId)}
+                                    // onClick={() => openNewBoardPin(pin.id)}
                                     // onClick={this.openNewBoardPin()}3
-                                    // onClickk={}
+                                    // onClickk={<CreateBoardsPinsForm pin={pin.id} //no />}
                                 >
-                                    <CreateBoardsPinsForm pin={pin.id} />
                                     <div className="pin-show save-board-pin-text">Save</div>
                                 </a> */}
-                                <CreateBoardsPinsForm pinId={pin} />
-                                <div className="pin-show save-board-pin-text">Save</div>
+                                <button
+                                    // className="profile-header-link"
+                                    className="profile-icon-container-shadow-two"
+                                    onClick={this.toggleShow}
+                                    onBlur={this.hide}
+                                >
+                                    <div className="profile-icon-container-shadow">
+                                        <div className="profile-icon-container">
+                                            <i style={{ "fontFamily": "serif" }}>+</i>
+                                        </div>
+                                    </div>
+                                </button>
+                                <div id="create-pinboard-container" style={{
+                                    visibility: this.state.showCreateOptions ?
+                                        "visible" :
+                                        "hidden"
+                                }}>
+                                    <div id="create-options">
+                                        <div id="create-board-button" tabIndex="0" >
+                                            <div className="option-container-shadow">
+                                                <div className="option-container">
+                                                    <h3 className="option-label" id="create-board">
+                                                        <CreateBoardsPinsForm pinId={pin.id} />
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="create-pin-button">
+                                            {/* <NavLink to="/pin-builder">
+                                                <div className="option-container-shadow">
+                                                    <div className="option-container">
+                                                        <h3 className="option-label" id="create-pin">Create Pin</h3>
+                                                    </div>
+                                                </div>
+                                            </NavLink> */}
+                                        </div>
+                                    </div>
+                                    <div id="create-options-triangle">
+                                        <svg width="24" height="24">
+                                            <path d="M0 24 L12 12 L24 24"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
+                                {/* <div className="pin-show save-board-pin-text">Save</div> */}
 
                             </div>
                             <div className="pin-show info">

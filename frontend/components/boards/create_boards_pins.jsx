@@ -90,30 +90,29 @@ class CreateBoardPinForm extends React.Component {
         this.props.fetchBoards();
     }
 
-    endgame(e) {
-        e.preventDefault();
-        this.props.pinToBoard(this.state)
-    }
+    // endgame(e) {
+    //     e.preventDefault();
+    //     // this.state.pinToBoard(this.state)
+    //     console.log(this.state)
+    // }
 
     handleSave(e) {
         // debugger
         e.preventDefault();
-        // console.log(e.currentTarget)
-        // this.setState({ board_id: e.currentTarget.value },
-        //     () => this.props.pinToBoard(this.state)
-        //         // .then(this.props.closeModal)
-        //         );
-        this.setState({ board_id: e.currentTarget.value })
-        console.log(this.state)
+        // console.log(e.currentTarget.value)
+        this.setState({ board_id: e.currentTarget.value },
+            () => this.props.pinToBoard(this.state) //it helps not to press the button twice
+                // .then(this.props.closeModal)
+                );
+        // this.setState({ board_id: e.currentTarget.value })
+
+        // console.log(this.state)
         // this.endgame(e)
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
         //         message: true;
         //     }),
         // );
-
-        // I NEED TO CHECK FROM THE TOP HOW CATHERINE DID (DON'T THINK SHE 
-        // USEING CREATE_BOARD_PIN FILE)
     }
 
     render() {
@@ -132,7 +131,7 @@ class CreateBoardPinForm extends React.Component {
                     className="create-board-pin board-list-item"
                     value={board.id} 
                     // value={boards.id}
-                    // onClick={this.handleSave}
+                    onClick={this.handleSave}
                 >
                     <div className="board-list-item photo-container">
                         {firstPinPhoto}
@@ -141,13 +140,13 @@ class CreateBoardPinForm extends React.Component {
                         {board.id}
                     </div>
                     {/* <div className="save-text">&nbsp;Save</div> */}
-                    <button value={board.id} onClick={(e) => this.handleSave(e)}>save</button>
+                    {/* <button value={board.id} onClick={(e) => this.handleSave(e)}>save</button> */}
 
-                    {/* <div className="board-list-item save-button">
+                    <div className="board-list-item save-button">
                         <i className="fas fa-thumbtack save-icon"></i>
                         <div className="save-text">&nbsp;Save</div>
-                        //<div className="save-text">Save</div>
-                    </div> */}
+                        {/* //<div className="save-text">Save</div> */}
+                    </div>
                 </li>
             )
         })
@@ -164,11 +163,11 @@ class CreateBoardPinForm extends React.Component {
                     </a>
                 </div>
                 <div className="create-board-pin body">
-                    <div className="create-board-pin first-half">
+                    {/* <div className="create-board-pin first-half">
                         <div className="create-board-pin photo-container">
-                            {/* <img src={pin.photo} className="create-board-pin photo" /> */}
+                            <img src={pin.photo} className="create-board-pin photo" />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="create-board-pin second-half">
                         <ul className="create-board-pin board-list">
                             {boardListItems}
