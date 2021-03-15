@@ -106,7 +106,7 @@ class CreateBoardPinForm extends React.Component {
                 );
         // this.setState({ board_id: e.currentTarget.value })
 
-        // console.log(this.state)
+        console.log(this.state)
         // this.endgame(e)
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
@@ -137,7 +137,7 @@ class CreateBoardPinForm extends React.Component {
                         {firstPinPhoto}
                     </div>
                     <div className="board-list-item title">
-                        {board.id}
+                        {board.title}
                     </div>
                     {/* <div className="save-text">&nbsp;Save</div> */}
                     {/* <button value={board.id} onClick={(e) => this.handleSave(e)}>save</button> */}

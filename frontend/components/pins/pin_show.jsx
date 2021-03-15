@@ -1,298 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { withRouter } from 'react-router-dom';
-
-// // import { updatePin} from '../../actions/pin_actions'
-
-// // import ShowDropdown from "./show_sropdown_container";
-// import DropdownContainer from "./show_sropdown_container";
-
-// import EditPinFormContainer from './edit_pin_form_container';
-// import EditPinForm from './edit_pin_form';
-
-// class PinShow extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         // this.state = {
-//         //     delete: false,
-//         //     update: false
-//         // }
-//         this.updatePin = this.updatePin.bind(this)
-//         // this.goBack = this.goBack.bind(this);
-//         // //this 
-//         // this.hideBoardList = this.hideBoardList.bind(this);
-//         // this.selectBoard = this.selectBoard.bind(this);
-//         // this.handleSave = this.handleSave.bind(this);
-//         // console.log(this.props)
-
-//     }
-//     // // this 
-//     // hideBoardList(e) {
-//     //     this.setState({ boardList: false });
-//     // }
-
-//     // handleSave(e) {
-//     //     e.stopPropagation();
-//     //     const details = Object.assign({}, this.state);
-//     //     delete details["photoPreview"];
-//     //     delete details["board"];
-//     //     delete details["boardList"];
-
-//     //     const formData = new FormData();
-//     //     for (let key in details) {
-//     //         formData.append(`pin[${key}]`, details[key])
-//     //     };
-
-//     //     const pinToBoard = (boardPin) => this.props.pinToBoard(boardPin);
-//     //     const boardId = this.state.boardId;
-
-//     //     return this.props.processForm(formData)
-//     //         .then(res => (pinToBoard({
-//     //             "board_id": boardId,
-//     //             "pin_id": parseInt(Object.keys(res.pin)[0])
-//     //         })))
-//     //         .then(() => window.history.go(-1));
-//     // }
-
-//     // to make API calls (the component has been mounted and is available to the DOM)
-//     componentDidMount() {
-//         // this.props.fetchPin(this.props.match.params.pinId);
-//         this.props.fetchPin(this.props.match.params.pinId);
-//         // //this         
-//         // this.props.fetchBoards();
-//         // this.props.fetchPins();
-
-//     }
-
-//     goBack(e) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         this.props.history.goBack();
-//     }
-
-//     // fuck 
-//     updatePin() {
-//         // debugger;
-//         // this.props.updatePin(this.state.pin.id)
-//         //     .then(this.props.closeModal);
-//         this.props.openModal("edit-pin", this.props.pin);
-//     }
-//     // onChange()
-//     render() {
-//         const { pin, _pinState, currentUserId, openEditPin, openNewBoardPin } = this.props;
-//         if (!pin)
-//             return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
-
-//         //     //this
-//         // const  clickSave = (this.state.boardIdi == null) ? (null) : (this.handleSave);
-
-//         const pinId = _pinState.id;
-//         const pinOwner = pin.user || { email: "" };
-//         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
-//         const imgLink = (pin.url === "") ? (
-//             <div className="pin-show pin-link">
-//                 <img src={pin.photo} className="pin-show pin-photo" />
-//             </div>
-//         ) : (
-//                 <a
-//                     href={pin.url}
-//                     target="_blank"
-//                     className="pin-show pin-link url">
-//                     <img src={pin.photo} className="pin-show pin-photo" />
-//                 </a>
-//             );
-//         // debugger;
-//         const editPinLink = (pin.userId === currentUserId) ? (
-//             <a className="pin-show edit-pin-link"
-//                 onClick={() => openEditPin(pinId)}>
-//                 <i className="fas fa-pencil-alt edit-pin-icon"></i>
-//             </a>
-//             // <EditPinForm
-//             //     key={pin.id + pin.title}
-//             //     pin={this.pin}
-//             //     updatePin={this.props.updatePin}
-//             //     pinId = { pin.id }
-//             //     // handleSave = { updatePin}
-//             // />
-//             // <button onClick={this.updatePin}>
-//             //     <i className="fas fa-pencil-alt edit-pin-icon"></i>
-//             // </button>
-//         ) : (
-//                 null
-//             );
-
-//         const pinSource = (pin.url === "") ? (
-//             <a
-//                 href={pin.url}
-//                 target="_blank"
-//                 className="pin-show source-link"
-//             >
-//                 <div>{pin.url}</div>
-//             </a>
-//         ) : (
-//                 <div className="pin-show source-link">
-//                     <div> Uploaded by&nbsp;
-//                         <Link to={`/${pinOwner.email}`}>
-//                             <strong>{pinOwnerFullName}</strong>
-//                         </Link>
-//                     </div>
-//                 </div>
-//             );
-//         const pinTitle = (pin.url === "") ? (
-//             <div className="pin-show title">{pin.title}</div>
-//         ) : (
-//                 <a
-//                     href={pin.url}
-//                     target="_blank"
-//                     className="pin-show title">
-//                     {pin.title}
-//                 </a>
-//             );
-
-//         const pinCreatePhoto = (
-//             <Link
-//                 to={`/${pinOwner.email}`}
-//                 className="pin-show profile-link-frame">
-//                 <img src={pinOwner.photo} className="pin-show profile-link-photo" />
-//                 <div className="pin-show overlay"></div>
-//             </Link>
-//         );
-//         const name = (pinOwner.id === currentUserId) ? (
-//             "You"
-//         ) : (
-//                 { pinOwnerFullName }
-//             )
-
-//         const pinCreditText = (
-//             <div className="pin-show credit-summary">
-//                 <Link
-//                     to={`/${pinOwner.id}`}
-//                     className="pin-show credit-link"
-//                 >
-//                     <strong>{pinOwnerFullName}</strong>
-//                 </Link>
-//                 {/* <span>&nbsp;saved to&nbsp;</span> */}
-
-//                 <Link
-//                     to={`/${pinOwner.id}/${pin.boardTitle}`}
-//                     className="pin-show credit-link">
-//                     <strong>{pin.boardTitle}</strong>
-//                 </Link>
-//             </div>
-//         );
-
-//         // debugger
-//         return (
-//             <div
-//                 className="pin-show main-container"
-//                 onClick={this.goBack}>
-//                 <a
-//                     className="pin-show back-button"
-//                     onClick={this.goBack}>
-//                     <i className="fas fa-arrow-left back-icon"></i>
-//                 </a>
-//                 <div className="pin-show wrapper"
-//                     onClick={this.goBack}>
-//                     {/* this */}
-//                     {/* <div onClick={this.hideBoardList}> */}
-
-//                     <div className="pin-show container"
-//                         onClick={(e) => e.stopPropagation()}>
-                            
-//                         <div id='dropdown-pin-show'><DropdownContainer pinId={_pinState} /></div>
-//                         {/* <div id='dropdown-pin-show'><ShowDropdown pinId={pin.id} /></div> */}
-
-//                         {/* this */}
-//                         {/* <div
-//                                 className="create-pin"
-//                                 id="buttons"
-//                                 onClick={this.toggleBoardList}
-//                                 onBlur={this.hideBoardList}
-//                             >
-//                                 <div className="create-pin" id="select-board-dropdown">
-//                                     <div className="create-pin" id="select-board-label">
-//                                         <div className="create-pin" id="selected-board">
-//                                             {dropdownLabel}
-//                                         </div>
-//                                     </div>
-//                                     <div className="create-pin" id="dropdown-icon-container">
-//                                         <i className="fas fa-angle-down" id="dropdown-icon"></i>
-//                                     </div>
-//                                 </div>
-//                                 <div className="create-pin" id="save-button" onClick={clickSave}>
-//                                     <div className="create-pin" id="save-button-label">
-//                                         Save
-//                                     </div>
-//                                 </div>
-//                                 <div className={`create-pin board-list container ${klass}`}>
-//                                     <div className="create-pin board-list triangle">
-//                                         <svg width="24" height="24">
-//                                             <path d="M0 24 L12 12 L24 24"></path>
-//                                         </svg>
-//                                     </div>
-//                                     <div className="create-pin board-list header">
-//                                         <div className="create-pin board-list title">
-//                                             All boards
-//                                         </div>
-//                                     </div>
-//                                     <ul className="create-pin board-list">
-//                                         {boardListItems}
-//                                     </ul>
-//                                 </div>
-//                             </div>
-//                         </div> */}
-//                         {/* stop */}
-//                         <div className="pin-show first-half">
-//                             <div className="pin-show link-area">
-//                                 {imgLink}
-//                                 <div className="pin-show overlay"></div>
-//                             </div>
-//                         </div>
-//                         <div className="pin-show second-half">
-//                             <div className="pin-show nav-bar">
-//                                 {/* <div className="create-pin" id="select-board-dropdown">
-//                                     <div className="create-pin" id="select-board-label">
-//                                         <div className="create-pin" id="selected-board">
-//                                             {dropdownLabel}
-//                                         </div>
-//                                     </div>
-//                                     <div className="create-pin" id="dropdown-icon-container">
-//                                         <i className="fas fa-angle-down" id="dropdown-icon"></i>
-//                                     </div>
-//                                 </div> */}
-
-//                                 {editPinLink}
-//                                 <div> openNewBoardPin</div>
-//                                 <a
-//                                     className="pin-show save-board-pin-link"
-//                                     onClick={() => openNewBoardPin(pin.id)}>
-//                                     <div className="pin-show save-board-pin-text">Save</div>
-//                                 </a>
-//                             </div>
-//                             <div className="pin-show info">
-//                                 {pinSource}
-//                                 {pinTitle}
-//                                 <div className="pin-show description">
-//                                     {pin.description}
-//                                 </div>
-//                             </div>
-//                             <div className="pin-show credit">
-//                                 {pinCreatePhoto}
-//                                 {pinCreditText}
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             // </div> //this
-//         )
-//     }
-// }
-
-// // export default PinShow;
-// export default withRouter(PinShow)
-
-
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -392,6 +97,7 @@ class PinShow extends React.Component {
                 </div>
             </div>
         );
+
         const pinTitle = (pin.url === "") ? (
             <div className="pin-show title">{pin.title}</div>
         ) : (
@@ -401,6 +107,17 @@ class PinShow extends React.Component {
                 className="pin-show title"
             >
                 {pin.title}
+            </a>
+        );
+
+        const urlLink = pin.url;
+        const linkto = (pin.url === "") ? (urlLink.slice(8, 20)) : (
+            <a
+                href={pin.url}
+                target="_blank"
+                // className="pin-show title"
+            >
+                www.{pin.title}...
             </a>
         );
 
@@ -439,7 +156,6 @@ class PinShow extends React.Component {
             </div>
         );
 
-
         // debugger;
         return (
             <div className="pin-show main-container"
@@ -464,8 +180,8 @@ class PinShow extends React.Component {
                             <div >
                                 {/* className="pin-show nav-bar" */}
                                 {editPinLink}
-                                <div></div>
-                                {/* <a
+                                {/* <div></div>
+                                <a
                                     className="pin-show save-board-pin-link"
                                     // onClick={() => openNewBoardPin(this.props.pin)}
                                     onClick={() => openNewBoardPin(pinId)}
@@ -475,28 +191,45 @@ class PinShow extends React.Component {
                                 >
                                     <div className="pin-show save-board-pin-text">Save</div>
                                 </a> */}
-                                <button
-                                    // className="profile-header-link"
-                                    className="profile-icon-container-shadow-two"
+                                {/* <button */}
+                                <a
+                                    // className="pin-show-save-board-pin-link"
+                                    // className="profile-header-link" // ??? 
+                                    // className="profile-icon-container-shadow-two" // was 
+                                    className="xxx"
                                     onClick={this.toggleShow}
                                     onBlur={this.hide}
                                 >
-                                    <div className="profile-icon-container-shadow">
-                                        <div className="profile-icon-container">
-                                            <i style={{ "fontFamily": "serif" }}>+</i>
+                                    <div >
+                                        {/* className="profile-icon-container-shadow" */}
+                                        <div >
+                                            {/* className="profile-icon-container" */}
+                                            {/* <i style={{ "fontFamily": "serif" }}>+</i> */} 
+                                            <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%"}}></i>
+                                            {/* className="pin-show save-board-pin-text" */}
                                         </div>
                                     </div>
-                                </button>
+                                    </a>
+                                {/* </button> */}
                                 <div id="create-pinboard-container" style={{
                                     visibility: this.state.showCreateOptions ?
                                         "visible" :
                                         "hidden"
                                 }}>
-                                    <div id="create-options">
-                                        <div id="create-board-button" tabIndex="0" >
-                                            <div className="option-container-shadow">
-                                                <div className="option-container">
-                                                    <h3 className="option-label" id="create-board">
+                                    <h3 >
+                                        {/* className="option-label" id="create-board"> */}
+                                        <CreateBoardsPinsForm pinId={pin.id} />
+                                    </h3>
+                                    <div >
+                                        {/* id="create-options" */}
+                                        <div  >
+                                            {/* id="create-board-button" tabIndex="0" */}
+                                            <div >
+                                                {/* className="option-container-shadow" */}
+                                                <div >
+                                                    {/* className="option-container" */}
+                                                    <h3 >
+                                                        {/* className="option-label" id="create-board"> */}
                                                         <CreateBoardsPinsForm pinId={pin.id} />
                                                     </h3>
                                                 </div>
@@ -523,7 +256,7 @@ class PinShow extends React.Component {
 
                             </div>
                             <div className="pin-show info">
-                                {pinSource}
+                                {linkto}
                                 {pinTitle}
                                 <div className="pin-show description">
                                     {pin.description}
