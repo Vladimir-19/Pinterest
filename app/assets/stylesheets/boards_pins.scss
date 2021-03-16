@@ -1,13 +1,13 @@
 .create-board-pin.container {
-  width: 804px;
+  width: auto;
   box-sizing: border-box;
-  border-radius: 8px;
-  position: relative;
+  // border-radius: 8px;
+  // position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  max-height: calc(100vh -32px);
-  flex: 1 1 auto;
+  // max-height: calc(100vh -32px);
+  // flex: 1 1 auto;
   overflow: hidden;
   cursor: auto;
 }

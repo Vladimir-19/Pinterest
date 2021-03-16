@@ -96,11 +96,20 @@
   font-size: 10pt;
 }
 
+.pin-show.title {
+  margin-top: 16px;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  color: #333;
+}
+
 //dropdown
 #create-pinboard-container {
   right: 20px;
   stroke: rgb(239, 239, 239);
-  top: 382px;
+  top: 88px;
   position: absolute;
   background-color: #fff;
   color: #fff;

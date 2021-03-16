@@ -116,6 +116,7 @@ class PinShow extends React.Component {
                 href={pin.url}
                 target="_blank"
                 // className="pin-show title"
+                style={{ "color": "black" }} //"text-decoration": "none",
             >
                 www.{pin.title}...
             </a>
@@ -230,7 +231,7 @@ class PinShow extends React.Component {
                                                     {/* className="option-container" */}
                                                     <h3 >
                                                         {/* className="option-label" id="create-board"> */}
-                                                        <CreateBoardsPinsForm pinId={pin.id} />
+                                                        {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
                                                     </h3>
                                                 </div>
                                             </div>
