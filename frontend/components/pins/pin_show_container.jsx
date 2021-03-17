@@ -24,7 +24,7 @@ import React from "react";
 import PinShow from "./pin_show";
 
 import { fetchPin, fetchPins, deletePin, updatePin } from "../../actions/pin_actions";
-import { openModal } from "../../actions/modal_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -37,9 +37,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     // fetchPin: pinId => dispatch(fetchPin(pinId)),
-    // openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
+    openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
     // openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId)),
     openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal()),
     fetchPin: (pinId) => dispatch(fetchPin(pinId)),
     fetchBoards: () => dispatch(fetchBoards()),
     fetchPins: () => dispatch(fetchPins()),

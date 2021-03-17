@@ -69,6 +69,7 @@ class PinShow extends React.Component {
                 <img src={pin.photo} className="pin-show pin-photo" />
             </a>
         );
+        // debugger;
         const editPinLink = (pin.userId === currentUserId) ? (
             <a
                 className="pin-show edit-pin-link"

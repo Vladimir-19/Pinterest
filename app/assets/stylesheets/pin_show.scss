@@ -113,14 +113,14 @@
   position: absolute;
   background-color: #fff;
   color: #fff;
-  box-sizing: border-box;
-  min-height: auto;//40px;
-  max-height: inherit;//90vh;
-  min-width: inherit;
+  // box-sizing: border-box;
+  min-height: 40px;
+  max-height: 90vh;
+  // min-width: inherit;
   border: 1px solid;
   box-shadow: 0 3px 6px rgba(0,0,0,.18);
-  outline: none;
-  border-radius: 8px;
+  // outline: none;
+  // border-radius: 8px;
   z-index: 50; 
   // top: auto;
 }
