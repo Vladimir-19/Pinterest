@@ -218,10 +218,11 @@ import { updatePin } from "../../actions/pin_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => ({
-    pin: state.entities.pins[state.ui.objectId],
+    // pin: state.entities.pins[state.ui.objectId],
+    pin: state.entities.pins[ownProps.match.params.pinId],
     errors: state.errors.pin,
     formTitle: "Edit this Pin",
-    pin: state.entities.pins[state.ui.objectId] //try
+    // pin: state.entities.pins[state.ui.objectId] //try
 });
 
 const mapDispatchToProps = dispatch => ({

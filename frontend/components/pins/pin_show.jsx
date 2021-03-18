@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CreateBoardsPinsForm from '../boards/create_boards_pins_container';
+import EditPinFormContainer from '../pins/edit_pin_form_container';
+import EditPinForm from '../pins/edit_pin_form';
 
 class PinShow extends React.Component {
     constructor(props) {
@@ -21,6 +23,19 @@ class PinShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchPin(this.props.match.params.pinId);
+    }
+
+    
+    editPinModal() {
+        debugger;
+        return (
+            <EditPinFormContainer
+                title={this.state.title}
+                // body={this.state.body}
+                id={this.props.pin.id}
+                // boardId={this.props.pin.board_id}
+            />
+        )
     }
 //extra
     toggleShow() {
@@ -181,7 +196,14 @@ class PinShow extends React.Component {
                         <div className="pin-show second-half">
                             <div >
                                 {/* className="pin-show nav-bar" */}
-                                {editPinLink}
+                                {/* {editPinLink} */}
+                                {/* {this.editPinModal()} */}
+                                {/* <EditPinFormContainer 
+                                // pinId={pin.id}
+                                title={this.state.title}
+                                /> */}
+                                <EditPinForm pinId={pin.id} />
+
                                 {/* <div></div>
                                 <a
                                     className="pin-show save-board-pin-link"
