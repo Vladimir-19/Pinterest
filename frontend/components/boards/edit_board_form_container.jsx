@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import EditBoardForm from "./edit_board_form";
 
-import { updateBoard } from "../../actions/board_actions";
+import { updateBoard, deleteBoard } from "../../actions/board_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 // const mapStateToProps = (state, ownProps) => ( {
@@ -34,7 +34,8 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 const mapDispatchToProps = dispatch => ({
-    processForm: board => dispatch(updateBoard(board)),
+    // processForm: board => dispatch(updateBoard(board)),
+    deleteBoard: boardId => dispatch(deleteBoard(boardId)),
     openDeleteBoard: (boardId) => dispatch(openModal('delete-board', boardId)),
     closeModal: () => dispatch(closeModal())
 });

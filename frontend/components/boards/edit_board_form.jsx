@@ -9,6 +9,9 @@ class EditBoardForm extends React.Component {
             title: this.props.board.title,
             description: this.props.board.description,
             // secret: this.props.board.secret
+            success: '',
+            ask: '',
+            deleted: false
         };
 
         this.update = this.update.bind(this);
@@ -16,6 +19,11 @@ class EditBoardForm extends React.Component {
         this.openDeleteBoard = this.openDeleteBoard.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleSave = this.handleSave.bind(this);
+
+        this.deleteBoard = this.deleteBoard.bind(this);
+        this.deleteForSure = this.deleteForSure.bind(this);
+        this.checkPin = this.checkPin.bind(this);
+
     }
 
     update(field) {
@@ -55,9 +63,35 @@ class EditBoardForm extends React.Component {
             // .then(() => location.href = `/#/${username}`)
     }
 
+    deleteBoard(e) {
+        debugger
+        // if (this.state.ask === 'are you sure?') {
+        //     this.deleteForSure(e)
+        // } else {
+        //     this.setState({ ask: 'are you sure?' })
+        // }
+        this.props.deleteBoard(this.props.board.id) //.then(() => this.checkPin())
+    }
+    deleteForSure(e) {
+        //  debugger
+        this.props.deleteBoard(this.props.board.id) //.then(() => this.checkPin())
+    } //then(() => window.history.go(-1));
+    checkPin() {
+        // if (this.errors.length === 'undefind') {
+             this.props.history.push('/');
+        // } else {
+            // this.setState({ ask: '' })
+        // }
+    }
+
     render() {
         const { board, errors, formTitle } = this.props;
         const checked = (this.state.secret) ? 'checked' : null;
+
+        if (this.state.success === 'Your board was successfully deleted!')
+            return (
+                <p>{this.state.success}</p>
+            )
 
         return (
             <div className="edit-board container">
@@ -158,12 +192,18 @@ class EditBoardForm extends React.Component {
                     </div>
                     <div className="edit-board footer">
                         <div className="edit-board footer-part left">
-                            <button
+                            {/* <button
                                 className="edit-board button delete"
                                 onClick={(e, boardId) => this.openDeleteBoard(e, boardId)}
                             >
                                 Delete
-              </button>
+                            </button> */}
+                            {/* {board.title != "undefined" ?  */}
+                            <button className='plus-board' onClick={this.deleteBoard}>
+                                <i className='fas fa-trash-alt'></i>
+                            </button>
+                                {/* : null} */}
+                            {this.state.ask === 'Are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
                         </div>
                         <div className="edit-board footer-part right">
                             <button

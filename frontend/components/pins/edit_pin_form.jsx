@@ -38,12 +38,12 @@ class EditPinForm extends React.Component {
         )
     }
 
-    openDeletePin() {
-        // debugger
-        // this.props.openDeletePin(this.props.pin.id);
-        this.props.openDeletePin(this.props.pin);
+    // openDeletePin() {                        IDK, TRY I COMMENTED OUT AFTER THE FACT OF WORKIN WELL BUTTON
+    //     // debugger
+    //     // this.props.openDeletePin(this.props.pin.id);
+    //     this.props.openDeletePin(this.props.pin);
 
-    }
+    // }
 
     handleCancel() {
         this.props.closeModal();

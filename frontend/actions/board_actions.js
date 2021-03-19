@@ -50,8 +50,10 @@ export const createBoard = board => dispatch => {
 };
 
 export const deleteBoard = boardId => dispatch => {
-    return BoardAPIUtil.deleteBoard(boardId)
-        .then(board => dispatch(removeBoar(board.id)))
+    return BoardAPIUtil.deleteBoard(boardId).then(
+        board => dispatch(removeBoar(board.id)),
+        err => dispatch(receiveBoardErrors(err.responseJSON))
+        )
 };
 
 // export const updateBoard = board => dispatch => {
