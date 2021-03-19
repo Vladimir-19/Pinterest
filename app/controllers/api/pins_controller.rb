@@ -22,9 +22,9 @@ class Api::PinsController < ApplicationController
     end
 
     def update 
-        # @pin = Pin.find_by(params[:id])
-        # @pin = current_user.pins.find(params[:id])
-        @pin = Pin.find_by(params[:pin_id])
+        # @pin = Pin.find_by(params[:id]) NO
+        @pin = current_user.pins.find(params[:id])
+        # @pin = Pin.find_by(params[:pin_id]) NO
         
         if @pin.update(pin_params)
             render "api/pins/show"
@@ -35,6 +35,7 @@ class Api::PinsController < ApplicationController
 
     def destroy
         @pin = current_user.pins.find_by(id: params[:id])
+        # @pin = current_user.pins.find(params[:id])
         if @pin && @pin.destroy # if @pin
             @pin.destroy
             render "api/pins/show"
@@ -46,6 +47,6 @@ class Api::PinsController < ApplicationController
     private
 
     def pin_params
-        params.require(:pin).permit(:id, :title, :description, :url, :photo, :user_id)
+        params.require(:pin).permit( :title, :description, :url, :photo, :user_id) #:id
     end
 end

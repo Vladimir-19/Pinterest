@@ -66,15 +66,16 @@ function Modal({ modal, closeModal, openModal }) {
             component = <EditProfileContainer currentUser={modal.currentUser} />
             clickBackground = closeModal;
             break;
-        case 'edit-pin':
-            component = <EditPinFormContainer />;
-            // component = <EditPinForm/>;
-            clickBackground = closeModal;
-            break;
-        case "delete-pin":
-            component = <DeletePinFormContainer />;
-            clickBackground = () => openModal('edit-pin');
-            break;
+        // case 'edit-pin':
+        //     component = <EditPinFormContainer />;
+        //     // component = <EditPinForm/>;
+        //     clickBackground = closeModal;
+        //     break;
+        // case "delete-pin":
+        //     component = <DeletePinFormContainer />;
+        //     // clickBackground = () => openModal('edit-pin');
+        //     clickBackground = closeModal;
+        //     break;
         default:
             return null;
     };

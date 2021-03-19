@@ -9,6 +9,7 @@ class DeletePinForm extends React.Component {
     }
 
     handleDelete() {
+        debugger;
         this.props.processForm(this.props.pinId)
             .then(this.props.closeModal)
             .then(() => location.reload());
@@ -27,16 +28,16 @@ class DeletePinForm extends React.Component {
                         <div className="delete-pin form-title">
                             {this.props.formTitle}
                         </div>
-                        <div className="delete-pin cancel-link-container">
+                        {/* <div className="delete-pin cancel-link-container">
                             <a className="cancel-link" onClick={this.handleCancel}>
                                 <i className="fas fa-times cancel-icon"></i>
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="delete-pin body">
                         <div className="delete-pin confirmation-message">
                             Once you delete a Pin, you can't undo it!
-            </div>
+                        </div>
                     </div>
                     <div className="delete-pin footer">
                         <div className="delete-pin buttons">

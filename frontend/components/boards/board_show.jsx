@@ -6,13 +6,13 @@ import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
 // import PinIndexContainer from '../pins/pin_index_container';
 import BoardShowNavBar from './board_show_nav_bar'
-
+import EditBoardContainer from './edit_board_form_container';
 //delte
 import edit from './edit';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
-        super(props)
+        super(props) //props.board.id etc
         this.state = {
             loading: true,
             fetched: false,
@@ -22,6 +22,7 @@ export default class BoardShow extends React.Component {
 
         // this.openEditBoard = this.openEditBoard.bind(this)
         this.handleSave = this.handleSave.bind(this);
+        
 
     }
     handleSave(e) {
@@ -48,9 +49,16 @@ export default class BoardShow extends React.Component {
     //     this.props.openEditBoard(this.props.board.id)
     // }
 
-    render() {
-        const { board, currentUser, pins, boardsPins, openEditBoard } = this.props;
+    editBoardModal() {
+        return (
+            <EditBoardContainer
+            board={this.props.board}/>
+        )
+    }
 
+    render() {
+        const { board, currentUser, pins, boardsPins, openEditBoard} = this.props;
+        // debugger
         // let boardPins = boardsPins 
         // .filter(boardPin => board.id === boardPin.boardId)
         // .map(boardPin => pins[boardPin.pinId])
@@ -95,17 +103,18 @@ export default class BoardShow extends React.Component {
                      
                     </div>
                     {/* here  */}
-                    
-                    <button
-                        className="board-show button"
-                        onClick={(e, board) => openEditBoard(e, board)} // was boardId
-                    >
+                    {/* <BoardShowNavBar
+                        openEditBoard={this.openEditBoard}
+                        board={board}
+                        user={currentUser}
+                    /> */}
                     {/* <button
                         className="board-show button"
-                        onClick={(e, boardId) => openEditBoard(e, board.id)}
-                    > */}
+                        onClick={(e, boardId) => openEditBoard(e, board.id)} // was boardId
+                    >
                         <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
-                    </button>
+                    </button> */}
+                    {this.editBoardModal()}
 
                 
 
@@ -141,90 +150,3 @@ export default class BoardShow extends React.Component {
         }
     }
 }
-
-// import React, { Component } from 'react'
-
-// import BoardShowNavBar from './board_show_nav_bar';
-// // import PinIndexContainer from "../pin/pin_index_container";
-
-// export default class BoardShow extends Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.openEditBoard = this.openEditBoard.bind(this);
-//     }
-
-//     componentDidMount() {
-//         this.props.fetchSingleUser(this.props.currentUser.id);
-//     }
-
-//     openEditBoard(e) {
-//         e.preventDefault();
-//         this.props.openEditBoard(this.props.board.id)
-//     }
-
-//     render() {
-//         const { currentUser, board, pins, boardsPins } = this.props;
-
-//         const secretIcon = (board.secret) ? (
-//             <div className="board-show visibility">
-//                 <i className="fas fa-lock board-show" id="lock-icon"></i>
-//             </div>
-//         ) : (
-//                 null
-//             );
-//         let boardPins = boardsPins
-//             .filter(boardPin => board.id === boardPin.boardId)
-//             .map(boardPin => pins[boardPin.pinId])
-//             .filter(boardPin => boardPin !== undefined);
-
-//         return (
-//             <div className="board-show container">
-//                 <div className="board-show header">
-//                     <div className="board-show navbar-container">
-//                         <BoardShowNavBar
-//                             openEditBoard={this.openEditBoard}
-//                             board={board}
-//                             user={currentUser}
-//                         />
-//                     </div>
-//                     <div className="board-show info">
-//                         <div className="board-show main-info">
-//                             <div className="board-show title">
-//                                 {board.title}
-//                             </div>
-//                             <div className="board-show stats">
-//                                 {secretIcon}
-//                                 <div className="board-show count pin">
-//                                     {`${board.pinIds.length} pins`}
-//                                 </div>
-//                                 <div className="board-show count follower">
-//                                     ·  7 followers
-//                 </div>
-//                             </div>
-//                         </div>
-//                         <div className="board-show description">
-//                             {board.description}
-//                         </div>
-//                     </div>
-//                 </div>
-//                 {/* <div className="board-show pin-feed">
-//                     <PinIndexContainer
-//                         pins={boardPins}
-//                         page="profile"
-//                     />
-//                 </div> */}
-//             </div>
-//         )
-//     }
-// }
-
-// BoardShow.defaultProps = {
-//     board: {
-//         id: 0,
-//         title: 'boardman',
-//         description: 'boardman gets paid',
-//         secret: false,
-//         pinIds: []
-//     }
-// }

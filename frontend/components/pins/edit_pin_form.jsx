@@ -10,7 +10,10 @@ class EditPinForm extends React.Component {
             title: this.props.pin.title,
             description: this.props.pin.description,
             url: this.props.pin.url,
-            user_id: this.props.pin.userId
+            user_id: this.props.pin.userId,
+            success: '',
+            ask: '',
+            deleted: false
         };
         // this.state = this.props.pin
         // this.setState({ ...this.state, [field]: e.currentTarget.value })
@@ -22,7 +25,11 @@ class EditPinForm extends React.Component {
         this.update = this.update.bind(this);
         this.openDeletePin = this.openDeletePin.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
-        // this.handleSave = this.handleSave.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+
+        this.deletePin = this.deletePin.bind(this);
+        this.deleteForSure = this.deleteForSure.bind(this);
+        this.checkPin = this.checkPin.bind(this);
     }
 
     update(field) {
@@ -32,34 +39,64 @@ class EditPinForm extends React.Component {
     }
 
     openDeletePin() {
-        this.props.openDeletePin(this.props.pin.id);
+        // debugger
+        // this.props.openDeletePin(this.props.pin.id);
+        this.props.openDeletePin(this.props.pin);
+
     }
 
     handleCancel() {
         this.props.closeModal();
     }
     
-    // handleSave(e) {
-    //     // debugger;
-    //     // this.props.processForm(this.state)
-    //         // .then(this.props.closeModal);
+    handleSave(e) {
+        debugger;
+        e.preventDefault();
+        return (
+            this.props.processForm(this.state)
+                // .then(this.props.closeModal)
+        );
 
-    //     e.preventDefault();
-    //     updatePin(this.state)
+        // e.preventDefault();
+        // updatePin(this.state)
 
-    //     // this.updatePin({
-    //     //     pin: {
-    //     //         id: this.props.pin.id,
-    //     //         title: this.props.title,
-    //     //         // description: this.state.description
-    //     //     }
-    //     // });
-    //     // this.closePinModal();
+        // this.updatePin({
+        //     pin: {
+        //         id: this.props.pin.id,
+        //         title: this.props.title,
+        //         // description: this.state.description
+        //     }
+        // });
+        // this.closePinModal();
+    }
 
-    // }
-
+    deletePin(e) {
+        
+        if (this.state.ask === 'are you sure?') {
+            this.deleteForSure(e)
+        } else {
+            this.setState({ask: 'are you sure?'})
+        }
+    }
+     deleteForSure(e) {
+        //  debugger
+         this.props.deletePin(this.props.pin.id).then(() => window.history.go(-1)); //.then(() => this.checkPin())
+     }
+     checkPin() {
+         if (this.errors.length === 'undefind') {
+            //  this.props.history.push('/');
+             this.props.history.go(-1);
+         } else {
+             this.setState({ask: ''})
+         }
+     }
     render() {
         const { pin, errors, formTitle } = this.props;
+
+        if (this.state.success === 'Your pin was successfully deleted!')
+            return (
+                <p>{this.state.success}</p>
+            )
 
         return (
             <div className="edit-pin container">
@@ -135,14 +172,18 @@ class EditPinForm extends React.Component {
                 <div className="edit-pin footer">
                     <div className="edit-pin links">
                         <div className="edit-pin left-links">
-                            <a
+                            {/* <a
                                 className="edit-pin link open-delete"
                                 onClick={this.openDeletePin}
                             >
                                 <div className="edit-pin link-text open-delete">Delete</div>
-                            </a>
-                        </div>
-                        <div className="edit-pin right-links">
+                            </a> */}
+                            {/* {pin.title != "undefined" ? */}
+                            {pin.title != "undefined" ? <button className='plus-board' onClick={this.deletePin}>
+                                <i className='fas fa-trash-alt'></i>
+                            </button>
+                                : null}
+                            {this.state.ask === 'Are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
                             <a
                                 className="edit-pin link cancel"
                                 onClick={this.handleCancel}
@@ -156,6 +197,20 @@ class EditPinForm extends React.Component {
                                 <div className="edit-pin link-text save">Save</div>
                             </a>
                         </div>
+                        {/* <div className="edit-pin right-links">                  FOR SOME REASON IT WAS INVISOBLE
+                            <a
+                                className="edit-pin link cancel"
+                                onClick={this.handleCancel}
+                            >
+                                <div className="edit-pin link-text cancel">Cancel</div>
+                            </a>
+                            <a
+                                className="edit-pin link save"
+                                onClick={this.handleSave}
+                            >
+                                <div className="edit-pin link-text save">Save</div>
+                            </a>
+                        </div> */}
                     </div>
                 </div>
             </div>

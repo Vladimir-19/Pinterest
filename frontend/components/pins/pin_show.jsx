@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CreateBoardsPinsForm from '../boards/create_boards_pins_container';
 import EditPinFormContainer from '../pins/edit_pin_form_container';
-import EditPinForm from '../pins/edit_pin_form';
+// import EditPinForm from '../pins/edit_pin_form';
 
 class PinShow extends React.Component {
     constructor(props) {
@@ -11,14 +11,16 @@ class PinShow extends React.Component {
         // this.state = this.props.pin;
         this.state = {
             fadeInName: false,
-            showCreateOptions: false
+            showCreateOptions: false,
+            success: '',
+            ask: '',
+            deleted: false
         };
 
         this.goBack = this.goBack.bind(this);
         // this.openNewBoardPin = this.openNewBoardPin.bind(this);
         this.toggleShow = this.toggleShow.bind(this);
         this.hide = this.hide.bind(this);
-
     }
 
     componentDidMount() {
@@ -27,12 +29,12 @@ class PinShow extends React.Component {
 
     
     editPinModal() {
-        debugger;
+        // debugger;
         return (
             <EditPinFormContainer
-                title={this.state.title}
+                // title={this.props.pin.title}
                 // body={this.state.body}
-                id={this.props.pin.id}
+                pin={this.props.pin}
                 // boardId={this.props.pin.board_id}
             />
         )
@@ -62,6 +64,7 @@ class PinShow extends React.Component {
     //     this.props.openModal("new-board-pin", this.props.params.pinId);
     // }
     
+
     render() {
         // debugger
         const { pin, currentUserId, openEditPin, openNewBoardPin } = this.props; //openNewBoardPin
@@ -88,7 +91,7 @@ class PinShow extends React.Component {
         const editPinLink = (pin.userId === currentUserId) ? (
             <a
                 className="pin-show edit-pin-link"
-                onClick={() => openEditPin(pin.id)}
+                onClick={() => openEditPin(this.props.pin)}
             >
                 <i className="fas fa-pencil-alt edit-pin-icon"></i>
             </a>
@@ -197,12 +200,12 @@ class PinShow extends React.Component {
                             <div >
                                 {/* className="pin-show nav-bar" */}
                                 {/* {editPinLink} */}
-                                {/* {this.editPinModal()} */}
+                                {this.editPinModal()} 
                                 {/* <EditPinFormContainer 
                                 // pinId={pin.id}
                                 title={this.state.title}
                                 /> */}
-                                <EditPinForm pinId={pin.id} />
+                                {/* <EditPinForm pinId={pin.id} /> */}
 
                                 {/* <div></div>
                                 <a

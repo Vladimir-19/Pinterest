@@ -879,7 +879,7 @@ ul.create-pin.board-list {
   border-radius: 32px;
   position: relative;
   height: 100%;
-  width: 1016px;
+  width: 100%; //1016px to change 
   display: flex;
   @media (max-width: 1056px) {
     width: 508px;
