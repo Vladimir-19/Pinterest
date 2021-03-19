@@ -50,6 +50,7 @@ export default class BoardShow extends React.Component {
     // }
 
     editBoardModal() {
+        // debugger;
         return (
             <EditBoardContainer
             board={this.props.board}/>

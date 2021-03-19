@@ -20,8 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     // debugger;
   
     return {
-    currentUser: state.entities.users[state.session.id],
-    board: state.entities.boards[state.ui.objectId],
+    // currentUser: state.entities.users[state.session.id],
+    // board: state.entities.boards[state.ui.objectId],
         // board: state.entities.boards[state.match.ui.objectId],
     // boardId: state.entities.boards[state.ui.objectId],
     // board: state.entities.boards[state.ui.boardId],

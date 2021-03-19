@@ -5,9 +5,9 @@ class EditBoardForm extends React.Component {
         super(props);
         // debugger;
         this.state = {
-            id: this.props.boardId,
-            title: this.props.title,
-            description: this.props.description,
+            id: this.props.board.id,
+            title: this.props.board.title,
+            description: this.props.board.description,
             // secret: this.props.board.secret
         };
 
@@ -50,7 +50,7 @@ class EditBoardForm extends React.Component {
     handleSave(e) {
         e.preventDefault();
         // const username = this.props.currentUser.username;
-        this.props.processForm(this.state)
+        this.props.processForm(this.state) //.then(() => window.location.reload()); //go(-1)); //reload is a bad idea bc it can't reload page in my case
             // .then(this.props.closeModal)
             // .then(() => location.href = `/#/${username}`)
     }
