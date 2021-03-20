@@ -16,7 +16,7 @@ class EditBoardForm extends React.Component {
 
         this.update = this.update.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
-        this.openDeleteBoard = this.openDeleteBoard.bind(this);
+        // this.openDeleteBoard = this.openDeleteBoard.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleSave = this.handleSave.bind(this);
 
@@ -45,10 +45,10 @@ class EditBoardForm extends React.Component {
         });
     }
 
-    openDeleteBoard(e, boardId) {
-        e.preventDefault();
-        this.props.openDeleteBoard(boardId);
-    }
+    // openDeleteBoard(e, boardId) {
+    //     e.preventDefault();
+    //     this.props.openDeleteBoard(boardId);
+    // }
 
     handleClose(e) {
         e.preventDefault();

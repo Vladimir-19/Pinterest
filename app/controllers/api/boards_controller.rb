@@ -44,12 +44,12 @@ class Api::BoardsController < ApplicationController
     end
 
     def destroy
-        # @board = current_user.boards.find(params[:id])
-        @board = Board.find_by(params[:id])
+        @board = current_user.boards.find(id: params[:id])
+        # @board = Board.find_by(params[:id])
 
-        if @board
+        if @board && @board.destroy
             @board.destroy
-            render "api/boards/show"
+            render "api/boards/index"
         else
             render json: ["Can't delete this board!"], status: 401
         end

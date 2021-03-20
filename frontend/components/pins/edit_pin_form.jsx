@@ -23,8 +23,8 @@ class EditPinForm extends React.Component {
 
 
         this.update = this.update.bind(this);
-        this.openDeletePin = this.openDeletePin.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
+        // this.openDeletePin = this.openDeletePin.bind(this);
+        // this.handleCancel = this.handleCancel.bind(this);
         this.handleSave = this.handleSave.bind(this);
 
         this.deletePin = this.deletePin.bind(this);
@@ -45,12 +45,12 @@ class EditPinForm extends React.Component {
 
     // }
 
-    handleCancel() {
-        this.props.closeModal();
-    }
+    // handleCancel() {
+    //     this.props.closeModal();
+    // }
     
     handleSave(e) {
-        debugger;
+        // debugger;
         e.preventDefault();
         return (
             this.props.processForm(this.state)
@@ -104,11 +104,11 @@ class EditPinForm extends React.Component {
                     <div className="edit-pin form-title">
                         {formTitle}
                     </div>
-                    <div className="edit-pin cancel-link-container">
+                    {/* <div className="edit-pin cancel-link-container">
                         <a className="cancel-link" onClick={this.handleCancel}>
                             <i className="fas fa-times cancel-icon"></i>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="edit-pin body">
                     <div className="edit-pin first-half">
