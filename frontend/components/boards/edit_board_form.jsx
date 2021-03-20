@@ -64,13 +64,13 @@ class EditBoardForm extends React.Component {
     }
 
     deleteBoard(e) {
-        debugger
+        // debugger
         // if (this.state.ask === 'are you sure?') {
         //     this.deleteForSure(e)
         // } else {
         //     this.setState({ ask: 'are you sure?' })
         // }
-        this.props.deleteBoard(this.props.board.id) //.then(() => this.checkPin())
+        this.props.deleteBoard(this.props.board.id).then(() => location.reload()); //.then(() => this.checkPin())
     }
     deleteForSure(e) {
         //  debugger

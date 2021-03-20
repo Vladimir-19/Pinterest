@@ -124,6 +124,7 @@ export default class BoardShow extends React.Component {
                             <BoardItem
                                 pin={pin}
                                 key={pin.id}
+                                page="profile"
                             />
                             // <PinIndexContainer
                             //     pin={pin}
