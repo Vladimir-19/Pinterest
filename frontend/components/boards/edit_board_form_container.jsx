@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
     processForm: board => dispatch(updateBoard(board)),
-    deleteBoard: boardId => dispatch(deleteBoard(boardId)),
+    deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
     // openDeleteBoard: (boardId) => dispatch(openModal('delete-board', boardId)),
     closeModal: () => dispatch(closeModal())
 });

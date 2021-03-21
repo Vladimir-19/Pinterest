@@ -23,7 +23,7 @@ const receiveBoard = payload => ({
 });
 
 const removeBoar = boardId => ({
-    type: REMOVE_BOAR,
+    type: REMOVE_BOARD,
     boardId
 });
 

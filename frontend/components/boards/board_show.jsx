@@ -12,17 +12,25 @@ import edit from './edit';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
+        // debugger
         super(props) //props.board.id etc
         this.state = {
             loading: true,
             fetched: false,
             openPin: false,
-            openPinId: null
+            openPinId: null,
+
+            success: '',
+            ask: '',
+            deleted: false
         }
 
         // this.openEditBoard = this.openEditBoard.bind(this)
         this.handleSave = this.handleSave.bind(this);
         
+        this.deleteBoard = this.deleteBoard.bind(this);
+        this.deleteForSure = this.deleteForSure.bind(this);
+        this.checkPin = this.checkPin.bind(this);
 
     }
     handleSave(e) {
@@ -55,6 +63,28 @@ export default class BoardShow extends React.Component {
             <EditBoardContainer
             board={this.props.board}/>
         )
+    }
+
+    deleteBoard(e) {
+        // debugger
+        if (this.state.ask === 'are you sure?') {
+            this.deleteForSure(e)
+        } else {
+            this.setState({ ask: 'are you sure?' })
+        }
+        // this.props.deleteBoard(this.props.board.id).then(() => this.checkPin()); //then(() => location.reload());
+    }
+    deleteForSure(e) {
+        //  debugger
+        e.preventDefault();
+        this.props.deleteBoard(this.props.board.id).then(() => this.checkPin())
+    } //then(() => window.history.go(-1));
+    checkPin() {
+        // if (this.errors.length === 'undefind') {
+        this.props.history.push('/users/:userId');
+        // } else {
+        // this.setState({ ask: '' })
+        // }
     }
 
     render() {
@@ -143,6 +173,12 @@ export default class BoardShow extends React.Component {
                             user={currentUser}
                         />
                     </div> */}
+                    {board.title != "undefined" ?
+                        <button className='plus-board' onClick={this.deleteBoard}>
+                            <i className='fas fa-trash-alt'></i>
+                        </button>
+                        : null}
+                    {this.state.ask === 'are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
                 </div>
                 
             )
