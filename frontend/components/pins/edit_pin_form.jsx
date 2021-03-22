@@ -24,7 +24,7 @@ class EditPinForm extends React.Component {
 
         this.update = this.update.bind(this);
         // this.openDeletePin = this.openDeletePin.bind(this);
-        // this.handleCancel = this.handleCancel.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
         this.handleSave = this.handleSave.bind(this);
 
         this.deletePin = this.deletePin.bind(this);
@@ -45,15 +45,17 @@ class EditPinForm extends React.Component {
 
     // }
 
-    // handleCancel() {
-    //     this.props.closeModal();
-    // }
+    handleCancel() {
+        // this.props.closeModal();
+        // window.history.go(-1)
+         location.reload()
+    }
     
     handleSave(e) {
         // debugger;
         e.preventDefault();
         return (
-            this.props.processForm(this.state)
+            this.props.processForm(this.state).then(() => location.reload())
                 // .then(this.props.closeModal)
         );
 
@@ -180,7 +182,7 @@ class EditPinForm extends React.Component {
                             </a> */}
                             {/* {pin.title != "undefined" ? */}
                             {pin.title != "undefined" ? <button className='plus-board' onClick={this.deletePin}>
-                                <i className='fas fa-trash-alt'></i>
+                                <i className="far fa-trash-alt"></i>
                             </button>
                                 : null}
                             {this.state.ask === 'Are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}

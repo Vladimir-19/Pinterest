@@ -16,7 +16,7 @@ import DeleteBoardFomrContainer from "../boards/delete_board_form_container";
 
 function Modal({ modal, closeModal, openModal }) {
     if (!modal) return null;
-
+    // debugger;
     let component, switchFormValue, altModal, clickBackground;
     switch (modal) {
         case 'login':

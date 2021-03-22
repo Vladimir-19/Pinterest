@@ -11,6 +11,7 @@ class PinShow extends React.Component {
         this.state = {
             fadeInName: false,
             showCreateOptions: false,
+            showEditOptions: false,
             success: '',
             ask: '',
             deleted: false
@@ -20,12 +21,35 @@ class PinShow extends React.Component {
         // this.openNewBoardPin = this.openNewBoardPin.bind(this);
         this.toggleShow = this.toggleShow.bind(this);
         this.hide = this.hide.bind(this);
+        this.showEditModal = this.showEditModal.bind(this);
+        this.hideEditModal = this.hideEditModal.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchPin(this.props.match.params.pinId);
     }
 
+    toggleShow() {
+        // debugger;
+        this.setState({ showCreateOptions: !this.state.showCreateOptions })
+    }
+    hide(e) {
+        if (e && e.relatedTarget) {
+            e.relatedTarget.click();
+        }
+        this.setState({ showCreateOptions: false });
+    }
+    showEditModal() {
+        // debugger;
+        this.setState({ showEditOptions: !this.state.showEditOptions })
+    }
+    hideEditModal(e) {
+        if (e && e.relatedTarget) {
+            e.relatedTarget.click();
+        }
+        this.setState({ showEditOptions: false });
+    }
 
     editPinModal() {
         // debugger;
@@ -38,17 +62,17 @@ class PinShow extends React.Component {
             />
         )
     }
-    //extra
-    toggleShow() {
-        // debugger;
-        this.setState({ showCreateOptions: !this.state.showCreateOptions })
-    }
-    hide(e) {
-        if (e && e.relatedTarget) {
-            e.relatedTarget.click();
-        }
-        this.setState({ showCreateOptions: false });
-    }
+    // //extra
+    // toggleShow() {
+    //     // debugger;
+    //     this.setState({ showCreateOptions: !this.state.showCreateOptions })
+    // }
+    // hide(e) {
+    //     if (e && e.relatedTarget) {
+    //         e.relatedTarget.click();
+    //     }
+    //     this.setState({ showCreateOptions: false });
+    // }
 
 
     goBack(e) {
@@ -66,7 +90,7 @@ class PinShow extends React.Component {
 
     render() {
         // debugger
-        const { pin, currentUserId, openEditPin, openNewBoardPin } = this.props; //openNewBoardPin
+        const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal } = this.props; //openNewBoardPin
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
         const pinOwner = pin.user || { username: "" };
@@ -196,10 +220,46 @@ class PinShow extends React.Component {
                             </div>
                         </div>
                         <div className="pin-show second-half">
-                            <div >
+                            
+                            <div className="utility">
+                                <div className="edit">
+                                    <a
+                                        className="edit-pin-button"
+                                        onClick={this.showEditModal}
+                                        onBlur={this.hideEditModal}
+                                    >
+                                        <div >
+                                            <div >
+                                                <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div id="create-pinboard-container" style={{
+                                        visibility: this.state.showEditOptions ?
+                                            "visible" :
+                                            "hidden"
+                                    }}>
+                                        <div className="modal-container" >
+                                            <div className="modal-background" id={modal} onClick={closeModal}>
+                                                <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                                                    {this.editPinModal()}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* <h3 >
+                                {this.editBoardModal()}
+                            </h3> */}
+                                        {/* <div >
+                                <div id="create-pin-button">
+                                </div>
+                            </div> */}
+                                    </div>
+                                </div>
                                 {/* className="pin-show nav-bar" */}
                                 {/* {editPinLink} */}
-                                {this.editPinModal()}
+                                {/* {this.editPinModal()} */}
+                                
                                 {/* <EditPinFormContainer 
                                 // pinId={pin.id}
                                 title={this.state.title}

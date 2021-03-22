@@ -32,7 +32,8 @@ const mapStateToProps = (state, ownProps) => ({
     // users: state.entities.users,
     _pinState: state.entities.users,
     currentUserId: state.session.id,
-    pins: Object.values(state.entities.pins)
+    pins: Object.values(state.entities.pins),
+    modal: state.ui.modal
 });
 
 const mapDispatchToProps = dispatch => ({

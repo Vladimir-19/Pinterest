@@ -156,6 +156,7 @@ export default class BoardShow extends React.Component {
                 <div id='board-show-wrapper'>
                     <div id='board-show-header'>
                         <h1>{board.title}</h1>
+                        <h3>{board.description}</h3>
                      
                     </div>
                     {/* here  */}
