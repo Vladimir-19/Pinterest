@@ -58,10 +58,21 @@ class EditBoardForm extends React.Component {
     handleSave(e) {
         e.preventDefault();
         // const username = this.props.currentUser.username;
-        this.props.processForm(this.state) //.then(() => window.location.reload()); //go(-1)); //reload is a bad idea bc it can't reload page in my case
+        this.props.processForm(this.state).then(() => window.history.go(-1));
+ //.then(() => this.checkPin());
+         //.then(() => window.location.reload()); //reload is a bad idea bc it can't reload page in my case
             // .then(this.props.closeModal)
             // .then(() => location.href = `/#/${username}`)
+        // "/users/:userId"
     }
+    checkPin() {
+        // if (this.errors.length === 'undefind') {
+        // <a href={`/users/${this.props.currentUser.id}`}></a>
+        // } else {
+        // this.setState({ ask: '' })
+        // }
+    }
+
 
     // deleteBoard(e) {
     //     // debugger
@@ -103,12 +114,12 @@ class EditBoardForm extends React.Component {
                         <div className="edit-board form-title">
                             {formTitle}
                         </div>
-                        <button
+                        {/* <button
                             className="edit-board close-button"
                             onClick={this.handleClose}
                         >
                             <i className="fas fa-times edit-board close-icon"></i>
-                        </button>
+                        </button> */}
                     </div>
                     <div className="edit-board body">
                         <div className="edit-board field name">
@@ -174,7 +185,7 @@ class EditBoardForm extends React.Component {
                                     onClick={this.handleCheck}
                                 >
                                     Visibility
-                </label>
+                                </label>
                             </div>
                             <div className="edit-board input-container secret">
                                 <button
@@ -209,18 +220,18 @@ class EditBoardForm extends React.Component {
                             {this.state.ask === 'are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null} */}
                         </div>
                         <div className="edit-board footer-part right">
-                            <button
+                            {/* <button
                                 className="edit-board button cancel"
                                 onClick={this.handleClose}
                             >
                                 Cancel
-              </button>
+                            </button> */}
                             <button
                                 className="edit-board button save"
                                 onClick={this.handleSave}
                             >
                                 Save
-              </button>
+                            </button>
                         </div>
                     </div>
                 </form>

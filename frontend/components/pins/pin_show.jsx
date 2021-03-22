@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CreateBoardsPinsForm from '../boards/create_boards_pins_container';
@@ -27,7 +26,7 @@ class PinShow extends React.Component {
         this.props.fetchPin(this.props.match.params.pinId);
     }
 
-    
+
     editPinModal() {
         // debugger;
         return (
@@ -35,11 +34,11 @@ class PinShow extends React.Component {
                 // title={this.props.pin.title}
                 // body={this.state.body}
                 pin={this.props.pin}
-                // boardId={this.props.pin.board_id}
+            // boardId={this.props.pin.board_id}
             />
         )
     }
-//extra
+    //extra
     toggleShow() {
         // debugger;
         this.setState({ showCreateOptions: !this.state.showCreateOptions })
@@ -63,7 +62,7 @@ class PinShow extends React.Component {
     //     // e.preventDefault();
     //     this.props.openModal("new-board-pin", this.props.params.pinId);
     // }
-    
+
 
     render() {
         // debugger
@@ -155,7 +154,7 @@ class PinShow extends React.Component {
         ) : (
             { pinOwnerFullName }
         )
-         
+
         // debugger
         const pinCreditText = (
             <div className="pin-show credit-summary">
@@ -200,7 +199,7 @@ class PinShow extends React.Component {
                             <div >
                                 {/* className="pin-show nav-bar" */}
                                 {/* {editPinLink} */}
-                                {this.editPinModal()} 
+                                {this.editPinModal()}
                                 {/* <EditPinFormContainer 
                                 // pinId={pin.id}
                                 title={this.state.title}
@@ -231,12 +230,12 @@ class PinShow extends React.Component {
                                         {/* className="profile-icon-container-shadow" */}
                                         <div >
                                             {/* className="profile-icon-container" */}
-                                            {/* <i style={{ "fontFamily": "serif" }}>+</i> */} 
-                                            <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%"}}></i>
+                                            {/* <i style={{ "fontFamily": "serif" }}>+</i> */}
+                                            <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%" }}></i>
                                             {/* className="pin-show save-board-pin-text" */}
                                         </div>
                                     </div>
-                                    </a>
+                                </a>
                                 {/* </button> */}
                                 <div id="create-pinboard-container" style={{
                                     visibility: this.state.showCreateOptions ?
@@ -244,7 +243,7 @@ class PinShow extends React.Component {
                                         "hidden"
                                 }}>
                                     <h3 >
-                                        {/* className="option-label" id="create-board"> */}
+                                        {/* //className="option-label" id="create-board"> */}
                                         <CreateBoardsPinsForm pinId={pin.id} />
                                     </h3>
                                     <div >

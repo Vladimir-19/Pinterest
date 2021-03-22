@@ -798,17 +798,30 @@
 // }
 
 
-////////////////////////////////////////////////////////////////////
 //////////////////////////// EDIT BOARD ////////////////////////////
-////////////////////////////////////////////////////////////////////
 .edit-board.container {
   max-width: 600px;
-  border-radius: 8px;
+  min-width: 500px;
+  // border-radius: 8px;
   box-sizing: border-box;
   background-color: #fff;
   margin: 0 auto;
+  border-radius: 20px;
 }
 
+    // margin: 0 8px;
+    // border: 0;
+    // box-sizing: border-box;
+    // border-radius: 8px;
+    // min-height: 40px;
+    // display: inline-block;
+    // cursor: pointer;
+    // padding: 10px 14px;
+    // text-align: center;
+    // font-weight: 700;
+    // letter-spacing: -.4px;
+    // -webkit-font-smoothing: antialiased;
+    // font-size: 16px;
 // .edit-board.form {}
 
 .edit-board.header {

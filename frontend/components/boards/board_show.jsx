@@ -9,6 +9,7 @@ import BoardShowNavBar from './board_show_nav_bar'
 import EditBoardContainer from './edit_board_form_container';
 //delte
 import edit from './edit';
+// import { closeModal } from '../../actions/modal_actions';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class BoardShow extends React.Component {
             openPin: false,
             openPinId: null,
 
+            showCreateOptions: false,
             success: '',
             ask: '',
             deleted: false
@@ -32,7 +34,29 @@ export default class BoardShow extends React.Component {
         this.deleteForSure = this.deleteForSure.bind(this);
         this.checkPin = this.checkPin.bind(this);
 
+        this.toggleShow = this.toggleShow.bind(this);
+        this.hide = this.hide.bind(this);
+
+        this.handleCancel = this.handleCancel.bind(this);
+
     }
+
+    handleCancel(e) {
+        e.preventDefault();
+        this.props.closeModal();
+    }
+
+    toggleShow() {
+        // debugger;
+        this.setState({ showCreateOptions: !this.state.showCreateOptions })
+    }
+    hide(e) {
+        if (e && e.relatedTarget) {
+            e.relatedTarget.click();
+        }
+        this.setState({ showCreateOptions: false });
+    }
+
     handleSave(e) {
         e.preventDefault();
         // debugger
@@ -61,7 +85,8 @@ export default class BoardShow extends React.Component {
         // debugger;
         return (
             <EditBoardContainer
-            board={this.props.board}/>
+            board={this.props.board}
+            closeModal={this.props.closeModal}/>
         )
     }
 
@@ -88,7 +113,9 @@ export default class BoardShow extends React.Component {
     }
 
     render() {
-        const { board, currentUser, pins, boardsPins, openEditBoard} = this.props;
+        const { board, currentUser, pins, boardsPins, openEditBoard, modal, openModal, closeModal} = this.props;
+        // if (!modal) return null;
+
         // debugger
         // let boardPins = boardsPins 
         // .filter(boardPin => board.id === boardPin.boardId)
@@ -123,8 +150,6 @@ export default class BoardShow extends React.Component {
                 }
             })
         }
-        // let hoho = board.id
-
 
         if (pinArr.length >= 0) {
             return (
@@ -145,7 +170,42 @@ export default class BoardShow extends React.Component {
                     >
                         <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
                     </button> */}
-                    {this.editBoardModal()}
+                    
+                    {/* {this.editBoardModal()} */}
+                    <div >
+                        <a
+                            className="xxx"
+                            onClick={this.toggleShow}
+                            onBlur={this.hide}
+                        >
+                            <div >
+                                <div >
+                                    <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div id="create-pinboard-container" style={{
+                            visibility: this.state.showCreateOptions ?
+                                "visible" :
+                                "hidden"
+                        }}>
+                            <div className="modal-container" >
+                                <div className="modal-background" id={modal} onClick={closeModal}>
+                                    <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                                        {this.editBoardModal()}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* <h3 >
+                                {this.editBoardModal()}
+                            </h3> */}
+                            {/* <div >
+                                <div id="create-pin-button">
+                                </div>
+                            </div> */}
+                        </div>
+                    </div>
 
                 
 
@@ -175,8 +235,7 @@ export default class BoardShow extends React.Component {
                     </div> */}
                     {board.title != "undefined" ?
                         <button className='plus-board' onClick={this.deleteBoard}>
-                            <i className='fas fa-trash-alt'></i>
-                        </button>
+                            <i className="far fa-trash-alt"></i>                        </button>
                         : null}
                     {this.state.ask === 'are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
                 </div>

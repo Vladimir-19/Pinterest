@@ -29,6 +29,8 @@ const mapStateToProps = (state, ownProps) => {
     // board: Object.values(state.entities.board), NO
     // board: state.entities.boards[state.objectId], 
     // board: state.entities.boards[ownProps.match.boardId],
+    currentUser: state.entities.users[state.session.id],
+    // board: state.entities.boards[state.ui.objectId],
     errors: state.errors.board,
     formTitle: "Edit your board"
     }

@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
     currentUser: state.entities.users[state.session.id],
     pins: state.entities.pins,
-    modal: state.ui.modal,
     board: state.entities.boards[ownProps.match.params.boardId],
+    modal: state.ui.modal
     // board: state.entities.boards[board.id]
     // board: state.entities.boards[ownProps.match.params.board.id]
     // board: state.entities.boards[board.id]
@@ -51,10 +51,12 @@ const mapDispatchToProps = dispatch => ({
     fetchUser:  userId => dispatch(fetchUser(userId)), // to be continued
 
     openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal()),
+
     deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
     fetchPins: () => dispatch(fetchPins()),
     fetchBoards: () => dispatch(fetchBoards()),
-    openEditBoard: board => dispatch(openModal('edit-board', board)),
+    // openEditBoard: board => dispatch(openModal('edit-board', board)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardShow);
