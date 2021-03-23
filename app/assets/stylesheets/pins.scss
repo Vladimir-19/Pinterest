@@ -1115,7 +1115,7 @@ ul.create-pin.board-list {
 .edit-pin.container {
   position: relative;
   max-height: calc(100vh - 32px);
-  border-radius: 8px;
+  // border-radius: 32xpx;
   overflow: hidden;
   background-color: #fff;
   width: 768px;
@@ -1266,11 +1266,11 @@ ul.create-pin.board-list {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 1px solid #8e8e8e;
     &.title,
     &.url {
-      min-height: 40px;
+      min-height: 30px;
       padding: 8px 14px;
     }
     &.description {
@@ -1281,9 +1281,10 @@ ul.create-pin.board-list {
   }
 }
 
+// !!
 .edit-pin.photo-container {
   width: 236px;
-  border-radius: 8px;
+  border-radius: 22px;
   position: relative;
   overflow: hidden;
   & > img {

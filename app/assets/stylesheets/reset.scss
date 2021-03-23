@@ -17,27 +17,34 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: Arial,
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
+	font-family: Arial,
 }
 body {
 	line-height: 1;
+	font-family: Arial,
 }
 ol, ul {
 	list-style: none;
+	font-family: Arial,
 }
 blockquote, q {
 	quotes: none;
+	font-family: Arial,
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
+	font-family: Arial,
 }
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	font-family: Arial,
 }

@@ -146,7 +146,7 @@ class PinShow extends React.Component {
             >
                 www.{urlLink.slice(12, 20)}...
             </a>        ) : (
-                <h3>No link provided.</h3>
+                <h3 style={{ "color": "gray" }}>The link is not available.</h3>
         );
         /// DO NOT DELETE
         //const pinSource = (pin.url === "") ? (
@@ -194,13 +194,13 @@ class PinShow extends React.Component {
                 >
                     <strong>{pinOwnerFullName}</strong>
                 </Link>
-                <span>&nbsp;saved to a board &nbsp;</span>
+                <span>&nbsp;| From &nbsp;</span>
                 <Link
                     // to={`/${pinOwner.id}/${pin.boardTitle}`}
                     to={`/boards/${pin.boardId}`} //to be conti
                     className="pin-show credit-link"
                 >
-                    <strong>{pin.boardTitle}</strong>
+                    <strong>{pin.boardTitle} board</strong>
                 </Link>
             </div>
         );
@@ -234,7 +234,7 @@ class PinShow extends React.Component {
                                         onBlur={this.hideEditModal}
                                     >
                                         <div >
-                                            <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
+                                            <i className="far fa-edit" style={{ color: "black", fontSize: "200%" }}></i>
                                         </div>
                                     </a>
                                     <div  style={{
