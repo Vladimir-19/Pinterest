@@ -93,6 +93,7 @@ class PinShow extends React.Component {
         const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal } = this.props; //openNewBoardPin
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
+        // debugger
         const pinOwner = pin.user || { username: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
         const imgLink = (pin.url === "") ? (
@@ -111,34 +112,18 @@ class PinShow extends React.Component {
             </a>
         );
         // debugger;
-        const editPinLink = (pin.userId === currentUserId) ? (
-            <a
-                className="pin-show edit-pin-link"
-                onClick={() => openEditPin(this.props.pin)}
-            >
-                <i className="fas fa-pencil-alt edit-pin-icon"></i>
-            </a>
-        ) : (
-            null
-        );
+        // const editPinLink = (pin.userId === currentUserId) ? (
+        //     <a
+        //         className="pin-show edit-pin-link"
+        //         onClick={() => openEditPin(this.props.pin)}
+        //     >
+        //         <i className="fas fa-pencil-alt edit-pin-icon"></i>
+        //     </a>
+        // ) : (
+        //     null
+        // );
 
-        const pinSource = (pin.url === "") ? (
-            <a
-                href={pin.url}
-                target="_blank"
-                className="pin-show source-link"
-            >
-                <div>{pin.url}</div>
-            </a>
-        ) : (
-            <div className="pin-show source-link">
-                <div>Uploaded by&nbsp;
-            <Link to={`/${pinOwner.username}`}>
-                        <strong>{pinOwnerFullName}</strong>
-                    </Link>
-                </div>
-            </div>
-        );
+        
 
         const pinTitle = (pin.url === "") ? (
             <div className="pin-show title">{pin.title}</div>
@@ -153,42 +138,63 @@ class PinShow extends React.Component {
         );
 
         const urlLink = pin.url;
-        const linkto = (pin.url === "") ? (urlLink.slice(8, 20)) : (
+        const linkto = (pin.url === "") ? (
             <a
                 href={pin.url}
                 target="_blank"
-                // className="pin-show title"
                 style={{ "color": "black" }} //"text-decoration": "none",
             >
-                www.{pin.title}...
-            </a>
+                www.{urlLink.slice(12, 20)}...
+            </a>        ) : (
+                <h3>No link provided.</h3>
         );
+        /// DO NOT DELETE
+        //const pinSource = (pin.url === "") ? (
+        //     <a
+        //         href={pin.url}
+        //         target="_blank"
+        //         className="pin-show source-link"
+        //     >
+        //         <div>{pin.url}</div>
+        //     </a>
+        // ) : (
+        //     <div className="pin-show source-link">
+        //         <div>Uploaded by&nbsp;
+        //     <Link to={`/${pinOwner.username}`}>
+        //                 <strong>{pinOwnerFullName}</strong>
+        //             </Link>
+        //         </div>
+        //     </div>
+        // );
 
-        const pinCreditPhoto = (
+        // debugger
+        const creatorPhoto = (
             <Link
-                to={`/${pinOwner.username}`}
+                // to={`/${pinOwner.username}`}
+                to={`/users/${pinOwner.id}`}
                 className="pin-show profile-link-frame"
             >
                 <img src={pinOwner.photo} className="pin-show profile-link-photo" />
                 <div className="pin-show overlay"></div>
             </Link>
         );
-        const name = (pinOwner.id === currentUserId) ? (
-            "You"
-        ) : (
-            { pinOwnerFullName }
-        )
+
+        // const name = (pinOwner.id === currentUserId) ? (
+        //     "You"
+        // ) : (
+        //     { pinOwnerFullName }
+        // )
 
         // debugger
-        const pinCreditText = (
+        const pinInfo = (
             <div className="pin-show credit-summary">
                 <Link
-                    to={`/${pinOwner.id}`}
+                    to={`/users/${pinOwner.id}`}
                     className="pin-show credit-link"
                 >
                     <strong>{pinOwnerFullName}</strong>
                 </Link>
-                <span>&nbsp;saved to&nbsp;</span>
+                <span>&nbsp;saved to a board &nbsp;</span>
                 <Link
                     // to={`/${pinOwner.id}/${pin.boardTitle}`}
                     to={`/boards/${pin.boardId}`} //to be conti
@@ -198,23 +204,22 @@ class PinShow extends React.Component {
                 </Link>
             </div>
         );
-
         // debugger;
         return (
             <div className="pin-show main-container"
                 onClick={this.goBack}>
                 <a
-                    className="pin-show back-button"
+                    className="pin-show goback-button"
                     onClick={this.goBack}
-                >
-                    <i className="fas fa-arrow-left back-icon"></i>
+                    >
+                    <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
                 </a>
                 <div className="pin-show wrapper"
                     onClick={this.goBack}>
                     <div className="pin-show container"
                         onClick={(e) => e.stopPropagation()}>
                         <div className="pin-show first-half">
-                            <div className="pin-show link-area">
+                            <div className="pin-show photo-area">
                                 {imgLink}
                                 <div className="pin-show overlay"></div>
                             </div>
@@ -229,12 +234,11 @@ class PinShow extends React.Component {
                                         onBlur={this.hideEditModal}
                                     >
                                         <div >
-                                            <div >
-                                                <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
-                                            </div>
+                                            <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
                                         </div>
                                     </a>
-                                    <div id="create-pinboard-container" style={{
+                                    <div  style={{
+                                        // id="create-pinboard-container"
                                         visibility: this.state.showEditOptions ?
                                             "visible" :
                                             "hidden"
@@ -286,7 +290,6 @@ class PinShow extends React.Component {
                                     onClick={this.toggleShow}
                                     onBlur={this.hide}
                                 >
-                                    <div >
                                         {/* className="profile-icon-container-shadow" */}
                                         <div >
                                             {/* className="profile-icon-container" */}
@@ -294,7 +297,6 @@ class PinShow extends React.Component {
                                             <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%" }}></i>
                                             {/* className="pin-show save-board-pin-text" */}
                                         </div>
-                                    </div>
                                 </a>
                                 {/* </button> */}
                                 <div id="create-pinboard-container" style={{
@@ -306,31 +308,6 @@ class PinShow extends React.Component {
                                         {/* //className="option-label" id="create-board"> */}
                                         <CreateBoardsPinsForm pinId={pin.id} />
                                     </h3>
-                                    <div >
-                                        {/* id="create-options" */}
-                                        <div  >
-                                            {/* id="create-board-button" tabIndex="0" */}
-                                            <div >
-                                                {/* className="option-container-shadow" */}
-                                                <div >
-                                                    {/* className="option-container" */}
-                                                    <h3 >
-                                                        {/* className="option-label" id="create-board"> */}
-                                                        {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="create-pin-button">
-                                            {/* <NavLink to="/pin-builder">
-                                                <div className="option-container-shadow">
-                                                    <div className="option-container">
-                                                        <h3 className="option-label" id="create-pin">Create Pin</h3>
-                                                    </div>
-                                                </div>
-                                            </NavLink> */}
-                                        </div>
-                                    </div>
                                     <div id="create-options-triangle">
                                         <svg width="24" height="24">
                                             <path d="M0 24 L12 12 L24 24"></path>
@@ -348,9 +325,9 @@ class PinShow extends React.Component {
                                     {pin.description}
                                 </div>
                             </div>
-                            <div className="pin-show credit">
-                                {pinCreditPhoto}
-                                {pinCreditText}
+                            <div className="pin-show creator">
+                                {creatorPhoto}
+                                {pinInfo}
                             </div>
                         </div>
                     </div>

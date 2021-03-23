@@ -272,7 +272,8 @@ class EditProfileForm extends React.Component {
                                     <NavLink to={`/${currentUser.username}`} id="user-profile-link">
                                         <div id="back-icon-container-shadow">
                                             <div id="back-icon-container">
-                                                <i className="fas fa-arrow-left" id="back-icon"></i>
+                                                {/* <i className="fas fa-arrow-left" id="back-icon"></i> */}
+                                                <i className="fas fa-long-arrow-alt-left" id="back-icon" style={{ fontSize: "170%" }}></i>
                                             </div>
                                         </div>
                                     </NavLink>

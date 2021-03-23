@@ -224,7 +224,8 @@ export default class BoardShow extends React.Component {
                         ))}
                     </ul>
                     <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-                        <i className="fas fa-arrow-left"></i>
+                        {/* <i className="fas fa-arrow-left"></i> */}
+                        <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
                     </Link>
                     {/* <div>
                         here
