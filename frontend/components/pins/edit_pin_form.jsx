@@ -27,9 +27,9 @@ class EditPinForm extends React.Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleSave = this.handleSave.bind(this);
 
-        this.deletePin = this.deletePin.bind(this);
+        // this.deletePin = this.deletePin.bind(this);
         this.deleteForSure = this.deleteForSure.bind(this);
-        this.checkPin = this.checkPin.bind(this);
+        // this.checkPin = this.checkPin.bind(this);
     }
 
     update(field) {
@@ -72,26 +72,26 @@ class EditPinForm extends React.Component {
         // this.closePinModal();
     }
 
-    deletePin(e) {
+    // deletePin(e) {
         
-        if (this.state.ask === 'are you sure?') {
-            this.deleteForSure(e)
-        } else {
-            this.setState({ask: 'are you sure?'})
-        }
-    }
+    //     if (this.state.ask === 'are you sure?') {
+    //         this.deleteForSure(e)
+    //     } else {
+    //         this.setState({ask: 'are you sure?'})
+    //     }
+    // }
      deleteForSure(e) {
         //  debugger
          this.props.deletePin(this.props.pin.id).then(() => window.history.go(-1)); //.then(() => this.checkPin())
      }
-     checkPin() {
-         if (this.errors.length === 'undefind') {
-            //  this.props.history.push('/');
-             this.props.history.go(-1);
-         } else {
-             this.setState({ask: ''})
-         }
-     }
+    //  checkPin() {
+    //      if (this.errors.length === 'undefind') {
+    //         //  this.props.history.push('/');
+    //          this.props.history.go(-1);
+    //      } else {
+    //          this.setState({ask: ''})
+    //      }
+    //  }
     render() {
         const { pin, errors, formTitle } = this.props;
 
@@ -181,11 +181,11 @@ class EditPinForm extends React.Component {
                                 <div className="edit-pin link-text open-delete">Delete</div>
                             </a> */}
                             {/* {pin.title != "undefined" ? */}
-                            {pin.title != "undefined" ? <button className='plus-board' onClick={this.deletePin}>
+                            {pin.title != "undefined" ? <a className='delete' onClick={this.deleteForSure}>
                                 <i className="far fa-trash-alt"></i>
-                            </button>
+                            </a>
                                 : null}
-                            {this.state.ask === 'Are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
+                            {/* {this.state.ask === 'Are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null} */}
                             <a
                                 className="edit-pin link cancel"
                                 onClick={this.handleCancel}

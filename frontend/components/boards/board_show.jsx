@@ -92,10 +92,10 @@ export default class BoardShow extends React.Component {
 
     deleteBoard(e) {
         // debugger
-        if (this.state.ask === 'are you sure?') {
+        if (this.state.ask === 'Are you sure?') {
             this.deleteForSure(e)
         } else {
-            this.setState({ ask: 'are you sure?' })
+            this.setState({ ask: 'Are you sure?' })
         }
         // this.props.deleteBoard(this.props.board.id).then(() => this.checkPin()); //then(() => location.reload());
     }
@@ -173,41 +173,55 @@ export default class BoardShow extends React.Component {
                     </button> */}
                     
                     {/* {this.editBoardModal()} */}
-                    <div >
-                        <a
-                            className="xxx"
-                            onClick={this.toggleShow}
-                            onBlur={this.hide}
-                        >
-                            <div >
+                    <div id="profile-nav-bar">
+                        <div >
+                            <a
+                                className="xxx"
+                                onClick={this.toggleShow}
+                                onBlur={this.hide}
+                            >
                                 <div >
-                                    <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="create-pinboard-container" style={{
-                            visibility: this.state.showCreateOptions ?
-                                "visible" :
-                                "hidden"
-                        }}>
-                            <div className="modal-container" >
-                                <div className="modal-background" id={modal} onClick={closeModal}>
-                                    <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
-                                        {this.editBoardModal()}
+                                    <div >
+                                        <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+                            <div id="create-pinboard-container" style={{
+                                visibility: this.state.showCreateOptions ?
+                                    "visible" :
+                                    "hidden"
+                            }}>
+                                <div className="modal-container" >
+                                    <div className="modal-background" id={modal} onClick={closeModal}>
+                                        <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                                            {this.editBoardModal()}
+                                        </div>
+                                    </div>
+                                </div>
 
-                            {/* <h3 >
+                                {/* <h3 >
                                 {this.editBoardModal()}
                             </h3> */}
-                            {/* <div >
+                                {/* <div >
                                 <div id="create-pin-button">
                                 </div>
                             </div> */}
-                        </div>
-                    </div>
 
+                            </div>
+                        </div>
+                        {board.title != "undefined" ?
+                            <a className='delete-board' onClick={this.deleteBoard}>
+                                <i className="far fa-trash-alt"></i>
+                            </a>
+                            : null}
+                            {this.state.ask === 'Are you sure?' ? 
+                            <div className="insurance-box">
+                                <p className='are-you-sure'>{this.state.ask}</p>
+                            </div>
+                            
+                            : null}
+                    </div>
+                    
                 
 
                     <ul id='board-list-wrap'>
@@ -235,11 +249,6 @@ export default class BoardShow extends React.Component {
                             user={currentUser}
                         />
                     </div> */}
-                    {board.title != "undefined" ?
-                        <button className='plus-board' onClick={this.deleteBoard}>
-                            <i className="far fa-trash-alt"></i>                        </button>
-                        : null}
-                    {this.state.ask === 'are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null}
                 </div>
                 
             )

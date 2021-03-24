@@ -138,7 +138,7 @@ class PinShow extends React.Component {
         );
 
         const urlLink = pin.url;
-        const linkto = (pin.url === "") ? (
+        const linkto = (pin.url !== "") ? (
             <a
                 href={pin.url}
                 target="_blank"
@@ -187,7 +187,7 @@ class PinShow extends React.Component {
 
         // debugger
         const pinInfo = (
-            <div className="pin-show credit-summary">
+            <div className="pin-show creator-info">
                 <Link
                     to={`/users/${pinOwner.id}`}
                     className="pin-show credit-link"

@@ -998,6 +998,7 @@ ul.create-pin.board-list {
   border: 1px solid;
   box-shadow: 0 3px 6px rgba(0,0,0,.18);
   z-index: 50; 
+  border-radius: 8px;
 }
 
 
@@ -1114,9 +1115,10 @@ ul.create-pin.board-list {
 ////////////////////////////////////////////////////////////////////
 .edit-pin.container {
   position: relative;
-  max-height: calc(100vh - 32px);
-  // border-radius: 32xpx;
-  overflow: hidden;
+  // max-height: calc(100vh - 32px);
+  border-radius: 32px;
+  // perspective: 1px;
+  // overflow: hidden;
   background-color: #fff;
   width: 768px;
   @media (max-width: 768px) {
@@ -1233,13 +1235,13 @@ ul.create-pin.board-list {
     cursor: pointer;
     width: 100%;
     text-align: left;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
+    // -webkit-hyphens: auto;
+    // -ms-hyphens: auto;
     hyphens: auto;
-    word-wrap: break-word;
+    // word-wrap: break-word;
     font-weight: 400;
     letter-spacing: -.4px;
-    -moz-osx-font-smoothing: grayscale;
+    // -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     color: #333;
@@ -1311,12 +1313,14 @@ ul.create-pin.board-list {
   box-sizing: border-box;
   padding: 16px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   min-height: 40px;
+  // height: 240px;
   & > .left-links {
     box-sizing: border-box;
     display: flex;
+    align-items: center;
   }
 
   & > .right-links {
@@ -1371,152 +1375,111 @@ ul.create-pin.board-list {
 
 
 
-////////////////////////////////////////////////////////////////////
-//////////////////////////// DELETE PIN ////////////////////////////
-////////////////////////////////////////////////////////////////////
-.delete-pin.container {
-  width: 414px;
-  max-height: calc(100vh - 32px);
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.delete-pin.form {
-  width: 100%;
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.delete-pin.header {
-  position: relative;
-  box-sizing: border-box;
-  border-bottom: 1px solid #efefef;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.delete-pin.form-title {
-  padding: 20px 50px;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  word-wrap: break-word;
-  letter-spacing: -.4px;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  color: #333;
-  font-size: 24px;
-}
-
-.delete-pin.cancel-link-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  box-sizing: border-box;
-  padding: 8px;
-  & > .cancel-link {
-    cursor: pointer;
-    border: 0;
-    border-radius: 50%;
-    padding: 0;
-    background: transparent;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover {
-      background-color: rgba(0,0,0,0.06);
-    }
-    & > .cancel-icon {
-      color: #8e8e8e;
-      height: 20px;
-      width: 20px;
-    }
-  }
-}
-
-.delete-pin.body {
-  position: relative;
-  box-sizing: border-box;
-  border-bottom: 1px solid #efefef;
-  flex: 1 1 auto;
-  min-height: 0;
-  min-width: 0;
-  overflow: auto;
-}
-
-.delete-pin.confirmation-message {
-  box-sizing: border-box;
-  padding: 16px;
-  text-align: left;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  word-wrap: break-word;
-  font-weight: 400;
-  letter-spacing: -.4px;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  color: #333;
-}
-
-.delete-pin.footer {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.delete-pin.buttons {
-  box-sizing: border-box;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.delete-pin.link {
+//////////////////////////// DELETE PIN 
+.delete {
+text-align: center;
+bottom: 20px;
+right: 20px;
+height: 50px;
+width: 50px;
+box-sizing: border-box;
+border-radius: 50px;
+transition: background 0.5s;
+opacity: .80;
+z-index: 40;
+// margin-inline: 15px;
+// margin: 20px;
+padding: 10px 14px;
+&:hover {
+  background-color: lightgrey;
   cursor: pointer;
-  box-sizing: border-box;
-  margin: 0 4px;
-  padding: 10px 14px;
-  border: 0;
-  border-radius: 8px;
-  min-height: 40px;
+}
+}
+
+.delete i {
   display: flex;
+  font-size: 22pt;
+  color: black;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  &.cancel {
-    background-color: #efefef;
-    &:hover {
-      background-color: #e2e2e2;
-    }
-  }
-  &.delete {
-    background-color: #e60023;
-    &:hover {
-      background-color: #ad081b;
-    }
-  }
-  & > .link-text {
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: -.4px;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    &.cancel {
-      color: #333;
-    }
-    &.delete {
-      color: #fff;
-    }
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: whitesmoke;
+  &:hover {
+    background-color: lightgrey;
+    cursor: pointer;
   }
 }
+
+// .delete-pin.confirmation-message {
+//   box-sizing: border-box;
+//   padding: 16px;
+//   text-align: left;
+//   -webkit-hyphens: auto;
+//   -ms-hyphens: auto;
+//   hyphens: auto;
+//   word-wrap: break-word;
+//   font-weight: 400;
+//   letter-spacing: -.4px;
+//   -moz-osx-font-smoothing: grayscale;
+//   -webkit-font-smoothing: antialiased;
+//   font-size: 16px;
+//   color: #333;
+// }
+
+// .delete-pin.footer {
+//   max-width: 100%;
+//   box-sizing: border-box;
+// }
+
+// .delete-pin.buttons {
+//   box-sizing: border-box;
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-end;
+// }
+
+// .delete-pin.link {
+//   cursor: pointer;
+  // box-sizing: border-box;
+  // margin: 0 4px;
+  // padding: 10px 14px;
+  // border: 0;
+  // border-radius: 8px;
+  // min-height: 40px;
+  // display: flex;
+  // align-items: center;
+  // &.cancel {
+  //   background-color: #efefef;
+  //   &:hover {
+  //     background-color: #e2e2e2;
+  //   }
+  // }
+  // &.delete {
+  //   background-color: #e60023;
+  //   &:hover {
+  //     background-color: #ad081b;
+  //   }
+  // }
+  // & > .link-text {
+  //   text-align: center;
+  //   font-weight: 700;
+  //   letter-spacing: -.4px;
+  //   -moz-osx-font-smoothing: grayscale;
+  //   -webkit-font-smoothing: antialiased;
+  //   font-size: 16px;
+  //   &.cancel {
+  //     color: #333;
+  //   }
+//     &.delete {
+//       color: #fff;
+//     }
+//   }
+// }
 
 
 
@@ -1541,7 +1504,6 @@ ul.create-pin.board-list {
 }
 
 
-
 .pin-show.profile-link-frame {
   margin-right: 8px;
   width: 40px;
@@ -1559,7 +1521,7 @@ ul.create-pin.board-list {
   }
 }
 
-.pin-show.credit-summary {
+.pin-show.creator-info {
   max-width: 100%;
   flex: 1 1 auto;
   box-sizing: border-box;
@@ -1584,15 +1546,6 @@ ul.create-pin.board-list {
       text-decoration: underline;
     }
   }
-}
-
-/// !!!
-.are-you-sure {
-  margin-top: 5px;
-  font-style: italic;
-  color: #E52B21;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10pt;
 }
 
 

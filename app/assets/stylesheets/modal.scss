@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
+  // border-radius: 32px;
   padding: 16px;
   overflow: hidden;
   background-color: #FFFFFF;
@@ -74,10 +74,10 @@
   &#edit-board-child {
     top: 0;
     left: 0;
-    transform: none;
+    // transform: none;
     position: relative;
     margin: auto;
-    border-radius: 6px;
+    // border-radius: 36px;
     max-width: 600px;
     max-height: 200%;
     width: 100%;
@@ -102,96 +102,96 @@
   overflow:hidden;
 }
 
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  // overflow-y: scroll;
-  box-sizing: border-box;
-//   &#login,
-//   &#signup {
+// .modal-background {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   padding: 20px;
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: rgba(0, 0, 0, 0.5);
+//   // overflow-y: scroll;
+//   box-sizing: border-box;
+// //   &#login,
+// //   &#signup {
 
+// //   }
+// //   &#search {}
+//   &#new-board {
+//     background-color:rgba(0, 0, 0, 0.8);
+//     cursor: zoom-out;
 //   }
-//   &#search {}
-  &#new-board {
-    background-color:rgba(0, 0, 0, 0.8);
-    cursor: zoom-out;
-  }
-  &#edit-board {
-    background-color: rgba(226,228,228,.9);
-  }
-  &#delete-board {
-    background-color: rgba(226,228,228,.99);
-  }
-  &#edit-pin,
-  &#delete-pin {
-    background-color: rgba(0, 0, 0, 0.8);
-    cursor: zoom-out;
-  }
-  &#new-board-pin {
-    background-color: rgba(0, 0, 0, 0.8);
-    cursor: zoom-out;
-  }
-}
+//   &#edit-board {
+//     background-color: rgba(226,228,228,.9);
+//   }
+//   &#delete-board {
+//     background-color: rgba(226,228,228,.99);
+//   }
+//   &#edit-pin,
+//   &#delete-pin {
+//     background-color: rgba(0, 0, 0, 0.8);
+//     cursor: zoom-out;
+//   }
+//   &#new-board-pin {
+//     background-color: rgba(0, 0, 0, 0.8);
+//     cursor: zoom-out;
+//   }
+// }
 
-.modal-child {
-  cursor: auto; // check other containers
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  &#edit-board-child {
-    top: 0;
-    left: 0;
-    transform: none;
-    position: relative;
-    margin: auto;
-    border-radius: 6px;
-    max-width: 600px;
-    max-height: 200%;
-    width: 100%;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.22);
-    background-color: rgba(226,228,228,.9);
-  }
-}
+// .modal-child {
+//   cursor: auto; // check other containers
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   &#edit-board-child {
+//     top: 0;
+//     left: 0;
+//     transform: none;
+//     position: relative;
+//     margin: auto;
+//     border-radius: 6px;
+//     max-width: 600px;
+//     max-height: 200%;
+//     width: 100%;
+//     box-shadow: 0 1px 2px 0 rgba(0,0,0,.22);
+//     background-color: rgba(226,228,228,.9);
+//   }
+// }
 
-.modal-child-two {
-  height: 9px;
-  min-width: 130px;
-  box-sizing: border-box;
-  left: 0;
-  top: 0;
-  position: absolute;
-  margin-top: 48px;
-  margin-left: 24px;
-}
+// .modal-child-two {
+//   height: 9px;
+//   min-width: 130px;
+//   box-sizing: border-box;
+//   left: 0;
+//   top: 0;
+//   position: absolute;
+//   margin-top: 48px;
+//   margin-left: 24px;
+// }
 
-.pinboard-container {
-  margin: 16px;
-  max-width: 400px;
-  width: 100%;
-  min-height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 20px;
-  padding: 16px;
-  overflow: hidden;
-  background-color: #FFFFFF;
-  font-family: Arial,
-  Helvetica,
-  sans-serif;
-  box-shadow: 0 0 5px 10px #555;
-  -webkit-box-shadow: 10px 10px 10px 4px black;
-  -moz-box-shadow: 10px 10px 10px 4px black;
-  z-index: 10;
-}
+// .pinboard-container {
+//   margin: 16px;
+//   max-width: 400px;
+//   width: 100%;
+//   min-height: 550px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 32px;
+//   padding: 16px;
+//   overflow: hidden;
+//   background-color: #FFFFFF;
+//   font-family: Arial,
+//   Helvetica,
+//   sans-serif;
+//   box-shadow: 0 0 5px 10px #555;
+//   -webkit-box-shadow: 10px 10px 10px 4px black;
+//   -moz-box-shadow: 10px 10px 10px 4px black;
+//   z-index: 10;
+// }
