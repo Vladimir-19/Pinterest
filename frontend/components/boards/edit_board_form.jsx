@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class EditBoardForm extends React.Component {
             id: this.props.board.id,
             title: this.props.board.title,
             description: this.props.board.description,
+            userId: this.props.board.userId
             // secret: this.props.board.secret
             // success: '',
             // ask: '',
@@ -59,6 +61,8 @@ class EditBoardForm extends React.Component {
         e.preventDefault();
         // const username = this.props.currentUser.username;
         this.props.processForm(this.state).then(() => window.history.go(-1));
+
+        // .then(() => {`/users/${this.state.userId}`} )
  //.then(() => this.checkPin());
          //.then(() => window.location.reload()); //reload is a bad idea bc it can't reload page in my case
             // .then(this.props.closeModal)
@@ -226,12 +230,17 @@ class EditBoardForm extends React.Component {
                             >
                                 Cancel
                             </button> */}
-                            <button
-                                className="edit-board button save"
-                                onClick={this.handleSave}
-                            >
+                                {/* margin-left */}
+                                {/* <i className="fas fa-arrow-left"></i> */}
+                                <button
+                                    className="edit-board button save"
+                                    onClick={this.handleSave}
+                                >
                                 Save
-                            </button>
+                                <Link to={`/users/${this.state.userId}`} >
+                                </Link>
+                                </button>
+                            
                         </div>
                     </div>
                 </form>

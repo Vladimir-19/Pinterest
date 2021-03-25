@@ -10,7 +10,7 @@ class BoardItem extends React.Component {
         const { pin } = this.props;
 
         return (
-            <Link to={`/pin/${pin.id}`}>
+            <Link to={`/pin/${pin.id}`} style={{ "textDecoration" : "none"}}>
                 <img className="pin-item" src={pin.photo} />
                 <p id='pin-title-board'>{pin.title} </p>
             </Link>

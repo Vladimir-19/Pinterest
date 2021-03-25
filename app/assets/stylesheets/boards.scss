@@ -1,3 +1,12 @@
+
+#board-show-header {
+  display: flex;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: -2px;
+}
+
 #create-board-container {
   position: relative;
 }
@@ -719,6 +728,12 @@
   font-weight: 700;
 }
 
+#profile-personal {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 .board-show.stats {
   margin-right: -4px;
   box-sizing: border-box;
@@ -1160,38 +1175,18 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   
-  border-top: 20px solid #f00;
+  border-top: 20px solid #fff;
+  z-index: 1000;
+  // border: blue;
 }
 
 /// !!!
 .insurance-box {
-  //  margin-top: 5px;
-  // // font-family: Arial,Helvetica, sans-serif;
-  // font-size: 12pt;
-  // // border: solid;
-  // margin-left: 30px;
-  // display: table;
-  // text-align-last: center;
-  // // right: 20px;
-  // // stroke: #efefef;
-  // // top: 382px;
-  // // position: absolute;
-  // background-color: #fff;
-  // color: #fff;
-  // // box-sizing: border-box;
-  // // min-height: 14px;
-  // // max-height: 14px;
-  // // max-width: 90vw;
-  // // height: 14px;
-  // width: 140px;
-  // border: 1px solid;
-  // // box-shadow: 0 3px 6px rgb(0 0 0 / 18%);
-  // outline: none;
-  // border-radius: 8px;
-  // z-index: 50;
   position: absolute;
-  z-index: 2;
-  top: 166px;
+  align-items: baseline;
+  z-index: 2000;
+  // top: 186px;
+  top: 220px;
   left: 55px;
   stroke: rgb(239, 239, 239);
   width: 200px;
@@ -1205,16 +1200,8 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  & > .triangle {
-    position: absolute;
-    top: -24px;
-    left: 148px;
-    height: 24px;
-    pointer-events: none;
-    fill: currentColor;
-    color: #fff;
-  }
 }
+
 .are-you-sure {
   margin-top: 5px;
   font-style: italic;

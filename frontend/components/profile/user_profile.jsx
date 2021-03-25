@@ -10,6 +10,7 @@ import UserDetails from './user_details';
 export default class UserProfile extends React.Component {
     constructor(props) {
         super(props);
+        // debugger;
         this.state = {
             pins: '',
             // loading: true,
@@ -83,9 +84,9 @@ export default class UserProfile extends React.Component {
 
 
     render() {
-        const { currentUser, boards, pins, openModal, closeModal, users, id } = this.props;
+        const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
         const user = users.find(user => user.id === currentUser.id);
-
+        // debugger;
         if (this.state.loading) {
             return <LoadingIcon />;
         }
@@ -123,7 +124,8 @@ export default class UserProfile extends React.Component {
                     </div>
                     <div id="user-text">
                         {name}
-                        {id}
+                        {/* {id} */}
+                        {/* HHHHHHHH */}
                         {/* {user} */}
                     </div>
 
@@ -188,7 +190,7 @@ export default class UserProfile extends React.Component {
                             let allPins;
                             let imageTag =
                                 <div id='pin-image-wrapper1'>
-                                    <div className='pin-noimg'>do I need this?</div> 
+                                    {/* <div className='pin-noimg'>do I need this?</div>  */}
                                 </div>
                             if (board.pinIds.length > 0) {
                                 pinArr = board.pinIds.map(pinId => {

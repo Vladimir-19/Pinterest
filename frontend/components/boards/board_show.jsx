@@ -28,7 +28,7 @@ export default class BoardShow extends React.Component {
         }
 
         // this.openEditBoard = this.openEditBoard.bind(this)
-        this.handleSave = this.handleSave.bind(this);
+        // this.handleSave = this.handleSave.bind(this);
         
         this.deleteBoard = this.deleteBoard.bind(this);
         this.deleteForSure = this.deleteForSure.bind(this);
@@ -57,11 +57,11 @@ export default class BoardShow extends React.Component {
         this.setState({ showCreateOptions: false });
     }
 
-    handleSave(e) {
-        e.preventDefault();
-        // debugger
-        this.props.processForm(this.state)
-    }
+    // handleSave(e) {
+    //     e.preventDefault();
+    //     // debugger
+    //     this.props.processForm(this.state)
+    // }
     // handleClick(e) {
     //   let pin = (e.currentTarget);
     //   const pinId = (pin.getAttribute('value'))
@@ -154,10 +154,18 @@ export default class BoardShow extends React.Component {
         if (pinArr.length >= 0) {
             return (
                 <div id='board-show-wrapper'>
+
+                    <Link to={`/users/${currentUser.id}`} style={{ "zIndex": "1000", "marginLeft" : "50px", "color" : "black" }}> 
+                        {/* margin-left */}
+                        {/* <i className="fas fa-arrow-left"></i> */}
+                        <i className="fas fa-long-arrow-alt-left" style={{ "fontSize": "170%" }}></i>
+                    </Link>
+
                     <div id='board-show-header'>
                         <h1>{board.title}</h1>
+                    </div>
+                    <div id="profile-personal" style={{"margin" : "5px", "padding" : "5px"}}>
                         <h3>{board.description}</h3>
-                     
                     </div>
                     {/* here  */}
                     {/* <BoardShowNavBar
@@ -217,11 +225,12 @@ export default class BoardShow extends React.Component {
                             {this.state.ask === 'Are you sure?' ? 
                             <div className="insurance-box">
                                 <p className='are-you-sure'>{this.state.ask}</p>
+                                <div className="arrow-down"></div>
                             </div>
                             
                             : null}
                     </div>
-                    
+
                 
 
                     <ul id='board-list-wrap'>
@@ -237,10 +246,6 @@ export default class BoardShow extends React.Component {
                             //     page="profile"/>
                         ))}
                     </ul>
-                    <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-                        {/* <i className="fas fa-arrow-left"></i> */}
-                        <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
-                    </Link>
                     {/* <div>
                         here
                         <BoardShowNavBar
@@ -254,7 +259,7 @@ export default class BoardShow extends React.Component {
             )
         } else {
             
-            <p>this board has no pins yet!</p>
+            <h1>This board has no pins yet!</h1>
         }
     }
 }
