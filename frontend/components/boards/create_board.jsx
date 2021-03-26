@@ -4,55 +4,49 @@ class CreateBoardForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.board;
-        // this.state = {
-        //     title: '',
-        //     description: ''
-        // }
 
         this.update = this.update.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
-        this.handleClose = this.handleClose.bind(this);
+        this.updateDescription = this.updateDescription.bind(this);
+        // this.handleCheck = this.handleCheck.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
-        // this.renderErrors = this.renderErrors.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(e) {
         this.setState({ "title": e.currentTarget.value });
     }
 
-    // renderErrors() {
-    //     return (
-    //         <ul className="session-errors">
-    //             {this.props.errors.map((error, i) => (
-    //                 <li
-    //                     key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
+    updateDescription(e) {
+        this.setState({"description": e.currentTarget.value });
+    }
+
+    renderErrors() {
+        return (
+            <ul > 
+                {this.props.errors.map((error, i) => (
+                    <li
+                        className="session-errors"
+                        key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    // handleCheck() {
+    //     this.setState({ "secret": !this.state.secret });
+    //     const checkbox = document.getElementById('visibility-checkbox');
+    //     if (this.state.secret) {
+    //         checkbox.firstChild.classList.add('checked');
+    //     } else {
+    //         checkbox.firstChild.classList.remove('checked');
+    //     };
     // }
-
-    handleCheck() {
-        this.setState({ "secret": !this.state.secret });
-        const checkbox = document.getElementById('visibility-checkbox');
-        if (this.state.secret) {
-            checkbox.firstChild.classList.add('checked');
-        } else {
-            checkbox.firstChild.classList.remove('checked');
-        };
-    }
-
-    handleClose(e) {
-        e.preventDefault();
-        this.props.closeModal();
-    }
 
     handleCreate(e) {
         e.preventDefault();
-        this.props.processForm(this.state).then(this.props.closeModal && window.location.reload());
-        // const board = Object.assign({}, this.state)
-        // this.props.createBoardForm(board).then((this.props.closeModal) && window.location.reload());
+        this.props.processForm(this.state).then(() => location.reload());
     }
 
     render() {
@@ -69,17 +63,7 @@ class CreateBoardForm extends React.Component {
                                     Create board
                                 </h1>
                             </div>
-                            <div className="create-board" id="close-button-container">
-                                <button
-                                    className="create-board"
-                                    id="close-button"
-                                    onClick={this.handleClose}
-                                >
-                                    <div className="create-board" id="close-icon-container">
-                                        <i className="fas fa-times create-board" id="close-icon"></i>
-                                    </div>
-                                </button>
-                            </div>
+                            
                         </div>
                         <div className="create-board" id="body">
                             <div className="create-board" id="form-container">
@@ -105,15 +89,37 @@ class CreateBoardForm extends React.Component {
                                                         placeholder='Like "Places to Go" or "Recipes to Make"'
                                                         onChange={this.update}
                                                     />
-                                                    {/* <div className="create-board error-container">
+                                                    <div className="create-board error-container">
                                                         <div className="create-board error">
-                                                            <span className="create-board error-content"></span>
+                                                                {this.renderErrors()}
                                                         </div>
-                                                    </div> */}
+                                                    </div>
+                                                </span>
+                                            </div>
+
+                                            <div className="create-board label-container">
+                                                <label
+                                                    htmlFor="name-input"
+                                                    className="create-board label"
+                                                    id="name-label">
+                                                    <div className="create-board label-content">
+                                                        Description
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div className="create-board input-container">
+                                                <span>
+                                                    <input
+                                                        type="text"
+                                                        className="create-board name-input"
+                                                        id="name-input"
+                                                        placeholder='Like "Places to Go" or "Recipes to Make"'
+                                                        onChange={this.updateDescription}
+                                                    />
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="create-board field-container" id="visibility">
+                                        {/* <div className="create-board field-container" id="visibility">
                                             <div className="create-board label-container">
                                                 <label
                                                     htmlFor="visibility-input"
@@ -130,23 +136,16 @@ class CreateBoardForm extends React.Component {
                                                     Keep this board secret.
                                                 </div>
                                             </div>
-                                            {/* <div className="create-board input-container secret"> */}
                                             <div>
                                                 <div
                                                     className="create-board"
                                                     id="visibility-checkbox"
                                                     onClick={this.handleCheck}
                                                 >
-                                                    {/* <i className={`fas fa-check-square create-board checkbox ${checked}`}
-                                                        id="visibility-checked">
-                                                    </i> */}
-                                                    {/* <i className={`fas fa-toggle-off ${checked}`}></i> */}
                                                 </div>
-
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
-                                    {/* <div className="create-board footer-container"> */}
                                     <div className="create-board footer">
                                         <div className="create-board buttons-container">
                                             <div className="create-board buttons">

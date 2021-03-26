@@ -40,7 +40,8 @@ const mapStateToProps = state => ({
     board: { "title": "", "description": "", "secret": false },
     // boards: Object.values(state.entities.boards),
     // pins: Object.values(state.entities.pins),
-    errors: state.errors.board,
+    // errors: state.errors.board,
+    errors: state.errors.session,
     formType: "Create board",
 });
 

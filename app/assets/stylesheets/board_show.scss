@@ -80,3 +80,36 @@
   sans-serif;
   font-weight: bold;
 }
+
+// !!
+.edit-board.button {
+  box-sizing: border-box;
+  margin: 0 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  min-height: 40px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 14px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -.4px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  &.cancel {
+    background-color: #efefef;
+    color: #333;
+    &:hover {
+      background-color: #e2e2e2;
+    }
+  }
+  &.save {
+    background-color: #e60023;
+    color: #fff;
+    &:hover {
+      background-color: #ad081b;
+    }
+  }
+}

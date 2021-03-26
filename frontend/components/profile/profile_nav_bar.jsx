@@ -113,11 +113,11 @@ class ProfileNavBar extends React.Component {
                                 </NavLink>
                             </div>
                         </div>
-                        <div id="create-options-triangle">
-                            <svg width="24" height="24">
+                        {/* <div id="create-options-triangle">
+                            <svg width="24" height="24" >
                                 <path d="M0 24 L12 12 L24 24"></path>
                             </svg>
-                        </div>
+                        </div> */}
                     </div>
                 <div>
                             <div className="profile-header-button" id="edit-profile">

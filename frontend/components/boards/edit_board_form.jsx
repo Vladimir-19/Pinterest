@@ -3,30 +3,39 @@ import { Link } from 'react-router-dom';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
+        // debugger
         super(props);
-        // debugger;
         this.state = {
             id: this.props.board.id,
             title: this.props.board.title,
             description: this.props.board.description,
             userId: this.props.board.userId
-            // secret: this.props.board.secret
-            // success: '',
-            // ask: '',
-            // deleted: false
         };
 
         this.update = this.update.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
-        // this.openDeleteBoard = this.openDeleteBoard.bind(this);
-        this.handleClose = this.handleClose.bind(this);
         this.handleSave = this.handleSave.bind(this);
-
-        // this.deleteBoard = this.deleteBoard.bind(this);
-        // this.deleteForSure = this.deleteForSure.bind(this);
-        // this.checkPin = this.checkPin.bind(this);
+        // this._getInitialState = this._getInitialState.bind(this);
+        // this.handleCancel = this.handleCancel.bind(this);
 
     }
+
+    // _getInitialState() {
+    //     const board = this.props.board;
+    //     const initialState = Object.assign({}, {
+    //         id: board.id,
+    //         title: board.title || "",
+    //         description: board.description || "",
+    //         // userId: board.userId
+    //     });
+
+    //     return initialState
+    // }
+
+    // handleCancel(e) {
+    //     e.preventDefault();
+    //     // debugger
+    //     this.setState(this._getInitialState);
+    // }
 
     update(field) {
         return (e =>
@@ -34,77 +43,18 @@ class EditBoardForm extends React.Component {
         )
     }
 
-    handleCheck(e) {
-        e.preventDefault();
-
-        this.setState({ "secret": !this.state.secret }, () => {
-            const checkbox = document.getElementById('visibility-checkbox');
-            if (this.state.secret) {
-                checkbox.firstChild.classList.add('checked');
-            } else {
-                checkbox.firstChild.classList.remove('checked');
-            }
-        });
-    }
-
-    // openDeleteBoard(e, boardId) {
-    //     e.preventDefault();
-    //     this.props.openDeleteBoard(boardId);
-    // }
-
-    handleClose(e) {
-        e.preventDefault();
-        this.props.closeModal();
-    }
-
     handleSave(e) {
         e.preventDefault();
-        // const username = this.props.currentUser.username;
         this.props.processForm(this.state).then(() => window.history.go(-1));
-
-        // .then(() => {`/users/${this.state.userId}`} )
- //.then(() => this.checkPin());
-         //.then(() => window.location.reload()); //reload is a bad idea bc it can't reload page in my case
-            // .then(this.props.closeModal)
-            // .then(() => location.href = `/#/${username}`)
-        // "/users/:userId"
     }
-    checkPin() {
-        // if (this.errors.length === 'undefind') {
-        // <a href={`/users/${this.props.currentUser.id}`}></a>
-        // } else {
-        // this.setState({ ask: '' })
-        // }
-    }
-
-
-    // deleteBoard(e) {
-    //     // debugger
-    //     if (this.state.ask === 'are you sure?') {
-    //         // this.deleteForSure(e)
-    //         e.stopPropagation();
-    //         this.props.history.push('/');
-    //     } else {
-    //         e.stopPropagation();
-    //         this.setState({ ask: 'are you sure?' })
-    //     }
-    //     // this.props.deleteBoard(this.props.board.id).then(() => location.reload()); //.then(() => this.checkPin())
-    // }
-    // deleteForSure(e) {
-    //     //  debugger
-    //     this.props.deleteBoard(this.props.board.id).then(() => this.checkPin())
-    // } //then(() => window.history.go(-1));
-    // checkPin() {
-    //     // if (this.errors.length === 0) {
-    //          this.props.history.push('/');
-    //     // } else {
-    //         // this.setState({ ask: '' })
-    //     // }
-    // }
+  
 
     render() {
         const { board, errors, formTitle } = this.props;
         const checked = (this.state.secret) ? 'checked' : null;
+
+        // let currentState = Object.assign({}, this.state);
+        // const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
 
         if (this.state.success === 'Your board was successfully deleted!')
             return (
@@ -118,12 +68,6 @@ class EditBoardForm extends React.Component {
                         <div className="edit-board form-title">
                             {formTitle}
                         </div>
-                        {/* <button
-                            className="edit-board close-button"
-                            onClick={this.handleClose}
-                        >
-                            <i className="fas fa-times edit-board close-icon"></i>
-                        </button> */}
                     </div>
                     <div className="edit-board body">
                         <div className="edit-board field name">
@@ -180,67 +124,40 @@ class EditBoardForm extends React.Component {
                                 </span>
                             </div>
                         </div>
-                        <div className="edit-board field visibility">
-                            <div className="edit-board label-container">
-                                <label
-                                    htmlFor="visibility-input"
-                                    className="edit-board label"
-                                    id="visibility-label"
-                                    onClick={this.handleCheck}
-                                >
-                                    Visibility
-                                </label>
-                            </div>
-                            <div className="edit-board input-container secret">
-                                <button
-                                    className="edit-board"
-                                    id="visibility-checkbox"
-                                    onClick={this.handleCheck}
-                                >
-                                    <i
-                                        className={`fas fa-check-square edit-board checkbox ${checked}`}
-                                        id="visibility-checked"
-                                    ></i>
-                                </button>
-                                <div className="edit-board visibility-note">
-                                    Keep this board secret.
-                </div>
-                            </div>
-                        </div>
                     </div>
                     <div className="edit-board footer">
                         <div className="edit-board footer-part left">
-                            {/* <button
-                                className="edit-board button delete"
-                                onClick={(e, boardId) => this.openDeleteBoard(e, boardId)}
-                            >
-                                Delete
-                            </button> */}
-                            {/* {board.title != "undefined" ? 
-                            <button className='plus-board' onClick={this.deleteBoard}>
-                                <i className='fas fa-trash-alt'></i>
-                            </button>
-                                : null} 
-                            {this.state.ask === 'are you sure?' ? <p className='are-you-sure'>{this.state.ask}</p> : null} */}
                         </div>
                         <div className="edit-board footer-part right">
-                            {/* <button
+                            <Link 
                                 className="edit-board button cancel"
-                                onClick={this.handleClose}
+                                // to={`/boards/${this.state.id}`}
+                                to={`/users/${this.state.userId}`}
                             >
                                 Cancel
+                            </Link>
+                            {/* <button
+                                className={`edit-profile cancel button ${disabled}`}
+                                id="cancel-button"
+                                onClick={this.handleCancel}
+                            >
                             </button> */}
-                                {/* margin-left */}
-                                {/* <i className="fas fa-arrow-left"></i> */}
+                            {/* <a
+                                //  to={`/users/${this.state.userId}`}
+                                href='http://localhost:3000/#/boards/13'
+                                    className="edit-board button save"
+                                    //to={`/users/${this.state.userId}`}
+                                data-action={this.handleSave}
+                                    >
+                                Save 
+                            </a> */}
+                                           
                                 <button
                                     className="edit-board button save"
                                     onClick={this.handleSave}
                                 >
-                                Save
-                                <Link to={`/users/${this.state.userId}`} >
-                                </Link>
+                                    Save
                                 </button>
-                            
                         </div>
                     </div>
                 </form>

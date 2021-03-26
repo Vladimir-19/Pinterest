@@ -21,33 +21,38 @@
   flex-direction: column;
   align-items: center;
 }
-.user-profile-image {
-  font-size: 75pt;
-  color: grey;
-  // text-align-last: center;
-  text-align: -webkit-center;
-}
 
+// !!!
 #profile-image-container {
+  text-align: -webkit-center;
   margin: auto;
   width: 25%;
   margin-top: 24px;
-  justify-content: flex-end;
+  // justify-content: flex-end;
   box-sizing: border-box;
   flex-direction: row;
   will-change: transform;
   border-radius: 50%;
 }
 
-// #user-photo {
-//   height: fit-content;
-//   width: 200px;
-//   display: flex;
-//   justify-content: center;
-//   margin-bottom: 10px;
-//   margin-top: 20px;
-//   vertical-align: middle;
-// }
+//!!
+#profile-image-frame {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  vertical-align: middle;
+}
+
+.user-profile-image {
+  font-size: 145pt;
+  color: grey;
+  // text-align-last: center;
+  text-align: -webkit-center;
+  border-radius: 50%;
+}
 
 #user-text {
   height: fit-content;
@@ -240,9 +245,9 @@
 }
 
 #create-options-container {
-  right: 20px;
+  right: 60px;//25px;
   stroke: rgb(239, 239, 239);
-  top: 382px;
+  top: 50%; //500px;
   position: absolute;
   background-color: #fff;
   color: #fff;

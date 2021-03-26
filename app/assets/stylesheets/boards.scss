@@ -13,7 +13,7 @@
 
 .create-board#sizing {
   width: 544px;
-  border-radius: 8px;
+  border-radius: 20px;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -189,6 +189,7 @@
 }
 
 .create-board.name-input {
+  border-radius: 15px;
   box-sizing: border-box;
   min-height: 40px;
   width: 100%;
@@ -203,7 +204,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 4px;
   border: 1px solid;
   padding: 8px 14px;
 }
@@ -314,7 +314,9 @@
   box-sizing: border-box;
   min-height: 40px;
   display: inline-block;
-  background-color: #efefef;
+  // background-color: #efefef;
+  margin-right: 15px;
+  background-color: #e60023;
   padding: 10px 14px;
   text-align: center;
   font-weight: 700;
@@ -322,9 +324,11 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
-  color: #333;
+  // color: #333;
+  color: #fff;
   &:hover {
-    background-color: #e2e2e2;
+    // background-color: #e2e2e2;
+    background-color:  #ad081b;
   }
 }
 
@@ -848,6 +852,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  place-content: center;
   @media (min-width: 576px) {
     padding-bottom: 12px 8px;
   }
@@ -904,6 +909,7 @@
 
 .edit-board.body {
   box-sizing: border-box;
+  text-align: initial;
 }
 
 .edit-board.field {
@@ -977,7 +983,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-width: 1px;
   padding: 8px 14px;
@@ -1090,6 +1096,7 @@
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   &.cancel {
+    text-decoration: none;
     background-color: #efefef;
     color: #333;
     &:hover {

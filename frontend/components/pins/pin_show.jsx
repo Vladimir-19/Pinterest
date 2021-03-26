@@ -125,7 +125,7 @@ class PinShow extends React.Component {
 
         
 
-        const pinTitle = (pin.url === "") ? (
+        const pinTitle = (pin.url !== "") ? (
             <div className="pin-show title">{pin.title}</div>
         ) : (
             <a
@@ -138,7 +138,7 @@ class PinShow extends React.Component {
         );
 
         const urlLink = pin.url;
-        const linkto = (pin.url !== "") ? (
+        const linkto = (pin.url === "") ? (
             <a
                 href={pin.url}
                 target="_blank"
