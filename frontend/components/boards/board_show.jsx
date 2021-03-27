@@ -151,6 +151,14 @@ export default class BoardShow extends React.Component {
             })
         }
 
+        const boardDescription = (board.description) ? (
+            <h3>{board.description}</h3>
+        ) : (
+            <h3 style={{ "color": "#8e8e8e" }}>
+                Describe your board!
+            </h3>
+        );
+
         if (pinArr.length >= 0) {
             return (
                 <div id='board-show-wrapper'>
@@ -165,7 +173,8 @@ export default class BoardShow extends React.Component {
                         <h1>{board.title}</h1>
                     </div>
                     <div id="profile-personal" style={{"margin" : "5px", "padding" : "5px"}}>
-                        <h3>{board.description}</h3>
+                        {/* <h3>{board.description}</h3> */}
+                        {boardDescription}
                     </div>
                     {/* here  */}
                     {/* <BoardShowNavBar

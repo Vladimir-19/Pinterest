@@ -113,8 +113,12 @@ class CreateBoardForm extends React.Component {
                                                         type="text"
                                                         className="create-board name-input"
                                                         id="name-input"
-                                                        placeholder='Like "Places to Go" or "Recipes to Make"'
+                                                        placeholder="What's your board about?"
                                                         onChange={this.updateDescription}
+                                                        style={{
+                                                            "height" : "59px",
+                                                            "marginTop" : "20px"
+                                                        }}
                                                     />
                                                 </span>
                                             </div>

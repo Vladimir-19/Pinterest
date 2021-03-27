@@ -216,19 +216,20 @@
 
 .create-board.error {
   text-align: left;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
+  // -webkit-hyphens: auto;
+  // -ms-hyphens: auto;
   hyphens: auto;
-  word-wrap: break-word;
+  // word-wrap: break-word;
   font-weight: 400;
   letter-spacing: -.4px;
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   color: #e60023;
 }
 
 // .create-board.error-content {}
+.edit-board.input.description {}
 
 .create-board#visibility-checkbox {
   position: relative;
@@ -1193,7 +1194,7 @@
   align-items: baseline;
   z-index: 2000;
   // top: 186px;
-  top: 220px;
+  top: 200px;
   left: 55px;
   stroke: rgb(239, 239, 239);
   width: 200px;

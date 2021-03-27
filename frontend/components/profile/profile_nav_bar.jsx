@@ -104,13 +104,15 @@ class ProfileNavBar extends React.Component {
                                 </div>
                             </div>
                             <div id="create-pin-button">
-                                <NavLink to="/pin-builder">
+                                <Link 
+                                    to="/pin-builder"
+                                    style={{ "textDecoration" : "none"}}>
                                     <div className="option-container-shadow">
                                         <div className="option-container">
                                             <h3 className="option-label" id="create-pin">Create Pin</h3>
                                         </div>
                                     </div>
-                                </NavLink>
+                                </Link>
                             </div>
                         </div>
                         {/* <div id="create-options-triangle">

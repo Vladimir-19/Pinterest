@@ -77,7 +77,7 @@ class EditProfileForm extends React.Component {
         const profilePhoto = (this.state.photo) ? (
             <img src={this.state.photo} alt="profile_photo" className="edit-profile" id="photo" />
         ) : (
-                <i className="fas fa-user-circle" id="photo"></i>
+                <i className="far fa-user-circle" style={{"fontSize" : "80px", "color" : "gray"}}></i>
             );
         const displayPhoto = (this.state.photoPreview) ? (
             <img src={this.state.photoPreview} className="edit-profile" id="photo" />
@@ -89,223 +89,191 @@ class EditProfileForm extends React.Component {
         const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
             // debugger
         return (
-            <div id="settings-container-padding">
-                <div id="settings-container">
-                    <div id="back-button-width">
-                        <div id="back-button-padding">
-                            <div id="back-button-position">
-                                <div id="back-button-container">
-                                    <NavLink to={`/${currentUser.username}`} id="user-profile-link">
-                                        <div id="back-icon-container-shadow">
-                                            <div id="back-icon-container">
-                                                {/* <i className="fas fa-arrow-left" id="back-icon"></i> */}
-                                                <i className="fas fa-long-arrow-alt-left" id="back-icon" style={{ fontSize: "170%" }}></i>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+            <div id="settings-container">
+                <form id="edit-profile-form">
+                    <div className="edit-profile" id="header-border">
+                        <div className="edit-profile" id="header-flex">
+                            <div className="edit-profile" id="title-container">
+                                <div className="edit-profile" id="title">
+                                    <h4 className="edit-profile" id="title-label">Edit Profile</h4>
+                                    <div className="edit-profile" id="subtitle">
+                                        People on Pinterest will get to know you with the info below
+                                    </div>          
+                                </div>
+                            </div>
+                            <div className="edit-profile" id="buttons-container">
+                                <div className="edit-profile" id="buttons">
+                                    {/* <div className="edit-profile button-container">
+                                        <button
+                                            className={`edit-profile cancel button ${disabled}`}
+                                            id="cancel-button"
+                                            onClick={this.handleCancel}
+                                        >
+                                            <div className={`edit-profile cancel button-label ${disabled}`}>Cancel</div>
+                                        </button>
+                                    </div> */}
+                                    <div className="edit-profile button-container">
+                                        <button
+                                            className={`edit-profile done button ${disabled}`}
+                                            id="done-button"
+                                            onClick={this.handleDone}
+                                        >
+                                            <div className={`edit-profile done button-label ${disabled}`}>Done</div>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="edit-profile-form-width">
-                        <div id="edit-profile-form-outer-container">
-                            <div id="edit-profile-form-inner-container">
-                                <form id="edit-profile-form">
-                                    <div className="edit-profile" id="header-border">
-                                        <div className="edit-profile" id="header-flex">
-                                            <div className="edit-profile" id="title-container">
-                                                <div className="edit-profile" id="title">
-                                                    <h4 className="edit-profile" id="title-label">Edit Profile</h4>
-                                                    <div className="edit-profile" id="title-spacing"></div>
-                                                    <div className="edit-profile" id="subtitle">
-                                                        People on Pinterest will get to know you with the info below
-                          </div>
-                                                </div>
-                                            </div>
-                                            <div className="edit-profile" id="buttons-container">
-                                                <div className="edit-profile" id="buttons">
-                                                    <div className="edit-profile button-container">
-                                                        <button
-                                                            className={`edit-profile cancel button ${disabled}`}
-                                                            id="cancel-button"
-                                                            onClick={this.handleCancel}
-                                                        >
-                                                            <div className={`edit-profile cancel button-label ${disabled}`}>Cancel</div>
-                                                        </button>
-                                                    </div>
-                                                    <div className="edit-profile button-container">
-                                                        <button
-                                                            className={`edit-profile done button ${disabled}`}
-                                                            id="done-button"
-                                                            onClick={this.handleDone}
-                                                        >
-                                                            <div className={`edit-profile done button-label ${disabled}`}>Done</div>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                    <div className="edit-profile" id="photo-change-container">
+                        <div className="edit-profile" id="photo-container-size">
+                            <div className="edit-profile" id="photo-frame">
+                                {displayPhoto}
+                            </div>
+                        </div>
+                        <div className="edit-profile" id="change-photo-button">
+                            <input
+                                type="file"
+                                onChange={this.handleFile}
+                                className="edit-profile button"
+                                id="change-button"
+                            />
+                            <a
+                                className="edit-profile button"
+                                id="change-photo"
+                                onClick={() => document.getElementById("change-button").click()}
+                            >
+                                <div className="edit-profile button-label" id="change-photo">Change</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="edit-profile" id="name-container">
+                        <div className="edit-profile" id="full-name">
+                            <div className="edit-profile" id="first-name-wrapper">
+                                <div className="edit-profile" id="first-name-container">
+                                    <div className="edit-profile field-container" id="first-name">
+                                        <div className="edit-profile label-container">
+                                            <label className="edit-profile label">First name</label>
                                         </div>
-                                    </div>
-                                    <div className="edit-profile" id="spacer-container">
-                                        <div className="edit-profile" id="spacer">Photo</div>
-                                    </div>
-                                    <div className="edit-profile" id="photo-change-container">
-                                        <div className="edit-profile" id="photo-container-size">
-                                            <div className="edit-profile" id="photo-container-border">
-                                                <div className="edit-profile" id="photo-frame-container">
-                                                    <div className="edit-profile" id="photo-frame">
-                                                        {displayPhoto}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="edit-profile" id="change-photo-button">
+                                        <div className="edit-profile input-container">
                                             <input
-                                                type="file"
-                                                onChange={this.handleFile}
-                                                className="edit-profile button"
-                                                id="change-button"
+                                                type="text"
+                                                placeholder="Ex. Jo"
+                                                value={this.state.first_name}
+                                                onChange={this.changeInput("first_name")}
+                                                className="edit-profile input"
                                             />
-                                            <button
-                                                className="edit-profile button"
-                                                id="change-photo"
-                                                onClick={() => document.getElementById("change-button").click()}
-                                            ><div className="edit-profile button-label" id="change-photo">Change</div>
-                                            </button>
                                         </div>
                                     </div>
-                                    <div className="edit-profile" id="name-container">
-                                        <div className="edit-profile" id="full-name">
-                                            <div className="edit-profile" id="first-name-wrapper">
-                                                <div className="edit-profile" id="first-name-container">
-                                                    <div className="edit-profile field-container" id="first-name">
-                                                        <div className="edit-profile label-container">
-                                                            <label className="edit-profile label">First name</label>
-                                                        </div>
-                                                        <div className="edit-profile input-container">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="Ex. Jo"
-                                                                value={this.state.first_name}
-                                                                onChange={this.changeInput("first_name")}
-                                                                className="edit-profile input"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="edit-profile" id="last-name-wrapper">
-                                                <div className="edit-profile" id="last-name-container">
-                                                    <div className="edit-profile field-container" id="last-name">
-                                                        <div className="edit-profile label-container">
-                                                            <label className="edit-profile label">Last name</label>
-                                                        </div>
-                                                        <div className="edit-profile input-container">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="Ex. Jo"
-                                                                value={this.state.last_name}
-                                                                onChange={this.changeInput("last_name")}
-                                                                className="edit-profile input"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                </div>
+                            </div>
+                            <div className="edit-profile" id="last-name-wrapper">
+                                <div className="edit-profile" id="last-name-container">
+                                    <div className="edit-profile field-container" id="last-name">
+                                        <div className="edit-profile label-container">
+                                            <label className="edit-profile label">Last name</label>
+                                        </div>
+                                        <div className="edit-profile input-container">
+                                            <input
+                                                type="text"
+                                                placeholder="Ex. Jo"
+                                                value={this.state.last_name}
+                                                onChange={this.changeInput("last_name")}
+                                                className="edit-profile input"
+                                            />
                                         </div>
                                     </div>
-                                    <div className="edit-profile" id="username-wrapper">
-                                        <div className="edit-profile" id="username-container">
-                                            <div className="edit-profile field-container" id="username">
-                                                <div className="edit-profile label-container">
-                                                    <label className="edit-profile label">Username</label>
-                                                </div>
-                                                <div className="edit-profile" id="website-username">
-                                                    <div className="edit-profile" id="website">
-                                                        www.pinterest.com/
-                          </div>
-                                                    <div className="edit-profile" id="username">
-                                                        <input
-                                                            type="text"
-                                                            value={this.state.username}
-                                                            onChange={this.changeInput("username")}
-                                                            className="edit-profile input"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="edit-profile" id="email-wrapper">
-                                        <div className="edit-profile" id="email-container">
-                                            <div className="edit-profile field-container" id="email">
-                                                <div className="edit-profile label-container">
-                                                    <label className="edit-profile label">Email</label>
-                                                </div>
-                                                <div className="edit-profile input-container">
-                                                    <input
-                                                        type="text"
-                                                        value={this.state.email}
-                                                        onChange={this.changeInput("email")}
-                                                        className="edit-profile input"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="edit-profile" id="description-wrapper">
-                                        <div className="edit-profile" id="description-container">
-                                            <div className="edit-profile field-container" id="description">
-                                                <div className="edit-profile label-container">
-                                                    <label className="edit-profile label">Description</label>
-                                                </div>
-                                                <div className="edit-profile input-container">
-                                                    <textarea
-                                                        placeholder="Tell us a little bit about your page"
-                                                        value={this.state.description}
-                                                        onChange={this.changeInput("description")}
-                                                        className="edit-profile input"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* <div className="edit-profile" id="location-wrapper"> */}
-                                        {/* <div className="edit-profile" id="location-container"> */}
-                                            {/* <div className="edit-profile field-container" id="location"> */}
-                                                {/* <div className="edit-profile label-container">
-                                                    <label className="edit-profile label">Location</label>
-                                                </div>
-                                                <div className="edit-profile input-container">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Ex. New York City"
-                                                        value={this.state.location}
-                                                        onChange={this.changeInput("location")}
-                                                        className="edit-profile input"
-                                                    />
-                                                </div> */}
-                                                <div className="edit-profile label-container">
-                                                    <label className="edit-profile label">location</label>
-                                                </div>
-                                                <div className="edit-profile input-container">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Ex. New York City"
-                                                        value={this.state.location}
-                                                        onChange={this.changeInput("location")}
-                                                        className="edit-profile input"
-                                                    />
-                                                </div>
-                                            {/* </div> */}
-                                        {/* </div> */}
-                                    {/* </div> */}
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                    {/* <div className="edit-profile" id="username-wrapper">
+                        <div className="edit-profile" id="username-container">
+                            <div className="edit-profile field-container" id="username">
+                                <div className="edit-profile label-container">
+                                    <label className="edit-profile label">Username</label>
+                                </div>
+                                <div className="edit-profile" id="website-username">
+                                    <div className="edit-profile" id="website">
+                                        www.pinterest.com/
+                                    </div>
+                                    <div className="edit-profile" id="username">
+                                        <input
+                                            type="text"
+                                            value={this.state.username}
+                                            onChange={this.changeInput("username")}
+                                            className="edit-profile input"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> */}
+                    <div className="edit-profile" id="email-wrapper">
+                        <div className="edit-profile" id="email-container">
+                            <div className="edit-profile field-container" id="email">
+                                <div className="edit-profile label-container">
+                                    <label className="edit-profile label">Email</label>
+                                </div>
+                                <div className="edit-profile input-container">
+                                    <input
+                                        type="text"
+                                        value={this.state.email}
+                                        onChange={this.changeInput("email")}
+                                        className="edit-profile input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="edit-profile" id="description-wrapper">
+                        <div className="edit-profile" id="description-container">
+                            <div className="edit-profile field-container" id="description">
+                                <div className="edit-profile label-container">
+                                    <label className="edit-profile label">Description</label>
+                                </div>
+                                <div className="edit-profile input-container">
+                                    <textarea
+                                        placeholder="Tell us a little bit about your page"
+                                        value={this.state.description}
+                                        onChange={this.changeInput("description")}
+                                        className="edit-profile input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className="edit-profile" id="location-wrapper"> */}
+                        {/* <div className="edit-profile" id="location-container"> */}
+                            {/* <div className="edit-profile field-container" id="location"> */}
+                                {/* <div className="edit-profile label-container">
+                                    <label className="edit-profile label">Location</label>
+                                </div>
+                                <div className="edit-profile input-container">
+                                    <input
+                                        type="text"
+                                        placeholder="Ex. New York City"
+                                        value={this.state.location}
+                                        onChange={this.changeInput("location")}
+                                        className="edit-profile input"
+                                    />
+                                </div> */}
+                                <div className="edit-profile label-container">
+                                    <label className="edit-profile label">location</label>
+                                </div>
+                                <div className="edit-profile input-container">
+                                    <input
+                                        type="text"
+                                        placeholder="Ex. New York City"
+                                        value={this.state.location}
+                                        onChange={this.changeInput("location")}
+                                        className="edit-profile input"
+                                    />
+                                </div>
+                            {/* </div> */}
+                        {/* </div> */}
+                    {/* </div> */}
+                </form>
             </div>
         )
     }
