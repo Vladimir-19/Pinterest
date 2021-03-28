@@ -33,6 +33,7 @@ class PinIndex extends React.Component {
         // const { scaleDown } = transitions;
 
         const { page, pins, currentUserId, user, openEditPin, openNewBoardPin } = this.props;
+        // debugger
         const pinIndexItems = pins.map(pin => (
             <PinIndexItem
                 // key={pin.toString()}

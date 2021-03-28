@@ -104,7 +104,7 @@ export default class UserProfile extends React.Component {
             <img className="user-profile-image" src={user.photo} />
         ) : (
                 <div className="user-profile-image">
-                    <i class="far fa-user-circle"></i>
+                    <i className="far fa-user-circle"></i>
                 </div>
             );
 

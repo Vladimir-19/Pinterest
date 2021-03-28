@@ -18,7 +18,7 @@
 .create-pin#sizing {
   width: 880px;
   padding-top: 20px;
-  border-radius: 16px;
+  border-radius: 30px;
   background-color: #fff;
   box-sizing: border-box;
   padding-left: 20px;
@@ -1539,7 +1539,7 @@ padding: 10px 14px;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   color: #333;
-  & > .credit-link {
+  & > .link {
     color: #333;
     text-decoration: none;
     &:hover {

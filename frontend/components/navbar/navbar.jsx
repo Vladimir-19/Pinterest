@@ -4,7 +4,8 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 // import SearchbarContainer from '../Searchbar/searchbar_container';
 import { Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../actions/session_actions';
-import { fetchAllUsers, fetchUser } from "../../actions/user_actions"
+import { fetchAllUsers, fetchUser } from "../../actions/user_actions";
+import SearchBar from '../searchBar/searchbar_container';
 
 
 class NavBar extends React.Component {
@@ -38,12 +39,11 @@ class NavBar extends React.Component {
                                     Following
                                 </div>
                             </NavLink>
-                            <div>
-                                {/* <SearchbarContainer /> */} 
-                                    {/* or */}
-                            {/* className="nav-bar-search-container" id="search"> */}
+                            <div
+                                className="nav-bar-search-container" id="search">
                                 {/* SearchContainer */}
-                                <h6>i'm a search bar insode inside navbar.jsx</h6>
+                                <SearchBar />
+                                {/* <h6>i'm a search bar insode inside navbar.jsx</h6> */}
                             </div>
                             <div className='icon-wrapper'>
                                 <NavLink

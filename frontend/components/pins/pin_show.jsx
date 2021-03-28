@@ -190,7 +190,7 @@ class PinShow extends React.Component {
             <div className="pin-show creator-info">
                 <Link
                     to={`/users/${pinOwner.id}`}
-                    className="pin-show credit-link"
+                    className="pin-show link"
                 >
                     <strong>{pinOwnerFullName}</strong>
                 </Link>
@@ -198,7 +198,7 @@ class PinShow extends React.Component {
                 <Link
                     // to={`/${pinOwner.id}/${pin.boardTitle}`}
                     to={`/boards/${pin.boardId}`} //to be conti
-                    className="pin-show credit-link"
+                    className="pin-show link"
                 >
                     <strong>{pin.boardTitle} board</strong>
                 </Link>

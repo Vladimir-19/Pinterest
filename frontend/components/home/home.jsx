@@ -39,7 +39,7 @@ class Home extends React.Component {
             </div>
         ) : null;
 
-        const otherPins = shuffle(pins.slice(0, 60));
+        const otherPins = shuffle(pins.slice(0, 30));
         // const otherPins = shuffle(pins);
 
         return (

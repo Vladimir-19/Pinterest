@@ -34,7 +34,6 @@ class PinIndexItem extends React.Component {
 
     render() {
         const { userId, user, page, pin, openEditPin, openNewBoardPin } = this.props;
-
         const pinTitle = (userId !== null && page === "home" && pin.title !== "") ? (
             <div className="pin-index-item title-container">
                 <div className="pin-index-item title">{pin.title}</div>
@@ -51,12 +50,19 @@ class PinIndexItem extends React.Component {
         ) : null;
 
         const openBoardPinLink = (
-            <a
+            // <a
+            //     className="pin-index-item save-board-pin-link"
+            //     onClick={() => openNewBoardPin(pin.id)}
+            // >
+            //     <div className="pin-index-item save-board-pin-text">Save</div>
+            // </a>
+            <Link
                 className="pin-index-item save-board-pin-link"
-                onClick={() => openNewBoardPin(pin.id)}
-            >
+                to={`/pin/${pin.id}`}
+                >
                 <div className="pin-index-item save-board-pin-text">Save</div>
-            </a>
+            </Link>
+            
         );
 
         const pinUrl = pin.url;
