@@ -205,72 +205,74 @@ class PinShow extends React.Component {
             </div>
         );
         // debugger;
-        return (
-            <div className="pin-show main-container"
-                onClick={this.goBack}>
-                <a
-                    className="pin-show goback-button"
-                    onClick={this.goBack}
-                    >
-                    <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
-                </a>
-                <div className="pin-show wrapper"
+        if (pin.userId === currentUserId) {
+            return (
+                <div className="pin-show main-container"
                     onClick={this.goBack}>
-                    <div className="pin-show container"
-                        onClick={(e) => e.stopPropagation()}>
-                        <div className="pin-show first-half">
-                            <div className="pin-show photo-area">
-                                {imgLink}
-                                <div className="pin-show overlay"></div>
+                    <a
+                        className="pin-show goback-button"
+                        onClick={this.goBack}
+                    >
+                        <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
+                    </a>
+                    <div className="pin-show wrapper"
+                        onClick={this.goBack}>
+                        <div className="pin-show container"
+                            onClick={(e) => e.stopPropagation()}>
+                            <div className="pin-show first-half">
+                                <div className="pin-show photo-area">
+                                    {imgLink}
+                                    <div className="pin-show overlay"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="pin-show second-half">
-                            
-                            <div className="utility">
-                                <div className="edit">
-                                    <a
-                                        className="edit-pin-button"
-                                        onClick={this.showEditModal}
-                                        onBlur={this.hideEditModal}
-                                    >
-                                        <div >
-                                            <i className="far fa-edit" style={{ color: "black", fontSize: "200%" }}></i>
-                                        </div>
-                                    </a>
-                                    <div  style={{
-                                        // id="create-pinboard-container"
-                                        visibility: this.state.showEditOptions ?
-                                            "visible" :
-                                            "hidden"
-                                    }}>
-                                        <div className="modal-container" >
-                                            <div className="modal-background" id={modal} onClick={closeModal}>
-                                                <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
-                                                    {this.editPinModal()}
+                            <div className="pin-show second-half">
+
+                                <div className="utility">
+
+                                    <div className="edit">
+                                        <a
+                                            className="edit-pin-button"
+                                            onClick={this.showEditModal}
+                                            onBlur={this.hideEditModal}
+                                        >
+                                            <div >
+                                                <i className="far fa-edit" style={{ color: "black", fontSize: "200%" }}></i>
+                                            </div>
+                                        </a>
+                                        <div style={{
+                                            // id="create-pinboard-container"
+                                            visibility: this.state.showEditOptions ?
+                                                "visible" :
+                                                "hidden"
+                                        }}>
+                                            <div className="modal-container" >
+                                                <div className="modal-background" id={modal} onClick={closeModal}>
+                                                    <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
+                                                        {this.editPinModal()}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        {/* <h3 >
+                                            {/* <h3 >
                                 {this.editBoardModal()}
                             </h3> */}
-                                        {/* <div >
+                                            {/* <div >
                                 <div id="create-pin-button">
                                 </div>
                             </div> */}
+                                        </div>
                                     </div>
-                                </div>
-                                {/* className="pin-show nav-bar" */}
-                                {/* {editPinLink} */}
-                                {/* {this.editPinModal()} */}
-                                
-                                {/* <EditPinFormContainer 
+                                    {/* className="pin-show nav-bar" */}
+                                    {/* {editPinLink} */}
+                                    {/* {this.editPinModal()} */}
+
+                                    {/* <EditPinFormContainer 
                                 // pinId={pin.id}
                                 title={this.state.title}
                                 /> */}
-                                {/* <EditPinForm pinId={pin.id} /> */}
+                                    {/* <EditPinForm pinId={pin.id} /> */}
 
-                                {/* <div></div>
+                                    {/* <div></div>
                                 <a
                                     className="pin-show save-board-pin-link"
                                     // onClick={() => openNewBoardPin(this.props.pin)}
@@ -281,15 +283,15 @@ class PinShow extends React.Component {
                                 >
                                     <div className="pin-show save-board-pin-text">Save</div>
                                 </a> */}
-                                {/* <button */}
-                                <a
-                                    // className="pin-show-save-board-pin-link"
-                                    // className="profile-header-link" // ??? 
-                                    // className="profile-icon-container-shadow-two" // was 
-                                    className="xxx"
-                                    onClick={this.toggleShow}
-                                    onBlur={this.hide}
-                                >
+                                    {/* <button */}
+                                    <a
+                                        // className="pin-show-save-board-pin-link"
+                                        // className="profile-header-link" // ??? 
+                                        // className="profile-icon-container-shadow-two" // was 
+                                        className="xxx"
+                                        onClick={this.toggleShow}
+                                        onBlur={this.hide}
+                                    >
                                         {/* className="profile-icon-container-shadow" */}
                                         <div >
                                             {/* className="profile-icon-container" */}
@@ -297,43 +299,145 @@ class PinShow extends React.Component {
                                             <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%" }}></i>
                                             {/* className="pin-show save-board-pin-text" */}
                                         </div>
-                                </a>
-                                {/* </button> */}
-                                <div id="create-pinboard-container" style={{
-                                    visibility: this.state.showCreateOptions ?
-                                        "visible" :
-                                        "hidden"
-                                }}>
-                                    <h3 >
-                                        {/* //className="option-label" id="create-board"> */}
-                                        <CreateBoardsPinsForm pinId={pin.id} />
-                                    </h3>
-                                    <div id="create-options-triangle">
-                                        <svg width="24" height="24">
-                                            <path d="M0 24 L12 12 L24 24"></path>
-                                        </svg>
+                                    </a>
+                                    {/* </button> */}
+                                    <div id="create-pinboard-container" style={{
+                                        visibility: this.state.showCreateOptions ?
+                                            "visible" :
+                                            "hidden"
+                                    }}>
+                                        <h3 >
+                                            {/* //className="option-label" id="create-board"> */}
+                                            <CreateBoardsPinsForm pinId={pin.id} />
+                                        </h3>
+                                        <div id="create-options-triangle">
+                                            <svg width="24" height="24">
+                                                <path d="M0 24 L12 12 L24 24"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
+                                    {/* <div className="pin-show save-board-pin-text">Save</div> */}
+
+                                </div>
+                                <div className="pin-show info">
+                                    {linkto}
+                                    {pinTitle}
+                                    <div className="pin-show description">
+                                        {pin.description}
                                     </div>
                                 </div>
-                                {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
-                                {/* <div className="pin-show save-board-pin-text">Save</div> */}
-
-                            </div>
-                            <div className="pin-show info">
-                                {linkto}
-                                {pinTitle}
-                                <div className="pin-show description">
-                                    {pin.description}
+                                <div className="pin-show creator">
+                                    {creatorPhoto}
+                                    {pinInfo}
                                 </div>
-                            </div>
-                            <div className="pin-show creator">
-                                {creatorPhoto}
-                                {pinInfo}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+
+        } else {
+            return (
+                <div className="pin-show main-container"
+                    onClick={this.goBack}>
+                    <a
+                        className="pin-show goback-button"
+                        onClick={this.goBack}
+                    >
+                        <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
+                    </a>
+                    <div className="pin-show wrapper"
+                        onClick={this.goBack}>
+                        <div className="pin-show container"
+                            onClick={(e) => e.stopPropagation()}>
+                            <div className="pin-show first-half">
+                                <div className="pin-show photo-area">
+                                    {imgLink}
+                                    <div className="pin-show overlay"></div>
+                                </div>
+                            </div>
+                            <div className="pin-show second-half">
+
+                                <div className="utility">
+
+                               
+                                    {/* className="pin-show nav-bar" */}
+                                    {/* {editPinLink} */}
+                                    {/* {this.editPinModal()} */}
+
+                                    {/* <EditPinFormContainer 
+                                // pinId={pin.id}
+                                title={this.state.title}
+                                /> */}
+                                    {/* <EditPinForm pinId={pin.id} /> */}
+
+                                    {/* <div></div>
+                                <a
+                                    className="pin-show save-board-pin-link"
+                                    // onClick={() => openNewBoardPin(this.props.pin)}
+                                    onClick={() => openNewBoardPin(pinId)}
+                                    // onClick={() => openNewBoardPin(pin.id)}
+                                    // onClick={this.openNewBoardPin()}3
+                                    // onClickk={<CreateBoardsPinsForm pin={pin.id} //no />}
+                                >
+                                    <div className="pin-show save-board-pin-text">Save</div>
+                                </a> */}
+                                    {/* <button */}
+                                    <a
+                                        // className="pin-show-save-board-pin-link"
+                                        // className="profile-header-link" // ??? 
+                                        // className="profile-icon-container-shadow-two" // was 
+                                        className="xxx"
+                                        onClick={this.toggleShow}
+                                        onBlur={this.hide}
+                                    >
+                                        {/* className="profile-icon-container-shadow" */}
+                                        <div >
+                                            {/* className="profile-icon-container" */}
+                                            {/* <i style={{ "fontFamily": "serif" }}>+</i> */}
+                                            <i className="fas fa-thumbtack save-icon" style={{ color: "#e60023", fontSize: "200%" }}></i>
+                                            {/* className="pin-show save-board-pin-text" */}
+                                        </div>
+                                    </a>
+                                    {/* </button> */}
+                                    <div id="create-pinboard-container" style={{
+                                        visibility: this.state.showCreateOptions ?
+                                            "visible" :
+                                            "hidden"
+                                    }}>
+                                        <h3 >
+                                            {/* //className="option-label" id="create-board"> */}
+                                            <CreateBoardsPinsForm pinId={pin.id} />
+                                        </h3>
+                                        <div id="create-options-triangle">
+                                            <svg width="24" height="24">
+                                                <path d="M0 24 L12 12 L24 24"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* <CreateBoardsPinsForm pinId={pin.id} /> */}
+                                    {/* <div className="pin-show save-board-pin-text">Save</div> */}
+
+                                </div>
+                                <div className="pin-show info">
+                                    {linkto}
+                                    {pinTitle}
+                                    <div className="pin-show description">
+                                        {pin.description}
+                                    </div>
+                                </div>
+                                <div className="pin-show creator">
+                                    {creatorPhoto}
+                                    {pinInfo}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+
+        }
     }
 }
 

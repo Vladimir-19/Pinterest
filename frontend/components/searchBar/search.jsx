@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 class Searchbar extends React.Component {
     constructor(props) {
         super(props);
+        // debugger
         this.state = {
             filtered: this.props.searchPins,
             searchTerm: ''
@@ -57,14 +58,15 @@ class Searchbar extends React.Component {
     }
 
     clearForm() {
-        this.setState({ searchTerm: '' })
+        this.setState({ searchTerm: "" })
     }
 
     render() {
 
         return (
             <>
-                <div className="searchbar-container">
+                <div 
+                    className="search-container">
                     <input
                         type="search"
                         id="searchbar-input"
@@ -73,7 +75,7 @@ class Searchbar extends React.Component {
                         placeholder="Search for a pin by title"
                         onKeyPress={this.handleKey}
                         // className="blabla"
-                    />
+                    ></input>
                 </div>
             </>
         );
