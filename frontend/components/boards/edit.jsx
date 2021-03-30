@@ -12,7 +12,6 @@ class Edit extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
-        // debugger
         this.props.processForm(this.state)
     }
 

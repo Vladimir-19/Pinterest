@@ -49,7 +49,6 @@ class EditProfileForm extends React.Component {
         for (let key in details) {
             formData.append(`user[${key}]`, details[key])
         }
-        // debugger;
         this.props.updateUser(formData, this.state.id)
             .then(() => location.reload(false))
     }
@@ -87,7 +86,6 @@ class EditProfileForm extends React.Component {
 
         let currentState = Object.assign({}, this.state);
         const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
-            // debugger
         return (
             <div id="settings-container">
                 <form id="edit-profile-form">

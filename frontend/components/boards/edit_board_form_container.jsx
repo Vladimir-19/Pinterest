@@ -17,7 +17,6 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 //     formTitle: "Edit your board"
 // });
 const mapStateToProps = (state, ownProps) => {
-    // debugger;
   
     return {
     // currentUser: state.entities.users[state.session.id],

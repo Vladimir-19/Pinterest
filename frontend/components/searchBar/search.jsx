@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 class Searchbar extends React.Component {
     constructor(props) {
         super(props);
-        // debugger
         this.state = {
             filtered: this.props.searchPins,
             searchTerm: ''
@@ -36,7 +35,6 @@ class Searchbar extends React.Component {
             this.handleSubmit();
         }
         this.setState({ filtered: filtered })
-        // debugger
     }
 
 

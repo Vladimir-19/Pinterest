@@ -16,7 +16,6 @@ import { fetchUser } from "../../actions/user_actions";
 import BoardShow from './board_show';
 
 const mapStateToProps = (state, ownProps) => { 
-    // debugger;
     // const board = Object.values(state.entities.boards).find(board =>
     //     board.id === ownProps.match.params.boardId
     // ) //|| { board: { id: 0 } };

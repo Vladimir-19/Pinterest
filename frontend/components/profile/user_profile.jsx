@@ -10,7 +10,6 @@ import UserDetails from './user_details';
 export default class UserProfile extends React.Component {
     constructor(props) {
         super(props);
-        // debugger;
         this.state = {
             pins: '',
             // loading: true,
@@ -86,7 +85,6 @@ export default class UserProfile extends React.Component {
     render() {
         const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
         const user = users.find(user => user.id === currentUser.id);
-        // debugger;
         if (this.state.loading) {
             return <LoadingIcon />;
         }
@@ -112,7 +110,6 @@ export default class UserProfile extends React.Component {
         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
 
         if (boards.length > 0 && this.state.pins === 'fetched') {
-            // debugger;
             return (
                 <>
                     {/* id='user-header' */}

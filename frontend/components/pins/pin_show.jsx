@@ -31,7 +31,6 @@ class PinShow extends React.Component {
     }
 
     toggleShow() {
-        // debugger;
         this.setState({ showCreateOptions: !this.state.showCreateOptions })
     }
     hide(e) {
@@ -41,7 +40,6 @@ class PinShow extends React.Component {
         this.setState({ showCreateOptions: false });
     }
     showEditModal() {
-        // debugger;
         this.setState({ showEditOptions: !this.state.showEditOptions })
     }
     hideEditModal(e) {
@@ -52,7 +50,6 @@ class PinShow extends React.Component {
     }
 
     editPinModal() {
-        // debugger;
         return (
             <EditPinFormContainer
                 // title={this.props.pin.title}
@@ -64,7 +61,6 @@ class PinShow extends React.Component {
     }
     // //extra
     // toggleShow() {
-    //     // debugger;
     //     this.setState({ showCreateOptions: !this.state.showCreateOptions })
     // }
     // hide(e) {
@@ -82,18 +78,15 @@ class PinShow extends React.Component {
     }
 
     // openNewBoardPin() {
-    //     // debugger;
     //     // e.preventDefault();
     //     this.props.openModal("new-board-pin", this.props.params.pinId);
     // }
 
 
     render() {
-        // debugger
         const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal } = this.props; //openNewBoardPin
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
 
-        // debugger
         const pinOwner = pin.user || { username: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
         const imgLink = (pin.url === "") ? (
@@ -111,7 +104,6 @@ class PinShow extends React.Component {
                 <img src={pin.photo} className="pin-show pin-photo" />
             </a>
         );
-        // debugger;
         // const editPinLink = (pin.userId === currentUserId) ? (
         //     <a
         //         className="pin-show edit-pin-link"
@@ -167,7 +159,6 @@ class PinShow extends React.Component {
         //     </div>
         // );
 
-        // debugger
         const creatorPhoto = (
             <Link
                 // to={`/${pinOwner.username}`}
@@ -185,7 +176,6 @@ class PinShow extends React.Component {
         //     { pinOwnerFullName }
         // )
 
-        // debugger
         const pinInfo = (
             <div className="pin-show creator-info">
                 <Link
@@ -204,7 +194,7 @@ class PinShow extends React.Component {
                 </Link>
             </div>
         );
-        // debugger;
+
         if (pin.userId === currentUserId) {
             return (
                 <div className="pin-show main-container"

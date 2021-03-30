@@ -9,7 +9,6 @@ import ProfileShow from './user_profile';
 
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger;
     return {
     currentUser: state.entities.users[state.session.id],
     boards: Object.values(state.entities.boards),

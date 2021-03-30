@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
         board.userId === state.session.id
     ));
 
-    // debugger;
     return {
         // currentUser: state.entities.users[state.session.id],
         // boards: Object.values(state.entities.boards),

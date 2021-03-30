@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class CreateBoardPinForm extends React.Component {
     constructor(props) {
         super(props);
-        // debugger;
         this.state = {
             pin_id: this.props.pinId,
             board_id: null,
@@ -21,20 +20,16 @@ class CreateBoardPinForm extends React.Component {
     // endgame(e) {
     //     e.preventDefault();
     //     // this.state.pinToBoard(this.state)
-    //     console.log(this.state)
     // }
 
     handleSave(e) {
-        // debugger
         e.preventDefault();
-        // console.log(e.currentTarget.value)
         this.setState({ board_id: e.currentTarget.value },
             () => this.props.pinToBoard(this.state) //it helps not to press the button twice
                 // .then(this.props.closeModal)
                 );
         // this.setState({ board_id: e.currentTarget.value })
 
-        // console.log(this.state)
         // this.endgame(e)
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
@@ -44,16 +39,13 @@ class CreateBoardPinForm extends React.Component {
     }
 
     render() {
-        // debugger;
         const { currentUserId, pin, allBoards, joinBoardsPin, pins, closeModal } = this.props; //closeModal
         // const Userboards = allBoards.filter(board => (board.userId === currentUser.id));
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
-            // debugger
         const firstPinPhoto = (board.firstPin !== undefined) ? (
             <img src={board.pin.last.photo} className="board-list-item photo" />
         ) : null;
-            // console.log(pin)
             return (
                 <li
                     key={board.id}

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class PinIndexSearchItem extends React.Component {
     constructor(props) {
-        debugger
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }

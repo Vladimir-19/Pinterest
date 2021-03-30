@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
-        // debugger
         super(props);
         this.state = {
             id: this.props.board.id,
@@ -33,7 +32,6 @@ class EditBoardForm extends React.Component {
 
     // handleCancel(e) {
     //     e.preventDefault();
-    //     // debugger
     //     this.setState(this._getInitialState);
     // }
 

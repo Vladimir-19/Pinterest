@@ -13,7 +13,6 @@ import edit from './edit';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
-        // debugger
         super(props) //props.board.id etc
         this.state = {
             loading: true,
@@ -47,7 +46,6 @@ export default class BoardShow extends React.Component {
     }
 
     toggleShow() {
-        // debugger;
         this.setState({ showCreateOptions: !this.state.showCreateOptions })
     }
     hide(e) {
@@ -59,7 +57,6 @@ export default class BoardShow extends React.Component {
 
     // handleSave(e) {
     //     e.preventDefault();
-    //     // debugger
     //     this.props.processForm(this.state)
     // }
     // handleClick(e) {
@@ -82,7 +79,6 @@ export default class BoardShow extends React.Component {
     // }
 
     editBoardModal() {
-        // debugger;
         return (
             <EditBoardContainer
             board={this.props.board}
@@ -91,7 +87,6 @@ export default class BoardShow extends React.Component {
     }
 
     deleteBoard(e) {
-        // debugger
         if (this.state.ask === 'Are you sure?') {
             this.deleteForSure(e)
         } else {
@@ -100,7 +95,6 @@ export default class BoardShow extends React.Component {
         // this.props.deleteBoard(this.props.board.id).then(() => this.checkPin()); //then(() => location.reload());
     }
     deleteForSure(e) {
-        //  debugger
         e.preventDefault();
         this.props.deleteBoard(this.props.board.id).then(() => this.checkPin())
     } //then(() => window.history.go(-1));
@@ -116,7 +110,6 @@ export default class BoardShow extends React.Component {
         const { board, currentUser, pins, boardsPins, openEditBoard, modal, openModal, closeModal} = this.props;
         // if (!modal) return null;
 
-        // debugger
         // let boardPins = boardsPins 
         // .filter(boardPin => board.id === boardPin.boardId)
         // .map(boardPin => pins[boardPin.pinId])
@@ -174,7 +167,7 @@ export default class BoardShow extends React.Component {
                     </div>
                     <div id="profile-personal" style={{"margin" : "5px", "padding" : "5px"}}>
                         {/* <h3>{board.description}</h3> */}
-                        {boardDescription}
+                        {}
                     </div>
                     {/* here  */}
                     {/* <BoardShowNavBar

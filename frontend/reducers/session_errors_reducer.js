@@ -6,7 +6,6 @@ import { CLOSE_MODAL, OPEN_MODAL } from '../actions//modal_actions';
 
 export default (state = [], action) => {
     Object.freeze(state);
-    console.log(action)
 
     switch (action.type) {
         case RECEIVE_CURRENT_USER:

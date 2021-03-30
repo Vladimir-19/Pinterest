@@ -4,7 +4,6 @@ import React from "react";
 class EditPinForm extends React.Component {
     constructor(props) {
         super(props);
-        // debugger;
         this.state = {
             id: this.props.pin.id,
             title: this.props.pin.title,
@@ -19,8 +18,6 @@ class EditPinForm extends React.Component {
         // this.setState({ ...this.state, [field]: e.currentTarget.value })
 
         // this.updatePin = this.props.updatePin.bind(this);
-        // console.log(this.props)
-
 
         this.update = this.update.bind(this);
         // this.openDeletePin = this.openDeletePin.bind(this);
@@ -39,7 +36,6 @@ class EditPinForm extends React.Component {
     }
 
     // openDeletePin() {                        IDK, TRY I COMMENTED OUT AFTER THE FACT OF WORKIN WELL BUTTON
-    //     // debugger
     //     // this.props.openDeletePin(this.props.pin.id);
     //     this.props.openDeletePin(this.props.pin);
 
@@ -52,7 +48,6 @@ class EditPinForm extends React.Component {
     }
     
     handleSave(e) {
-        // debugger;
         e.preventDefault();
         return (
             this.props.processForm(this.state).then(() => location.reload())
@@ -81,7 +76,6 @@ class EditPinForm extends React.Component {
     //     }
     // }
      deleteForSure(e) {
-        //  debugger
          this.props.deletePin(this.props.pin.id).then(() => window.history.go(-1)); //.then(() => this.checkPin())
      }
     //  checkPin() {
