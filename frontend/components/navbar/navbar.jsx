@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                 className='nav-profile-image'
                     // className="icon-container-shadow"
                 >
-                    <i class="far fa-user-circle"
+                    <i className="far fa-user-circle"
                     style={{ "fontSize": "38px", "color": "#8e8e8e" }}></i>
                 </div>
             );
@@ -65,7 +65,7 @@ class NavBar extends React.Component {
                                 >
                                     <div className="icon-container-shadow">
                                         <div className="icon-container">
-                                            <i class="fab fa-github"
+                                            <i className="fab fa-github"
                                                 style={{ "fontSize": "32px", "color": "#8e8e8e" }}></i>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ class NavBar extends React.Component {
                                     replace
                                     style={{"color" : "gray"}}
                                 >
-                                    <i class="fas fa-sign-out-alt"
+                                    <i className="fas fa-sign-out-alt"
                                         style={{ "fontSize": "32px", "color": "#8e8e8e", "padding" : "12px"}}
                                     ></i>
                                 </NavLink>

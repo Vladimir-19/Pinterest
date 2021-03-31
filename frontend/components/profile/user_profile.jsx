@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
+import { debug } from 'webpack';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
 import UserDetails from './user_details';
@@ -10,15 +11,16 @@ import UserDetails from './user_details';
 export default class UserProfile extends React.Component {
     constructor(props) {
         super(props);
+        debugger
         this.state = {
             pins: '',
             // loading: true,
             openBoard: false,
             openBoardId: null
         }
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
         this.handleButton = this.handleButton.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
         //
         this.handleScroll = this.handleScroll.bind(this);
         // this.newBoard = this.newBoard.bind(this);
@@ -65,15 +67,15 @@ export default class UserProfile extends React.Component {
         
     }
 
-    handleClick() {
-        // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
-        this.props.openModal("createboard");
-    }
+    // handleClick() {
+    //     // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
+    //     this.props.openModal("createboard");
+    // }
 
-    handleEdit() {
-        // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
-        this.props.openModal("editprofile")
-    }
+    // handleEdit() {
+    //     // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
+    //     this.props.openModal("editprofile")
+    // }
 
     componentDidUpdate(prevProps) {
         if (prevProps.boards.length != this.props.boards.length) {
@@ -95,7 +97,7 @@ export default class UserProfile extends React.Component {
 
         const name = user.firstName && user.lastName ? 
             <div>
-                <span>{user.firstName}</span><span>{user.lastName}</span>
+                <span>{user.firstName} </span><span>{user.lastName}</span>
             </div> : <span>Add Your Name</span>;
 
         const profilePic = user.photo ? (
@@ -108,8 +110,9 @@ export default class UserProfile extends React.Component {
 
         const currentUserBoards = boards.filter(board => (board.userId === user.id)) // ????
         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
-
+        
         if (boards.length > 0 && this.state.pins === 'fetched') {
+            
             return (
                 <>
                     {/* id='user-header' */}
@@ -253,7 +256,7 @@ export default class UserProfile extends React.Component {
                         closeModal={closeModal}
                         />
                     <p>You don't have any boards yet!</p>
-                    <div className='edit-create-button-wrapper'>
+                    {/* <div className='edit-create-button-wrapper'>
                         <button
                             className="plus-board"
                             onClick={this.handleClick}
@@ -265,7 +268,7 @@ export default class UserProfile extends React.Component {
                             onClick={this.handleEdit}>
                             <i className="fas fa-pencil-alt"></i>
                         </button>
-                    </div>
+                    </div> */}
                 </>
             );
         }

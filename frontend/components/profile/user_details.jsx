@@ -25,7 +25,7 @@ const ProfileDetails = ({user}) => {
         ) : (<i style={{ "color": "#8e8e8e" }}>Describe your account</i>);
 
         return (
-            <h4> {userLocation} | {userDescription}</h4>
+            <h4> <i className="fas fa-map-marker-alt"></i> {userLocation} | {userDescription}</h4>
         )
 }
 
