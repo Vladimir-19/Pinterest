@@ -64,7 +64,18 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx", "*"],
         fallback: {
-            "path": require.resolve("path-browserify")
+            "path": false, //require.resolve("path-browserify"),
+            "crypto": false, //require.resolve("crypto-browserify"),
+            "https": false, //require.resolve("https-browserify"),
+            "http": false, //require.resolve("stream-http"),
+            "vm": false, //require.resolve("vm-browserify"),
+            "os": false, //require.resolve("os-browserify/browser"),
+            "fs": false,
+            "stream": false, //require.resolve("stream-browserify"),
+            "worker_threads": false,
+            "child_process": false,
+            "constants": false,//require.resolve("constants-browserify"),
+            "pnpapi": false 
         }
     },
     // resolve: {
