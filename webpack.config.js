@@ -60,6 +60,9 @@ module.exports = {
         }
         ]
     },
+    // plugins: [
+    //     new webpack.ContextReplacementPlugin(/keyv/),
+    // ],
     devtool: 'source-map',
     resolve: {
         extensions: [".js", ".jsx", "*"],
