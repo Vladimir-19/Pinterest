@@ -11,7 +11,7 @@ class ProfileNavBar extends React.Component {
             showCreateOptions: false
         };
 
-        this.handleScroll = this.handleScroll.bind(this);
+        // this.handleScroll = this.handleScroll.bind(this); //// 04/03
         this.toggleShow = this.toggleShow.bind(this);
         this.hide = this.hide.bind(this);
         this.newBoard = this.newBoard.bind(this);
@@ -19,28 +19,30 @@ class ProfileNavBar extends React.Component {
 
     }
 
-    componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll);
-    }
+    //// 04/03
+    // componentDidMount() {
+    //     window.addEventListener("scroll", this.handleScroll);
+    // }
 
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
-    }
+    //// 04/03
+    // componentWillUnmount() {
+    //     window.removeEventListener("scroll", this.handleScroll);
+    // }
 
     handleEdit() {
         // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
         this.props.openModal("editprofile")
     }
 
-    handleScroll() {
-        const { prevScrollPos } = this.state;
-        const currentScrollPos = window.pageYOffset;
-        const fadeInName = (prevScrollPos < currentScrollPos - 50);
+    // handleScroll() { //// 04/03
+    //     const { prevScrollPos } = this.state;
+    //     const currentScrollPos = window.pageYOffset;
+    //     const fadeInName = (prevScrollPos < currentScrollPos - 50);
 
-        this.setState({
-            fadeInName
-        });
-    }
+    //     this.setState({
+    //         fadeInName
+    //     });
+    // }
 
     toggleShow() {
         let that = this;

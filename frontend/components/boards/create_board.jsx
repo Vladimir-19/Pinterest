@@ -85,7 +85,7 @@ class CreateBoardForm extends React.Component {
                                                     <input
                                                         type="text"
                                                         className="create-board name-input"
-                                                        id="name-input"
+                                                        // id="name-input"
                                                         placeholder='Like "Places to Go" or "Recipes to Make"'
                                                         onChange={this.update}
                                                     />
