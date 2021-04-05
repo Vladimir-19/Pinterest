@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
 // import PinIndexContainer from '../pins/pin_index_container';
