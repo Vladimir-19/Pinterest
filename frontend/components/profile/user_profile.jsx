@@ -7,59 +7,448 @@ import ProfileNavBar from './profile_nav_bar';
 import UserDetails from './user_details';
 
 
-// export default class UserProfile extends React.Component {
-//     // _isMounted = false;
+export default class UserProfile extends React.Component {
+    // _isMounted = false;
 
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            pins: '',
+            // loading: true,
+            openBoard: false,
+            openBoardId: null
+        }
+        this.handleClick = this.handleClick.bind(this);
+        this.handleButton = this.handleButton.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        //
+        this.handleScroll = this.handleScroll.bind(this); //// 04/03
+        // this.newBoard = this.newBoard.bind(this);
+    }
+    
+
+    componentDidMount() {
+        // _isMounted = true;
+        this.props.fetchBoards()
+        this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
+        //
+        window.addEventListener("scroll", this.handleScroll); //// 04/03
+        // const _userId = this.props.match.params.userId;
+        // const fetchUser = (userId) => this.props.fetchSingleUser(userId);
+        // this.props.fetchAllUsers().then(res => {
+        //         const user = Object.values(res.users).find(user => user.id === _userId);
+        //         return fetchUser(user.id);
+        //     });
+    }
+
+    // extra //// 04/03
+    componentWillUnmount() {
+        // _isMounted = false;
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll() { //// 04/03
+        const { prevScrollPos } = this.state;
+        const currentScrollPos = window.pageYOffset;
+        const fadeInName = (prevScrollPos < currentScrollPos - 50);
+
+        this.setState({
+            fadeInName
+        });
+    }
+
+    newBoard() {
+        this.props.openModal("createboard");
+    }
+
+    handleButton(e) {
+        let board = (e.currentTarget);
+        const boardId = (board.getAttribute('value'))
+        if (boardId) {
+            this.setState({ openBoard: true, openBoardId: boardId })
+        }
+
+    }
+
+    handleClick() {
+        // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
+        this.props.openModal("createboard");
+    }
+
+    handleEdit() {
+        // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
+        this.props.openModal("editprofile")
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.boards.length != this.props.boards.length) {
+            this.props.fetchBoards();
+        }
+    }
+
+
+    render() {
+        const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
+        // debugger;
+        const user = users.find(user => user.id === currentUser.id);
+        if (this.state.loading) {
+            return <LoadingIcon />;
+        }
+
+        if (this.state.openBoard == true && this.state.openBoardId) {
+            return <Redirect to={`/boards/${this.state.openBoardId}`} />
+        }
+
+        const name = user.firstName && user.lastName ?
+            <div>
+                <span>{user.firstName}</span><span>{user.lastName}</span>
+            </div> : <span>Add Your Name</span>;
+
+        const profilePic = user.photo ? (
+            <img className="user-profile-image" src={user.photo} />
+        ) : (
+            <div className="user-profile-image">
+                <i className="far fa-user-circle"></i>
+            </div>
+        );
+
+
+        const currentUserBoards = boards.filter(board => (board.userId === user.id)) // ????
+        if (boards.length > 0 && this.state.pins === 'fetched') {
+            return (
+                <>
+                    <div id="profile-image-container">
+                        <div id="profile-image-frame" >
+                            {profilePic}
+                        </div>
+                    </div>
+                    <div id="user-text">
+                        {name}
+                    </div>
+                    <div id="profile-personal-followers">
+                        {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
+                        <h4>1 000  followers • 1 following</h4>
+                        {/* </Link> */}
+                    </div>
+                    <div id="profile-personal">
+                        <UserDetails user={user} />
+                    </div>
+                    <div >
+                        <ProfileNavBar
+                            currentUser={currentUser}  //USER IS NOT DEFINED
+                            user={user}
+                            openModal={openModal}
+                            closeModal={closeModal}
+                        // handleEdit={this.handleEdit}
+                        />
+                    </div>
+                    <ul id='board-list'>
+                        {currentUserBoards.map((board, id) => {
+                            let pinArr = [];
+                            let allPins;
+                            let imageTag =
+                                <div id='pin-image-wrapper1'>
+                                </div>
+                            if (board.pinIds.length > 0 && pinArr.length == 0) {
+                                pinArr = board.pinIds.map(pinId => {
+                                    return pins[pinId]
+                                }
+                                )
+                                if (pinArr.length > 0) {
+                                    allPins = pinArr.map((pin, idx) => {
+                                        if (idx < 3 && pin != 'undefined') { 
+                                            return <img key={idx} id='pin-image1' src={pin.photo} />
+                                        }
+                                    })
+                                    imageTag =
+                                        <div id='pin-image-wrapper'>
+                                            {/* key={board.id} */}
+                                            {allPins}
+                                        </div>
+                                }
+                            }
+                            return (
+                                <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
+                                    {imageTag}
+                                    <div id='board-text'>
+                                        <li>{board.title}</li>
+                                        <p>{board.pinIds.length} Pins</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </ul>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div id="profile-image-container">
+                        <div id="profile-image-frame" >
+                            {profilePic}
+                        </div>
+                    </div>
+                    <div id="user-text">
+                        {name}
+                    </div>
+
+                    <div id="profile-personal-followers">
+                        <h4>1 000  followers • 1 following</h4>
+                    </div>
+                    <div id="profile-personal">
+                        <UserDetails user={user} />
+                    </div>
+                    <div  >
+                        <ProfileNavBar
+                            currentUser={currentUser}  //USER IS NOT DEFINED
+                            user={user}
+                            openModal={openModal}
+                            closeModal={closeModal}
+                        // handleEdit={this.handleEdit}
+                        />
+                    </div>
+                    <p>You don't have any boards yet!</p>
+                    {/* <ul id='board-list'>
+                        {currentUserBoards.map((board, id) => {
+                            let pinArr;
+                            let allPins;
+                            let imageTag =
+                                <div id='pin-image-wrapper1'>
+                                </div>
+                            if (board.pinIds.length > 0) {
+                                pinArr = board.pinIds.map(pinId => {
+                                    return pins[pinId]
+                                }
+                                )
+                                if (pinArr.length > 0) {
+                                    allPins = pinArr.map((pin, idx) => {
+                                        if (idx < 3 && pin != 'undefined') {
+                                            return <img key={idx} id='pin-image1' src={pin.photo} />
+                                        }
+                                    })
+                                    imageTag =
+                                        <div id='pin-image-wrapper'>
+                                            {allPins}
+                                        </div>
+                                }
+                            }
+                            return (
+                                <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
+                                    {imageTag}
+                                    <div id='board-text'>
+                                        <li>{board.title}</li>
+                                        <p>{board.pinIds.length} Pins</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                        <div className='edit-create-button-wrapper'>
+                        </div>
+                    </ul> */}
+                </>
+                // <>
+                //     {/* id='user-header' */}
+                //     <div id="profile-image-container">
+                //         {/* id="profile-image-frame" */}
+                //         <div id="profile-image-frame" >
+                //             {profilePic}
+                //         </div>
+                //     </div>
+                //     <div id="user-text">
+                //         {name}
+                //         {/* {id} */}
+                //         {/* HHHHHHHH */}
+                //         {/* {user} */}
+                //     </div>
+
+                //     {/* <div id="profile-follows-spacer-container" > */}
+                //     {/* <div id="profile-follows"> */}
+                //     <div id="profile-personal-followers">
+                //         {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
+                //         <h4>1 000  followers • 1 following</h4>
+                //         {/* </Link> */}
+                //     </div>
+                //     {/* <div id="profile-following-container">
+                //                     <Link to={`/${user.username}/following`} className="profile-follows-link">
+                //                         <h4> 1 following</h4>
+                //                     </Link>
+                //                 </div> */}
+                //     {/* </div> */}
+
+                //     {/* <div id="profile-personal-container"> */}
+                //     <div id="profile-personal">
+                //         {/* <h4> 
+                //             <button 
+                //             id="profile-nav-bar"
+                //             style={{  }}
+                //             onClick={window.open("//" + "google.com/search?q=" + user.location, '_blank')}
+                //                 >
+                //             <div >
+                //                 <i>{userLocation}</i> 
+                //             </div>
+                //             </button> 
+                //             {userLocation} | {userDescription}</h4> */}
+                //         <UserDetails user={user} />
+                //     </div>
+                //     {/* <h4>personal info</h4> */}
+                //     {/* <Link to="https://www.google.com/maps"> */}
+                //     {/* </div> */}
+                //     <div  >
+                //         {/* id="profile-nav-bar" */}
+                //         <ProfileNavBar
+                //             currentUser={currentUser}  //USER IS NOT DEFINED
+                //             user={user}
+                //             openModal={openModal}
+                //             closeModal={closeModal}
+                //         // handleEdit={this.handleEdit}
+                //         />
+                //         {/* <button
+                //             // className="profile-header-link"
+                //             onClick={this.handleEdit}>
+                //             <i className="fas fa-pencil-alt"></i>
+                //         </button> */}
+                //         {/* <Link to="/settings#profile" className="profile-header-link">
+                //             <div className="profile-icon-container-shadow">
+                //                 <div className="profile-icon-container">
+                //                     <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
+                //                 </div>
+                //             </div>
+                //         </Link> */}
+
+                //     </div>
+                //     <ul id='board-list'>
+                //         {currentUserBoards.map((board, id) => {
+                //             let pinArr;
+                //             let allPins;
+                //             let imageTag =
+                //                 <div id='pin-image-wrapper1'>
+                //                     {/* <div className='pin-noimg'>do I need this?</div>  */}
+                //                 </div>
+                //             if (board.pinIds.length > 0) {
+                //                 pinArr = board.pinIds.map(pinId => {
+                //                     return pins[pinId]
+                //                 }
+                //                 )
+                //                 if (pinArr.length > 0) {
+                //                     allPins = pinArr.map((pin, idx) => {
+                //                         if (idx < 3 && pin != 'undefined') {
+                //                             return <img key={idx} id='pin-image1' src={pin.photo} />
+                //                         }
+                //                     })
+                //                     imageTag =
+                //                         <div id='pin-image-wrapper'>
+                //                             {/* key={board.id} */}
+                //                             {allPins}
+                //                         </div>
+                //                 }
+                //             }
+                //             return (
+                //                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
+                //                     {/* key={board.id} */}
+                //                     {imageTag}
+                //                     <div id='board-text'>
+                //                         <li>{board.title}</li>
+                //                         {/* key={board.id} */}
+                //                         <p>{board.pinIds.length} Pins</p>
+                //                         {/* key={board.id} */}
+                //                     </div>
+                //                 </div>
+                //             )
+                //         })}
+                //         <div className='edit-create-button-wrapper'>
+                //             {/* <button
+                //                 className="plus-board"
+                //                 onClick={this.handleClick}
+                //             >
+                //                 <i className="fas fa-plus"></i>
+                //             </button> */}
+                //             {/* <button className="plus-board"
+                //             onClick={this.handleEdit}>
+                //             <i className="fas fa-pencil-alt"></i>
+                //         </button> */}
+                //         </div>
+
+                //     </ul>
+                // </>
+            );
+        }
+    }
+}
+
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+// import ProfileHeader from "./profile_header";
+// import ProfileContent from "./profile_content";
+
+// class UserProfile extends React.Component {
 //     constructor(props) {
 //         super(props);
-        
+//     }
+
+//     componentDidMount() {
+//         const username = this.props.match.params.username;
+//         const fetchUser = (userId) => this.props.fetchSingleUser(userId);
+
+//         this.props.fetchAllUsers()
+//             .then(res => {
+//                 const user = Object.values(res.users).find(user => user.username === username);
+//                 return fetchUser(user.id);
+//             });
+//     }
+
+//     render() {
+//         const { currentUser, users, username, boards, pins, openModal, closeModal } = this.props;
+//         const user = users.find(user => user.username === username);
+
+//         return (
+//             <div id="profile-background">
+//                 <div id="profile-container">
+//                     <div id="profile">
+//                         <div id="profile-header-container">
+//                             <ProfileHeader
+//                                 currentUser={currentUser}
+//                                 user={user}
+//                                 openModal={openModal}
+//                                 closeModal={closeModal}
+//                             />
+//                         </div>
+//                         <div id="profile-content-container">
+//                             <ProfileContent
+//                                 user={user}
+//                                 boards={boards}
+//                                 pins={pins}
+//                                 openModal={openModal}
+//                                 closeModal={closeModal}
+//                             />
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     }
+// };
+
+// export default UserProfile;
+
+// // ******************************************s
+// export default class UserProfile extends React.Component {
+//     constructor(props) {
+//         super(props);
 //         this.state = {
 //             pins: '',
 //             // loading: true,
 //             openBoard: false,
 //             openBoardId: null
 //         }
-//         this.handleClick = this.handleClick.bind(this);
-//         this.handleButton = this.handleButton.bind(this);
-//         this.handleEdit = this.handleEdit.bind(this);
-//         //
-//         this.handleScroll = this.handleScroll.bind(this); //// 04/03
-//         // this.newBoard = this.newBoard.bind(this);
+//         this.handleButton = this.handleButton.bind(this)
 //     }
-    
 
 //     componentDidMount() {
-//         // _isMounted = true;
 //         this.props.fetchBoards()
-//         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
-//         //
-//         window.addEventListener("scroll", this.handleScroll); //// 04/03
-//         // const _userId = this.props.match.params.userId;
-//         // const fetchUser = (userId) => this.props.fetchSingleUser(userId);
-//         // this.props.fetchAllUsers().then(res => {
-//         //         const user = Object.values(res.users).find(user => user.id === _userId);
-//         //         return fetchUser(user.id);
-//         //     });
-//     }
+//         this.props.fetchPins().then(() => this.setState({ pins: 'fetched' }))
 
-//     // extra //// 04/03
-//     componentWillUnmount() {
-//         // _isMounted = false;
-//         window.removeEventListener("scroll", this.handleScroll);
-//     }
-
-//     handleScroll() { //// 04/03
-//         const { prevScrollPos } = this.state;
-//         const currentScrollPos = window.pageYOffset;
-//         const fadeInName = (prevScrollPos < currentScrollPos - 50);
-
-//         this.setState({
-//             fadeInName
-//         });
-//     }
-
-//     newBoard() {
-//         this.props.openModal("createboard");
 //     }
 
 //     handleButton(e) {
@@ -68,17 +457,6 @@ import UserDetails from './user_details';
 //         if (boardId) {
 //             this.setState({ openBoard: true, openBoardId: boardId })
 //         }
-
-//     }
-
-//     handleClick() {
-//         // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
-//         this.props.openModal("createboard");
-//     }
-
-//     handleEdit() {
-//         // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
-//         this.props.openModal("editprofile")
 //     }
 
 //     componentDidUpdate(prevProps) {
@@ -90,84 +468,50 @@ import UserDetails from './user_details';
 
 //     render() {
 //         const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
-//         // debugger;
+
+//         // if (this.state.loading) {
+//         //     return <LoadingIcon />;
+//         // }
+
 //         const user = users.find(user => user.id === currentUser.id);
-//         if (this.state.loading) {
-//             return <LoadingIcon />;
-//         }
 
 //         if (this.state.openBoard == true && this.state.openBoardId) {
 //             return <Redirect to={`/boards/${this.state.openBoardId}`} />
 //         }
 
-//         const name = user.firstName && user.lastName ?
-//             <div>
-//                 <span>{user.firstName}</span><span>{user.lastName}</span>
-//             </div> : <span>Add Your Name</span>;
-
-//         const profilePic = user.photo ? (
-//             <img className="user-profile-image" src={user.photo} />
+//         const name = currentUser.firstName && currentUser.lastName ? 
+//         <div>
+//             {currentUser.firstName} {currentUser.lastName}
+//         </div> : <span>Add Your Name</span>;
+// // 
+//         const profilePic = currentUser.photoUrl ? (
+//             <img className="create-pin-profile-image" src={currentUser.photoUrl} />
 //         ) : (
-//             <div className="user-profile-image">
-//                 <i className="far fa-user-circle"></i>
-//             </div>
+//             <div className="create-pin-profile-image"><i className="fas fa-user-circle"></i></div>
 //         );
 
+//         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
 
-//         const currentUserBoards = boards.filter(board => (board.userId === user.id)) // ????
-//         // const currentUserPins = pins.filter(pin => (pin.userId === currentUser.id))
-//         // debugger;
-//         if (currentUserBoards.length !== 0) {
+
+//         if (boards.length > 0 && this.state.pins === 'fetched') { //boards.length > 0 && this.state.pins === 'fetched'
 //             return (
 //                 <>
-//                     {/* id='user-header' */}
 //                     <div id="profile-image-container">
-//                         {/* id="profile-image-frame" */}
 //                         <div id="profile-image-frame" >
 //                             {profilePic}
 //                         </div>
 //                     </div>
 //                     <div id="user-text">
 //                         {name}
-//                         {/* {id} */}
-//                         {/* HHHHHHHH */}
-//                         {/* {user} */}
 //                     </div>
 
-//                     {/* <div id="profile-follows-spacer-container" > */}
-//                     {/* <div id="profile-follows"> */}
 //                     <div id="profile-personal-followers">
-//                         {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
 //                         <h4>1 000  followers • 1 following</h4>
-//                         {/* </Link> */}
 //                     </div>
-//                     {/* <div id="profile-following-container">
-//                                     <Link to={`/${user.username}/following`} className="profile-follows-link">
-//                                         <h4> 1 following</h4>
-//                                     </Link>
-//                                 </div> */}
-//                     {/* </div> */}
-
-//                     {/* <div id="profile-personal-container"> */}
 //                     <div id="profile-personal">
-//                         {/* <h4> 
-//                             <button 
-//                             id="profile-nav-bar"
-//                             style={{  }}
-//                             onClick={window.open("//" + "google.com/search?q=" + user.location, '_blank')}
-//                                 >
-//                             <div >
-//                                 <i>{userLocation}</i> 
-//                             </div>
-//                             </button> 
-//                             {userLocation} | {userDescription}</h4> */}
 //                         <UserDetails user={user} />
 //                     </div>
-//                     {/* <h4>personal info</h4> */}
-//                     {/* <Link to="https://www.google.com/maps"> */}
-//                     {/* </div> */}
-//                     <div  >
-//                         {/* id="profile-nav-bar" */}
+//                     <div>
 //                         <ProfileNavBar
 //                             currentUser={currentUser}  //USER IS NOT DEFINED
 //                             user={user}
@@ -175,173 +519,48 @@ import UserDetails from './user_details';
 //                             closeModal={closeModal}
 //                         // handleEdit={this.handleEdit}
 //                         />
-//                         {/* <button
-//                             // className="profile-header-link"
-//                             onClick={this.handleEdit}>
-//                             <i className="fas fa-pencil-alt"></i>
-//                         </button> */}
-//                         {/* <Link to="/settings#profile" className="profile-header-link">
-//                             <div className="profile-icon-container-shadow">
-//                                 <div className="profile-icon-container">
-//                                     <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
-//                                 </div>
-//                             </div>
-//                         </Link> */}
-
 //                     </div>
+//                     {/* </div> */}
 //                     <ul id='board-list'>
-//                         {currentUserBoards.map((board, id) => {
-//                             let pinArr = [];
+//                         {currentUserBoards.map((board, idx) => {
+//                             let pinArr;
 //                             let allPins;
 //                             let imageTag =
 //                                 <div id='pin-image-wrapper1'>
-//                                     {/* <div className='pin-noimg'>do I need this?</div>  */}
+//                                     <div className='pin-noimg'></div>
 //                                 </div>
-//                             if (board.pinIds.length > 0 && pinArr.length == 0) {
+//                             if (board.pinIds.length > 0) {
 //                                 pinArr = board.pinIds.map(pinId => {
 //                                     return pins[pinId]
-//                                 // board.pinIds.map(pinId => {
-//                                 //     pinArr.push(pins[pinId])
-//                                 // })
-//                                 }
-//                                 )
+//                                 })
 //                                 if (pinArr.length > 0) {
 //                                     allPins = pinArr.map((pin, idx) => {
-//                                         if (idx < 3 && pin != 'undefined') { //idx < 3 && pin != 'undefined'
+//                                         if (idx < 3 && pin != 'undefined') {
 //                                             return <img key={idx} id='pin-image1' src={pin.photo} />
 //                                         }
 //                                     })
 //                                     imageTag =
 //                                         <div id='pin-image-wrapper'>
-//                                             {/* key={board.id} */}
 //                                             {allPins}
 //                                         </div>
 //                                 }
 //                             }
 //                             return (
 //                                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-//                                     {/* key={board.id} */}
 //                                     {imageTag}
 //                                     <div id='board-text'>
 //                                         <li>{board.title}</li>
-//                                         {/* key={board.id} */}
 //                                         <p>{board.pinIds.length} Pins</p>
-//                                         {/* key={board.id} */}
 //                                     </div>
 //                                 </div>
 //                             )
 //                         })}
-//                         <div className='edit-create-button-wrapper'>
-//                             {/* <button
-//                                 className="plus-board"
-//                                 onClick={this.handleClick}
-//                             >
-//                                 <i className="fas fa-plus"></i>
-//                             </button> */}
-//                             {/* <button className="plus-board"
-//                             onClick={this.handleEdit}>
-//                             <i className="fas fa-pencil-alt"></i>
-//                         </button> */}
-//                         </div>
+                        
 //                     </ul>
 //                 </>
-//                 ///////////////////////////////////////////
-//                 //                 <>
-//                 //     <div id="profile-image-container">
-//                 //         <div id="profile-image-frame" >
-//                 //             {profilePic}
-//                 //         </div>
-//                 //     </div>
-//                 //     <div id="user-text">
-//                 //         {name}
-//                 //     </div>
-
-//                 //     <div id="profile-personal-followers">
-//                 //         <h4>1 000  followers • 1 following</h4>
-//                 //     </div>
-//                 //     <div id="profile-personal">
-//                 //         <UserDetails user={user} />
-//                 //     </div>
-//                 //     <div  >
-//                 //         <ProfileNavBar
-//                 //             currentUser={currentUser}  //USER IS NOT DEFINED
-//                 //             user={user}
-//                 //             openModal={openModal}
-//                 //             closeModal={closeModal}
-//                 //         // handleEdit={this.handleEdit}
-//                 //         />
-//                 //     </div>
-//                 //         <p>You don't have any boards yet!</p>
-//                 //     {/* <ul id='board-list'>
-//                 //         {currentUserBoards.map((board, id) => {
-//                 //             let pinArr;
-//                 //             let allPins;
-//                 //             let imageTag =
-//                 //                 <div id='pin-image-wrapper1'>
-//                 //                 </div>
-//                 //             if (board.pinIds.length > 0) {
-//                 //                 pinArr = board.pinIds.map(pinId => {
-//                 //                     return pins[pinId]
-//                 //                 }
-//                 //                 )
-//                 //                 if (pinArr.length > 0) {
-//                 //                     allPins = pinArr.map((pin, idx) => {
-//                 //                         if (idx < 3 && pin != 'undefined') {
-//                 //                             return <img key={idx} id='pin-image1' src={pin.photo} />
-//                 //                         }
-//                 //                     })
-//                 //                     imageTag =
-//                 //                         <div id='pin-image-wrapper'>
-//                 //                             {allPins}
-//                 //                         </div>
-//                 //                 }
-//                 //             }
-//                 //             return (
-//                 //                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-//                 //                     {imageTag}
-//                 //                     <div id='board-text'>
-//                 //                         <li>{board.title}</li>
-//                 //                         <p>{board.pinIds.length} Pins</p>
-//                 //                     </div>
-//                 //                 </div>
-//                 //             )
-//                 //         })}
-//                 //         <div className='edit-create-button-wrapper'>
-//                 //         </div>
-//                 //     </ul> */}
-//                 // </>
 //             )
 //         } else {
 //             return (
-//                 // <>
-//                 //     <div id='user-header'>
-//                 //         <div id='user-photo'>
-//                 //             {profilePic}
-//                 //         </div>
-//                 //         <div id='user-text'>
-//                 //             {name}
-//                 //         </div>
-//                 //     </div>
-//                 //     <ProfileNavBar
-//                 //         user={user}  //USER IS NOT DEFINED
-//                 //         openModal={openModal}
-//                 //         closeModal={closeModal}
-//                 //         />
-//                 //     <p>You don't have any boards yet!</p>
-//                 //     <div className='edit-create-button-wrapper'>
-//                 //         <button
-//                 //             className="plus-board"
-//                 //             onClick={this.handleClick}
-//                 //             // onClick={this.newBoard}
-//                 //         >
-//                 //             <i className="fas fa-plus"></i>
-//                 //         </button>
-//                 //         <button className="plus-board"
-//                 //             onClick={this.handleEdit}>
-//                 //             <i className="fas fa-pencil-alt"></i>
-//                 //         </button>
-//                 //     </div>
-//                 // </>
 //                 <>
 //                     <div id="profile-image-container">
 //                         <div id="profile-image-frame" >
@@ -368,349 +587,8 @@ import UserDetails from './user_details';
 //                         />
 //                     </div>
 //                     <p>You don't have any boards yet!</p>
-//                     {/* <ul id='board-list'>
-//                         {currentUserBoards.map((board, id) => {
-//                             let pinArr;
-//                             let allPins;
-//                             let imageTag =
-//                                 <div id='pin-image-wrapper1'>
-//                                 </div>
-//                             if (board.pinIds.length > 0) {
-//                                 pinArr = board.pinIds.map(pinId => {
-//                                     return pins[pinId]
-//                                 }
-//                                 )
-//                                 if (pinArr.length > 0) {
-//                                     allPins = pinArr.map((pin, idx) => {
-//                                         if (idx < 3 && pin != 'undefined') {
-//                                             return <img key={idx} id='pin-image1' src={pin.photo} />
-//                                         }
-//                                     })
-//                                     imageTag =
-//                                         <div id='pin-image-wrapper'>
-//                                             {allPins}
-//                                         </div>
-//                                 }
-//                             }
-//                             return (
-//                                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-//                                     {imageTag}
-//                                     <div id='board-text'>
-//                                         <li>{board.title}</li>
-//                                         <p>{board.pinIds.length} Pins</p>
-//                                     </div>
-//                                 </div>
-//                             )
-//                         })}
-//                         <div className='edit-create-button-wrapper'>
-//                         </div>
-//                     </ul> */}
 //                 </>
-//                 // <>
-//                 //     {/* id='user-header' */}
-//                 //     <div id="profile-image-container">
-//                 //         {/* id="profile-image-frame" */}
-//                 //         <div id="profile-image-frame" >
-//                 //             {profilePic}
-//                 //         </div>
-//                 //     </div>
-//                 //     <div id="user-text">
-//                 //         {name}
-//                 //         {/* {id} */}
-//                 //         {/* HHHHHHHH */}
-//                 //         {/* {user} */}
-//                 //     </div>
-
-//                 //     {/* <div id="profile-follows-spacer-container" > */}
-//                 //     {/* <div id="profile-follows"> */}
-//                 //     <div id="profile-personal-followers">
-//                 //         {/* <Link to={`/${user.username}/followers`} className="profile-follows-link"> */}
-//                 //         <h4>1 000  followers • 1 following</h4>
-//                 //         {/* </Link> */}
-//                 //     </div>
-//                 //     {/* <div id="profile-following-container">
-//                 //                     <Link to={`/${user.username}/following`} className="profile-follows-link">
-//                 //                         <h4> 1 following</h4>
-//                 //                     </Link>
-//                 //                 </div> */}
-//                 //     {/* </div> */}
-
-//                 //     {/* <div id="profile-personal-container"> */}
-//                 //     <div id="profile-personal">
-//                 //         {/* <h4> 
-//                 //             <button 
-//                 //             id="profile-nav-bar"
-//                 //             style={{  }}
-//                 //             onClick={window.open("//" + "google.com/search?q=" + user.location, '_blank')}
-//                 //                 >
-//                 //             <div >
-//                 //                 <i>{userLocation}</i> 
-//                 //             </div>
-//                 //             </button> 
-//                 //             {userLocation} | {userDescription}</h4> */}
-//                 //         <UserDetails user={user} />
-//                 //     </div>
-//                 //     {/* <h4>personal info</h4> */}
-//                 //     {/* <Link to="https://www.google.com/maps"> */}
-//                 //     {/* </div> */}
-//                 //     <div  >
-//                 //         {/* id="profile-nav-bar" */}
-//                 //         <ProfileNavBar
-//                 //             currentUser={currentUser}  //USER IS NOT DEFINED
-//                 //             user={user}
-//                 //             openModal={openModal}
-//                 //             closeModal={closeModal}
-//                 //         // handleEdit={this.handleEdit}
-//                 //         />
-//                 //         {/* <button
-//                 //             // className="profile-header-link"
-//                 //             onClick={this.handleEdit}>
-//                 //             <i className="fas fa-pencil-alt"></i>
-//                 //         </button> */}
-//                 //         {/* <Link to="/settings#profile" className="profile-header-link">
-//                 //             <div className="profile-icon-container-shadow">
-//                 //                 <div className="profile-icon-container">
-//                 //                     <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
-//                 //                 </div>
-//                 //             </div>
-//                 //         </Link> */}
-
-//                 //     </div>
-//                 //     <ul id='board-list'>
-//                 //         {currentUserBoards.map((board, id) => {
-//                 //             let pinArr;
-//                 //             let allPins;
-//                 //             let imageTag =
-//                 //                 <div id='pin-image-wrapper1'>
-//                 //                     {/* <div className='pin-noimg'>do I need this?</div>  */}
-//                 //                 </div>
-//                 //             if (board.pinIds.length > 0) {
-//                 //                 pinArr = board.pinIds.map(pinId => {
-//                 //                     return pins[pinId]
-//                 //                 }
-//                 //                 )
-//                 //                 if (pinArr.length > 0) {
-//                 //                     allPins = pinArr.map((pin, idx) => {
-//                 //                         if (idx < 3 && pin != 'undefined') {
-//                 //                             return <img key={idx} id='pin-image1' src={pin.photo} />
-//                 //                         }
-//                 //                     })
-//                 //                     imageTag =
-//                 //                         <div id='pin-image-wrapper'>
-//                 //                             {/* key={board.id} */}
-//                 //                             {allPins}
-//                 //                         </div>
-//                 //                 }
-//                 //             }
-//                 //             return (
-//                 //                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-//                 //                     {/* key={board.id} */}
-//                 //                     {imageTag}
-//                 //                     <div id='board-text'>
-//                 //                         <li>{board.title}</li>
-//                 //                         {/* key={board.id} */}
-//                 //                         <p>{board.pinIds.length} Pins</p>
-//                 //                         {/* key={board.id} */}
-//                 //                     </div>
-//                 //                 </div>
-//                 //             )
-//                 //         })}
-//                 //         <div className='edit-create-button-wrapper'>
-//                 //             {/* <button
-//                 //                 className="plus-board"
-//                 //                 onClick={this.handleClick}
-//                 //             >
-//                 //                 <i className="fas fa-plus"></i>
-//                 //             </button> */}
-//                 //             {/* <button className="plus-board"
-//                 //             onClick={this.handleEdit}>
-//                 //             <i className="fas fa-pencil-alt"></i>
-//                 //         </button> */}
-//                 //         </div>
-
-//                 //     </ul>
-//                 // </>
 //             );
 //         }
 //     }
 // }
-
-// // import React from "react";
-// // import { Link } from "react-router-dom";
-
-// // import ProfileHeader from "./profile_header";
-// // import ProfileContent from "./profile_content";
-
-// // class UserProfile extends React.Component {
-// //     constructor(props) {
-// //         super(props);
-// //     }
-
-// //     componentDidMount() {
-// //         const username = this.props.match.params.username;
-// //         const fetchUser = (userId) => this.props.fetchSingleUser(userId);
-
-// //         this.props.fetchAllUsers()
-// //             .then(res => {
-// //                 const user = Object.values(res.users).find(user => user.username === username);
-// //                 return fetchUser(user.id);
-// //             });
-// //     }
-
-// //     render() {
-// //         const { currentUser, users, username, boards, pins, openModal, closeModal } = this.props;
-// //         const user = users.find(user => user.username === username);
-
-// //         return (
-// //             <div id="profile-background">
-// //                 <div id="profile-container">
-// //                     <div id="profile">
-// //                         <div id="profile-header-container">
-// //                             <ProfileHeader
-// //                                 currentUser={currentUser}
-// //                                 user={user}
-// //                                 openModal={openModal}
-// //                                 closeModal={closeModal}
-// //                             />
-// //                         </div>
-// //                         <div id="profile-content-container">
-// //                             <ProfileContent
-// //                                 user={user}
-// //                                 boards={boards}
-// //                                 pins={pins}
-// //                                 openModal={openModal}
-// //                                 closeModal={closeModal}
-// //                             />
-// //                         </div>
-// //                     </div>
-// //                 </div>
-// //             </div>
-// //         )
-// //     }
-// // };
-
-// // export default UserProfile;
-
-// ******************************************s
-export default class UserProfile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pins: '',
-            // loading: true,
-            openBoard: false,
-            openBoardId: null
-        }
-        this.handleButton = this.handleButton.bind(this)
-    }
-
-    componentDidMount() {
-        this.props.fetchBoards()
-        this.props.fetchPins().then(() => this.setState({ pins: 'fetched' }))
-
-    }
-
-    handleButton(e) {
-        let board = (e.currentTarget);
-        const boardId = (board.getAttribute('value'))
-        if (boardId) {
-            this.setState({ openBoard: true, openBoardId: boardId })
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.boards.length != this.props.boards.length) {
-            this.props.fetchBoards();
-        }
-    }
-
-
-    render() {
-        const { currentUser, boards, pins } = this.props;
-
-        // if (this.state.loading) {
-        //     return <LoadingIcon />;
-        // }
-
-        if (this.state.openBoard == true && this.state.openBoardId) {
-            return <Redirect to={`/boards/${this.state.openBoardId}`} />
-        }
-
-        const name = currentUser.firstName && currentUser.lastName ? <div><span>{currentUser.firstName}</span><span>{currentUser.lastName}</span></div> : <span>Add Your Name</span>;
-
-        const profilePic = currentUser.photoUrl ? (
-            <img className="create-pin-profile-image" src={currentUser.photoUrl} />
-        ) : (
-            <div className="create-pin-profile-image"><i className="fas fa-user-circle"></i></div>
-        );
-
-        const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
-
-
-        if (boards.length > 0 && this.state.pins === 'fetched') {
-            return (
-                <>
-                    <div id='user-header'>
-                        <div id='user-photo'>
-                            {profilePic}
-                        </div>
-                        <div id='user-text'>
-                            {name}
-                        </div>
-                    </div>
-                    <ul id='board-list'>
-                        {currentUserBoards.map((board, idx) => {
-                            let pinArr;
-                            let allPins;
-                            let imageTag =
-                                <div id='pin-image-wrapper1'>
-                                    <div className='pin-noimg'></div>
-                                </div>
-                            if (board.pinIds.length > 0) {
-                                pinArr = board.pinIds.map(pinId => {
-                                    return pins[pinId]
-                                })
-                                if (pinArr.length > 0) {
-                                    allPins = pinArr.map((pin, idx) => {
-                                        if (idx < 3 && pin != 'undefined') {
-                                            return <img key={idx} id='pin-image1' src={pin.photo} />
-                                        }
-                                    })
-                                    imageTag =
-                                        <div id='pin-image-wrapper'>
-                                            {allPins}
-                                        </div>
-                                }
-                            }
-                            return (
-                                <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-                                    {imageTag}
-                                    <div id='board-text'>
-                                        <li>{board.title}</li>
-                                        <p>{board.pinIds.length} Pins</p>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                        
-                    </ul>
-                </>
-            )
-        } else {
-            return (
-                <>
-                    <div id='user-header'>
-                        <div id='user-photo'>
-                            {profilePic}
-                        </div>
-                        <div id='user-text'>
-                            {name}
-                        </div>
-                    </div>
-                    <p>You don't have any boards yet!</p>
-                    
-                </>
-            );
-        }
-    }
-}
