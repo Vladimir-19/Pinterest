@@ -21,7 +21,7 @@ export default class BoardShow extends React.Component {
 
             showCreateOptions: false,
             success: '',
-            ask: '',
+            deleteMessage: '',
             deleted: false
         }
 
@@ -86,10 +86,10 @@ export default class BoardShow extends React.Component {
     }
 
     deleteBoard(e) {
-        if (this.state.ask === 'Are you sure?') {
+        if (this.state.deleteMessage === 'Are you sure?') {
             this.deleteForSure(e)
         } else {
-            this.setState({ ask: 'Are you sure?' })
+            this.setState({ deleteMessage: 'Are you sure?' })
         }
         // this.props.deleteBoard(this.props.board.id).then(() => this.checkPin()); //then(() => location.reload());
     }
@@ -143,122 +143,6 @@ export default class BoardShow extends React.Component {
             })
         }
 
-        // const boardDescription = (board.description) ? (
-        //     <h3>{board.description}</h3>
-        // ) : (
-        //     <h3 style={{ "color": "#8e8e8e" }}>
-        //         Describe your board!
-        //     </h3>
-        // );
-        //  ***************
-        // return (
-        //     <div id='board-show-wrapper'>
-
-        //              <Link to={`/users/${currentUser.id}`} style={{ "zIndex": "1000", "marginLeft": "50px", "color": "black" }}>
-        //                  {/* margin-left */}
-        //                  {/* <i className="fas fa-arrow-left"></i> */}
-        //                  <i className="fas fa-long-arrow-alt-left" style={{ "fontSize": "170%" }}></i>
-        //              </Link>
-
-        //              <div id='board-show-header'>
-        //                  <h1>{board.title}</h1>
-        //              </div>
-        //              <div id="profile-personal" style={{ "margin": "5px", "padding": "5px" }}>
-        //                  <h3>{board.description}</h3>
-        //                  {/* {} */}
-        //              </div>
-        //              {/* here  */}
-        //              {/* <BoardShowNavBar
-        //                  openEditBoard={this.openEditBoard}
-        //                  board={board}
-        //                  user={currentUser}
-        //              /> */}
-        //              {/* <button
-        //                  className="board-show button"
-        //                  onClick={(e, boardId) => openEditBoard(e, board.id)} // was boardId
-        //              >
-        //                  <i className="fas fa-pencil-alt board-show icon" id="edit-board-icon"></i>
-        //              </button> */}
-
-        //              {/* {this.editBoardModal()} */}
-        //              <div id="profile-nav-bar">
-        //                  <div >
-        //                      <a
-        //                         className="xxx"
-        //                         onClick={this.toggleShow}
-        //                         onBlur={this.hide}
-        //                     >
-        //                         <div >
-        //                             <div >
-        //                                 <i className="far fa-edit" style={{ color: "gray", fontSize: "200%" }}></i>
-        //                             </div>
-        //                         </div>
-        //                     </a>
-        //                     <div id="create-pinboard-container" style={{
-        //                         visibility: this.state.showCreateOptions ?
-        //                             "visible" :
-        //                             "hidden"
-        //                     }}>
-        //                         <div className="modal-container" >
-        //                             <div className="modal-background" id={modal} onClick={closeModal}>
-        //                                 <div className="modal-child" id={`${modal}-child`} onClick={e => e.stopPropagation()}>
-        //                                     {this.editBoardModal()}
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-
-        //                         {/* <h3 >
-        //                         {this.editBoardModal()}
-        //                     </h3> */}
-        //                         {/* <div >
-        //                         <div id="create-pin-button">
-        //                         </div>
-        //                     </div> */}
-
-        //                     </div>
-        //                 </div>
-        //                 {board.title != "undefined" ?
-        //                     <a className='delete-board' onClick={this.deleteBoard}>
-        //                         <i className="far fa-trash-alt"></i>
-        //                     </a>
-        //                     : null}
-        //                 {this.state.ask === 'Are you sure?' ?
-        //                     <div className="insurance-box">
-        //                         <p className='are-you-sure'>{this.state.ask}</p>
-        //                         <div className="arrow-down"></div>
-        //                     </div>
-
-        //                     : null}
-        //             </div>
-
-
-
-        //             <ul id='board-list-wrap'>
-        //                 {pinArr.map((pin) => (
-        //                     <BoardItem
-        //                         pin={pin}
-        //                         key={pin.id}
-        //                         page="profile"
-        //                     />
-        //                     // <PinIndexContainer
-        //                     //     pin={pin}
-        //                     //     key={pin.id}
-        //                     //     page="profile"/>
-        //                 ))}
-        //             </ul>
-        //             {/* <div>
-        //                 here
-        //                 <BoardShowNavBar
-        //                     openEditBoard={this.openEditBoard}
-        //                     board={board}
-        //                     user={currentUser}
-        //                 />
-        //             </div> */}
-        //         </div>
-
-        // )
-        //************************ 
-
 
         if (pinArr.length > 0) {
             return (
@@ -275,7 +159,6 @@ export default class BoardShow extends React.Component {
                     </div>
                     <div id="profile-personal" style={{ "margin": "5px", "padding": "5px" }}>
                         <h3>{board.description}</h3>
-                        {/* {} */}
                     </div>
                     {/* here  */}
                     {/* <BoardShowNavBar
@@ -332,12 +215,11 @@ export default class BoardShow extends React.Component {
                                 <i className="far fa-trash-alt"></i>
                             </a>
                             : null}
-                        {this.state.ask === 'Are you sure?' ?
+                        {this.state.deleteMessage === 'Are you sure?' ?
                             <div className="insurance-box">
-                                <p className='are-you-sure'>{this.state.ask}</p>
+                                <p className='are-you-sure'>{this.state.deleteMessage}</p>
                                 <div className="arrow-down"></div>
                             </div>
-
                             : null}
                     </div>
 
@@ -430,9 +312,9 @@ export default class BoardShow extends React.Component {
                                 <i className="far fa-trash-alt"></i>
                             </a>
                             : null}
-                        {this.state.ask === 'Are you sure?' ?
+                        {this.state.deleteMessage === 'Are you sure?' ?
                             <div className="insurance-box">
-                                <p className='are-you-sure'>{this.state.ask}</p>
+                                <p className='are-you-sure'>{this.state.deleteMessage}</p>
                                 <div className="arrow-down"></div>
                             </div>
 
