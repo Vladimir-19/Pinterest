@@ -43,7 +43,12 @@ class EditBoardForm extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
-        this.props.processForm(this.state).then(() => window.history.go(-1));
+        this.props.processForm(this.state).then(() => location.reload());
+         //.then(() => window.history.go(-1));
+    }
+
+    handleCancel() {
+        location.reload()
     }
   
 
@@ -127,13 +132,19 @@ class EditBoardForm extends React.Component {
                         <div className="edit-board footer-part left">
                         </div>
                         <div className="edit-board footer-part right">
-                            <Link 
+                            {/* <Link 
                                 className="edit-board button cancel"
                                 // to={`/boards/${this.state.id}`}
                                 to={`/users/${this.state.userId}`}
                             >
                                 Cancel
-                            </Link>
+                            </Link> */}
+                            <a
+                                className="edit-board button cancel"
+                                onClick={this.handleCancel}
+                            >
+                                Cancel
+                                </a>
                             {/* <button
                                 className={`edit-profile cancel button ${disabled}`}
                                 id="cancel-button"
