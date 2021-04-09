@@ -3,16 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
-// import PinIndexContainer from '../pins/pin_index_container';
 import BoardShowNavBar from './board_show_nav_bar'
 import EditBoardContainer from './edit_board_form_container';
-//delte
 import edit from './edit';
-// import { closeModal } from '../../actions/modal_actions';
 
 export default class BoardShow extends React.Component {
     constructor(props) {
-        super(props) //props.board.id etc
+        super(props) 
         this.state = {
             loading: true,
             fetched: false,
@@ -29,8 +26,7 @@ export default class BoardShow extends React.Component {
         // this.handleSave = this.handleSave.bind(this);
 
         this.deleteBoard = this.deleteBoard.bind(this);
-        this.deleteForSure = this.deleteForSure.bind(this);
-        this.checkPin = this.checkPin.bind(this);
+        this.delete = this.delete.bind(this);
 
         this.toggleShow = this.toggleShow.bind(this);
         this.hide = this.hide.bind(this);
@@ -72,11 +68,6 @@ export default class BoardShow extends React.Component {
         // this.props.fetchUser(this.props.currentUser.id);
     }
 
-    // openEditBoard() {
-    //     e.preventDefault();
-    //     this.props.openEditBoard(this.props.board.id)
-    // }
-
     editBoardModal() {
         return (
             <EditBoardContainer
@@ -87,53 +78,21 @@ export default class BoardShow extends React.Component {
 
     deleteBoard(e) {
         if (this.state.deleteMessage === 'Are you sure?') {
-            this.deleteForSure(e)
+            this.delete(e)
         } else {
             this.setState({ deleteMessage: 'Are you sure?' })
         }
-        // this.props.deleteBoard(this.props.board.id).then(() => this.checkPin()); //then(() => location.reload());
     }
-    deleteForSure(e) {
+
+    delete(e) {
         e.preventDefault();
-        this.props.deleteBoard(this.props.board.id).then(() => this.checkPin())
-    } //then(() => window.history.go(-1));
-    checkPin() {
-        // if (this.errors.length === 'undefind') {
-        this.props.history.push('/users/:userId');
-        // } else {
-        // this.setState({ ask: '' })
-        // }
-    }
+        this.props.deleteBoard(this.props.board.id).then(() => this.props.history.push('/users/:userId'))
+    } 
+    
 
     render() {
         const { board, currentUser, pins, boardsPins, openEditBoard, modal, openModal, closeModal } = this.props;
-        // if (!modal) return null;
-
-        // let boardPins = boardsPins 
-        // .filter(boardPin => board.id === boardPin.boardId)
-        // .map(boardPin => pins[boardPin.pinId])
-        // .filter(boardPin => boardPin !== undefined);
-
-        // if (this.state.loading) {
-        //     return <LoadingIcon />;
-        // }
-        // I NEED THIS I NEED THIS I NEED THIS I NEED THIS
-        // if (board.pinIds.length == 0) {
-        //     return (
-        //         <div>
-        //             <p id='no-pins-yet'>this board has no pins yet!</p>
-        //             <Link className="back-arrow-board" to={`/users/${currentUser.id}`}>
-        //                 <i className="fas fa-arrow-left"></i>
-        //             </Link>
-        //         </div>
-        //     )
-        // }
-        // <div className="board-show pin-feed">
-        //     <PinIndexContainer
-        //         pins={boardPins}
-        //         page="profile"
-        //     />
-        //     </div>
+        
         let pinArr = [];
         if (this.state.fetched == true && board.pinIds.length > 0) {
             board.pinIds.map(pinId => {
@@ -142,7 +101,6 @@ export default class BoardShow extends React.Component {
                 }
             })
         }
-
 
         if (pinArr.length > 0) {
             return (
@@ -319,10 +277,9 @@ export default class BoardShow extends React.Component {
                             </div>
 
                             : null}
-                    </div>
+                </div>
                     <h2>This board has no pins yet!</h2>
                 </div>
-
             )
         }
     }

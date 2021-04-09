@@ -27,47 +27,47 @@
       animation-name: rotate;
 }
 
-.loading,
-.loading:before,
-.loading:after {
-  border-radius: 100%;
-  -webkit-animation-duration: 3s;
-     -moz-animation-duration: 3s;
-    -ms-animation-duration: 3s;
-      animation-duration: 3s;
-  -webkit-animation-iteration-count: infinite;
-     -moz-animation-iteration-count: infinite;
-    -ms-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in;
-     -moz-animation-timing-function: ease-in;
-    -ms-animation-timing-function: ease-in;
-      animation-timing-function: ease-in;
-}
+// .loading,
+// .loading:before,
+// .loading:after {
+//   border-radius: 100%;
+//   -webkit-animation-duration: 3s;
+//      -moz-animation-duration: 3s;
+//     -ms-animation-duration: 3s;
+//       animation-duration: 3s;
+//   -webkit-animation-iteration-count: infinite;
+//      -moz-animation-iteration-count: infinite;
+//     -ms-animation-iteration-count: infinite;
+//       animation-iteration-count: infinite;
+//   -webkit-animation-timing-function: ease-in;
+//      -moz-animation-timing-function: ease-in;
+//     -ms-animation-timing-function: ease-in;
+//       animation-timing-function: ease-in;
+// }
 
-.loading:before,
-.loading:after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: inherit; height: inherit;
-}
+// .loading:before,
+// .loading:after {
+//   content: "";
+//   position: absolute;
+//   top: 0; left: 0;
+//   width: inherit; height: inherit;
+// }
 
-.loading:before {
-  background: rgba(200, 250, 100, 0);
-  -webkit-animation-name: ring;
-     -moz-animation-name: ring;
-    -ms-animation-name: ring;
-      animation-name: ring;
-}
+// .loading:before {
+//   background: rgba(200, 250, 100, 0);
+//   -webkit-animation-name: ring;
+//      -moz-animation-name: ring;
+//     -ms-animation-name: ring;
+//       animation-name: ring;
+// }
 
-.loading:after {
-  background: rgba(250, 0, 200, 0);
-  -webkit-animation-name: ring2;
-     -moz-animation-name: ring2;
-    -ms-animation-name: ring2;
-      animation-name: ring2;
-}
+// .loading:after {
+//   background: rgba(250, 0, 200, 0);
+//   -webkit-animation-name: ring2;
+//      -moz-animation-name: ring2;
+//     -ms-animation-name: ring2;
+//       animation-name: ring2;
+// }
 
 @-webkit-keyframes rotate {
   0% {

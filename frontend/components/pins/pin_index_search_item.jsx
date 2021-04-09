@@ -16,7 +16,6 @@ class PinIndexSearchItem extends React.Component {
     render() {
         const { pin, openModal } = this.props;
 
-
         return (
             <Link to={`pins/${pin.id}`}>
                 <img className="masonry-pin-item" src={pin.photoUrl} />

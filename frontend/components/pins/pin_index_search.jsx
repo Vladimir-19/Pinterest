@@ -56,8 +56,9 @@ export default class PinIndex extends React.Component {
         } else {
             return (
                 <>
-                    <br></br>
-                    <p>No pins match this search</p>
+                <h2 style={{"margin": "10px", "padding": "10px"}}>
+                    No pins match this search
+                </h2>
                 </>
             )
         }
