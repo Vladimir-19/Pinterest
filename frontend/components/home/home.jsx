@@ -33,7 +33,7 @@ class Home extends React.Component {
         };
         const loader = (loading) ? (
             <div className="loading-background">
-                <div className="loading"></div>
+                <div className="loader"></div>
             </div>
         ) : null;
 
