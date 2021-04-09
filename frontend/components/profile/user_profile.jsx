@@ -30,8 +30,10 @@ export default class UserProfile extends React.Component {
 
     componentDidMount() {
         // _isMounted = true;
+        this.props.startLoading(); 
         this.props.fetchBoards()
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
+        setTimeout(() => this.props.stopLoading(), 800);
         //
         window.addEventListener("scroll", this.handleScroll); //// 04/03
         // const _userId = this.props.match.params.userId;
@@ -89,8 +91,14 @@ export default class UserProfile extends React.Component {
 
 
     render() {
-        const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
+        const { currentUser, boards, pins, openModal, closeModal, users, loading } = this.props;
         // debugger;
+        const loader = (loading) ? (
+            <div className="loading-background">
+                <div className="loader"></div>
+            </div>
+        ) : null;
+
         const user = users.find(user => user.id === currentUser.id);
         if (this.state.loading) {
             return <LoadingIcon />;
@@ -118,6 +126,7 @@ export default class UserProfile extends React.Component {
         if (boards.length > 0 && this.state.pins === 'fetched') {
             return (
                 <>
+                    {loader}
                     <div id="profile-image-container">
                         <div id="profile-image-frame" >
                             {profilePic}
@@ -184,6 +193,7 @@ export default class UserProfile extends React.Component {
         } else {
             return (
                 <>
+                    {loader}
                     <div id="profile-image-container">
                         <div id="profile-image-frame" >
                             {profilePic}
@@ -375,220 +385,3 @@ export default class UserProfile extends React.Component {
         }
     }
 }
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// import ProfileHeader from "./profile_header";
-// import ProfileContent from "./profile_content";
-
-// class UserProfile extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
-
-//     componentDidMount() {
-//         const username = this.props.match.params.username;
-//         const fetchUser = (userId) => this.props.fetchSingleUser(userId);
-
-//         this.props.fetchAllUsers()
-//             .then(res => {
-//                 const user = Object.values(res.users).find(user => user.username === username);
-//                 return fetchUser(user.id);
-//             });
-//     }
-
-//     render() {
-//         const { currentUser, users, username, boards, pins, openModal, closeModal } = this.props;
-//         const user = users.find(user => user.username === username);
-
-//         return (
-//             <div id="profile-background">
-//                 <div id="profile-container">
-//                     <div id="profile">
-//                         <div id="profile-header-container">
-//                             <ProfileHeader
-//                                 currentUser={currentUser}
-//                                 user={user}
-//                                 openModal={openModal}
-//                                 closeModal={closeModal}
-//                             />
-//                         </div>
-//                         <div id="profile-content-container">
-//                             <ProfileContent
-//                                 user={user}
-//                                 boards={boards}
-//                                 pins={pins}
-//                                 openModal={openModal}
-//                                 closeModal={closeModal}
-//                             />
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         )
-//     }
-// };
-
-// export default UserProfile;
-
-// // ******************************************s
-// export default class UserProfile extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             pins: '',
-//             // loading: true,
-//             openBoard: false,
-//             openBoardId: null
-//         }
-//         this.handleButton = this.handleButton.bind(this)
-//     }
-
-//     componentDidMount() {
-//         this.props.fetchBoards()
-//         this.props.fetchPins().then(() => this.setState({ pins: 'fetched' }))
-
-//     }
-
-//     handleButton(e) {
-//         let board = (e.currentTarget);
-//         const boardId = (board.getAttribute('value'))
-//         if (boardId) {
-//             this.setState({ openBoard: true, openBoardId: boardId })
-//         }
-//     }
-
-//     componentDidUpdate(prevProps) {
-//         if (prevProps.boards.length != this.props.boards.length) {
-//             this.props.fetchBoards();
-//         }
-//     }
-
-
-//     render() {
-//         const { currentUser, boards, pins, openModal, closeModal, users } = this.props;
-
-//         // if (this.state.loading) {
-//         //     return <LoadingIcon />;
-//         // }
-
-//         const user = users.find(user => user.id === currentUser.id);
-
-//         if (this.state.openBoard == true && this.state.openBoardId) {
-//             return <Redirect to={`/boards/${this.state.openBoardId}`} />
-//         }
-
-//         const name = currentUser.firstName && currentUser.lastName ? 
-//         <div>
-//             {currentUser.firstName} {currentUser.lastName}
-//         </div> : <span>Add Your Name</span>;
-// // 
-//         const profilePic = currentUser.photoUrl ? (
-//             <img className="create-pin-profile-image" src={currentUser.photoUrl} />
-//         ) : (
-//             <div className="create-pin-profile-image"><i className="fas fa-user-circle"></i></div>
-//         );
-
-//         const currentUserBoards = boards.filter(board => (board.userId === currentUser.id))
-
-
-//         if (boards.length > 0 && this.state.pins === 'fetched') { //boards.length > 0 && this.state.pins === 'fetched'
-//             return (
-//                 <>
-//                     <div id="profile-image-container">
-//                         <div id="profile-image-frame" >
-//                             {profilePic}
-//                         </div>
-//                     </div>
-//                     <div id="user-text">
-//                         {name}
-//                     </div>
-
-//                     <div id="profile-personal-followers">
-//                         <h4>1 000  followers • 1 following</h4>
-//                     </div>
-//                     <div id="profile-personal">
-//                         <UserDetails user={user} />
-//                     </div>
-//                     <div>
-//                         <ProfileNavBar
-//                             currentUser={currentUser}  //USER IS NOT DEFINED
-//                             user={user}
-//                             openModal={openModal}
-//                             closeModal={closeModal}
-//                         // handleEdit={this.handleEdit}
-//                         />
-//                     </div>
-//                     {/* </div> */}
-//                     <ul id='board-list'>
-//                         {currentUserBoards.map((board, idx) => {
-//                             let pinArr;
-//                             let allPins;
-//                             let imageTag =
-//                                 <div id='pin-image-wrapper1'>
-//                                     <div className='pin-noimg'></div>
-//                                 </div>
-//                             if (board.pinIds.length > 0) {
-//                                 pinArr = board.pinIds.map(pinId => {
-//                                     return pins[pinId]
-//                                 })
-//                                 if (pinArr.length > 0) {
-//                                     allPins = pinArr.map((pin, idx) => {
-//                                         if (idx < 3 && pin != 'undefined') {
-//                                             return <img key={idx} id='pin-image1' src={pin.photo} />
-//                                         }
-//                                     })
-//                                     imageTag =
-//                                         <div id='pin-image-wrapper'>
-//                                             {allPins}
-//                                         </div>
-//                                 }
-//                             }
-//                             return (
-//                                 <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-//                                     {imageTag}
-//                                     <div id='board-text'>
-//                                         <li>{board.title}</li>
-//                                         <p>{board.pinIds.length} Pins</p>
-//                                     </div>
-//                                 </div>
-//                             )
-//                         })}
-                        
-//                     </ul>
-//                 </>
-//             )
-//         } else {
-//             return (
-//                 <>
-//                     <div id="profile-image-container">
-//                         <div id="profile-image-frame" >
-//                             {profilePic}
-//                         </div>
-//                     </div>
-//                     <div id="user-text">
-//                         {name}
-//                     </div>
-
-//                     <div id="profile-personal-followers">
-//                         <h4>1 000  followers • 1 following</h4>
-//                     </div>
-//                     <div id="profile-personal">
-//                         <UserDetails user={user} />
-//                     </div>
-//                     <div  >
-//                         <ProfileNavBar
-//                             currentUser={currentUser}  //USER IS NOT DEFINED
-//                             user={user}
-//                             openModal={openModal}
-//                             closeModal={closeModal}
-//                         // handleEdit={this.handleEdit}
-//                         />
-//                     </div>
-//                     <p>You don't have any boards yet!</p>
-//                 </>
-//             );
-//         }
-//     }
-// }

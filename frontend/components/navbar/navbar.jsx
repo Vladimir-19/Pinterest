@@ -24,7 +24,7 @@ class NavBar extends React.Component {
                     // className="icon-container-shadow"
                 >
                     <i className="far fa-user-circle"
-                    style={{ "fontSize": "38px", "color": "#8e8e8e" }}></i>
+                        style={{ "fontSize": "38px", "color": "#575252" }}></i>
                 </div>
             );
 
@@ -66,7 +66,7 @@ class NavBar extends React.Component {
                                     <div className="icon-container-shadow">
                                         <div className="icon-container">
                                             <i className="fab fa-github"
-                                                style={{ "fontSize": "32px", "color": "#8e8e8e" }}></i>
+                                                style={{ "fontSize": "32px", "color": "#575252" }}></i>
                                         </div>
                                     </div>
                                 </a>
@@ -78,7 +78,7 @@ class NavBar extends React.Component {
                                         <div className="icon-container">
                                             <i 
                                             // className="fab fa-linkedin"
-                                                style={{ "fontSize": "36px", "color": "#8e8e8e", "fontWeight" : "100" }}
+                                                style={{ "fontSize": "36px", "color": "#575252", "fontWeight" : "100" }}
                                             >in</i>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@ class NavBar extends React.Component {
                                     style={{"color" : "gray"}}
                                 >
                                     <i className="fas fa-sign-out-alt"
-                                        style={{ "fontSize": "32px", "color": "#8e8e8e", "padding" : "12px"}}
+                                        style={{ "fontSize": "32px", "color": "#575252", "padding" : "12px"}}
                                     ></i>
                                 </NavLink>
                             </div>

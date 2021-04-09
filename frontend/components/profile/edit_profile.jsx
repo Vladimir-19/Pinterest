@@ -76,7 +76,7 @@ class EditProfileForm extends React.Component {
         const profilePhoto = (this.state.photo) ? (
             <img src={this.state.photo} alt="profile_photo" className="edit-profile" id="photo" />
         ) : (
-                <i className="far fa-user-circle" style={{"fontSize" : "80px", "color" : "gray"}}></i>
+                <i className="far fa-user-circle" style={{ "fontSize": "80px", "color": "#575252"}}></i>
             );
         const displayPhoto = (this.state.photoPreview) ? (
             <img src={this.state.photoPreview} className="edit-profile" id="photo" />
