@@ -11,7 +11,6 @@ export default class BoardShow extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            loading: true,
             fetched: false,
             openPin: false,
             openPinId: null,
@@ -63,8 +62,10 @@ export default class BoardShow extends React.Component {
     // }
 
     componentDidMount() {
+        this.props.startLoading();
         this.props.fetchBoards();
-        this.props.fetchPins().then(() => this.setState({ fetched: true, loading: false }))
+        this.props.fetchPins().then(() => this.setState({ fetched: true}));
+        setTimeout(() => this.props.stopLoading(), 600);
         // this.props.fetchUser(this.props.currentUser.id);
     }
 
@@ -91,7 +92,7 @@ export default class BoardShow extends React.Component {
     
 
     render() {
-        const { board, currentUser, pins, boardsPins, openEditBoard, modal, openModal, closeModal } = this.props;
+        const { board, currentUser, pins, boardsPins, openEditBoard, modal, openModal, closeModal, loading } = this.props;
         
         let pinArr = [];
         if (this.state.fetched == true && board.pinIds.length > 0) {
@@ -102,10 +103,16 @@ export default class BoardShow extends React.Component {
             })
         }
 
+        const loader = (loading) ? (
+            <div className="loading-background">
+                <div className="loader"></div>
+            </div>
+        ) : null;
+
         if (pinArr.length > 0) {
             return (
                 <div id='board-show-wrapper'>
-
+                    {loader}
                     <Link to={`/users/${currentUser.id}`} style={{ "zIndex": "1000", "marginLeft": "50px", "color": "black" }}>
                         {/* margin-left */}
                         {/* <i className="fas fa-arrow-left"></i> */}
@@ -210,7 +217,7 @@ export default class BoardShow extends React.Component {
         } else {
             return (
                 <div id='board-show-wrapper'>
-
+                    {loader}
                     <Link to={`/users/${currentUser.id}`} style={{ "zIndex": "1000", "marginLeft": "50px", "color": "black" }}>
                         {/* margin-left */}
                         {/* <i className="fas fa-arrow-left"></i> */}

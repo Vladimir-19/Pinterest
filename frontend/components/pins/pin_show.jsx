@@ -27,7 +27,9 @@ class PinShow extends React.Component {
     }
 
     componentDidMount() {
+        this.props.startLoading();
         this.props.fetchPin(this.props.match.params.pinId);
+        setTimeout(() => this.props.stopLoading(), 600);
     }
 
     toggleShow() {
@@ -84,8 +86,15 @@ class PinShow extends React.Component {
 
 
     render() {
-        const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal } = this.props; //openNewBoardPin
+        const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal, loading } = this.props; //openNewBoardPin
+        
         if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
+
+        const loader = (loading) ? (
+            <div className="loading-background">
+                <div className="loader"></div>
+            </div>
+        ) : null;
 
         const pinOwner = pin.user || { username: "" };
         const pinOwnerFullName = `${pinOwner.firstName} ${pinOwner.lastName}`;
@@ -205,6 +214,7 @@ class PinShow extends React.Component {
                     >
                         <i className="fas fa-long-arrow-alt-left" style={{ fontSize: "170%" }}></i>
                     </a>
+                    {loader}
                     <div className="pin-show wrapper"
                         onClick={this.goBack}>
                         <div className="pin-show container"
@@ -331,6 +341,7 @@ class PinShow extends React.Component {
             return (
                 <div className="pin-show main-container"
                     onClick={this.goBack}>
+                    {loader}
                     <a
                         className="pin-show goback-button"
                         onClick={this.goBack}

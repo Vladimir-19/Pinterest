@@ -12,6 +12,7 @@ import { fetchBoards, deleteBoard } from '../../actions/board_actions';
 import { withRouter } from "react-router-dom";
 // import { fetchSingleUser } from "../../actions/user_actions";
 import { fetchUser } from "../../actions/user_actions";
+import { startLoading, stopLoading } from "../../actions/loading_actions"
 
 import BoardShow from './board_show';
 
@@ -23,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     pins: state.entities.pins,
     board: state.entities.boards[ownProps.match.params.boardId],
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    loading: state.ui.loading
     // board: state.entities.boards[board.id]
     // board: state.entities.boards[ownProps.match.params.board.id]
     // board: state.entities.boards[board.id]
@@ -55,6 +57,9 @@ const mapDispatchToProps = dispatch => ({
     deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
     fetchPins: () => dispatch(fetchPins()),
     fetchBoards: () => dispatch(fetchBoards()),
+    startLoading: () => dispatch(startLoading()),
+    stopLoading: () => dispatch(stopLoading())
+
     // openEditBoard: board => dispatch(openModal('edit-board', board)),
 });
 
