@@ -102,8 +102,8 @@ class PinShow extends React.Component {
 
     render() {
         const { pin, currentUserId, openEditPin, openNewBoardPin, modal, openModal, closeModal, loading } = this.props; //openNewBoardPin
-        
-        if (!pin) return <div style={{ "paddingTop": "65px" }}>Loading...</div>;
+       
+        if (!pin) return <div style={{ "paddingTop": "65px" }}> <h2>Loading...</h2></div>;
 
         const loader = (loading) ? (
             <div className="loading-background">
@@ -153,17 +153,18 @@ class PinShow extends React.Component {
             </a>
         );
 
+        // debugger;
         const urlLink = pin.url;
-        const linkto = (pin.url === "") ? (
+        const linkto = (pin.url !== "") ? (
             <a
                 href={pin.url}
                 target="_blank"
                 style={{ "color": "black" }} //"text-decoration": "none",
             >
-                www.{urlLink.slice(12, 20)}...
-            </a>        ) : (
-                // <h3 style={{ "color": "gray" }}>The link is not available.</h3>
-                <h3></h3>
+                www.{urlLink.slice(11, 22)}...
+            </a>        
+            ) : (
+                <h3 style={{ "color": "gray" }}>Link was not provided.</h3>
         );
         /// DO NOT DELETE
         //const pinSource = (pin.url === "") ? (

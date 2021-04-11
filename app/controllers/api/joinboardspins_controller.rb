@@ -9,7 +9,7 @@ class Api::JoinboardspinsController < ApplicationController
             render "api/boards/show"
         else
             # render json: @board.errors.full_messages, status: 422
-             render json: @boardPin.errors.full_messages, status: 422
+            render json: @boardPin.errors.full_messages, status: 422
         end
     end
 

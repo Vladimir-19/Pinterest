@@ -7,7 +7,7 @@ class CreateBoardPinForm extends React.Component {
         this.state = {
             pin_id: this.props.pinId,
             board_id: null,
-            // message: false
+            message: false
         };
         this.handleSave = this.handleSave.bind(this);
         // this.renderErrors = this.renderErrors.bind(this);
@@ -40,25 +40,56 @@ class CreateBoardPinForm extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
-        this.setState({ board_id: e.currentTarget.value },
-            () => this.props.pinToBoard(this.state) //it helps not to press the button twice
-                // .then(this.props.closeModal)
-                );
-        // this.setState({ board_id: e.currentTarget.value })
+        // this.setState({ board_id: e.currentTarget.value },
+        //     () => this.props.pinToBoard(this.state) //it helps not to press the button twice
+        //         // .then(this.props.closeModal)
+        //         );
+        // // this.setState({ board_id: e.currentTarget.value })
 
-        // console.log(this.state)
-        // this.endgame(e)
-        // this.props.pinToBoard(boardPin).then(
-        //     this.setState(() => {
-        //         message: true;
-        //     }),
-        // );
+        // // console.log(this.state)
+        // // this.endgame(e)
+        // // this.props.pinToBoard(boardPin).then(
+        // //     this.setState(() => {
+        // //         message: true;
+        // //     }),
+        // // );
+        this.blabla(e)
     }
 
-    render() {
+    blabla(e) {
+        e.preventDefault();
         // debugger;
+        const alreadyPinned = this.props.allBoards.filter(board => (board.pinIds.includes(this.props.pinId)))
+        const onBoard = alreadyPinned.filter(board => {
+            return (board.id === e.currentTarget.value)}
+            )
+
+        if (onBoard.length === 0) {
+            this.props.pinToBoard({ pinId: this.props.pinId, boardId: e.target.value })
+            this.props.history.push(`/boards/${e.target.value}`);
+        } else {
+            // this.setState({ toggleSelect: 'Pin already exists on your board!' })
+            this.setState({ message: true });        }
+    }
+
+    // print() {
+    //     if (message === true) {
+    //         <div className="create-board error-container">
+    //             <div className="create-board error">
+    //                 {/* {this.handleSave()} */}
+    //                 Pin already exists on your board!
+    //             </div>
+    //         </div>
+    //     } else null;
+    // }
+
+    render() {
         const { currentUserId, pin, allBoards, joinBoardsPin, pins, closeModal } = this.props; //closeModal
         // const Userboards = allBoards.filter(board => (board.userId === currentUser.id));
+
+        // if (this.props.allBoards) : ();
+        
+
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
             // debugger
@@ -99,11 +130,14 @@ class CreateBoardPinForm extends React.Component {
                     {/* className="create-board-pin header" */}
                     <div className="create-board-pin form-title"> 
                     Choose board
-                        {/* <div className="create-board error-container">
-                            <div className="create-board error">
-                                {this.renderErrors()}
+                        {this.state.message === true ? 
+                            <div className="create-board error-container">
+                                <div className="create-board error">
+                                {/* {this.handleSave()} */}
+                                    Pin already exists on your board!
+                                </div>
                             </div>
-                        </div> */}
+                            : null }
                     </div>
                 </div>
                 <div className="create-board-pin body">
