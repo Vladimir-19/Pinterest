@@ -33,7 +33,7 @@ class NavBar extends React.Component {
                 <div className="nav-container">
                     <ul className="nav-ul">
                         <li className="nav-lis">
-                            <a key="1" className="nav-link-home-logo" href="#">XXX</a> 
+                            <a key="1" className="nav-link-home-logo" href="#"></a> 
                             <a key="2" className="nav-link-home" href="#">
                                 Home
                             </a>

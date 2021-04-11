@@ -21,6 +21,7 @@ const mapStateToProps = (state) => {
         currentUserId,
         // boards,
         // pin, //uncomment
+        errors: state.errors.session,
         pins: Object.values(state.entities.pins),
         allBoards,
     }

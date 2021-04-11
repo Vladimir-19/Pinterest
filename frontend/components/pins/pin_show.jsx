@@ -23,8 +23,23 @@ class PinShow extends React.Component {
         this.hide = this.hide.bind(this);
         this.showEditModal = this.showEditModal.bind(this);
         this.hideEditModal = this.hideEditModal.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
 
     }
+
+    // renderErrors() {
+    //     return (
+    //         <ul >
+    //             {this.props.errors.map((error, i) => (
+    //                 <li
+    //                     className="session-errors"
+    //                     key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
 
     componentDidMount() {
         this.props.startLoading();
@@ -147,7 +162,8 @@ class PinShow extends React.Component {
             >
                 www.{urlLink.slice(12, 20)}...
             </a>        ) : (
-                <h3 style={{ "color": "gray" }}>The link is not available.</h3>
+                // <h3 style={{ "color": "gray" }}>The link is not available.</h3>
+                <h3></h3>
         );
         /// DO NOT DELETE
         //const pinSource = (pin.url === "") ? (
@@ -239,6 +255,11 @@ class PinShow extends React.Component {
                                                 <i className="far fa-edit" style={{ color: "black", fontSize: "200%" }}></i>
                                             </div>
                                         </a>
+                                        {/* <div className="create-board error-container">
+                                            <div className="create-board error">
+                                                {this.renderErrors()}
+                                            </div>
+                                        </div> */}
                                         <div style={{
                                             // id="create-pinboard-container"
                                             visibility: this.state.showEditOptions ?

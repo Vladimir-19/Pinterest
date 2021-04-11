@@ -10,6 +10,8 @@ class CreateBoardPinForm extends React.Component {
             // message: false
         };
         this.handleSave = this.handleSave.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
+
 
     }
 
@@ -22,6 +24,20 @@ class CreateBoardPinForm extends React.Component {
     //     // this.state.pinToBoard(this.state)
     // }
 
+    // renderErrors() {
+    //     return (
+    //         <ul >
+    //             {this.props.errors.map((error, i) => (
+    //                 <li
+    //                     className="session-errors"
+    //                     key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
+
     handleSave(e) {
         e.preventDefault();
         this.setState({ board_id: e.currentTarget.value },
@@ -30,6 +46,7 @@ class CreateBoardPinForm extends React.Component {
                 );
         // this.setState({ board_id: e.currentTarget.value })
 
+        // console.log(this.state)
         // this.endgame(e)
         // this.props.pinToBoard(boardPin).then(
         //     this.setState(() => {
@@ -39,13 +56,17 @@ class CreateBoardPinForm extends React.Component {
     }
 
     render() {
+        // debugger;
         const { currentUserId, pin, allBoards, joinBoardsPin, pins, closeModal } = this.props; //closeModal
         // const Userboards = allBoards.filter(board => (board.userId === currentUser.id));
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
+            // debugger
         const firstPinPhoto = (board.firstPin !== undefined) ? (
             <img src={board.pin.last.photo} className="board-list-item photo" />
         ) : null;
+            // console.log(pin)
+        // const alreadyExist = board.filter(board => (board.pinIds.includes(this.props.pinId)));
             return (
                 <li
                     key={board.id}
@@ -76,7 +97,14 @@ class CreateBoardPinForm extends React.Component {
                 {/* className="create-board-pin container" */}
                 <div >
                     {/* className="create-board-pin header" */}
-                    <div className="create-board-pin form-title">Choose board</div>
+                    <div className="create-board-pin form-title"> 
+                    Choose board
+                        {/* <div className="create-board error-container">
+                            <div className="create-board error">
+                                {this.renderErrors()}
+                            </div>
+                        </div> */}
+                    </div>
                 </div>
                 <div className="create-board-pin body">
                     {/* <div className="create-board-pin first-half">

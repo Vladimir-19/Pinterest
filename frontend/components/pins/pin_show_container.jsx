@@ -34,7 +34,9 @@ const mapStateToProps = (state, ownProps) => ({
     currentUserId: state.session.id,
     pins: Object.values(state.entities.pins),
     modal: state.ui.modal,
-    loading: state.ui.loading
+    loading: state.ui.loading,
+    errors: state.errors.session,
+
 });
 
 const mapDispatchToProps = dispatch => ({
