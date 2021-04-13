@@ -7,10 +7,10 @@ class CreateBoardPinForm extends React.Component {
         this.state = {
             pin_id: this.props.pinId,
             board_id: null,
-            message: false
+            message: false,
+            error: false
         };
         this.handleSave = this.handleSave.bind(this);
-        // this.renderErrors = this.renderErrors.bind(this);
 
 
     }
@@ -18,25 +18,6 @@ class CreateBoardPinForm extends React.Component {
     componentDidMount() {
         this.props.fetchBoards();
     }
-
-    // endgame(e) {
-    //     e.preventDefault();
-    //     // this.state.pinToBoard(this.state)
-    // }
-
-    // renderErrors() {
-    //     return (
-    //         <ul >
-    //             {this.props.errors.map((error, i) => (
-    //                 <li
-    //                     className="session-errors"
-    //                     key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
 
     handleSave(e) {
         e.preventDefault();
@@ -46,30 +27,24 @@ class CreateBoardPinForm extends React.Component {
         //         );
         // // this.setState({ board_id: e.currentTarget.value })
 
-        // // console.log(this.state)
-        // // this.endgame(e)
-        // // this.props.pinToBoard(boardPin).then(
-        // //     this.setState(() => {
-        // //         message: true;
-        // //     }),
-        // // );
-        this.blabla(e)
+        this.saveBoardPin(e)
     }
 
-    blabla(e) {
+    saveBoardPin(e) {
         e.preventDefault();
-        // debugger;
-        const alreadyPinned = this.props.allBoards.filter(board => (board.pinIds.includes(this.props.pinId)))
-        const onBoard = alreadyPinned.filter(board => {
+        const pinnedArr = this.props.allBoards.filter(board => (board.pinIds.includes(this.props.pinId)))
+        const pinBoardMatch = pinnedArr.filter(board => {
             return (board.id === e.currentTarget.value)}
             )
 
-        if (onBoard.length === 0) {
-            this.props.pinToBoard({ pinId: this.props.pinId, boardId: e.target.value })
-            this.props.history.push(`/boards/${e.target.value}`);
+        if (pinBoardMatch.length === 0) {
+            this.setState({ board_id: e.currentTarget.value, message: true},
+                () => this.props.pinToBoard(this.state)) //it helps not to press the button twice
+            setTimeout(() => this.setState({ message: false }), 2000)
         } else {
-            // this.setState({ toggleSelect: 'Pin already exists on your board!' })
-            this.setState({ message: true });        }
+            this.setState({ error: true });   
+            setTimeout(() => this.setState({ error: false }), 2000)
+        }
     }
 
     // print() {
@@ -130,7 +105,7 @@ class CreateBoardPinForm extends React.Component {
                     {/* className="create-board-pin header" */}
                     <div className="create-board-pin form-title"> 
                     Choose board
-                        {this.state.message === true ? 
+                        {this.state.error === true ? 
                             <div className="create-board error-container">
                                 <div className="create-board error">
                                 {/* {this.handleSave()} */}
@@ -138,6 +113,14 @@ class CreateBoardPinForm extends React.Component {
                                 </div>
                             </div>
                             : null }
+                        {this.state.message === true ?
+                            <div className="create-board error-container">
+                                <div className="create-board error" style={{"color": "blue"}}>
+                                    {/* {this.handleSave()} */}
+                                    Saved!
+                                </div>
+                            </div>
+                            : null}
                     </div>
                 </div>
                 <div className="create-board-pin body">

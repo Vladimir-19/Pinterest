@@ -51,7 +51,6 @@ class CreateBoardForm extends React.Component {
 
     render() {
         const { errors, formType } = this.props;
-        // const checked = (this.state.secret) ? 'checked' : null;
 
         return (
             <div id="create-board-container">
