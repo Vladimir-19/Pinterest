@@ -47,32 +47,16 @@ class CreateBoardPinForm extends React.Component {
         }
     }
 
-    // print() {
-    //     if (message === true) {
-    //         <div className="create-board error-container">
-    //             <div className="create-board error">
-    //                 {/* {this.handleSave()} */}
-    //                 Pin already exists on your board!
-    //             </div>
-    //         </div>
-    //     } else null;
-    // }
-
     render() {
-        const { currentUserId, pin, allBoards, joinBoardsPin, pins, closeModal } = this.props; //closeModal
-        // const Userboards = allBoards.filter(board => (board.userId === currentUser.id));
-
-        // if (this.props.allBoards) : ();
-        
+        const { currentUserId, allBoards, closeModal, pins } = this.props; 
 
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
-            // debugger
-        const firstPinPhoto = (board.firstPin !== undefined) ? (
-            <img src={board.pin.last.photo} className="board-list-item photo" />
-        ) : null;
-            // console.log(pin)
-        // const alreadyExist = board.filter(board => (board.pinIds.includes(this.props.pinId)));
+        // debugger
+        let i = pins[board.pinIds[0]]
+        const pinPhoto = (i !== undefined) ? (
+                <img src={i.photo} className="board-list-item photo"/>
+            ) : null;
             return (
                 <li
                     key={board.id}
@@ -80,19 +64,15 @@ class CreateBoardPinForm extends React.Component {
                     value={board.id} 
                     // value={boards.id}
                     onClick={this.handleSave}
-                >
-                    <div className="board-list-item photo-container">
-                        {firstPinPhoto}
+                    >
+                    <div className="board-list-item photo-container" >
+                        {pinPhoto}
                     </div>
                     <div className="board-list-item title">
                         {board.title}
                     </div>
-                    {/* <div className="save-text">&nbsp;Save</div> */}
-                    {/* <button value={board.id} onClick={(e) => this.handleSave(e)}>save</button> */}
-
                     <div className="board-list-item save-button">
                         <div>&nbsp;<i className="fas fa-thumbtack save-icon"></i></div> 
-                        {/* //<div className="save-text">Save</div> */}
                     </div>
                 </li>
             )
@@ -100,28 +80,22 @@ class CreateBoardPinForm extends React.Component {
 
         return (
             <div >
-                {/* className="create-board-pin container" */}
-                <div >
-                    {/* className="create-board-pin header" */}
-                    <div className="create-board-pin form-title"> 
+                <div className="create-board-pin form-title"> 
                     Choose board
                         {this.state.error === true ? 
                             <div className="create-board error-container">
                                 <div className="create-board error">
-                                {/* {this.handleSave()} */}
-                                    Pin already exists on your board!
+                                    Already on your board!
                                 </div>
                             </div>
                             : null }
                         {this.state.message === true ?
                             <div className="create-board error-container">
                                 <div className="create-board error" style={{"color": "blue"}}>
-                                    {/* {this.handleSave()} */}
                                     Saved!
                                 </div>
                             </div>
                             : null}
-                    </div>
                 </div>
                 <div className="create-board-pin body">
                     {/* <div className="create-board-pin first-half">

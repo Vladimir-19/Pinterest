@@ -22,7 +22,8 @@ const mapStateToProps = (state) => {
         // boards,
         // pin, //uncomment
         errors: state.errors.session,
-        pins: Object.values(state.entities.pins),
+        // pins: Object.values(state.entities.pins),
+        pins: (state.entities.pins),
         allBoards,
     }
 };

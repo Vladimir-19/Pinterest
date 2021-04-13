@@ -170,6 +170,7 @@ export default class UserProfile extends React.Component {
                                             return <img key={idx} id='pin-image1' src={pin.photo} />
                                         }
                                     })
+                                    // debugger
                                     imageTag =
                                         <div id='pin-image-wrapper'>
                                             {/* key={board.id} */}
