@@ -1,6 +1,6 @@
 class Pin < ApplicationRecord
 
-    validates :title, presence: { message: "Please enter a valid title"}
+    validates :title, presence: { message: "is not valid."}
     
     belongs_to :user
 

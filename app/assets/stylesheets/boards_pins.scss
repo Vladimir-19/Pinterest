@@ -109,7 +109,7 @@
   overflow: auto;
 }
 
-.create-board-pin.board-list-item {
+.create-board-pin.pinBoard-list {
   cursor: pointer;
   box-sizing: border-box;
   padding: 8px 24px;
@@ -126,7 +126,7 @@
   }
 }
 
-.board-list-item.photo-container {
+.pinBoard-list.photo-container {
   margin-right: 8px;
   height: 36px;
   width: 36px;
@@ -142,7 +142,7 @@
   }
 }
 
-.board-list-item.title{
+.pinBoard-list.title{
   text-align: left;
   max-width: 100%;
   overflow: hidden;
@@ -161,7 +161,7 @@
   line-height: 32px;
 }
 
-.board-list-item.save-button {
+.pinBoard-list.save-button {
   margin-left: 20px;
   border-radius: 50%;
   padding: 10px;

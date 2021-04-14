@@ -15,8 +15,25 @@ class CreatePinForm extends React.Component {
         this.handleSave = this.handleSave.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.deleteImage = this.deleteImage.bind(this);
+
+        this.renderErrors = this.renderErrors.bind(this);
+
     }
 
+    renderErrors() {
+        // debugger
+        return (
+            <ul >
+                {this.props.errors.map((error, i) => (
+                    <li
+                        className="session-errors"
+                        key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
 
     //wtf
     componentDidMount() {
@@ -90,7 +107,7 @@ class CreatePinForm extends React.Component {
     }
 
     render() {
-        const { currentUser, boards, errors, formType } = this.props;
+        const { currentUser, boards, errors, formType, pins } = this.props;
 
         const klass = (this.state.boardList) ? 'show' : 'hide';
         const dropdownLabel = (this.state.boardId === null) ? (
@@ -108,30 +125,25 @@ class CreatePinForm extends React.Component {
 
         const boardListItems = (boards.length > 0) ? (
             boards.map(board => {
-                const firstPinImage = (board.firstPin !== undefined) ? (
-                    <img src={`${board.firstPin.photo}`}
-                        className="board-li pin-photo" />
-                ) : (
-                        <div className="board-li pin-photo"></div>
-                    );
-                const secret = (board.secret) ? 'show ish' : 'hide';
+                let i = pins[board.pinIds[0]]
+                const pinPhoto = (i !== undefined) ? (
+                    <img src={i.photo} className="pinBoard-list photo" />
+                ) : null;
+
 
                 return (
                     <li
                         key={board.id}
-                        className="create-pin board-list-item"
+                        className="create-pin pinBoard-list"
                         value={board.id}
                         onClick={this.selectBoard}
                     >
                         <div className="create-pin board-li content">
                             <div className="board-li pin-photo-frame">
-                                {firstPinImage}
+                                {pinPhoto}
                                 <div></div>
                             </div>
                             <div className="board-li title">{board.title}</div>
-                            <div className={`board-li secret-icon-container ${secret}`}>
-                                <i className="fas fa-lock board-li secret-icon"></i>
-                            </div>
                         </div>
                     </li>
                 )
@@ -232,6 +244,11 @@ class CreatePinForm extends React.Component {
                                         placeholder="Add your title"
                                         value={this.state.title}
                                         onChange={this.changeInput("title")} />
+                                </div>
+                                <div className="create-board error-container">
+                                    <div className="create-board error">
+                                        {this.renderErrors()}
+                                    </div>
                                 </div>
                                 <div className="create-pin" id="user-container">
                                     <div className="create-pin" id="user-image-frame">

@@ -15,7 +15,7 @@ class Home extends React.Component {
         } else {
             this.props.startLoading();
             this.props.fetchPins();
-            setTimeout(() => this.props.stopLoading(), 2800);
+            setTimeout(() => this.props.stopLoading(), 2000);
             // setTimeout(this.setState({ loading: false }), 2800);
 
         }

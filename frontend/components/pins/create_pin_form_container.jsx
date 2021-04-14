@@ -17,7 +17,8 @@ const mapStateToProps = state => ({
     )),
     // boards: Object.values(state.entities.boards),
     // pins: Object.values(state.entities.pins),
-    errors: state.errors.pin,
+    pins: (state.entities.pins),
+    errors: state.errors.session,
     formType: "Create Pin",
 });
 

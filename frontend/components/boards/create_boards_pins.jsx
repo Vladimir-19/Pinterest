@@ -11,8 +11,6 @@ class CreateBoardPinForm extends React.Component {
             error: false
         };
         this.handleSave = this.handleSave.bind(this);
-
-
     }
 
     componentDidMount() {
@@ -42,7 +40,7 @@ class CreateBoardPinForm extends React.Component {
                 () => this.props.pinToBoard(this.state)) //it helps not to press the button twice
             setTimeout(() => this.setState({ message: false }), 2000)
         } else {
-            this.setState({ error: true });   
+            this.setState({ error: true })   
             setTimeout(() => this.setState({ error: false }), 2000)
         }
     }
@@ -55,23 +53,23 @@ class CreateBoardPinForm extends React.Component {
         // debugger
         let i = pins[board.pinIds[0]]
         const pinPhoto = (i !== undefined) ? (
-                <img src={i.photo} className="board-list-item photo"/>
+            <img src={i.photo} className="pinBoard-list photo"/>
             ) : null;
             return (
                 <li
                     key={board.id}
-                    className="create-board-pin board-list-item"
+                    className="create-board-pin pinBoard-list"
                     value={board.id} 
                     // value={boards.id}
                     onClick={this.handleSave}
                     >
-                    <div className="board-list-item photo-container" >
+                    <div className="pinBoard-list photo-container" >
                         {pinPhoto}
                     </div>
-                    <div className="board-list-item title">
+                    <div className="pinBoard-list title">
                         {board.title}
                     </div>
-                    <div className="board-list-item save-button">
+                    <div className="pinBoard-list save-button">
                         <div>&nbsp;<i className="fas fa-thumbtack save-icon"></i></div> 
                     </div>
                 </li>
@@ -98,11 +96,6 @@ class CreateBoardPinForm extends React.Component {
                             : null}
                 </div>
                 <div className="create-board-pin body">
-                    {/* <div className="create-board-pin first-half">
-                        <div className="create-board-pin photo-container">
-                            <img src={pin.photo} className="create-board-pin photo" />
-                        </div>
-                    </div> */}
                     <div className="create-board-pin second-half">
                         <ul className="create-board-pin board-list">
                             {boardListItems}
