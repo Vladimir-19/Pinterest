@@ -8,32 +8,11 @@ class EditBoardForm extends React.Component {
             id: this.props.board.id,
             title: this.props.board.title,
             description: this.props.board.description,
-            userId: this.props.board.userId
         };
 
         this.update = this.update.bind(this);
         this.handleSave = this.handleSave.bind(this);
-        // this._getInitialState = this._getInitialState.bind(this);
-        // this.handleCancel = this.handleCancel.bind(this);
-
     }
-
-    // _getInitialState() {
-    //     const board = this.props.board;
-    //     const initialState = Object.assign({}, {
-    //         id: board.id,
-    //         title: board.title || "",
-    //         description: board.description || "",
-    //         // userId: board.userId
-    //     });
-
-    //     return initialState
-    // }
-
-    // handleCancel(e) {
-    //     e.preventDefault();
-    //     this.setState(this._getInitialState);
-    // }
 
     update(field) {
         return (e =>
@@ -44,20 +23,14 @@ class EditBoardForm extends React.Component {
     handleSave(e) {
         e.preventDefault();
         this.props.processForm(this.state).then(() => location.reload());
-         //.then(() => window.history.go(-1));
     }
 
     handleCancel() {
         location.reload()
     }
-  
 
     render() {
-        const { board, errors, formTitle } = this.props;
-        const checked = (this.state.secret) ? 'checked' : null;
-
-        // let currentState = Object.assign({}, this.state);
-        // const disabled = (JSON.stringify(currentState) === JSON.stringify(this._getInitialState())) ? "disabled" : "";
+        const { board, formTitle } = this.props;
 
         if (this.state.success === 'Your board was successfully deleted!')
             return (
@@ -130,43 +103,28 @@ class EditBoardForm extends React.Component {
                     </div>
                     <div className="edit-board footer">
                         <div className="edit-board footer-part left">
+                            {this.state.title === "" ?
+                                <div className="create-board error-container">
+                                    <div className="create-board error">
+                                        Don't forget to name your board!
+                                </div>
+                                </div>
+                                : null}
                         </div>
                         <div className="edit-board footer-part right">
-                            {/* <Link 
-                                className="edit-board button cancel"
-                                // to={`/boards/${this.state.id}`}
-                                to={`/users/${this.state.userId}`}
-                            >
-                                Cancel
-                            </Link> */}
+                                {/* to={`/boards/${this.state.id}`} */}
                             <a
                                 className="edit-board button cancel"
                                 onClick={this.handleCancel}
                             >
                                 Cancel
-                                </a>
-                            {/* <button
-                                className={`edit-profile cancel button ${disabled}`}
-                                id="cancel-button"
-                                onClick={this.handleCancel}
+                            </a>
+                            <button
+                                className="edit-board button save"
+                                onClick={this.handleSave}
                             >
-                            </button> */}
-                            {/* <a
-                                //  to={`/users/${this.state.userId}`}
-                                href='http://localhost:3000/#/boards/13'
-                                    className="edit-board button save"
-                                    //to={`/users/${this.state.userId}`}
-                                data-action={this.handleSave}
-                                    >
-                                Save 
-                            </a> */}
-                                           
-                                <button
-                                    className="edit-board button save"
-                                    onClick={this.handleSave}
-                                >
-                                    Save
-                                </button>
+                                Save
+                            </button>
                         </div>
                     </div>
                 </form>

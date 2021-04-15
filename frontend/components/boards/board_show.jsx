@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import BoardItem from './board_item';
 import BoardShowNavBar from './board_show_nav_bar'
 import EditBoardContainer from './edit_board_form_container';
-import edit from './edit';
 
 export default class BoardShow extends React.Component {
     constructor(props) {

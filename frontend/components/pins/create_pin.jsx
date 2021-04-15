@@ -21,7 +21,6 @@ class CreatePinForm extends React.Component {
     }
 
     renderErrors() {
-        // debugger
         return (
             <ul >
                 {this.props.errors.map((error, i) => (
@@ -35,11 +34,8 @@ class CreatePinForm extends React.Component {
         );
     }
 
-    //wtf
     componentDidMount() {
         this.props.fetchBoards();
-            // this.props.fetchPins();
-
     }
 
     hideBoardList(e) {
@@ -52,8 +48,6 @@ class CreatePinForm extends React.Component {
 
     selectBoard(e) {
         this.setState({ boardId: e.currentTarget.value, boardList: false });
-        // this.setState({ boardId: e.target.value, boardList: false});
-        // this.setState({selectBoard: board.title, currentBoard: board.id})
     }
 
     handleSave(e) {
@@ -89,7 +83,6 @@ class CreatePinForm extends React.Component {
 
     handleFile(e) {
         const file = e.currentTarget.files[0];
-        // const file = e.target.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
             this.setState({ photo: file, photoPreview: fileReader.result });
@@ -114,7 +107,6 @@ class CreatePinForm extends React.Component {
             "Select"
         ) : (
                 boards.find(board => board.id === this.state.boardId).title
-                // boards.find(board => board.id === this.state.boardId)
             );
 
         const clickSave = (this.state.boardId === null) ? (

@@ -6,16 +6,13 @@ import Modal from './modal/modal';
 import NavBar from '../components/navbar/navbar';
 
 import UserProfileContainer from './profile/user_profile_container';
-import SplashContainer from '../components/splash_page/splash_container';
 import BoardShowContainer from '../components/boards/board_show_container';
 import CreatePinContainer from "../components/pins/create_pin_form_container";
 import PinShowContainer from "./pins/pin_show_container";
 import HomeContainer from "./home/home_container";
 import pin_index_item from './pins/pin_index_item';
-import PinIndexSearchContainer from '../components/pins/pin_index_search_container';
+import PinIndexSearchContainer from './pins/pin_search_container';
 import EditProfileFormContainer from ".//profile/edit_profile_container";
-// import EditPinContainer from "./pins/edit_pin_form_container";
-// import EditPinForm from './pins/edit_pin_form';
 
 const App  = () => (
     <div className="app-component">
@@ -24,14 +21,12 @@ const App  = () => (
             <NavBar />
         </header>
         <Switch>
-            {/* <Route exact path="/" component={SplashContainer}/> */}
             <Route exact path="/search" component={PinIndexSearchContainer}/>
             <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
             <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer}/>
             <ProtectedRoute exact path="/pin/:pinId" component={PinShowContainer}/>
 
             {/* <ProtectedRoute exact path="/settings" component={EditProfileFormContainer} /> */}
-            {/* <ProtectedRoute exact path="/settings" component={EditPinContainer}/> */}
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
             <ProtectedRoute exact path="/following" component={HomeContainer} />
             {/* <ProtectedRoute exact path="/:user/pins" component={UserProfileContainer} />

@@ -1,17 +1,14 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-
 const masonryEvents = ["load", "resize"];
 
 class PinIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = { ...props}; // DO NOT USE
         this.state = this.props.pin;
 
         this.resizeGridItem = this.resizeGridItem.bind(this); //was c
-        // this.handleClick = this.handleClick.bind(this);
     }
 
     resizeGridItem() { 
@@ -21,20 +18,17 @@ class PinIndexItem extends React.Component {
         let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
         let itemImg = item.querySelector(".masonry-image");
         let rowSpan = Math.ceil((itemImg.getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-        // if (this.state.title !== '') rowSpan += 2;
         item.style.gridRowEnd = "span " + rowSpan;
     }
 
     componentDidMount(e) { //was c
         setTimeout(() => this.resizeGridItem(), 1500);
         masonryEvents.forEach((e) => window.addEventListener(e, this.resizeGridItem));
-        // e.preventDefault();
-        // this.props.openModal({ modal: 'pinboard', pinId: this.props.pin.id })
     }
 
     render() {
         const { userId, user, page, pin, openEditPin, openNewBoardPin } = this.props;
-        const pinTitle = (userId !== null && page === "home" && pin.title !== "") ? (
+        const pinTitle = (userId !== null && pin.title !== "") ? (
             <div className="pin-index-item title-container">
                 <div className="pin-index-item title">{pin.title}</div>
             </div>
@@ -50,12 +44,6 @@ class PinIndexItem extends React.Component {
         ) : null;
 
         const openBoardPinLink = (
-            // <a
-            //     className="pin-index-item save-board-pin-link"
-            //     onClick={() => openNewBoardPin(pin.id)}
-            // >
-            //     <div className="pin-index-item save-board-pin-text">Save</div>
-            // </a>
             <Link
                 className="pin-index-item save-board-pin-link"
                 to={`/pin/${pin.id}`}
@@ -82,13 +70,10 @@ class PinIndexItem extends React.Component {
                     <Link
                         // key={pin.id}
                         to={`/pin/${pin.id}`}
-                        // to={`/pins/${pin.id}`}
                         className="pin-index-item pin-show-link"
                     >
-                        {/* <div className="pin-index-item overlay"></div> */}
                         <img
                             src={pin.photo} 
-                            // src={pin.photoUrl}
                             className="pin-index-item masonry-image" />
                     </Link>
                     <div className="pin-index-item links">
@@ -97,7 +82,7 @@ class PinIndexItem extends React.Component {
                         <div className="pin-index-item pin-link-container">{pinLink}</div>
                     </div>
                 </div>
-                {pinTitle}
+                {pinTitle}  
             </div>
         );
     }

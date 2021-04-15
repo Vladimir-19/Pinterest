@@ -12,7 +12,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     processForm: pin => dispatch(updatePin(pin)),
     deletePin: pinId => dispatch(deletePin(pinId)),
-    openDeletePin: (pin) => dispatch(openModal('delete-pin', pin)),
     closeModal: () => dispatch(closeModal())
 });
 

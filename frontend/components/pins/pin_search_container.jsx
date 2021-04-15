@@ -1,11 +1,6 @@
-import {
-    connect
-} from 'react-redux';
-
+import { connect } from 'react-redux';
 import { fetchPins } from '../../actions/pin_actions';
-
-import PinIndexSearch from './pin_index_search';
-
+import PinIndexSearch from './pin_search';
 
 const mapStateToProps = (state) => {
     const currentUser = state.entities.users[state.session.id];
