@@ -22,7 +22,7 @@ class EditBoardForm extends React.Component {
 
     handleSave(e) {
         e.preventDefault();
-        this.props.processForm(this.state).then(() => location.reload());
+        this.props.processForm(this.state).then(() => location.reload())
     }
 
     handleCancel() {
@@ -125,6 +125,15 @@ class EditBoardForm extends React.Component {
                             >
                                 Save
                             </button>
+                            {/* <input
+                                to={`/boards/${this.state.id}`}
+                                // href='http://localhost:3000/#/boards/13'
+                                className="edit-board button save"
+                                //to={`/users/${this.state.userId}`}
+                                action={this.handleSave}
+                            >
+                                Save
+                            </input>  */}
                         </div>
                     </div>
                 </form>

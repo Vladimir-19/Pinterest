@@ -41,6 +41,7 @@ export default class BoardShow extends React.Component {
     toggleShow() {
         this.setState({ showCreateOptions: !this.state.showCreateOptions })
     }
+
     hide(e) {
         if (e && e.relatedTarget) {
             e.relatedTarget.click();
