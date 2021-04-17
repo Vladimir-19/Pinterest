@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import LoadingIcon from '../loading/loading';
 import { Redirect } from 'react-router-dom';
 import ProfileNavBar from './profile_nav_bar';
 //exutra
@@ -8,14 +6,12 @@ import UserDetails from './user_details';
 
 
 export default class UserProfile extends React.Component {
-    // _isMounted = false;
 
     constructor(props) {
         super(props);
         
         this.state = {
             pins: '',
-            // loading: true,
             openBoard: false,
             openBoardId: null
         }
@@ -24,29 +20,20 @@ export default class UserProfile extends React.Component {
         this.handleEdit = this.handleEdit.bind(this);
         //
         this.handleScroll = this.handleScroll.bind(this); //// 04/03
-        // this.newBoard = this.newBoard.bind(this);
     }
     
 
     componentDidMount() {
-        // _isMounted = true;
         this.props.startLoading(); 
         this.props.fetchBoards()
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
         setTimeout(() => this.props.stopLoading(), 800);
         //
         window.addEventListener("scroll", this.handleScroll); //// 04/03
-        // const _userId = this.props.match.params.userId;
-        // const fetchUser = (userId) => this.props.fetchSingleUser(userId);
-        // this.props.fetchAllUsers().then(res => {
-        //         const user = Object.values(res.users).find(user => user.id === _userId);
-        //         return fetchUser(user.id);
-        //     });
     }
 
     // extra //// 04/03
     componentWillUnmount() {
-        // _isMounted = false;
         window.removeEventListener("scroll", this.handleScroll);
     }
 
@@ -74,12 +61,10 @@ export default class UserProfile extends React.Component {
     }
 
     handleClick() {
-        // this.props.openModal({ modal: 'createboard', currentUser: this.props.currentUser })
         this.props.openModal("createboard");
     }
 
     handleEdit() {
-        // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
         this.props.openModal("editprofile")
     }
 
@@ -92,7 +77,7 @@ export default class UserProfile extends React.Component {
 
     render() {
         const { currentUser, boards, pins, openModal, closeModal, users, loading } = this.props;
-        // debugger;
+
         const loader = (loading) ? (
             <div className="loading-background">
                 <div className="loader"></div>
@@ -100,6 +85,7 @@ export default class UserProfile extends React.Component {
         ) : null;
 
         const user = users.find(user => user.id === currentUser.id);
+
         if (this.state.loading) {
             return <LoadingIcon />;
         }
@@ -110,7 +96,7 @@ export default class UserProfile extends React.Component {
 
         const name = user.firstName && user.lastName ?
             <div>
-                <span>{user.firstName}</span><span>{user.lastName}</span>
+                {user.firstName} {user.lastName}
             </div> : <span>Add Your Name</span>;
 
         const profilePic = user.photo ? (
