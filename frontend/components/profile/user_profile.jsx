@@ -131,7 +131,7 @@ export default class UserProfile extends React.Component {
                     </div>
                     <div >
                         <ProfileNavBar
-                            currentUser={currentUser}  //USER IS NOT DEFINED
+                            currentUser={currentUser}  
                             user={user}
                             openModal={openModal}
                             closeModal={closeModal}

@@ -7,7 +7,6 @@ class CreateBoardForm extends React.Component {
 
         this.update = this.update.bind(this);
         this.updateDescription = this.updateDescription.bind(this);
-        // this.handleCheck = this.handleCheck.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
     }
@@ -33,16 +32,6 @@ class CreateBoardForm extends React.Component {
             </ul>
         );
     }
-
-    // handleCheck() {
-    //     this.setState({ "secret": !this.state.secret });
-    //     const checkbox = document.getElementById('visibility-checkbox');
-    //     if (this.state.secret) {
-    //         checkbox.firstChild.classList.add('checked');
-    //     } else {
-    //         checkbox.firstChild.classList.remove('checked');
-    //     };
-    // }
 
     handleCreate(e) {
         e.preventDefault();
@@ -122,58 +111,18 @@ class CreateBoardForm extends React.Component {
                                                 </span>
                                             </div>
                                         </div>
-                                        {/* <div className="create-board field-container" id="visibility">
-                                            <div className="create-board label-container">
-                                                <label
-                                                    htmlFor="visibility-input"
-                                                    className="create-board label"
-                                                    id="visibility-label">
-                                                    <div
-                                                        className="create-board label-content"
-                                                        onClick={this.handleCheck}
-                                                    >
-                                                        Visibility
-                                                    </div>
-                                                </label>
-                                                <div className="create-board" id="visibility-note">
-                                                    Keep this board secret.
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div
-                                                    className="create-board"
-                                                    id="visibility-checkbox"
-                                                    onClick={this.handleCheck}
-                                                >
-                                                </div>
-                                            </div>
-                                        </div> */}
                                     </div>
                                     <div className="create-board footer">
-                                        <div className="create-board buttons-container">
-                                            <div className="create-board buttons">
-                                                {/* <div className="create-board button-container">
-                                                        <button
-                                                            className="create-board button"
-                                                            id="cancel"
-                                                            onClick={this.handleCancel}
-                                                        >
-                                                            Cancel
-                                                         </button>
-                                                    </div> */}
-                                                <div className="create-board button-container">
-                                                    <button
-                                                        className="create-board button"
-                                                        id="create"
-                                                        onClick={this.handleCreate}
-                                                    >
-                                                        Create
-                                                         </button>
-                                                </div>
-                                            </div>
+                                        <div className="create-board container">
+                                            <button
+                                                className="create-board button"
+                                                id="create"
+                                                onClick={this.handleCreate}
+                                            >
+                                                Create
+                                            </button>
                                         </div>
                                     </div>
-                                    {/* </div> */}
                                 </form>
                             </div>
                         </div>

@@ -11,7 +11,6 @@ class ProfileNavBar extends React.Component {
             showCreateOptions: false
         };
 
-        // this.handleScroll = this.handleScroll.bind(this); //// 04/03
         this.toggleShow = this.toggleShow.bind(this);
         this.hide = this.hide.bind(this);
         this.newBoard = this.newBoard.bind(this);
@@ -19,30 +18,9 @@ class ProfileNavBar extends React.Component {
 
     }
 
-    //// 04/03
-    // componentDidMount() {
-    //     window.addEventListener("scroll", this.handleScroll);
-    // }
-
-    //// 04/03
-    // componentWillUnmount() {
-    //     window.removeEventListener("scroll", this.handleScroll);
-    // }
-
     handleEdit() {
-        // this.props.openModal({ modal: 'editprofile', currentUser: this.props.currentUser })
         this.props.openModal("editprofile")
     }
-
-    // handleScroll() { //// 04/03
-    //     const { prevScrollPos } = this.state;
-    //     const currentScrollPos = window.pageYOffset;
-    //     const fadeInName = (prevScrollPos < currentScrollPos - 50);
-
-    //     this.setState({
-    //         fadeInName
-    //     });
-    // }
 
     toggleShow() {
         let that = this;
@@ -67,20 +45,11 @@ class ProfileNavBar extends React.Component {
             <div id="profile-nav-bar">
                 <div className="profile-header-link">
                     <button
-                        // className="profile-icon-container"
                         className="profile-icon-container-shadow"
                         onClick={this.handleEdit}>
                         <i className="fas fa-pencil-alt" ></i>
                     </button>
-                    {/* <Link to="/settings#profile" className="profile-header-link">
-                        <div className="profile-icon-container-shadow">
-                            <div className="profile-icon-container">
-                                <i className="fas fa-pencil-alt" id="edit-profile-icon"></i>
-                            </div>
-                        </div>
-                    </Link> */}
                     <button
-                        // className="profile-header-link"
                         className="profile-icon-container-shadow-two"
                         onClick={this.toggleShow}
                         onBlur={this.hide}
@@ -116,32 +85,7 @@ class ProfileNavBar extends React.Component {
                                 </Link>
                             </div>
                         </div>
-                        {/* <div id="create-options-triangle">
-                            <svg width="24" height="24" >
-                                <path d="M0 24 L12 12 L24 24"></path>
-                            </svg>
-                        </div> */}
                     </div>
-                <div>
-                            <div className="profile-header-button" id="edit-profile">
-                                {/* <Link to="/settings#profile" className="profile-header-link">
-                                    <div className="profile-icon-container-shadow">
-                                        <div className="profile-icon-container">
-                                            <i className="fas fa-user-edit" id="edit-profile-icon" ></i>
-                                        </div>
-                                    </div>
-                                </Link> */}
-                            
-                            </div>
-                        </div>
-                    {/* </div>  */}
-                    {/* <div id="nav-bar-name-container">
-                        <div id="nav-bar-name-fixed">
-                            <div id="nav-bar-name" className={this.state.fadeInName ? "transitionIn" : "transitionOut"}>
-                                
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         )

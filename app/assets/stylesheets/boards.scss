@@ -211,18 +211,13 @@
 .create-board.error-container {
   box-sizing: border-box;
   margin-top: 4px;
-
 }
 
 .create-board.error {
   text-align: left;
-  // -webkit-hyphens: auto;
-  // -ms-hyphens: auto;
   hyphens: auto;
-  // word-wrap: break-word;
   font-weight: 400;
   letter-spacing: -.4px;
-  // -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   color: #e60023;
@@ -231,58 +226,10 @@
 // .create-board.error-content {}
 .edit-board.input.description {}
 
-.create-board#visibility-checkbox {
-  position: relative;
-  cursor: pointer;
-  margin-right: 12px;
-  height: 26px;
-  width: 26px;
-  border: 1px solid gray;
-  box-sizing: border-box;
-  border-radius: 4px;
-  // wrong sub-selector
-  // &:focus {
-  //   box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5)
-  // }
-}
-
-.create-board#visibility-checked {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  height: 28px;
-  width: 28px;
-  color: black;  
-}
-
-.create-board.checkbox {
-  opacity: 0;
-  &.checked {
-    opacity: 1;
-  }
-}
-
-.create-board#visibility-note {
-  text-align: left;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  word-wrap: break-word;
-  font-weight: 400;
-  letter-spacing: -.4px;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  color: #333;
-  @media (min-width: 576px) {
-    font-size: 12px;
-  }
-}
-
-.create-board.footer-container {
-  box-sizing: border-box;
-  padding: 8px 16px;
-}
+// .create-board.footer-container {
+//   box-sizing: border-box;
+//   padding: 8px 16px;
+// }
 
 .create-board.footer {
   display: flex;
@@ -292,21 +239,12 @@
   box-sizing: border-box;
 }
 
-.create-board.buttons-container {
+.create-board.container {
   box-sizing: border-box;
-}
-
-.create-board.buttons {
-  box-sizing: border-box;
-  padding: 8px 0;
+  padding: 8px 8px;
   margin: 0 -8px;
   display: flex;
   flex-direction: row;
-}
-
-.create-board.button-container {
-  box-sizing: border-box;
-  padding: 0 8px;
 }
 
 .create-board.button {
@@ -315,7 +253,6 @@
   box-sizing: border-box;
   min-height: 40px;
   display: inline-block;
-  // background-color: #efefef;
   margin-right: 15px;
   background-color: #e60023;
   padding: 10px 14px;
@@ -325,10 +262,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
-  // color: #333;
   color: #fff;
   &:hover {
-    // background-color: #e2e2e2;
     background-color:  #ad081b;
   }
 }
