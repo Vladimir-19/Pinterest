@@ -75,12 +75,6 @@ class LogInForm extends React.Component {
                     </div>
 
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-
-
-                        {/* <div onClick={this.props.closeModal} className="close-x">
-                            X
-                        </div> */}
-
                         <div className="login-form">
                             <label>
                                 <input
@@ -89,7 +83,6 @@ class LogInForm extends React.Component {
                                     onChange={this.update('email')}
                                     placeholder="Email"
                                     className="login-input"
-                                // className={`${styles.addLogin} ${styles.loginInput}`}
                                 />
                             </label>
                             <div className="session-form-add-space"></div>
@@ -101,7 +94,6 @@ class LogInForm extends React.Component {
                                     onChange={this.update('password')}
                                     placeholder="Password"
                                     className="login-input"
-                                // className={`${styles.addLogin} ${styles.loginInput}`}
                                 />
                             </label>
 

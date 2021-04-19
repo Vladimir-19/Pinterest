@@ -50,7 +50,7 @@ class CreateBoardPinForm extends React.Component {
 
         const boards = allBoards.filter(board => board.userId === currentUserId);
         const boardListItems = boards.map(board => {
-        // debugger
+
         let i = pins[board.pinIds[0]]
         const pinPhoto = (i !== undefined) ? (
             <img src={i.photo} className="pinBoard-list photo"/>

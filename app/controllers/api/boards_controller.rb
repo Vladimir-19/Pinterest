@@ -22,21 +22,9 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-        # @board = current_user.boards.find(params[:id])
-        # # @board = Board.find(params[:id])
-
-        # if @board.update(board_params)
-        #     render "api/boards/show"
-        # else
-        #     render json: ["Can't edit this board!"], status: 401
-        # end
-
         @board = Board.find(params[:id])
-        # @board = Board.find(params[:board][:id])
-        # @board = current_user.boards.find(params[:id])
 
         if @board.update(board_params)
-            # render "api/boards/show"
             render :show
         else
             render json: ["Can't edit this board!"], status: 401
@@ -45,7 +33,6 @@ class Api::BoardsController < ApplicationController
 
     def destroy
         @board = current_user.boards.find_by(id: params[:id])
-        # @board = Board.find_by(params[:id])
 
         if @board && @board.destroy
             @board.destroy

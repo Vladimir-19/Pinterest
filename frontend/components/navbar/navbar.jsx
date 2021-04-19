@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
-// import SearchbarContainer from '../Searchbar/searchbar_container';
 import { Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../actions/session_actions';
 import { fetchAllUsers, fetchUser } from "../../actions/user_actions";
@@ -16,16 +15,13 @@ class NavBar extends React.Component {
     render() {
         const { currentUser, logout, openModal, closeModal } = this.props;
 
-        const profilePhoto = ((currentUser) && (currentUser.photo)) ? ( // photoUrl
-            <img className="nav-profile-image" src={currentUser.photo} /> //// photoUrl
+        const profilePhoto = ((currentUser) && (currentUser.photo)) ? ( 
+            <img className="nav-profile-image" src={currentUser.photo} /> // photoUrl
         ) : (
-                <div 
-                className='nav-profile-image'
-                    // className="icon-container-shadow"
-                >
-                    <i className="far fa-user-circle"
-                        style={{ "fontSize": "38px", "color": "#575252" }}></i>
-                </div>
+            <div className='nav-profile-image'>
+                <i className="far fa-user-circle"
+                    style={{ "fontSize": "38px", "color": "#575252" }}></i>
+            </div>
             );
 
         if (currentUser) {
@@ -44,9 +40,7 @@ class NavBar extends React.Component {
                             </NavLink>
                             <div
                                 className="nav-bar-search-container" id="search">
-                                {/* SearchContainer */}
                                 <SearchBar />
-                                {/* <h6>i'm a search bar insode inside navbar.jsx</h6> */}
                             </div>
                             <div >
                                 <NavLink
@@ -77,7 +71,6 @@ class NavBar extends React.Component {
                                     <div className="icon-container-shadow">
                                         <div className="icon-container">
                                             <i 
-                                            // className="fab fa-linkedin"
                                                 style={{ "fontSize": "36px", "color": "#575252", "fontWeight" : "100" }}
                                             >in</i>
                                         </div>
@@ -88,7 +81,6 @@ class NavBar extends React.Component {
                                 className="icon-container-shadow">
                                 <NavLink
                                     to="/"
-                                    // className="fas fa-sign-out-alt fa-2x"
                                     className="nav-link-home"
                                     onClick={logout}
                                     replace

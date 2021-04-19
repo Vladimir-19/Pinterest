@@ -1,5 +1,3 @@
-#json.extract! board, :id, :title, :description, :secret, :user_id
-
 json.id board.id
 json.title board.title
 json.description board.description

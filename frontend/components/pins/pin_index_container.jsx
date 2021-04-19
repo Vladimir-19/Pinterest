@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     fetchPins: () => dispatch(fetchPins()),
     openEditPin: pinId => dispatch(openModal("edit-pin", pinId)),
-    openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId))
+    // openNewBoardPin: pinId => dispatch(openModal("new-board-pin", pinId))
 });
 
 export default connect(

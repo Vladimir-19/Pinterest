@@ -30,11 +30,12 @@ const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
-                                            //  DO NOT USE IT
-                                            // export const fetchPins = () => dispatch => {
-                                            //     return PinAPIUtil.fetchPin().then(
-                                            //         pins => dispatch(receivePins(pins)))
-                                            // };
+
+//  DO NOT USE IT
+// export const fetchPins = () => dispatch => {
+//     return PinAPIUtil.fetchPin().then(
+//         pins => dispatch(receivePins(pins)))
+// };
 export const fetchPins = () => dispatch => (
     PinAPIUtil.fetchPins().then(
         pins => dispatch(receivePins(pins))
@@ -53,12 +54,6 @@ export const createPin = pin => dispatch => {
         ))
 };
 
-// export const updatePin = pin => dispatch => {
-//     return PinAPIUtil.updatePin(pin).then(
-//          pin => dispatch(receivePin(pin)),
-//          err => dispatch(receivePinErrors(err.responseJSON))
-//          )
-// };
 export const updatePin = pin => dispatch => (
     PinAPIUtil.updatePin(pin).then(
         pin => dispatch(receivePin(pin)),

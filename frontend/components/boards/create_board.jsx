@@ -44,88 +44,85 @@ class CreateBoardForm extends React.Component {
         return (
             <div id="create-board-container">
                 <div className="create-board" id="sizing">
-                    <div className="create-board" id="modal-fg">
-                        <div className="create-board" id="header">
-                            <div className="create-board" id="header-title-container">
-                                <h1 className="create-board" id="header-title">
-                                    Create board
-                                </h1>
-                            </div>
-                            
-                        </div>
-                        <div className="create-board" id="body">
-                            <div className="create-board" id="form-container">
-                                <form className="create-board" id="form" onSubmit={null}>
-                                    <div className="create-board" id="fields">
-                                        <div className="create-board field-container" id="name">
-                                            <div className="create-board label-container">
-                                                <label
-                                                    htmlFor="name-input"
-                                                    className="create-board label"
-                                                    id="name-label">
-                                                    <div className="create-board label-content">
-                                                        Name
+                    <div >
+                    <div className="create-board" id="header">
+                        <h1 className="create-board" id="header-title-container">
+                            Create board
+                        </h1>
+                    </div>
+                    <div className="create-board" id="body">
+                        <div className="create-board" id="form-container">
+                            <form className="create-board" id="form" onSubmit={null}>
+                                <div className="create-board" id="fields">
+                                    <div className="create-board field-container" id="name">
+                                        <div className="create-board label-container">
+                                            <label
+                                                htmlFor="name-input"
+                                                className="create-board label"
+                                                id="name-label">
+                                                <div className="create-board label-content">
+                                                    Name
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div className="create-board input-container">
+                                            <span>
+                                                <input
+                                                    type="text"
+                                                    className="create-board name-input"
+                                                    // id="name-input"
+                                                    placeholder='Like "Places to Go" or "Recipes to Make"'
+                                                    onChange={this.update}
+                                                />
+                                                <div className="create-board error-container">
+                                                    <div className="create-board error">
+                                                            {this.renderErrors()}
                                                     </div>
-                                                </label>
-                                            </div>
-                                            <div className="create-board input-container">
-                                                <span>
-                                                    <input
-                                                        type="text"
-                                                        className="create-board name-input"
-                                                        // id="name-input"
-                                                        placeholder='Like "Places to Go" or "Recipes to Make"'
-                                                        onChange={this.update}
-                                                    />
-                                                    <div className="create-board error-container">
-                                                        <div className="create-board error">
-                                                                {this.renderErrors()}
-                                                        </div>
-                                                    </div>
-                                                </span>
-                                            </div>
+                                                </div>
+                                            </span>
+                                        </div>
 
-                                            <div className="create-board label-container">
-                                                <label
-                                                    htmlFor="name-input"
-                                                    className="create-board label"
-                                                    id="name-label">
-                                                    <div className="create-board label-content">
-                                                        Description
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div className="create-board input-container">
-                                                <span>
-                                                    <input
-                                                        type="text"
-                                                        className="create-board name-input"
-                                                        id="name-input"
-                                                        placeholder="What's your board about?"
-                                                        onChange={this.updateDescription}
-                                                        style={{
-                                                            "height" : "59px",
-                                                            "marginTop" : "20px"
-                                                        }}
-                                                    />
-                                                </span>
-                                            </div>
+                                        <div className="create-board label-container">
+                                            <label
+                                                htmlFor="name-input"
+                                                className="create-board label"
+                                                id="name-label">
+                                                <div className="create-board label-content">
+                                                    Description
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div className="create-board input-container">
+                                            <span>
+                                                <input
+                                                    type="text"
+                                                    className="create-board name-input"
+                                                    id="name-input"
+                                                    placeholder="What's your board about?"
+                                                    onChange={this.updateDescription}
+                                                    style={{
+                                                        "height" : "59px",
+                                                        "marginTop" : "20px"
+                                                    }}
+                                                />
+                                            </span>
                                         </div>
                                     </div>
-                                    <div className="create-board footer">
-                                        <div className="create-board container">
-                                            <button
-                                                className="create-board button"
-                                                id="create"
-                                                onClick={this.handleCreate}
-                                            >
-                                                Create
-                                            </button>
-                                        </div>
+                                </div>
+                                <div className="create-board footer">
+                                    <div className="create-board container">
+                                        <button
+                                            className="create-board button"
+                                            id="create"
+                                            onClick={this.handleCreate}
+                                        >
+                                            Create
+                                        </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

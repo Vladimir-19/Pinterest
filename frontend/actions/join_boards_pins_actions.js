@@ -34,13 +34,10 @@ export const fetchAllBoardsPins = () => dispatch => {
 export const pinToBoard = boardPin => dispatch => {
      BoardPinAPIUtil.pinToBoard(boardPin).then(
          board => dispatch(receiveBoardPin(board)))
-    //      ,
-    // err => dispatch(receiveBoardPinErrors(err.responseJSON))
 };
 
 // not working
 export const deletePinOnBoard = (boardPinId) => {
      BoardPinAPIUtil.deletePinOnBoard(boardPinId).then(
         boardPin => dispatch(removeBoardPin(boardPin.id)))
-        // .then(boardPin => dispatch(receiveBoardPin(boardPin.id)))
 };

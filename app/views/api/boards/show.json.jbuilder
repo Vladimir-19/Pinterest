@@ -10,7 +10,3 @@ json.set! @board do
     #json.pins @board.pins
 end
 
-#tryed solution from best project
-
-#json.partial!('api/boards/board', board: @board, show_all_pins: true)
-

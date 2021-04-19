@@ -1,12 +1,7 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { loginDemoUser, loginUser } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
-
-import { Link } from 'react-router-dom';
-
-// import SessionForm from './session_form';
 import LoginForm from './LogInForm';
 
 

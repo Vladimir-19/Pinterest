@@ -13,8 +13,6 @@ const pinErrorsReducer = (state = [], action) => {
             return [];
         case OPEN_MODAL:
             return [];
-        // case CLEAR_PIN_ERRORS:
-        //     return [];
         default:
             return state;
     }

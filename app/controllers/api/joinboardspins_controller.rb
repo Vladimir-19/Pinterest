@@ -1,14 +1,10 @@
 class Api::JoinboardspinsController < ApplicationController
            
-    #   before_action :require_login
-
     def create 
         @boardPin = JoinBoardsPin.new(boardPin_params)
         if @boardPin.save 
-            # @board = Board.find(@boardPin.board_id) //was this
             render "api/boards/show"
         else
-            # render json: @board.errors.full_messages, status: 422
             render json: @boardPin.errors.full_messages, status: 422
         end
     end
@@ -20,14 +16,12 @@ class Api::JoinboardspinsController < ApplicationController
     end
 
     def destroy
-        # @boardPin = JoinBoardsPin.find_by_credentials(params[:pin_id], params[:board_id])
         @boardPin = current_user.boards_pins.find(params[:id])
 
         if @boardPin
             @boardPin.destroy
             render "api/boards/show"
         else
-            # render json: @board.errors.full_messages, status: 422
             render json: @boardPin.errors.full_messages, status: 401
         end
     end

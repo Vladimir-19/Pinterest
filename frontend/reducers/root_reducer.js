@@ -1,6 +1,4 @@
-import {
-    combineReducers
-} from 'redux';
+import { combineReducers } from 'redux';
 
 // This file will be responsible for combining our multiple, domain - specific reducers 
 // It will export a single rootReducer

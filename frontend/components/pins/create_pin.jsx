@@ -138,12 +138,10 @@ class CreatePinForm extends React.Component {
                             <div className="board-li title">{board.title}</div>
                         </div>
                     </li>
-                )
-            }
-            )
-        ) : (
-                null
-            );
+                )})
+                ) : (
+                    null
+                );
 
         const displayImage = (this.state.photoPreview) ? (
             <div className="create-pin" id="image-uploaded-container">
@@ -157,26 +155,26 @@ class CreatePinForm extends React.Component {
                 </div>
             </div>
         ) : (
-                <div className="create-pin" id="image-upload-container">
-                    <div className="create-pin" id="image-upload-area" onClick={this.uploadImage}>
-                        <div className="create-pin" id="image-upload-area-border">
-                            <div className="create-pin" id="upload-icon-container">
-                                <i className="fas fa-arrow-circle-up" id="upload-icon"></i>
-                            </div>
-                            <div className="create-pin" id="instruction">
-                                Click to upload
-            </div>
+            <div className="create-pin" id="image-upload-container">
+                <div className="create-pin" id="image-upload-area" onClick={this.uploadImage}>
+                    <div className="create-pin" id="image-upload-area-border">
+                        <div className="create-pin" id="upload-icon-container">
+                            <i className="fas fa-arrow-circle-up" id="upload-icon"></i>
                         </div>
-                        <div className="create-pin" id="upload-recommendation">
-                            Recommendation: Use high-quality .jpg files less than 2 MB
-        </div>
+                        <div className="create-pin" id="instruction">
+                            Click to upload
+                        </div>
                     </div>
-                    <input
-                        type="file"
-                        onChange={this.handleFile}
-                        className="create-pin"
-                        id="image-upload-input" />
+                    <div className="create-pin" id="upload-recommendation">
+                        Recommendation: Use high-quality .jpg files less than 2 MB
+                    </div>
                 </div>
+                <input
+                    type="file"
+                    onChange={this.handleFile}
+                    className="create-pin"
+                    id="image-upload-input" />
+            </div>
             );
 
         return (
@@ -215,7 +213,7 @@ class CreatePinForm extends React.Component {
                                     <div className="create-pin board-list header">
                                         <div className="create-pin board-list title">
                                             All boards
-                    </div>
+                                        </div>
                                     </div>
                                     <ul className="create-pin board-list">
                                         {boardListItems}

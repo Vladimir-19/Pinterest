@@ -19,7 +19,6 @@ const receiveBoards = boards => ({
 const receiveBoard = payload => ({
     type: RECEIVE_BOARD,
     payload
-    // booard
 });
 
 const removeBoar = boardId => ({
@@ -31,6 +30,7 @@ const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors 
 });
+
 // thunk
 export const fetchBoards = () => dispatch => {
     return BoardAPIUtil.fetchBoards()
@@ -55,14 +55,6 @@ export const deleteBoard = boardId => dispatch => {
         err => dispatch(receiveBoardErrors(err.responseJSON))
         )
 };
-
-// export const updateBoard = board => dispatch => {
-//     return BoardAPIUtil.updateBoard(board).then(
-//         board => dispatch(receiveBoard(board)),
-//         err => dispatch(receiveBoardErrors(err.responseJSON))
-//         // // err => (dispatch(receiveSessionErrors(err.responseJSON)))
-//     )
-// };
 
 export const updateBoard = board => dispatch => (
      BoardAPIUtil.updateBoard(board).then(

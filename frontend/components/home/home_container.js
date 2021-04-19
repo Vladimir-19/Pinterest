@@ -12,8 +12,6 @@ const mapStateToProps = state => {
     ) : (allPins.slice(0, 30));
     const loading = state.ui.loading;
     return { currentUserId, pins, loading };
-    // return { currentUserId, pins};
-
 };
 
 const mapDispatchToProps = dispatch => ({

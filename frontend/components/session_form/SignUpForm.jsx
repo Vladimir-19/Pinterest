@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import Logo from '../../../app/assets/images/pngegg.png'
 
 class SignUpForm extends React.Component {
     constructor(props) {
@@ -76,11 +75,6 @@ class SignUpForm extends React.Component {
                     </div>
 
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-
-                        {/* <div onClick={this.props.closeModal} className="close-x">
-                            X
-            </div> */}
-
                         <div className="login-form">
                             <label>
                                 <input
@@ -100,7 +94,6 @@ class SignUpForm extends React.Component {
                                         value={this.state.age}
                                         onChange={this.update('age')}
                                         placeholder="Age"
-                                        // className={`${styles.addLogin} ${styles.loginInput}`}
                                         className="login-input"
                                     />
                                 </label>

@@ -8,9 +8,8 @@ class Searchbar extends React.Component {
             filtered: this.props.searchPins,
             searchTerm: ''
         };
-        // props.seachPins
+
         this.update = this.update.bind(this);
-        // this.searchFunc = this.searchFunc.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleKey = this.handleKey.bind(this);
     }
@@ -72,7 +71,6 @@ class Searchbar extends React.Component {
                         value={this.state.searchTerm}
                         placeholder="Search for a pin by title"
                         onKeyPress={this.handleKey}
-                        // className="blabla"
                     ></input>
                 </div>
             </>

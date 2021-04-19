@@ -101,15 +101,6 @@ class EditProfileForm extends React.Component {
                             </div>
                             <div className="edit-profile" id="buttons-container">
                                 <div className="edit-profile" id="buttons">
-                                    {/* <div className="edit-profile button-container">
-                                        <button
-                                            className={`edit-profile cancel button ${disabled}`}
-                                            id="cancel-button"
-                                            onClick={this.handleCancel}
-                                        >
-                                            <div className={`edit-profile cancel button-label ${disabled}`}>Cancel</div>
-                                        </button>
-                                    </div> */}
                                     <div className="edit-profile button-container">
                                         <button
                                             className={`edit-profile done button ${disabled}`}
@@ -185,28 +176,6 @@ class EditProfileForm extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="edit-profile" id="username-wrapper">
-                        <div className="edit-profile" id="username-container">
-                            <div className="edit-profile field-container" id="username">
-                                <div className="edit-profile label-container">
-                                    <label className="edit-profile label">Username</label>
-                                </div>
-                                <div className="edit-profile" id="website-username">
-                                    <div className="edit-profile" id="website">
-                                        www.pinterest.com/
-                                    </div>
-                                    <div className="edit-profile" id="username">
-                                        <input
-                                            type="text"
-                                            value={this.state.username}
-                                            onChange={this.changeInput("username")}
-                                            className="edit-profile input"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                     <div className="edit-profile" id="email-wrapper">
                         <div className="edit-profile" id="email-container">
                             <div className="edit-profile field-container" id="email">
@@ -241,36 +210,18 @@ class EditProfileForm extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="edit-profile" id="location-wrapper"> */}
-                        {/* <div className="edit-profile" id="location-container"> */}
-                            {/* <div className="edit-profile field-container" id="location"> */}
-                                {/* <div className="edit-profile label-container">
-                                    <label className="edit-profile label">Location</label>
-                                </div>
-                                <div className="edit-profile input-container">
-                                    <input
-                                        type="text"
-                                        placeholder="Ex. New York City"
-                                        value={this.state.location}
-                                        onChange={this.changeInput("location")}
-                                        className="edit-profile input"
-                                    />
-                                </div> */}
-                                <div className="edit-profile label-container">
-                                    <label className="edit-profile label">location</label>
-                                </div>
-                                <div className="edit-profile input-container">
-                                    <input
-                                        type="text"
-                                        placeholder="Ex. New York City"
-                                        value={this.state.location}
-                                        onChange={this.changeInput("location")}
-                                        className="edit-profile input"
-                                    />
-                                </div>
-                            {/* </div> */}
-                        {/* </div> */}
-                    {/* </div> */}
+                    <div className="edit-profile label-container">
+                        <label className="edit-profile label">location</label>
+                    </div>
+                    <div className="edit-profile input-container">
+                        <input
+                            type="text"
+                            placeholder="Ex. New York City"
+                            value={this.state.location}
+                            onChange={this.changeInput("location")}
+                            className="edit-profile input"
+                        />
+                    </div>
                 </form>
             </div>
         )

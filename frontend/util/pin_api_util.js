@@ -22,14 +22,6 @@ export const createPin = pin => {
     })
 };
 
-// export const updatePin = pin => {
-//     return $.ajax({
-//         method: "PATCH",
-//         url: `/api/pins/${pin.id}`,
-//         data: {pin}
-//     })
-// };
-
 export const updatePin = pin => (
     $.ajax({
         method: "PATCH",

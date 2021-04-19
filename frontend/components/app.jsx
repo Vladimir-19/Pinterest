@@ -10,9 +10,7 @@ import BoardShowContainer from '../components/boards/board_show_container';
 import CreatePinContainer from "../components/pins/create_pin_form_container";
 import PinShowContainer from "./pins/pin_show_container";
 import HomeContainer from "./home/home_container";
-import pin_index_item from './pins/pin_index_item';
 import PinIndexSearchContainer from './pins/pin_search_container';
-import EditProfileFormContainer from ".//profile/edit_profile_container";
 
 const App  = () => (
     <div className="app-component">
@@ -26,12 +24,8 @@ const App  = () => (
             <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer}/>
             <ProtectedRoute exact path="/pin/:pinId" component={PinShowContainer}/>
 
-            {/* <ProtectedRoute exact path="/settings" component={EditProfileFormContainer} /> */}
             <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer}/>
             <ProtectedRoute exact path="/following" component={HomeContainer} />
-            {/* <ProtectedRoute exact path="/:user/pins" component={UserProfileContainer} />
-            <ProtectedRoute exact path="/:user/boards" component={UserProfileContainer} />
-            <ProtectedRoute exact path="/:user" component={UserProfileContainer} /> */}
             <Route exact path="/" component={HomeContainer} /> 
         </Switch>
         <footer>

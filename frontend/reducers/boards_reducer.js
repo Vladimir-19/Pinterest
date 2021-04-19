@@ -12,19 +12,12 @@ const BoardReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_BOARD:
-            // return Object.assign({}, state, {
-                // [action.board.id]: action.board
-            // })
             return Object.assign(nextState, action.payload.boards)
-            // return Object.assign(nextState, action.payload.boards)
         case RECEIVE_BOARDS:
-            // return Object.assign({}, state, action.boards)
             return action.boards
         case REMOVE_BOARD:
             delete nextState[action.boardId];
             return nextState
-        // case RECEIVE_BOARD_PIN:
-        //     return Object.assign(nextState, action.board)
         default:
             return state;
     }
