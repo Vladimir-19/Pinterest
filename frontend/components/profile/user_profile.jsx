@@ -133,7 +133,6 @@ export default class UserProfile extends React.Component {
                         user={user}
                         openModal={openModal}
                         closeModal={closeModal}
-                    // handleEdit={this.handleEdit}
                     />
                 </div>
                 <ul id='board-list'>
@@ -150,7 +149,7 @@ export default class UserProfile extends React.Component {
                             )
                             if (pinArr.length > 0) {
                                 allPins = pinArr.map((pin, idx) => {
-                                    if (idx < 3 && pin != 'undefined') { 
+                                    if (idx < 3 && pin !== undefined) { 
                                         return <img key={idx} id='pin-image1' src={pin.photo} />
                                     }
                                 })
