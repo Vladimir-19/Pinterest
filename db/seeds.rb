@@ -23,47 +23,70 @@ JoinBoardsPin.destroy_all
 #       t.string :last_name 
 #       t.text :description
 #       t.string :location
-user = User.create(
-    id: 13,
-    email: "love@art.com",
+
+# user1 = User.create(
+#     email: "vladimir@solovey.com",
+#     username: nil,
+#     age: 25,
+#     first_name: "Demo",
+#     last_name: "User",
+#     description: "Place that fuels creativity.",
+#     location: "New York City",
+# )
+
+# file = open("")
+# user.photo.attach(io: file, filename: "profile.png")
+
+
+user2 = User.create(
+    email: "finance@gmail.com",
     username: nil,
-    age: 33,
-    password_digest: "123123",
-    first_name: "Art",
-    last_name: "Page",
-    description: "Place that fuels creativity.",
-    location: "Manhattan"
+    age: 45,
+    first_name: "Finance",
+    last_name: "Consultant",
+    description: "From Wall Street to Main Street",
+    location: "Wall Street",
 )
+
 file = open("")
 user.photo.attach(io: file, filename: "profile.png")
 
-  id: 12,
- email: "finance@gmail.com",
- username: nil,
- age: 45,
- password_digest: "$2a$12$VflzoRO5v7hReUJnn01Ez.6YMz95umR/OV47wJFZlnq7TkBLFl212",
- session_token: "BrjrvYfFsKalJ32mBqVQ86Y7yCumbfsMGsx8dvQDXVIxy9j69R5Bgv2AbcqeKak3N8VEhEJwABvmo6DWmu2W1A==",
- first_name: "Finance",
- last_name: "Consultant",
- description: "From Wall Street to Main Street",
- location: "Wall Street",
+#  user3 = User.create(
+#     email: "love@art.com",
+#     username: nil,
+#     age: 33,
+#     password_digest: "123123",
+#     first_name: "Art",
+#     last_name: "Page",
+#     description: "Place that fuels creativity.",
+#     location: "Manhattan"
+# )
 
-  id: 3,
- email: "vladimir@solovey.com",
- username: nil,
- age: 25,
- password_digest: "$2a$12$EURJlJgHyxRWY7NUYCG.JOHt/VUZ6kr63hjOtmEzQw.ZbmZK.ExL6",
- session_token: "ZMAxlWypjy1FsGULP9UhUh0U2bqO2Ip/TD1hPFEBZ2HNMx9FBym0Vh+Y/1pwfkZjAKqtsF5vtyf8PnabaHvVVQ==",
- first_name: "Demo",
- last_name: "User",
- description: "Place that fuels creativity.",
- location: "New York City",
-# boards
+# file = open("")
+# user.photo.attach(io: file, filename: "profile.png")
+
+
+# BOARDS
 #  t.string :title, null: false
 #       t.text :description
 #       t.integer :user_id, null: false
 #       t.boolean :secret, default: false
 #       t.timestamps
+
+    title: "Female Artist",
+    description: "Female Artists Who Changed the Art World.",
+    user_id: 13,
+    secret: false,
+
+    title: "Obstruction Art",
+    description: "Modern Art (1900 - 1970).",
+    user_id: 13,
+    secret: false,
+ 
+    title: "test",
+    description: "xxx",
+    user_id: 3,
+    secret: false,
 
 # :join_boards_pins do |t|
 #       t.integer :pin_id, null: false
