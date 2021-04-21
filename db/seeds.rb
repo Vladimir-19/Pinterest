@@ -73,20 +73,23 @@ user.photo.attach(io: file, filename: "profile.png")
 #       t.boolean :secret, default: false
 #       t.timestamps
 
-    title: "Female Artist",
-    description: "Female Artists Who Changed the Art World.",
-    user_id: 13,
-    secret: false,
+# Board.create( 
+#     title: "Female Artist",
+#     description: "Female Artists Who Changed the Art World.",
+#     user_id: 13,
+#     secret: false,
+# )
 
-    title: "Obstruction Art",
-    description: "Modern Art (1900 - 1970).",
-    user_id: 13,
-    secret: false,
+
+#     title: "Obstruction Art",
+#     description: "Modern Art (1900 - 1970).",
+#     user_id: 13,
+#     secret: false,
  
-    title: "test",
-    description: "xxx",
-    user_id: 3,
-    secret: false,
+#     title: "test",
+#     description: "xxx",
+#     user_id: 3,
+#     secret: false,
 
 # :join_boards_pins do |t|
 #       t.integer :pin_id, null: false
