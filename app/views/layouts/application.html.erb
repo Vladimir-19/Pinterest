@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewApp</title>
+    <title>Pinterest</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta property="og:url"
+        content="https://clone-pinterest-new-app.herokuapp.com/"
+      />
+      
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script src="https://kit.fontawesome.com/2cfc086b76.js" crossorigin="anonymous"></script>
+    
+    <%= favicon_link_tag asset_path('logo.png') %>
+
   </head>
 
   <body>
