@@ -1,5 +1,5 @@
 {
-  "name": "Painterest",
+  "name": "pinterest",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.12.7",
@@ -44,7 +44,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "webpack --watch --mode=development",
     "postinstall": "webpack"
   },
   "repository": {

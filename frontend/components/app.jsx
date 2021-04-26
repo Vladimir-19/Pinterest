@@ -28,8 +28,8 @@ const App  = () => (
             <ProtectedRoute exact path="/following" component={HomeContainer} />
             <Route exact path="/" component={HomeContainer} /> 
         </Switch>
-        <footer>
-        </footer>
+        {/* <footer>
+        </footer> */}
     </div>
 );
 
