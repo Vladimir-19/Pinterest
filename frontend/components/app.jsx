@@ -16,7 +16,8 @@ const App  = () => (
     <div className="app-component">
         <Modal />
         <header>
-            <NavBar />
+            {/* <NavBar /> */}
+            <ProtectedRoute path="/" component={NavBar} />
         </header>
         <Switch>
             <Route exact path="/search" component={PinIndexSearchContainer}/>
