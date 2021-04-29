@@ -54,7 +54,7 @@ class NavBar extends React.Component {
                                 </NavLink>
                             </div>
                             <div id="github">
-                                <a href="https://github.com/Vladimir-19/Painterist" target="_blank" 
+                                <a href="https://github.com/Vladimir-19/Pinterest" target="_blank"
                                 className="nav-bar-link"
                                 >
                                     <div className="icon-container-shadow">

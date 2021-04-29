@@ -48,7 +48,7 @@ class LogInForm extends React.Component {
         let renderMessage;
         let buttonMessage;
         if (this.props.formType === 'login') {
-            renderMessage = 'Not on Painterist yet? Sign Up';
+            renderMessage = 'Not on Pinterest yet? Sign Up';
             buttonMessage = 'Continue';
         } else {
             renderMessage = 'Already a member? Log in';
@@ -70,7 +70,7 @@ class LogInForm extends React.Component {
                     />
 
                     <div className="session-messages">
-                        <h4 className="session-welcome">Welcome to Painterist</h4>
+                        <h4 className="session-welcome">Welcome to Pinterest</h4>
                         <h6 className="session-new-ideas">Find new ideas to try</h6>
                     </div>
 
