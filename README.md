@@ -1,11 +1,7 @@
 # README
 
-1. bundle install
-2. npm install 
-3. rails s (to start localhost)
-3. npm start
 
-This is a fullstack web application that was built with
+This fullstack web application was built with:
     React / Redux
     JavaScript
     HTML / CSS
@@ -36,6 +32,10 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+    1. bundle install
+    2. npm install 
+    3. rails s (to start localhost)
+    3. npm start
 
 * ...
 
