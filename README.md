@@ -1,5 +1,21 @@
 # README
 
+1. bundle install
+2. npm install 
+3. rails s (to start localhost)
+3. npm start
+
+This is a fullstack web application that was built with
+    React / Redux
+    JavaScript
+    HTML / CSS
+    Ruby on Rails
+    PostgreSQL
+    AWS S3
+    Jbuilder
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -22,3 +38,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
