@@ -172,13 +172,13 @@
   @media (min-width: 768px) {
     width: 75%;
   }
-  &.secret {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 8px 0;
-  }
+  // &.secret {
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: center;
+  //   box-sizing: border-box;
+  //   padding: 8px 0;
+  // }
 }
 
 .create-board.name-input {
@@ -887,12 +887,12 @@
   @media (min-width: 768px) {
     width: 75%;
   }
-  &.secret {
-    padding: 8px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  // &.secret {
+  //   padding: 8px 0;
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: center;
+  // }
 }
 
 .edit-board.input {

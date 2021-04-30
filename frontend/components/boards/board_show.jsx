@@ -214,7 +214,7 @@ BoardShow.defaultProps = {
         id: 0,
         title: 'boardman',
         description: 'boardman gets paid',
-        secret: false,
+        // secret: false,
         pinIds: []
     }
 }
