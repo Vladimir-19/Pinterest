@@ -2,13 +2,14 @@
 
 
 This fullstack web application was built with:
-    React / Redux
-    JavaScript
-    HTML / CSS
-    Ruby on Rails
-    PostgreSQL
-    AWS S3
-    Jbuilder
+    1. React / Redux
+    2. JavaScript
+    3. HTML / CSS
+    4. Ruby on Rails
+    5. PostgreSQL
+    6. AWS S3
+    7. Jbuilder
+
 
 1. bundle install
 2. npm install 

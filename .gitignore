@@ -16,7 +16,7 @@
 !/tmp/.keep
 
 # Ignore webpackified js and node modules
-# /app/assets/javascripts/bundle.js
+# /app/assets/javascripts/bundle.js bla blaserbserbwertbwrtbwtebsrb
 /app/assets/javascripts/bundle.map.js
 
 # Ignore uploaded files in development
