@@ -33,12 +33,13 @@ class LogInForm extends React.Component {
     renderErrors() {
         return (
             <ul className="session-errors">
-                {this.props.errors.map((error, i) => (
+                {/* {this.props.errors.map((error, i) => (
                     <li
                         key={`error-${i}`}>
                         {error}
                     </li>
-                ))}
+                ))} */}
+                {this.props.errors}
             </ul>
         );
     }

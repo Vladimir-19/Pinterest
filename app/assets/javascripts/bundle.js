@@ -5178,9 +5178,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/session_form/LogInForm.jsx":
+/***/ "./frontend/components/session_form/LoginForm.jsx":
 /*!********************************************************!*\
-  !*** ./frontend/components/session_form/LogInForm.jsx ***!
+  !*** ./frontend/components/session_form/LoginForm.jsx ***!
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -5265,11 +5265,7 @@ var LogInForm = /*#__PURE__*/function (_React$Component) {
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "session-errors"
-      }, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      }));
+      }, this.props.errors);
     }
   }, {
     key: "render",
@@ -5564,7 +5560,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _LogInForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LogInForm */ "./frontend/components/session_form/LogInForm.jsx");
+/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LoginForm */ "./frontend/components/session_form/LoginForm.jsx");
 
 
 
@@ -5595,7 +5591,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_LogInForm__WEBPACK_IMPORTED_MODULE_3__.default)); // export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_LoginForm__WEBPACK_IMPORTED_MODULE_3__.default)); // export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
 
 /***/ }),
 
