@@ -5280,7 +5280,7 @@ var LogInForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign up to get your ideas")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "login-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: "assets/logo.png",
+        src: "assets/images/logo.png",
         alt: "logo",
         height: 80,
         width: 80,
@@ -5431,21 +5431,29 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      var x = this.props.errors;
-
-      if (typeof x === 'string') {
-        var e = x.split(',');
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ui", null, e);
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, x.map(function (error, i) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-            className: "session-errors",
-            key: "error-".concat(i)
-          }, error);
-        }));
-      }
-
-      ;
+      //     let x = this.props.errors
+      // if ( typeof x === 'string') {
+      //     const e = x.split(',')
+      //     return (
+      //         <ui>
+      //             {e}
+      //         </ui>
+      //     )
+      // } else {
+      //     // return (
+      //     //     <ul>
+      //     // this.props.errors.map
+      //     //         {x.map((error, i) => (
+      //     //             <li className="session-errors"
+      //     //                 key={`error-${i}`}>
+      //     //                 {error}
+      //     //             </li>
+      //     //         ))}
+      //     //     </ul>
+      //     // )};
+      //     return (
+      //         <ul>error</ul>
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ui", null, "bla"); //     )
     }
   }, {
     key: "render",

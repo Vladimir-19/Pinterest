@@ -63,7 +63,7 @@ class LogInForm extends React.Component {
                 </div>
                 <div className="login-form-container">
 
-                    <img src="assets/logo.png" alt="logo"
+                    <img src="assets/images/logo.png" alt="logo"
                         height={80}
                         width={80}
                         style={{ alignSelf: 'center' }}
