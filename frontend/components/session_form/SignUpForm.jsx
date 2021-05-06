@@ -56,7 +56,7 @@ class SignUpForm extends React.Component {
         )
     }
 
-    render() {
+    render() 
 
         let renderMessage;
         let buttonMessage;
