@@ -39,7 +39,6 @@ class LogInForm extends React.Component {
                         {error}
                     </li>
                 ))} */}
-                {this.props.errors}
             </ul>
         );
     }

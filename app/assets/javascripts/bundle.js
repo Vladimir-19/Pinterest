@@ -1341,12 +1341,7 @@ var CreateBoardForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-          className: "session-errors",
-          key: "error-".concat(i)
-        }, error);
-      }));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null);
     }
   }, {
     key: "handleCreate",
@@ -2480,12 +2475,7 @@ var CreatePinForm = /*#__PURE__*/function (_React$Component) {
   _createClass(CreatePinForm, [{
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-          className: "session-errors",
-          key: "error-".concat(i)
-        }, error);
-      }));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null);
     }
   }, {
     key: "componentDidMount",
@@ -5265,7 +5255,7 @@ var LogInForm = /*#__PURE__*/function (_React$Component) {
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "session-errors"
-      }, this.props.errors);
+      });
     }
   }, {
     key: "render",
@@ -5443,11 +5433,11 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
     value: function renderErrors() {
       var x = this.props.errors;
 
-      if (this.props.errors.isString) {
+      if (typeof x === 'string') {
         var e = x.split(',');
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ui", null, e);
       } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, x.map(function (error, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
             className: "session-errors",
             key: "error-".concat(i)
