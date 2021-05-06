@@ -59,7 +59,7 @@ class SignUpForm extends React.Component {
     }
 
     render() 
-
+{
         let renderMessage;
         let buttonMessage;
         if (this.props.formType === 'login') {
