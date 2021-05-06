@@ -51,7 +51,9 @@ class SignUpForm extends React.Component {
         //         ))}
         //     </ul>
         // )};
-        console.log(e)
+        return (
+            <ul>error</ul>
+        )
     }
 
     render() {
