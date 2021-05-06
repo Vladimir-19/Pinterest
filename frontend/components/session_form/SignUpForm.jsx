@@ -41,16 +41,17 @@ class SignUpForm extends React.Component {
             </ui>
         )
     } else {
-        return (
-            <ul>
-                {x.map((error, i) => (
-                    <li className="session-errors"
-                        key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )};
+        // return (
+        //     <ul>
+        //         {x.map((error, i) => (
+        //             <li className="session-errors"
+        //                 key={`error-${i}`}>
+        //                 {error}
+        //             </li>
+        //         ))}
+        //     </ul>
+        // )};
+        console.log(e)
     }
 
     render() {
