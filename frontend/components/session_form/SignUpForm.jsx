@@ -32,28 +32,30 @@ class SignUpForm extends React.Component {
     }
 
     renderErrors() {
-        let x = this.props.errors
-    if ( typeof x === 'string') {
-        const e = x.split(',')
-        return (
-            <ui>
-                {e}
-            </ui>
-        )
-    } else {
-        // return (
-        //     <ul>
-        //         {x.map((error, i) => (
-        //             <li className="session-errors"
-        //                 key={`error-${i}`}>
-        //                 {error}
-        //             </li>
-        //         ))}
-        //     </ul>
-        // )};
-        return (
-            <ul>error</ul>
-        )
+    //     let x = this.props.errors
+    // if ( typeof x === 'string') {
+    //     const e = x.split(',')
+    //     return (
+    //         <ui>
+    //             {e}
+    //         </ui>
+    //     )
+    // } else {
+    //     // return (
+    //     //     <ul>
+    //     // this.props.errors.map
+    //     //         {x.map((error, i) => (
+    //     //             <li className="session-errors"
+    //     //                 key={`error-${i}`}>
+    //     //                 {error}
+    //     //             </li>
+    //     //         ))}
+    //     //     </ul>
+    //     // )};
+    //     return (
+    //         <ul>error</ul>
+    return ( <ui>bla</ui>)
+    //     )
     }
 
     render() 
