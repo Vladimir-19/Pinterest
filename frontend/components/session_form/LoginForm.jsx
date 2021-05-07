@@ -33,12 +33,12 @@ class LogInForm extends React.Component {
     renderErrors() {
         return (
             <ul className="session-errors">
-                {/* {this.props.errors.map((error, i) => (
+                {this.props.errors.map((error, i) => (
                     <li
                         key={`error-${i}`}>
                         {error}
                     </li>
-                ))} */}
+                ))}
             </ul>
         );
     }
@@ -63,13 +63,14 @@ class LogInForm extends React.Component {
                 </div>
                 <div className="login-form-container">
 
-                    <img src="assets/images/logo.png" alt="logo"
+                    {/* <img src="assets/images/logo.png" alt="logo"
                         height={80}
                         width={80}
                         style={{ alignSelf: 'center' }}
-                    />
+                    /> */}
 
                     <div className="session-messages">
+                        <i className="logo"></i>
                         <h4 className="session-welcome">Welcome to Pinterest</h4>
                         <h6 className="session-new-ideas">Find new ideas to try</h6>
                     </div>

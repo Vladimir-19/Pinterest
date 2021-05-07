@@ -32,34 +32,19 @@ class SignUpForm extends React.Component {
     }
 
     renderErrors() {
-    //     let x = this.props.errors
-    // if ( typeof x === 'string') {
-    //     const e = x.split(',')
-    //     return (
-    //         <ui>
-    //             {e}
-    //         </ui>
-    //     )
-    // } else {
-    //     // return (
-    //     //     <ul>
-    //     // this.props.errors.map
-    //     //         {x.map((error, i) => (
-    //     //             <li className="session-errors"
-    //     //                 key={`error-${i}`}>
-    //     //                 {error}
-    //     //             </li>
-    //     //         ))}
-    //     //     </ul>
-    //     // )};
-    //     return (
-    //         <ul>error</ul>
-    return ( <ui>bla</ui>)
-    //     )
-    }
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li className="session-errors"
+                        key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )};
 
     render() 
-{
+        {
         let renderMessage;
         let buttonMessage;
         if (this.props.formType === 'login') {
@@ -77,13 +62,14 @@ class SignUpForm extends React.Component {
                 </div>
                 <div className="login-form-container">
 
-                    <img src="assets/logo.png" alt="logo"
+                    {/* <img src="assets/logo.png" alt="logo"
                         height={80}
                         width={80}
                         style={{ alignSelf: 'center' }}
-                    />
+                    /> */}
 
                     <div className="session-messages">
+                        <i className="logo"></i>
                         <h4 className="session-welcome">Welcome to Pinterest</h4>
                         <h6 className="session-new-ideas">Find new ideas to try</h6>
                     </div>

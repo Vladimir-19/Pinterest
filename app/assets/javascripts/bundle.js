@@ -5255,7 +5255,11 @@ var LogInForm = /*#__PURE__*/function (_React$Component) {
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "session-errors"
-      });
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
     }
   }, {
     key: "render",
@@ -5279,17 +5283,11 @@ var LogInForm = /*#__PURE__*/function (_React$Component) {
         className: "login-inviting-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign up to get your ideas")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "login-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: "assets/images/logo.png",
-        alt: "logo",
-        height: 80,
-        width: 80,
-        style: {
-          alignSelf: 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "session-messages"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        className: "logo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
         className: "session-welcome"
       }, "Welcome to Pinterest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
         className: "session-new-ideas"
@@ -5431,29 +5429,12 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      //     let x = this.props.errors
-      // if ( typeof x === 'string') {
-      //     const e = x.split(',')
-      //     return (
-      //         <ui>
-      //             {e}
-      //         </ui>
-      //     )
-      // } else {
-      //     // return (
-      //     //     <ul>
-      //     // this.props.errors.map
-      //     //         {x.map((error, i) => (
-      //     //             <li className="session-errors"
-      //     //                 key={`error-${i}`}>
-      //     //                 {error}
-      //     //             </li>
-      //     //         ))}
-      //     //     </ul>
-      //     // )};
-      //     return (
-      //         <ul>error</ul>
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ui", null, "bla"); //     )
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          className: "session-errors",
+          key: "error-".concat(i)
+        }, error);
+      }));
     }
   }, {
     key: "render",
@@ -5477,17 +5458,11 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
         className: "login-inviting-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign up to get your ideas")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "login-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: "assets/logo.png",
-        alt: "logo",
-        height: 80,
-        width: 80,
-        style: {
-          alignSelf: 'center'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "session-messages"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        className: "logo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
         className: "session-welcome"
       }, "Welcome to Pinterest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
         className: "session-new-ideas"
@@ -5598,7 +5573,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_LoginForm__WEBPACK_IMPORTED_MODULE_3__.default)); // export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_LoginForm__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 

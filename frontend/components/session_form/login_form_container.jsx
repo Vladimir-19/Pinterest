@@ -4,7 +4,6 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 import LoginForm from './LoginForm';
 
-
 const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
@@ -22,4 +21,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
-// export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

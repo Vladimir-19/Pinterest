@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { loginDemoUser, signupUser } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
+
 import SignUpForm from './SignUpForm'
 
 const mapStateToProps = ({ errors }) => {
