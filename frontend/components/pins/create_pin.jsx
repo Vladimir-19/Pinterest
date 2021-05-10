@@ -23,13 +23,13 @@ class CreatePinForm extends React.Component {
     renderErrors() {
         return (
             <ul >
-                {/* {this.props.errors.map((error, i) => (
+                {this.props.errors.map((error, i) => (
                     <li
                         className="session-errors"
                         key={`error-${i}`}>
                         {error}
                     </li>
-                ))} */}
+                ))}
             </ul>
         );
     }
