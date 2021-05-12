@@ -6,38 +6,50 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# # starting from here
-# # require "open-uri"
+require "open-uri"
 
-# # User.destroy_all
-# # Board.destroy_all
-# # Pin.destroy_all
-# # JoinBoardsPin.destroy_all
+# User.destroy_all
+# Board.destroy_all
+# Pin.destroy_all
+# JoinBoardsPin.destroy_all
 
 # # users
-# # t.string :email, null: false
-# #       t.string :username, null: false
-# #       t.integer :age, null: false
-# #       t.string :password_digest, null: false
-# #       t.string :session_token, null: false
-# #       t.string :first_name 
-# #       t.string :last_name 
-# #       t.text :description
-# #       t.string :location
+#     t.string :email, null: false
+#     t.string :username, null: false
+#     t.integer :age, null: false
+#     t.string :password_digest, null: false
+#     t.string :session_token, null: false
+#     t.string :first_name 
+#     t.string :last_name 
+#     t.text :description
+#     t.string :location
 
-# # user1 = User.create(
-# #     email: "vladimir@solovey.com",
-# #     username: nil,
-# #     age: 25,
-# #     first_name: "Demo",
-# #     last_name: "User",
-# #     description: "Place that fuels creativity.",
-# #     location: "New York City",
-# # )
+user1 = User.create(
+    email: "vladimir@solovey.com",
+    age: 25,
+    first_name: "Demo",
+    last_name: "User",
+    description: "Playground.",
+    location: "New York City",
+)
+# file = open('https://<your_bucket>.<your_region>.amazonaws.com/<optional_folder_name>/<some_file>.jpg')
+file= open('https://pinterest-seeds.s3.amazonaws.com/avaUser1.jpg')
+user1.photo.attach(io: file, filename: 'avaUser1.jpg')
 
-# # file = open("")
-# # user.photo.attach(io: file, filename: "profile.png")
+Board.create(
+    title: "You can Edit me!"
+    description: "In this board all the Pins were made by Demo User"
+    user_id: user1.id
+)
 
+pin1 = Pin.create(
+    title: "Modern outdoor light",
+    description: "",
+    user_id: user1.id
+)
+
+file = open('https://pinterest-seeds.s3.amazonaws.com/outdoorLight.jpg')
+pin.photo.attach(io: file, fielname: "outdoorLight.jpg")
 
 # user2 = User.create(
 #     email: "finance@gmail.com",
@@ -52,52 +64,52 @@
 # file = open("")
 # user.photo.attach(io: file, filename: "profile.png")
 
-# #  user3 = User.create(
-# #     email: "love@art.com",
-# #     username: nil,
-# #     age: 33,
-# #     password_digest: "123123",
-# #     first_name: "Art",
-# #     last_name: "Page",
-# #     description: "Place that fuels creativity.",
-# #     location: "Manhattan"
-# # )
+#  user3 = User.create(
+#     email: "love@art.com",
+#     username: nil,
+#     age: 33,
+#     password_digest: "123123",
+#     first_name: "Art",
+#     last_name: "Page",
+#     description: "Place that fuels creativity.",
+#     location: "Manhattan"
+# )
 
-# # file = open("")
-# # user.photo.attach(io: file, filename: "profile.png")
-
-
-# # BOARDS
-# #  t.string :title, null: false
-# #       t.text :description
-# #       t.integer :user_id, null: false
-# #       t.boolean :secret, default: false
-# #       t.timestamps
-
-# # Board.create( 
-# #     title: "Female Artist",
-# #     description: "Female Artists Who Changed the Art World.",
-# #     user_id: 13,
-# #     secret: false,
-# # )
+# file = open("")
+# user.photo.attach(io: file, filename: "profile.png")
 
 
-# #     title: "Obstruction Art",
-# #     description: "Modern Art (1900 - 1970).",
-# #     user_id: 13,
-# #     secret: false,
+# BOARDS
+#  t.string :title, null: false
+#       t.text :description
+#       t.integer :user_id, null: false
+#       t.boolean :secret, default: false
+#       t.timestamps
+
+# Board.create( 
+#     title: "Female Artist",
+#     description: "Female Artists Who Changed the Art World.",
+#     user_id: 13,
+#     secret: false,
+# )
+
+
+#     title: "Obstruction Art",
+#     description: "Modern Art (1900 - 1970).",
+#     user_id: 13,
+#     secret: false,
  
-# #     title: "test",
-# #     description: "xxx",
-# #     user_id: 3,
-# #     secret: false,
+#     title: "test",
+#     description: "xxx",
+#     user_id: 3,
+#     secret: false,
 
-# # :join_boards_pins do |t|
-# #       t.integer :pin_id, null: false
-# #       t.integer :board_id, null: false
+# :join_boards_pins do |t|
+#       t.integer :pin_id, null: false
+#       t.integer :board_id, null: false
 
-# # :pins do |t|
-# #       t.string :title, null: false
-# #       t.text :description
-# #       t.integer :user_id, null: false
-# #       t.string :url
+# :pins do |t|
+#       t.string :title, null: false
+#       t.text :description
+#       t.integer :user_id, null: false
+#       t.string :url

@@ -1341,7 +1341,12 @@ var CreateBoardForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          className: "session-errors",
+          key: "error-".concat(i)
+        }, error);
+      }));
     }
   }, {
     key: "handleCreate",
@@ -2475,7 +2480,12 @@ var CreatePinForm = /*#__PURE__*/function (_React$Component) {
   _createClass(CreatePinForm, [{
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          className: "session-errors",
+          key: "error-".concat(i)
+        }, error);
+      }));
     }
   }, {
     key: "componentDidMount",
@@ -2534,7 +2544,7 @@ var CreatePinForm = /*#__PURE__*/function (_React$Component) {
         });
       }).then(function () {
         return window.history.go(-1);
-      });
+      }); //reload users/userId to finish
     }
   }, {
     key: "uploadImage",
