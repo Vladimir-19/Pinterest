@@ -29,7 +29,7 @@ export const demoUser = () => {
         data: {
             user: {
                 email: 'vladimir@solovey.com',
-                password: '123123'
+                password: 'welcome1'
             }
         }
     });

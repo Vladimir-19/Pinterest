@@ -25,31 +25,59 @@ require "open-uri"
 #     t.string :location
 
 user1 = User.create(
-    email: "vladimir@solovey.com",
+    email: 'vladimir@solovey.com',
     age: 25,
+    password: 'welcome1',
     first_name: "Demo",
     last_name: "User",
-    description: "Playground.",
-    location: "New York City",
+    description: "",
+    location: "New York City"
 )
 # file = open('https://<your_bucket>.<your_region>.amazonaws.com/<optional_folder_name>/<some_file>.jpg')
 file= open('https://pinterest-seeds.s3.amazonaws.com/avaUser1.jpg')
 user1.photo.attach(io: file, filename: 'avaUser1.jpg')
 
-Board.create(
-    title: "You can Edit me!"
-    description: "In this board all the Pins were made by Demo User"
+# BOARDS
+board1 = Board.create(
+    title: "You can Edit me!",
+    description: "In this board all the Pins were made by Demo User",
     user_id: user1.id
 )
 
+#PINS 
 pin1 = Pin.create(
     title: "Modern outdoor light",
     description: "",
-    user_id: user1.id
+    user_id: user1.id,
+    url: "https://www.signaturehardware.com/paddock-2-light-outdoor-entrance-wall-sconce-black.html?pids=233587&g_acctid=7220359250&g_campaignid=2015933757&g_adgroupid=68299630781&g_adid=354008659102&g_keyword=&g_keywordid=pla-607166707362&g_adtype=pla&g_merchantid=387294&g_productchannel=online&g_productid=440681&g_partition=607166707362&g_network=g&g_ifproduct=product&g_ifcreative=&gclsrc=aw.ds&&gclid=CjwKCAjw1uiEBhBzEiwAO9B_Hc8S_UZ0qqt2Hd2ykpmygbZZhxWUUuN3dUCj-CA8vIbzqZqxFXn69BoCO_YQAvD_BwE"
 )
 
 file = open('https://pinterest-seeds.s3.amazonaws.com/outdoorLight.jpg')
-pin.photo.attach(io: file, fielname: "outdoorLight.jpg")
+pin1.photo.attach(io: file, fielname: "outdoorLight.jpg")
+
+pin2 = Pin.create(
+    title: "Voyager 1, now in interstellar space",
+    description: "NASA’s Voyager 1 spacecraft is currently over 14.1 billion miles from Earth...",
+    user_id: user1.id,
+    url: "https://www.yahoo.com/entertainment/voyager-1-now-interstellar-space-035654102.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAEpC8xVgbWRPhGpnaDM3WpBSK16zDp9z3zNL_XvRX6mHJVQmZcl9uvoWlZ9BHYDXTpNMYYg4Gawej0cLBRWnSGjeYPpfOaUJ9X6NqX8KHMrNkCSEOeD_dHYu5abaOB0YZ-rmEMEV1HBqlYcOWC275puc3Z6UFA4vcKksXPdVw6VG"
+)
+
+file = open('https://pinterest-seeds.s3.amazonaws.com/interstellar.jpg'),
+pin2.photo.attached(io: file, filename: "interstellar.jpg")
+
+pin3 = Pin.create(
+    title: "The World's Biggest Art Heist",
+    description: "NETFLIX Series",
+    url: "https://www.netflix.com/title/81032570"
+)
+
+file = open('https://pinterest-seeds.s3.amazonaws.com/heist.jpg'),
+pin3.photo.attached(io: file, filename: "heist.jpg")
+
+# Board with Pins 
+boardPin1 = JoinBoardsPin.create(pin_id: pin1.id, board_id: board1.id)
+boardPin2 = JoinBoardsPin.create(pin_id: pin2.id, board_id: board1.id)
+boardPin3 = JoinBoardsPin.create(pin_id: pin3.id, board_id: board1.id)
 
 # user2 = User.create(
 #     email: "finance@gmail.com",
@@ -98,18 +126,3 @@ pin.photo.attach(io: file, fielname: "outdoorLight.jpg")
 #     description: "Modern Art (1900 - 1970).",
 #     user_id: 13,
 #     secret: false,
- 
-#     title: "test",
-#     description: "xxx",
-#     user_id: 3,
-#     secret: false,
-
-# :join_boards_pins do |t|
-#       t.integer :pin_id, null: false
-#       t.integer :board_id, null: false
-
-# :pins do |t|
-#       t.string :title, null: false
-#       t.text :description
-#       t.integer :user_id, null: false
-#       t.string :url
