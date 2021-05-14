@@ -1,14 +1,19 @@
 # README
 
+[ClonePinterest](https://clone-pinterest.herokuapp.com/#/) is your place for inspiration based on image sharing service designed to enable saving and discovery of information on the internet using images.
+ClonePinterest is built on a Ruby on Rails backend, utilizing PostgreSQL and AWS S3 for data storage. React and Redux are the main libraries used for the frontend, along with HTML and CSS, with Heroku used for app deployment.
 
-This fullstack web application was built with:
-    1. React / Redux
-    2. JavaScript
-    3. HTML / CSS
-    4. Ruby on Rails
-    5. PostgreSQL
-    6. AWS S3
-    7. Jbuilder
+## Technologies Used
+* Ruby on Rails
+* JBuilder
+* JavaScript
+* React.js
+* Redux.js
+* HTML/CSS
+* PostgreSQL
+* Amazon Web Services (AWS S3)
+* Heroku
+
 
 
 1. bundle install
