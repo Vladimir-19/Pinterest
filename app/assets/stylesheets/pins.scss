@@ -569,12 +569,6 @@ ul.create-pin.board-list {
 
 .pin-index#grid-container {
   position: absolute;
-  @media (max-width: 755px) and (min-width: 0px) {
-    width: 504px;
-  }
-  @media (max-width: 1007px) and (min-width: 756px) {
-    width: 756px;
-  }
   @media (max-width: 1259px) and (min-width: 1008px) {
     width: 1008px;
   }
@@ -596,15 +590,6 @@ ul.create-pin.board-list {
   @media (max-width: 2771px) and (min-width: 2520px) {
     width: 2520px;
   }
-  @media (max-width: 3023px) and (min-width: 2772px) {
-    width: 2772px;
-  }
-  @media (max-width: 3275px) and (min-width: 3024px) {
-    width: 3024px;
-  }
-  @media (max-width: 3527px) and (min-width: 3276px) {
-    width: 3276px;
-  } 
 }
 
 .pin-index#grid {
