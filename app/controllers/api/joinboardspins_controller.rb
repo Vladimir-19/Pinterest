@@ -9,7 +9,6 @@ class Api::JoinboardspinsController < ApplicationController
         end
     end
 
-    # ??? 
     def index 
         @boardsPins = JoinBoardsPin.all
         render 'api/boards/index'

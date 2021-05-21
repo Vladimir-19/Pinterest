@@ -243,19 +243,6 @@ ul.create-pin.board-list {
   -webkit-font-smoothing: antialiased;
 }
 
-// .board-li.secret-icon-container {
-//   margin: 0 20px;
-//   display: flex;
-//   align-items: center;
-//   & > .secret-icon {
-//     color: #333;
-//     fill: currentColor;
-//     vertical-align: middle;
-//     height: 16px;
-//     width: 16px;
-//   }
-// }
-
 .create-pin#content {
   padding-bottom: 40px;
   box-sizing: border-box;
@@ -618,7 +605,6 @@ ul.create-pin.board-list {
   width: 236px;
   height: 100%;
   -webkit-mask-image: -webkit-radial-gradient(center, white, black);
-// ?????
     // mask-image: radial-gradient(center, white, black);
   overflow: hidden;
   position: relative;
