@@ -1,13 +1,9 @@
 .create-board-pin.container {
   width: auto;
   box-sizing: border-box;
-  // border-radius: 8px;
-  // position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  // max-height: calc(100vh -32px);
-  // flex: 1 1 auto;
   overflow: hidden;
   cursor: auto;
 }
@@ -64,7 +60,6 @@
   box-sizing: border-box;
   position: relative;
   overflow: auto;
-  // height: 660px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -165,33 +160,12 @@
   margin-left: 20px;
   border-radius: 50%;
   padding: 10px;
-  // margin: 15px
-  // float: right;
   justify-content: center;
   align-items: center;
   display: flex;
   opacity: 0;
   float: right;
-  // position: initial;
-  // right: 24px;
-  // min-height: 32px;
-  // box-sizing: border-box;
-  // border-radius: 30px;
-  // padding: 8px 8px; //8 12
   overflow: hidden;
   background-color: rgb(230,0,35);
   color: #fff;
-  // flex-direction: row;
-  // align-items: center;
-  // & > .save-icon {
-  //   height: 20px;
-  //   width: 20px;
-  // }
-  // & > .save-text {
-  //   font-weight: 700;
-  //   letter-spacing: -.4px;
-  //   -moz-osx-font-smoothing: grayscale;
-  //   -webkit-font-smoothing: antialiased;
-  //   font-size: 14px;
-  // }
 }

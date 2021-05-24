@@ -1,7 +1,12 @@
 # README
 
-[ClonePinterest](https://clone-pinterest.herokuapp.com/#/) is your place for inspiration based on image sharing service designed to enable saving and discovery of information on the internet using images.
-ClonePinterest is built on a Ruby on Rails backend, utilizing PostgreSQL and AWS S3 for data storage. React and Redux are the main libraries used for the frontend, along with HTML and CSS, with Heroku used for app deployment.
+# [Clone Pinterest](https://clone-pinterest.herokuapp.com/#/) 
+Pinterest is a social media application for inspiration based on image sharing. [Pinterest](https://www.pinterest.com/) designed to enable user to discover information and ideas on the internet using images.
+Clone Pinterest is built on a Ruby on Rails backend, utilizing PostgreSQL and AWS S3 for data storage. React and Redux are the main libraries used for the frontend, along with HTML and CSS, with Heroku used for app deployment.
+
+<p align='center'>
+    <img src='./app/assets/images/clonePinterest.jpg' height='500'>
+</p>
 
 ## Technologies Used
 * Ruby on Rails
