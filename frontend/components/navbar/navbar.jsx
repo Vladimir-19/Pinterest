@@ -67,7 +67,7 @@ class NavBar extends React.Component {
                             </div>
 
                             <div className="nav-bar-button" id="linkedin">
-                                <a href="https://github.com/Vladimir-19" target="_blank" className="nav-bar-link">
+                                <a href="https://www.linkedin.com/in/vladimir-salavei-081a43212/" target="_blank" className="nav-bar-link">
                                     <div className="icon-container-shadow">
                                         <div className="icon-container">
                                             <i 

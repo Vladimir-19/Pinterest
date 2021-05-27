@@ -2349,7 +2349,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           className: "nav-bar-button",
           id: "linkedin"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-          href: "https://github.com/Vladimir-19",
+          href: "https://www.linkedin.com/in/vladimir-salavei-081a43212/",
           target: "_blank",
           className: "nav-bar-link"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
