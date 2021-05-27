@@ -58,18 +58,6 @@
   margin-top: 5px;
 }
 
-// .create-board#modal-fg {
-//   width: 100%;
-//   flex: 1 1 auto;
-//   min-height: 0;
-//   min-width: 0;
-//   box-sizing: border-box;
-//   position: relative;
-//   flex-direction: column;
-//   display: flex;
-//   cursor: default;
-// }
-
 .create-board#header {
   box-sizing: border-box;
   max-width: 100%;
@@ -148,10 +136,6 @@
   margin-left: auto;
 }
 
-// .create-board#form {
-
-// }
-
 .create-board#fields {
   box-sizing: border-box;
 }
@@ -207,13 +191,6 @@
   @media (min-width: 768px) {
     width: 75%;
   }
-  // &.secret {
-  //   display: flex;
-  //   flex-direction: row;
-  //   align-items: center;
-  //   box-sizing: border-box;
-  //   padding: 8px 0;
-  // }
 }
 
 .create-board.name-input {
@@ -251,13 +228,8 @@
   color: #e60023;
 }
 
-// .create-board.error-content {}
-.edit-board.input.description {}
+// .edit-board.input.description {}
 
-// .create-board.footer-container {
-//   box-sizing: border-box;
-//   padding: 8px 16px;
-// }
 
 .create-board.footer {
   display: flex;
@@ -519,7 +491,6 @@
 
 
 
-////////////////////////////////////////////////////////////////////
 //////////////////////////// BOARD SHOW ////////////////////////////
 ////////////////////////////////////////////////////////////////////
 .board-show.container {
