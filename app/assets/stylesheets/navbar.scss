@@ -1,8 +1,4 @@
 .nav-container {
-//   height: 90px;
-//   overflow: hidden;
-//   position: fixed;
-
   z-index: 671;
   top: 0;
   width: 100%;
@@ -70,186 +66,144 @@
 }
 
 
-            .icon-container-shadow {
-            background-color: transparent;
-            height: 48px;
-            width: 48px;
-            box-sizing: border-box;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 3px;
-            color: rgb(100, 98, 98);
-            &:hover {
-                background-color: #E2E2E2
-            }
-            }
-
-            .icon-container {
-            height: 48px;
-            width: 48px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 7px
-            }
-            .nav-bar-button {
-            box-sizing: border-box;
-            display: block;
-            position: relative;
-            }
-            
-            .nav-bar-link {
-            color: #333;
-            text-decoration: none;
-            font-weight: 700;
-            cursor: pointer;
-            }
-
-    .nav-bar-search-container {
-    /* min-width: 407px; */
-    flex: 1 1 auto;
-    min-height: 0;
-    box-sizing: border-box;
-    padding: 0px 16px;
-    width: 100%;
-    }
-/// searchbar 
-.searchbar-container {
-  width: 70%;
-  height: 45px;
-  background-color: whitesmoke;
-  border-radius: 30px;
-  overflow: hidden;
-  display: flex;
-  &:hover{
-    background-color: lightgray;
-    transition: background 0.8s;
-  }
+.icon-container-shadow {
+background-color: transparent;
+height: 48px;
+width: 48px;
+box-sizing: border-box;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 3px;
+color: rgb(100, 98, 98);
+&:hover {
+    background-color: #E2E2E2
+}
 }
 
-// #searchbar-input {
-//   width: 100%;
-//   height: 100%;
-//   margin-left: 10px;
-//   margin-right: 10px;
-//   text-indent: 30px;
-//   border-radius: 30px;
-//   // background-image: image_url('search.png');
-//   // background-repeat: no-repeat;
-//   // background-size: 2%;
-//   // background-position: left;
+.icon-container {
+height: 48px;
+width: 48px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 7px
+}
+.nav-bar-button {
+box-sizing: border-box;
+display: block;
+position: relative;
+}
+
+.nav-bar-link {
+color: #333;
+text-decoration: none;
+font-weight: 700;
+cursor: pointer;
+}
+
+.nav-bar-search-container {
+/* min-width: 407px; */
+flex: 1 1 auto;
+min-height: 0;
+box-sizing: border-box;
+padding: 0px 16px;
+width: 100%;
+}
+
+///////////////////// searchbar //////////////////////
+// .searchbar-container {
+//   width: 70%;
+//   height: 45px;
 //   background-color: whitesmoke;
-//   font-weight: normal;
-//   border-color: whitesmoke;
-//   color: black;
+//   border-radius: 30px;
+//   overflow: hidden;
+//   display: flex;
 //   &:hover{
 //     background-color: lightgray;
 //     transition: background 0.8s;
 //   }
 // }
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-}
+// input[type="search"]::-webkit-search-decoration,
+// input[type="search"]::-webkit-search-cancel-button,
+// input[type="search"]::-webkit-search-results-button,
+// input[type="search"]::-webkit-search-results-decoration {
+//   -webkit-appearance: none;
+// }
  
 ////
-    .search-container {
-    height: 50px;
-    min-width: 165px;
-    border-radius: 30px;
-    background-color: whitesmoke;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    padding: 0px 16px;
-    &:hover{
-    background-color: lightgray;
-    transition: background 0.8s;
-      }
-    }
+.search-container {
+height: 50px;
+min-width: 165px;
+border-radius: 30px;
+background-color: whitesmoke;
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+align-items: center;
+position: relative;
+padding: 0px 16px;
+&:hover{
+background-color: lightgray;
+transition: background 0.8s;
+  }
+}
 
-    #searchbar-input {
-    background-color: whitesmoke;
-    border-radius: 30px;
-    border: none;
-    color: #333;
-    // font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 16px;
-    font-weight: 600;
-    outline: none;
-    padding: 0px;
-    height: 100%;
-    width: 100%;
-    line-height: normal;
-    vertical-align: middle;
-    &:hover{
-    background-color: lightgray;
-    transition: background 0.8s;
-      }
-    }
+#searchbar-input {
+background-color: whitesmoke;
+border-radius: 30px;
+border: none;
+color: #333;
+font-size: 16px;
+font-weight: 600;
+outline: none;
+padding: 0px;
+height: 100%;
+width: 100%;
+line-height: normal;
+vertical-align: middle;
+&:hover{
+background-color: lightgray;
+transition: background 0.8s;
+  }
+}
 
 .nav-lis > button {
-  padding: 15px 10px 15px 10px;
-  border-radius: 40px;
-  transition: background 0.5s;
-  &:focus{
-    background-color: black;
-    color: white;
-  }
-  &:hover{
-    background-color: lightgrey;
-  }
-  &:focus:hover {
-    background-color: black;
-    color: white;
-  }
+padding: 15px 10px 15px 10px;
+border-radius: 40px;
+transition: background 0.5s;
+&:focus{
+  background-color: black;
+  color: white;
+}
+&:hover{
+  background-color: lightgrey;
+}
+&:focus:hover {
+  background-color: black;
+  color: white;
+}
 }
 
 a.nav-link-home-logo {
   padding: 20px;
   background-image: image_url('logo.png');
   background-repeat: no-repeat;
-//   border-radius: 100px;
   background-size: cover;
   color: transparent;
-//   width: 25px;
-//   height: 25px;
- height: 48px;
-  width: 48px;
-    box-sizing: border-box;
-  border-radius: 50%;
+  height: 48px; //25px;
+  width: 48px; //25px;
+  box-sizing: border-box;
+  border-radius: 50%; //100px
 
   &:focus:hover {
     background-color: lightgrey;
     color: transparent;
     transition: background 0.9s;
   }
-}
-
-
-
-.searchbar-container {
-  width: 70%;
-  height: 45px;
-  background-color: whitesmoke;
-  border-radius: 30px;
-  overflow: hidden;
-  &:hover{
-    background-color: lightgray;
-    transition: background 0.8s;
-  }
-}
-
-.searchbar-form {
-  height: 100%;
 }
 
 .searchbar-input {

@@ -1,6 +1,4 @@
-import {
-    connect
-} from 'react-redux';
+import { connect } from 'react-redux';
 import Searchbar from './search';
 
 import { fetchPins, updatePin } from '../../actions/pin_actions';

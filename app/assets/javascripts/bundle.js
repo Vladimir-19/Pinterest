@@ -5117,8 +5117,8 @@ var Searchbar = /*#__PURE__*/function (_React$Component) {
         id: "searchbar-input",
         onChange: this.update('searchTerm'),
         value: this.state.searchTerm,
-        placeholder: "Search for a pin by title",
-        onKeyPress: this.handleKey
+        placeholder: "Search for a pin by title" // onKeyPress={this.handleKey}
+
       })));
     }
   }]);
