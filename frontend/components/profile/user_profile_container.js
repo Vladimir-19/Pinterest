@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 }};
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: id => dispatch(fetchUser(id)), // ???
+    fetchUser: id => dispatch(fetchUser(id)), 
     openModal: modal => dispatch(openModal(modal)),
     fetchBoards: () => dispatch(fetchBoards()),
     fetchPins: () => dispatch(fetchPins()),

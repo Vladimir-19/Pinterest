@@ -4879,7 +4879,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }(function (id) {
       return dispatch(fetchUser(id));
     }),
-    // ???
     openModal: function openModal(modal) {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal));
     },
