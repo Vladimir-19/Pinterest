@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../../actions/session_actions';
-import { fetchAllUsers, fetchUser } from "../../actions/user_actions";
 import SearchBar from '../searchBar/searchbar_container';
 
 
@@ -107,7 +106,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchUser: (id) => dispatch(fetchUser(id)),
-    fetchAllUsers: () => dispatch(fetchAllUsers()),
     logout: () => dispatch(logoutUser()),
 });
 

@@ -36,7 +36,7 @@ export const pinToBoard = boardPin => dispatch => {
          board => dispatch(receiveBoardPin(board)))
 };
 
-// not working
+// need to test
 export const deletePinOnBoard = (boardPinId) => {
      BoardPinAPIUtil.deletePinOnBoard(boardPinId).then(
         boardPin => dispatch(removeBoardPin(boardPin.id)))

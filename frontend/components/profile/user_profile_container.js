@@ -3,7 +3,6 @@ import { fetchPins } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
 
 import { openModal } from '../../actions/modal_actions';
-import { fetchAllUsers, fetchUser } from "../../actions/user_actions";
 import { startLoading, stopLoading } from "../../actions/loading_actions";
 
 import ProfileShow from './user_profile';
@@ -20,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
 }};
 
 const mapDispatchToProps = dispatch => ({
-    fetchAllUsers: () => dispatch(fetchAllUsers()), // ???
     fetchUser: id => dispatch(fetchUser(id)), // ???
     openModal: modal => dispatch(openModal(modal)),
     fetchBoards: () => dispatch(fetchBoards()),

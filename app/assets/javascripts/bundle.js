@@ -354,7 +354,7 @@ var pinToBoard = function pinToBoard(boardPin) {
       return dispatch(receiveBoardPin(board));
     });
   };
-}; // not working
+}; // need to test
 
 var deletePinOnBoard = function deletePinOnBoard(boardPinId) {
   _util_join_boards_pins_api_util__WEBPACK_IMPORTED_MODULE_0__.deletePinOnBoard(boardPinId).then(function (boardPin) {
@@ -655,14 +655,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_USER_ERRORS": () => (/* binding */ RECEIVE_USER_ERRORS),
 /* harmony export */   "RECEIVE_ALL_USERS": () => (/* binding */ RECEIVE_ALL_USERS),
 /* harmony export */   "fetchUser": () => (/* binding */ fetchUser),
-/* harmony export */   "updateUser": () => (/* binding */ updateUser),
-/* harmony export */   "fetchAllUsers": () => (/* binding */ fetchAllUsers)
+/* harmony export */   "updateUser": () => (/* binding */ updateUser)
 /* harmony export */ });
 /* harmony import */ var _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_api_util */ "./frontend/util/user_api_util.js");
 
 var RECEIVE_USER = 'RECEIVE_USER';
 var RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
-var RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS"; // export const RECEIVE_SINGLE_USER = "RECEIVE_SINGLE_USER";
+var RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 
 var receiveUser = function receiveUser(payload) {
   return {
@@ -685,15 +684,7 @@ var receiveAllUsers = function receiveAllUsers(users) {
     type: RECEIVE_ALL_USERS,
     users: users
   };
-}; // const receiveSingleUser = payload => ({
-//     type: RECEIVE_SINGLE_USER,
-//     payload
-// });
-// export const fetchUser = userId => dispatch (
-//     APIUtil.fetchUser(userId).then(
-//         user => dispatch(receiveUser(user)))
-// )
-
+};
 
 var fetchUser = function fetchUser(id) {
   return dispatch(_util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchUser(id).then(function (payload) {
@@ -708,18 +699,7 @@ var updateUser = function updateUser(user, id) {
       return dispatch(receiveUserErrors(err.responseJSON));
     });
   };
-}; // EXTRA 
-
-var fetchAllUsers = function fetchAllUsers() {
-  return function (dispatch) {
-    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllUsers().then(function (users) {
-      return dispatch(receiveAllUsers(users));
-    });
-  };
-}; // export const fetchSingleUser = id => dispatch => (
-//     UserAPIUtil.fetchSingleUser(id)
-//         .then(payload => dispatch(receiveSingleUser(payload)))
-// );
+};
 
 /***/ }),
 
@@ -2229,10 +2209,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
-/* harmony import */ var _searchBar_searchbar_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../searchBar/searchbar_container */ "./frontend/components/searchBar/searchbar_container.js");
+/* harmony import */ var _searchBar_searchbar_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../searchBar/searchbar_container */ "./frontend/components/searchBar/searchbar_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2254,7 +2233,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -2313,7 +2291,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           key: "2",
           className: "nav-link-home",
           href: "#"
-        }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.NavLink, {
+        }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.NavLink, {
           to: "/following",
           className: "nav-bar-link"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2321,7 +2299,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         }, "Following")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "nav-bar-search-container",
           id: "search"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_searchBar_searchbar_container__WEBPACK_IMPORTED_MODULE_5__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.NavLink, {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_searchBar_searchbar_container__WEBPACK_IMPORTED_MODULE_4__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.NavLink, {
           to: "/users/".concat(currentUser.id) // key="3" // THIS IS id: 3 == vladimir@solovey.com
           ,
           className: "nav-link-home",
@@ -2361,7 +2339,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           }
         }, "in"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "icon-container-shadow"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.NavLink, {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.NavLink, {
           to: "/",
           className: "nav-link-home",
           onClick: logout,
@@ -2394,12 +2372,19 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchUser: function fetchUser(id) {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.fetchUser)(id));
-    },
-    fetchAllUsers: function fetchAllUsers() {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.fetchAllUsers)());
-    },
+    fetchUser: function (_fetchUser) {
+      function fetchUser(_x) {
+        return _fetchUser.apply(this, arguments);
+      }
+
+      fetchUser.toString = function () {
+        return _fetchUser.toString();
+      };
+
+      return fetchUser;
+    }(function (id) {
+      return dispatch(fetchUser(id));
+    }),
     logout: function logout() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.logoutUser)());
     }
@@ -4859,10 +4844,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_pin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/pin_actions */ "./frontend/actions/pin_actions.js");
 /* harmony import */ var _actions_board_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/board_actions */ "./frontend/actions/board_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
-/* harmony import */ var _actions_loading_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/loading_actions */ "./frontend/actions/loading_actions.js");
-/* harmony import */ var _user_profile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user_profile */ "./frontend/components/profile/user_profile.jsx");
-
+/* harmony import */ var _actions_loading_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/loading_actions */ "./frontend/actions/loading_actions.js");
+/* harmony import */ var _user_profile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user_profile */ "./frontend/components/profile/user_profile.jsx");
 
 
 
@@ -4883,13 +4866,19 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchAllUsers: function fetchAllUsers() {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.fetchAllUsers)());
-    },
-    // ???
-    fetchUser: function fetchUser(id) {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.fetchUser)(id));
-    },
+    fetchUser: function (_fetchUser) {
+      function fetchUser(_x) {
+        return _fetchUser.apply(this, arguments);
+      }
+
+      fetchUser.toString = function () {
+        return _fetchUser.toString();
+      };
+
+      return fetchUser;
+    }(function (id) {
+      return dispatch(fetchUser(id));
+    }),
     // ???
     openModal: function openModal(modal) {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal));
@@ -4901,15 +4890,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0,_actions_pin_actions__WEBPACK_IMPORTED_MODULE_1__.fetchPins)());
     },
     startLoading: function startLoading() {
-      return dispatch((0,_actions_loading_actions__WEBPACK_IMPORTED_MODULE_5__.startLoading)());
+      return dispatch((0,_actions_loading_actions__WEBPACK_IMPORTED_MODULE_4__.startLoading)());
     },
     stopLoading: function stopLoading() {
-      return dispatch((0,_actions_loading_actions__WEBPACK_IMPORTED_MODULE_5__.stopLoading)());
+      return dispatch((0,_actions_loading_actions__WEBPACK_IMPORTED_MODULE_4__.stopLoading)());
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_user_profile__WEBPACK_IMPORTED_MODULE_6__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_user_profile__WEBPACK_IMPORTED_MODULE_5__.default));
 
 /***/ }),
 
@@ -6465,8 +6454,7 @@ var demoUser = function demoUser() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "updateUser": () => (/* binding */ updateUser),
-/* harmony export */   "fetchUser": () => (/* binding */ fetchUser),
-/* harmony export */   "fetchAllUsers": () => (/* binding */ fetchAllUsers)
+/* harmony export */   "fetchUser": () => (/* binding */ fetchUser)
 /* harmony export */ });
 var updateUser = function updateUser(user, id) {
   return $.ajax({
@@ -6485,14 +6473,6 @@ var fetchUser = function fetchUser(id) {
 
     })
   );
-}; //extra
-
-var fetchAllUsers = function fetchAllUsers() {
-  return $.ajax({
-    method: "GET",
-    url: "/api/users" // data: user
-
-  });
 };
 
 /***/ }),
