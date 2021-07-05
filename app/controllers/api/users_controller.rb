@@ -44,15 +44,15 @@ class Api::UsersController < ApplicationController
 
   private
 
-  def user_params
+  def user_params # create user
     params.require(:user).permit(:email, :password, :age)
   end
 
-  def profile_params
+  def profile_params # edit page
     params.require(:user).permit( :email, :first_name, :last_name, :age, :photo, :location, :description)
   end
 
-    def selected_user
+  def selected_user # show page
     User.includes(:boards, :pins, :boards_pins).find(params[:id])
   end
 

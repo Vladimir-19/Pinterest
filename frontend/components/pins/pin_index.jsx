@@ -5,16 +5,9 @@ class PinIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        this.splitPins = this.splitPins.bind(this);
+        // delete this.splitPins = this.splitPins.bind(this);
     }
 
-    splitPins(pins) {
-        const arr = [];
-        for (let i = 0; i < pins.length; i += 30) {
-            arr.push(pins.slice(i, i + 30));
-        }
-        return arr;
-    }
     render() {
         const { page, pins, currentUserId, user, openEditPin } = this.props;
         const pinIndexItems = pins.map(pin => (

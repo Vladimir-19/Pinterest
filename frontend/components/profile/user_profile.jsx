@@ -17,8 +17,6 @@ export default class UserProfile extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleButton = this.handleButton.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        //
-        this.handleScroll = this.handleScroll.bind(this); //// 04/03
     }
     
 
@@ -27,23 +25,6 @@ export default class UserProfile extends React.Component {
         this.props.fetchBoards()
         this.props.fetchPins().then(() => this.setState({ pins: 'fetched', loading: false }))
         setTimeout(() => this.props.stopLoading(), 800);
-        //
-        window.addEventListener("scroll", this.handleScroll); //// 04/03
-    }
-
-    // extra //// 04/03
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
-    }
-
-    handleScroll() { //// 04/03
-        const { prevScrollPos } = this.state;
-        const currentScrollPos = window.pageYOffset;
-        const fadeInName = (prevScrollPos < currentScrollPos - 50);
-
-        this.setState({
-            fadeInName
-        });
     }
 
     newBoard() {
@@ -139,21 +120,21 @@ export default class UserProfile extends React.Component {
                     {currentUserBoards.map((board, id) => {
                         let pinArr = [];
                         let allPins;
-                        let imageTag =
+                        let boardCover =
                             <div id='pin-image-wrapper1'>
                             </div>
                         if (board.pinIds.length > 0 && pinArr.length == 0) {
+                            pinArr = board.pinIds.slice(0, 3)
                             pinArr = board.pinIds.map(pinId => {
-                                return pins[pinId]
-                            }
-                            )
+                                return pins[pinId]  // propagating ID of Pins in pinArr
+                            })
                             if (pinArr.length > 0) {
                                 allPins = pinArr.map((pin, idx) => {
-                                    if (idx < 3 && pin !== undefined) { 
+                                    if (idx < 3 && pin !== undefined) { // I need only first 3 pins for a Board cover
                                         return <img key={idx} id='pin-image1' src={pin.photo} />
                                     }
                                 })
-                                imageTag =
+                                boardCover =
                                     <div id='pin-image-wrapper'>
                                         {/* key={board.id} */}
                                         {allPins}
@@ -162,7 +143,7 @@ export default class UserProfile extends React.Component {
                         }
                         return (
                             <div key={board.id} value={board.id} id='board-show-list' onClick={this.handleButton}>
-                                {imageTag}
+                                {boardCover}
                                 <div id='board-text'>
                                     <li>{board.title}</li>
                                     <p>{board.pinIds.length} Pins</p>

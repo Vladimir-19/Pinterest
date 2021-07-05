@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
     validates :email, :age, :password_digest, :session_token, presence: true
-    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } # email must be in form xxx@yyy.ccc
     validates :password, length: { minimum: 6, allow_nil: true}
 
     after_initialize :ensure_session_token

@@ -77,7 +77,8 @@ class PinIndexItem extends React.Component {
                             className="pin-index-item masonry-image" />
                     </Link>
                     <div className="pin-index-item links">
-                        <div className="pin-index-item edit-pin-link-container">{editPinLink}</div>
+                        {/* options that hovers at individual pin */}
+                        <div className="pin-index-item edit-pin-link-container">{editPinLink}</div> 
                         <div className="save-board-pin-link-container">{openBoardPinLink}</div>
                         <div className="pin-index-item pin-link-container">{pinLink}</div>
                     </div>

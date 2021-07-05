@@ -1,17 +1,22 @@
 import React from 'react';
 import PinIndexContainer from "../pins/pin_index_container";
 
-const shuffle = require('shuffle-array');
+const shuffle = require('shuffle-array'); //Randomize the order of the elements in a given array *** Fisher-Yates algorithm. *****
 
 class Home extends React.Component {
     constructor(props) {
         super(props) 
        
     }
+    /**
+     * logic of pin.userId !== currentUserId is in /home_container.js
+     */
 
     componentDidMount() {
         if (this.props.currentUserId === null) {
+            this.props.startLoading();
             this.props.fetchPins();
+            setTimeout(() => this.props.stopLoading(), 1200);
         } else {
             this.props.startLoading();
             this.props.fetchPins();
@@ -21,14 +26,8 @@ class Home extends React.Component {
 
     render() {
         const { currentUserId, loading, pins } = this.props;
-        let spacer, klass;
-        if (currentUserId === null) {
-            klass = "no-scroll";
-            spacer = null;
-        } else {
-            klass = "";
-            spacer = <div id="spacer"></div>;
-        };
+        let klass;
+        
         const loader = (loading) ? (
             <div className="loading-background">
                 <div className="loader"></div>
@@ -40,7 +39,6 @@ class Home extends React.Component {
 
         return (
             <div className={`home-container ${klass}`}>
-                {spacer}
                 {loader}
                 <PinIndexContainer
                     key={otherPins.id}

@@ -1994,7 +1994,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var shuffle = __webpack_require__(/*! shuffle-array */ "./node_modules/shuffle-array/index.js");
+var shuffle = __webpack_require__(/*! shuffle-array */ "./node_modules/shuffle-array/index.js"); //Randomize the order of the elements in a given array *** Fisher-Yates algorithm. *****
+
 
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -2006,6 +2007,10 @@ var Home = /*#__PURE__*/function (_React$Component) {
 
     return _super.call(this, props);
   }
+  /**
+   * logic of pin.userId !== currentUserId is in /home_container.js
+   */
+
 
   _createClass(Home, [{
     key: "componentDidMount",
@@ -2013,7 +2018,11 @@ var Home = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       if (this.props.currentUserId === null) {
+        this.props.startLoading();
         this.props.fetchPins();
+        setTimeout(function () {
+          return _this.props.stopLoading();
+        }, 1200);
       } else {
         this.props.startLoading();
         this.props.fetchPins();
@@ -2029,19 +2038,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
           currentUserId = _this$props.currentUserId,
           loading = _this$props.loading,
           pins = _this$props.pins;
-      var spacer, klass;
-
-      if (currentUserId === null) {
-        klass = "no-scroll";
-        spacer = null;
-      } else {
-        klass = "";
-        spacer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          id: "spacer"
-        });
-      }
-
-      ;
+      var klass;
       var loader = loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "loading-background"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2051,7 +2048,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-container ".concat(klass)
-      }, spacer, loader, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pins_pin_index_container__WEBPACK_IMPORTED_MODULE_1__.default, {
+      }, loader, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pins_pin_index_container__WEBPACK_IMPORTED_MODULE_1__.default, {
         key: otherPins.id,
         pins: otherPins,
         page: "home"
@@ -3161,27 +3158,12 @@ var PinIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(PinIndex);
 
   function PinIndex(props) {
-    var _this;
-
     _classCallCheck(this, PinIndex);
 
-    _this = _super.call(this, props);
-    _this.splitPins = _this.splitPins.bind(_assertThisInitialized(_this));
-    return _this;
+    return _super.call(this, props); // delete this.splitPins = this.splitPins.bind(this);
   }
 
   _createClass(PinIndex, [{
-    key: "splitPins",
-    value: function splitPins(pins) {
-      var arr = [];
-
-      for (var i = 0; i < pins.length; i += 30) {
-        arr.push(pins.slice(i, i + 30));
-      }
-
-      return arr;
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -4694,10 +4676,7 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleButton = _this.handleButton.bind(_assertThisInitialized(_this));
-    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this)); //
-
-    _this.handleScroll = _this.handleScroll.bind(_assertThisInitialized(_this)); //// 04/03
-
+    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -4716,26 +4695,7 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
       });
       setTimeout(function () {
         return _this2.props.stopLoading();
-      }, 800); //
-
-      window.addEventListener("scroll", this.handleScroll); //// 04/03
-    } // extra //// 04/03
-
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }
-  }, {
-    key: "handleScroll",
-    value: function handleScroll() {
-      //// 04/03
-      var prevScrollPos = this.state.prevScrollPos;
-      var currentScrollPos = window.pageYOffset;
-      var fadeInName = prevScrollPos < currentScrollPos - 50;
-      this.setState({
-        fadeInName: fadeInName
-      });
+      }, 800);
     }
   }, {
     key: "newBoard",
@@ -4838,18 +4798,20 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
       }, currentUserBoards.map(function (board, id) {
         var pinArr = [];
         var allPins;
-        var imageTag = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        var boardCover = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           id: "pin-image-wrapper1"
         });
 
         if (board.pinIds.length > 0 && pinArr.length == 0) {
+          pinArr = board.pinIds.slice(0, 3);
           pinArr = board.pinIds.map(function (pinId) {
-            return pins[pinId];
+            return pins[pinId]; // propagating ID of Pins in pinArr
           });
 
           if (pinArr.length > 0) {
             allPins = pinArr.map(function (pin, idx) {
               if (idx < 3 && pin !== undefined) {
+                // I need only first 3 pins for a Board cover
                 return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
                   key: idx,
                   id: "pin-image1",
@@ -4857,7 +4819,7 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
                 });
               }
             });
-            imageTag = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            boardCover = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
               id: "pin-image-wrapper"
             }, allPins);
           }
@@ -4868,7 +4830,7 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
           value: board.id,
           id: "board-show-list",
           onClick: _this3.handleButton
-        }, imageTag, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, boardCover, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           id: "board-text"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, board.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, board.pinIds.length, " Pins")));
       })));
